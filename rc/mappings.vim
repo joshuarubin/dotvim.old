@@ -82,8 +82,8 @@ nnoremap <leader>vsa :vert sba<cr>
 " nmap <leader>jt <esc>:%!python -m json.tool<cr><esc>:set filetype=json<cr>
 
 " change working directory to that of the current file
-cmap cwd lcd %:p:h
-cmap cd. lcd %:p:h
+" cmap cwd lcd %:p:h
+" cmap cd. lcd %:p:h
 
 " bash like keys for the command line. These resemble personal zsh mappings
 cnoremap <c-a> <home>

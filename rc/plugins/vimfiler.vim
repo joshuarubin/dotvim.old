@@ -12,24 +12,25 @@ let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_marked_file_icon = '✓'
-let g:my_vimfiler_explorer_name = 'explorer'
-let g:my_vimfiler_winwidth = 60
-let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_data_directory = GetCacheDir("vimfiler")
 let g:vimfiler_quick_look_command = "qlmanage -p"
+let g:vimfiler_ignore_filters = ['matcher_ignore_pattern', 'matcher_ignore_wildignore']
 
 " make enter expand the directory like NERDTree
-autocmd MyAutoCmd FileType vimfiler nmap <silent><buffer><expr> <CR> vimfiler#smart_cursor_map(
+autocmd MyAutoCmd FileType vimfiler nmap <silent><buffer><expr> <cr> vimfiler#smart_cursor_map(
   \ "\<Plug>(vimfiler_expand_tree)",
   \ "\<Plug>(vimfiler_edit_file)")
 
 autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-r> <Plug>(vimfiler_redraw_screen)
 autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-h> <Plug>(vimfiler_switch_to_history_directory)
 
-" nnoremap <expr><f2> g:MyOpenExplorerCommand()
-" function! g:MyOpenExplorerCommand()  " {{{
-"   return printf(":\<c-u>VimFilerBufferDir -buffer-name=%s -split -auto-cd -toggle -no-quit -winwidth=%s\<cr>",
-"     \ g:my_vimfiler_explorer_name,
-"     \ g:my_vimfiler_winwidth)
-" endfunction
-" " }}}
+if neobundle#tap("vimfiler.vim")
+  function! neobundle#hooks.on_post_source(bundle)
+    call vimfiler#custom#profile("default", "context", {
+          \ "auto_cd" : 1,
+          \ "safe": 0,
+          \ })
+  endfunction
+
+  call neobundle#untap()
+endif
