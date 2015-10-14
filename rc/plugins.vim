@@ -57,10 +57,10 @@ NeoBundle     "thinca/vim-visualstar"                                    " searc
 NeoBundle     "tomtom/tcomment_vim"                                      " easy to use, file-type sensible comments
 NeoBundleLazy "editorconfig/editorconfig-vim", {"autoload":{"insert":1}} " editorconfig
 
-" collaborative editing
-NeoBundle "floobits/floobits-neovim"
-
 if has("nvim")
+  " collaborative editing
+  NeoBundle "floobits/floobits-neovim"
+
   NeoBundle "FredKSchott/CoVim"
 endif
 

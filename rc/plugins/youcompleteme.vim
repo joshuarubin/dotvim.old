@@ -1,6 +1,6 @@
 " neocomplete + neosnippet + neosnippet-snippets requires lua
 " youcompleteme + ultisnips is the fallback without lua
-if has("lua") || v:version < 703 || v:version == 703 && !has("patch598")
+if has("lua") || v:version < 703 || (v:version == 703 && !has("patch598")) || !has("python")
   finish
 endif
 
