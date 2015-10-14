@@ -1,5 +1,5 @@
-/vim.symlink/bundle/*/
-!/vim.symlink/bundle/neobundle.vim/
-/vim.symlink/.cache/
-/vim.symlink/spell/
-/vim.symlink/bundle/NeoBundle.lock
+/bundle/*/
+!/bundle/neobundle.vim/
+/.cache/
+/spell/
+/bundle/NeoBundle.lock
