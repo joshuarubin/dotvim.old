@@ -4,6 +4,10 @@ colorscheme apprentice
 set mouse=a " enable mouse usage (all modes)
 set mousehide
 
+if !has('nvim') && has("mouse_sgr")
+  set ttymouse=sgr
+endif
+
 augroup HiglightTODO
   " ensure any instance TODO or FIXME is highlighted as an Error in any filetype
   autocmd!
