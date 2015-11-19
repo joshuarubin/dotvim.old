@@ -45,7 +45,7 @@ endfunction
 imap <silent> <cr> <c-r>=<sid>cleverCr()<cr>
 imap <expr> <s-cr> pumvisible() ? neocomplete#smart_close_popup() . "\<cr>" : "\<cr>"
 
-imap <expr> <bs> neocomplete#smart_close_popup() . "\<c-h>"
+" imap <expr> <bs> neocomplete#smart_close_popup() . "\<c-h>"
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
