@@ -28,7 +28,6 @@ NeoBundle "tpope/vim-eunuch"    " sugar for the unix shell commands
 NeoBundle "tpope/vim-obsession" " continuously updated session files
 
 " general programming
-NeoBundle "joshuarubin/vim-polyglot"    " a collection of language packs for vim, forked from sheerun/vim-polyglot
 NeoBundle "AndrewRadev/splitjoin.vim"   " simplifies the transition between multi-line and single-line code
 NeoBundle "arnaud-lb/vim-php-namespace" " types 'use' statements for you
 
