@@ -1,6 +1,7 @@
 " neocomplete + neosnippet + neosnippet-snippets requires lua
 " youcompleteme + ultisnips is the fallback without lua
-if has("lua") || v:version < 703 || (v:version == 703 && !has("patch598")) || !has("python")
+" nvim defaults to deoplete
+if has("lua") || v:version < 703 || (v:version == 703 && !has("patch598")) || !has("python") || has('nvim')
   finish
 endif
 
@@ -43,4 +44,4 @@ autocmd MyAutoCmd FileType html,markdown setlocal omnifunc=htmlcomplete#Complete
 autocmd MyAutoCmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd MyAutoCmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd MyAutoCmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd MyAutoCmd FileType ruby setlo:cal omnifunc=rubycomplete#Complete
+autocmd MyAutoCmd FileType ruby setlocal omnifunc=rubycomplete#Complete

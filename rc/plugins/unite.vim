@@ -132,11 +132,11 @@ nnoremap <silent> [unite]s :<c-u>Unite -quick-match buffer<cr>
 
 " ctrl-p: Find files
 nmap <c-p> [unite]p
-if has("nvim")
-  nnoremap <silent> [unite]p :<c-u>Unite -resume -buffer-name=project -auto-resize -no-restore -input= -start-insert -hide-source-names -unique file_rec/neovim:!<cr>
-else
+" if has("nvim")
+"   nnoremap <silent> [unite]p :<c-u>Unite -resume -buffer-name=project -auto-resize -no-restore -input= -start-insert -hide-source-names -unique file_rec/neovim:!<cr>
+" else
   nnoremap <silent> [unite]p :<c-u>Unite -resume -buffer-name=project -auto-resize -no-restore -input= -start-insert -hide-source-names -unique file_rec/async:!<cr>
-endif
+" endif
 
 " [unite]f: Find files non-recursively with option to create new file
 nnoremap <silent> [unite]f :<c-u>Unite -resume -buffer-name=files -auto-resize -no-restore -input= -start-insert -hide-source-names -unique file file/new<cr>

@@ -6,6 +6,8 @@ if $GOPATH != ""
   let g:go_fmt_fail_silently = 1
   " let g:go_auto_type_info = 1
   " let g:go_dispatch_enabled = 1
+  let g:go_metalinter_enabled  = ['vet', 'golint', 'errcheck', 'gotype', 'testify', 'interfacer', 'varcheck', 'vetshadow', 'aligncheck', 'ineffassign', 'unconvert', 'deadcode', 'goconst', 'gocyclo', 'lll', 'structcheck', 'dupl']
+  let g:go_list_height = 10
 
   autocmd MyAutoCmd FileType go nmap <buffer> <leader>d <plug>(go-doc)
   autocmd MyAutoCmd FileType go nmap <buffer> <leader>r <plug>(go-run)
