@@ -181,12 +181,14 @@ nnoremap <silent> [unite]j :<c-u>Unite -buffer-name=junk -start-insert -auto-res
 nnoremap <f4> :UniteSessionSave
 
 nnoremap <silent> [unite]r :<c-u>Unite -auto-resize neomru/file<cr>
-nnoremap <silent> [unite]t :<c-u>Unite -input= tag<cr>
+" nnoremap <silent> [unite]t :<c-u>Unite -input= tag<cr>
+nnoremap <silent> [unite]a :<c-u>Unite -input= tag<cr>
 nnoremap <silent> [unite]e :<c-u>Unite -buffer-name=register register<cr>
 nnoremap <silent> [unite]y :<c-u>Unite -buffer-name=yank -start-insert history/yank<cr>
 nnoremap <silent> [unite]m :<c-u>Unite -buffer-name=mappings -auto-resize -start-insert mapping<cr>
 nnoremap <silent> [unite]; :<c-u>Unite -buffer-name=history -default-action=edit -start-insert history/command command<cr>
-nnoremap <silent> [unite]a :<c-u>Unite -buffer-name=airline_themes -winheight=10 -auto-preview airline_themes<cr>
+" nnoremap <silent> [unite]a :<c-u>Unite -buffer-name=airline_themes -winheight=10 -auto-preview airline_themes<cr>
+nnoremap <silent> [unite]t :<c-u>Unite tab<cr>
 nnoremap <silent> [unite]c :<c-u>Unite -buffer-name=colorschemes -winheight=10 -auto-preview colorscheme<cr>
 
 " nnoremap <silent> [unite]p :<c-u>Unite -buffer-name=sessions session<cr>

@@ -296,3 +296,10 @@ xmap <tab> >
 
 " shift-tab: unindent
 xmap <s-tab> <
+
+if has('nvim')
+  " terminal mode mappings
+
+  " esc to exit terminal mode
+  tnoremap <esc> <c-\><c-n>
+endif

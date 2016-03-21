@@ -63,7 +63,8 @@ set completeopt=longest,menuone " auto complete setting
 set nospell
 set splitright
 set splitbelow
-set winheight=50 " sensible heights for splits
+" set winheight=50 " sensible heights for splits
+set winheight=1
 set winminheight=0
 set ttyfast " assume fast terminal connection
 
