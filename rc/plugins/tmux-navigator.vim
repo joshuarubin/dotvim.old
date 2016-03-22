@@ -111,6 +111,12 @@ else
 
     " <c-a>, rename tab
     call s:tmux_bind_key(',', ':call TabRename()<cr>', ['n', 'v', 'i', 't'])
+
+    " <c-a>H <c-a>J <c-a>K <c-a>L resize window
+    call s:tmux_bind_key('H', '<c-w><', ['n', 'v', 'i', 't'])
+    call s:tmux_bind_key('L', '<c-w>>', ['n', 'v', 'i', 't'])
+    call s:tmux_bind_key('J', '<c-w>+', ['n', 'v', 'i', 't'])
+    call s:tmux_bind_key('K', '<c-w>-', ['n', 'v', 'i', 't'])
   endif
 
   autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-l> :wincmd l<cr>

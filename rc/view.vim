@@ -65,7 +65,7 @@ set splitright
 set splitbelow
 " set winheight=50 " sensible heights for splits
 set winheight=1
-set winminheight=0
+set winminheight=1
 set ttyfast " assume fast terminal connection
 
 if has("conceal")
