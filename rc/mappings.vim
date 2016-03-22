@@ -159,8 +159,8 @@ nnoremap <c-s><c-r> :%s/<c-r><c-w>//gc<left><left><left>
 "nnoremap <c-b> <c-^>
 
 " cycle through buffers with ctrl-f/g
-nmap <c-f> :bnext<cr>
-nmap <c-g> :bprev<cr>
+" nmap <c-f> :bnext<cr>
+" nmap <c-g> :bprev<cr>
 
 " ctrl-h: Move word back. Consistent with zsh
 "noremap <c-h> b

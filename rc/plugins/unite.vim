@@ -139,14 +139,14 @@ nmap <c-p> [unite]p
 " endif
 
 " [unite]f: Find files non-recursively with option to create new file
-nnoremap <silent> [unite]f :<c-u>Unite -resume -buffer-name=files -auto-resize -no-restore -input= -start-insert -hide-source-names -unique file file/new<cr>
+" nnoremap <silent> [unite]f :<c-u>Unite -resume -buffer-name=files -auto-resize -no-restore -input= -start-insert -hide-source-names -unique file file/new<cr>
 
-" ctrl-o: Find MRU and buffers
-nmap <c-o> [unite]b
+" ctrl-b: Find buffers
+nmap <c-b> [unite]b
 nnoremap <silent> [unite]b :<c-u>Unite buffer<cr>
 
-" ctrl-c: (C)hange (c)urrent directory
-nmap <c-c> [unite]d
+" ctrl-d: Change current (d)irectory
+nmap <c-d> [unite]d
 nnoremap <silent> [unite]d :<c-u>Unite -auto-resize neomru/directory<cr>
 
 " ctrl-\: Quick outline
@@ -175,12 +175,15 @@ nmap <c-s><c-f> [unite]l
 nnoremap <silent> [unite]l :<c-u>Unite -buffer-name=search_file -start-insert -auto-resize line<cr>
 
 " ctrl-space: Quick scratch buffer
-nmap <c-space> [unite]j
-nnoremap <silent> [unite]j :<c-u>Unite -buffer-name=junk -start-insert -auto-resize junkfile junkfile/new<cr>
+" nmap <c-space> [unite]<space>
+" nnoremap <silent> [unite]<space> :<c-u>Unite -buffer-name=junk -start-insert -auto-resize junkfile junkfile/new<cr>
 
 nnoremap <f4> :UniteSessionSave
 
-nnoremap <silent> [unite]r :<c-u>Unite -auto-resize neomru/file<cr>
+" ctrl-f: Search MRU files
+nmap <c-f> [unite]f
+nnoremap <silent> [unite]f :<c-u>Unite -auto-resize neomru/file<cr>
+
 " nnoremap <silent> [unite]t :<c-u>Unite -input= tag<cr>
 nnoremap <silent> [unite]a :<c-u>Unite -input= tag<cr>
 nnoremap <silent> [unite]e :<c-u>Unite -buffer-name=register register<cr>
