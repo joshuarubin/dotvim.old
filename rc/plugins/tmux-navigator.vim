@@ -34,21 +34,27 @@ else
     tmap <c-l> <c-\><c-n><c-w>l
 
     " switch to insert mode when switching to terminals
-    autocmd BufWinEnter,WinEnter term://* startinsert
+    autocmd MyAutoCmd BufWinEnter,WinEnter term://* startinsert
 
     " emulate tmux in neovim
 
-    " <c-a>c opens a terminal in a new tab
-    call s:tmux_bind_key('c', ':tabe\|terminal<cr>', ['n', 'v', 'i', 't'])
+    " <c-a>c opens a new tab
+    " call s:tmux_bind_key('c', ':tabe\|terminal<cr>', ['n', 'v', 'i', 't'])
+    call s:tmux_bind_key('c', ':tabnew<cr>', ['n', 'v', 'i', 't'])
 
-    " <c-a>c opens a terminal in a new horizontal split
-    call s:tmux_bind_key('s', ':split\|terminal<cr>', ['n', 'v', 'i', 't'])
+    " <c-a>c opens a new horizontal split
+    " call s:tmux_bind_key('s', ':split\|terminal<cr>', ['n', 'v', 'i', 't'])
+    call s:tmux_bind_key('s', ':split<cr>', ['n', 'v', 'i', 't'])
 
-    " <c-a>v opens a terminal in a new vertical split
-    call s:tmux_bind_key('v', ':vsplit\|terminal<cr>', ['n', 'v', 'i', 't'])
+    " <c-a>v opens a new vertical split
+    " call s:tmux_bind_key('v', ':vsplit\|terminal<cr>', ['n', 'v', 'i', 't'])
+    call s:tmux_bind_key('v', ':vsplit<cr>', ['n', 'v', 'i', 't'])
 
-    " <c-a>a switches to the previous window
-    call s:tmux_bind_key('a', '<c-w><c-p>', ['n', 'v', 'i', 't'])
+    " <c-a>t opens a terminal in the currentbuffer
+    call s:tmux_bind_key('t', ':terminal<cr>', ['n', 'v', 'i'])
+
+    " <c-a>a switches to the previous tab
+    call s:tmux_bind_key('a', ':call LastTab()<cr>', ['n', 'v', 'i', 't'])
 
     " open the current buffer in a new tab
     call s:tmux_bind_key('!', ':tabe %<cr>', ['n', 'v', 'i', 't'])
@@ -102,6 +108,9 @@ else
 
     " <c-a>[ enter visual mode
     call s:tmux_bind_key('[', 'v', ['t'])
+
+    " <c-a>, rename tab
+    call s:tmux_bind_key(',', ':call TabRename()<cr>', ['n', 'v', 'i', 't'])
   endif
 
   autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-l> :wincmd l<cr>

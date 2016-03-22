@@ -87,3 +87,22 @@ endfunction
 " automatically strip whitespace trailing on save for these files (add "let
 " b:auto_strip_trailing_whitespace = 1" in ftplugin files to enable)
 autocmd MyAutoCmd BufWritePre * call AutoStripTrailingWhitespace()
+
+function! TabRename()
+  if exists('*gettabvar')
+    let name = input('Tab name: ')
+    let t:title = name
+
+    if exists(':AirlineRefresh')
+      :AirlineRefresh
+    endif
+  endif
+endfunction
+
+let g:lasttab = 1
+
+function! LastTab()
+  :execute "tabnext ".g:lasttab
+endfunction
+
+autocmd MyAutoCmd TabLeave * let g:lasttab = tabpagenr()
