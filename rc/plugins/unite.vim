@@ -43,12 +43,12 @@ if neobundle#tap("unite.vim")
       \ "input" : ""
       \ })
 
-    call unite#custom#profile("source/neomru/file", "context", {
+    call unite#custom#profile("source/file_mru", "context", {
       \ "buffer_name" : "mru",
       \ "start_insert" : 1
       \ })
 
-    call unite#custom#profile("source/neomru/directory", "context", {
+    call unite#custom#profile("source/directory_mru", "context", {
       \ "buffer_name" : "dirs",
       \ "start_insert" : 1,
       \ "default_action" : "cd"
@@ -106,7 +106,7 @@ if neobundle#tap("unite.vim")
     call unite#custom#source("tag", "sorters", ["sorter_rank"])
     call unite#custom#source(s:file_recs, "sorters", [s:sorter])
     call unite#custom#source(s:file_recs, "matchers", ["converter_relative_word", "matcher_fuzzy"])
-    call unite#custom#source("neomru/file", "matchers", ["converter_relative_word", "matcher_project_files", "matcher_fuzzy"])
+    call unite#custom#source("file_mru", "matchers", ["converter_relative_word", "matcher_fuzzy"])
   endfunction
 
   call neobundle#untap()
@@ -147,7 +147,7 @@ nnoremap <silent> [unite]b :<c-u>Unite buffer<cr>
 
 " ctrl-d: Change current (d)irectory
 nmap <c-d> [unite]d
-nnoremap <silent> [unite]d :<c-u>Unite -auto-resize neomru/directory<cr>
+nnoremap <silent> [unite]d :<c-u>Unite -auto-resize directory_mru<cr>
 
 " ctrl-\: Quick outline
 nmap <silent> <c-\> [unite]o
@@ -182,7 +182,7 @@ nnoremap <f4> :UniteSessionSave
 
 " ctrl-f: Search MRU files
 nmap <c-f> [unite]f
-nnoremap <silent> [unite]f :<c-u>Unite -auto-resize neomru/file<cr>
+nnoremap <silent> [unite]f :<c-u>Unite -auto-resize file_mru<cr>
 
 " nnoremap <silent> [unite]t :<c-u>Unite -input= tag<cr>
 nnoremap <silent> [unite]a :<c-u>Unite -input= tag<cr>
@@ -200,9 +200,9 @@ let g:unite_data_directory=GetCacheDir("unite")
 let g:unite_source_tag_max_fname_length = 70
 let g:unite_source_history_yank_enable=1     " enable history yank source
 
-let g:neomru#file_mru_limit = 1000
-let g:neomru#filename_format = ":~:."
-let g:neomru#time_format = ""
+let g:unite_source_file_mru_limit = 1000
+let g:unite_source_file_mru_filename_format = ":~:."
+let g:unite_source_file_mru_time_format = ""
 
 if executable("ag")
   let g:unite_source_rec_async_command = ["ag", "--follow", "--nocolor", "--nogroup", "-g", ""]
