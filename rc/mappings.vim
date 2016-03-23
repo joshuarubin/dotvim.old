@@ -145,8 +145,8 @@ nnoremap <bar> :vsp<cr>
 "nnoremap N Nzzzv
 
 " +/-: Increment number
-nnoremap + <c-a>
-nnoremap - <c-x>
+" nnoremap + <c-a>
+" nnoremap - <c-x>
 
 " ctrl-sr: Easier (s)earch and (r)eplace
 nnoremap <c-s><c-r> :%s/<c-r><c-w>//gc<left><left><left>

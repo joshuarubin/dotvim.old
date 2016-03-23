@@ -1,6 +1,7 @@
 " neocomplete + neosnippet + neosnippet-snippets requires lua
 " youcompleteme + ultisnips is the fallback without lua
-if v:version < 704 || has("lua") || (!has("python") && !has("python3"))
+" nvim defaults to deoplete
+if v:version < 704 || has("lua") || (!has("python") && !has("python3")) || has('nvim')
   finish
 endif
 

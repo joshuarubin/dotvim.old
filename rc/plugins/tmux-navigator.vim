@@ -62,6 +62,9 @@ else
     " vertically split current buffer
     call s:tmux_bind_key('%', ':vspl<cr>', ['n', 'v', 'i', 't'])
 
+    " close the current tab
+    call s:tmux_bind_key('&', ':tabclose<cr>', ['n', 'v', 'i', 't'])
+
     " horizontally split current buffer
     call s:tmux_bind_key('"', ':spl<cr>', ['n', 'v', 'i', 't'])
 

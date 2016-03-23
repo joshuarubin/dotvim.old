@@ -175,8 +175,8 @@ nmap <c-s><c-f> [unite]l
 nnoremap <silent> [unite]l :<c-u>Unite -buffer-name=search_file -start-insert -auto-resize line<cr>
 
 " ctrl-space: Quick scratch buffer
-" nmap <c-space> [unite]<space>
-" nnoremap <silent> [unite]<space> :<c-u>Unite -buffer-name=junk -start-insert -auto-resize junkfile junkfile/new<cr>
+nmap <c-space> [unite]<space>
+nnoremap <silent> [unite]<space> :<c-u>Unite -buffer-name=junk -start-insert -auto-resize junkfile junkfile/new<cr>
 
 nnoremap <f4> :UniteSessionSave
 

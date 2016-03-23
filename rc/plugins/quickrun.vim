@@ -14,4 +14,4 @@ let g:quickrun_config.markdown = {
 " xnoremap <space> :QuickRun<cr>
 
 " <leader>?: Quickly open the README.md
-execute "nnoremap <silent> <leader>? :QuickRun -srcfile ~/.vim/README.md -type markdown<cr>"
+" execute "nnoremap <silent> <leader>? :QuickRun -srcfile ~/.vim/README.md -type markdown<cr>"

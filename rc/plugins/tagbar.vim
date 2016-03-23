@@ -16,4 +16,4 @@ let g:tagbar_type_go = {
   \ "ctagsargs" : "-sort -silent"
   \ }
 
-" nnoremap <silent> <leader>2 :TagbarToggle<cr>
+nnoremap <silent> <c-g> :TagbarToggle<cr>

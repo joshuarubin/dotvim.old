@@ -25,7 +25,7 @@ endfor
 " core
 NeoBundle "tpope/vim-repeat"    " enable repeating supported plugin maps with '.'
 NeoBundle "tpope/vim-eunuch"    " sugar for the unix shell commands
-NeoBundle "tpope/vim-obsession" " continuously updated session files
+" NeoBundle "tpope/vim-obsession" " continuously updated session files
 
 " general programming
 NeoBundle "AndrewRadev/splitjoin.vim"   " simplifies the transition between multi-line and single-line code
@@ -51,19 +51,18 @@ NeoBundle "honza/vim-snippets" " contains snippets files for various programming
 
 " editing
 NeoBundle     "tpope/vim-endwise"                                        " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
-NeoBundle     "tpope/vim-speeddating"                                    " use ctrl-a/ctrl-x to increment dates, times, and more
 NeoBundle     "thinca/vim-visualstar"                                    " search for selection with '*' in visual mode
 NeoBundle     "tomtom/tcomment_vim"                                      " easy to use, file-type sensible comments
 NeoBundleLazy "editorconfig/editorconfig-vim", {"autoload":{"insert":1}} " editorconfig
 
+" collaborative editing
 if has("nvim")
-  " collaborative editing
   NeoBundle "floobits/floobits-neovim"
-
-  NeoBundle "FredKSchott/CoVim"
 endif
 
-NeoBundle "thinca/vim-qfreplace" " perform replacements in quickfix
+NeoBundle "FredKSchott/CoVim"
+
+" NeoBundle "thinca/vim-qfreplace" " perform replacements in quickfix
 
 " textobj
 NeoBundle "kana/vim-textobj-user"            " painlessly create your own text objects
@@ -72,7 +71,6 @@ NeoBundle "kana/vim-textobj-entire"          " text objects for entire buffer
 NeoBundle "lucapette/vim-textobj-underscore" " underscore text-object
 
 " writing
-NeoBundle "reedes/vim-litecorrect" " lightweight auto-correction
 NeoBundle "reedes/vim-wordy"       " uncover usage problems in your writing
 
 " misc
@@ -81,7 +79,7 @@ if exists("$TMUX")
 endif
 
 NeoBundle     "vimwiki"                                                                                               " personal wiki
-NeoBundle     "bufkill.vim"                                                                                           " unload/delete/wipe a buffer, keep its window(s), display last accessed buffer(s)
+NeoBundle     "qpkorr/vim-bufkill"                                                                                    " unload/delete/wipe a buffer, keep its window(s), display last accessed buffer(s)
 NeoBundle     "chrisbra/vim_faq"                                                                                      " the vim faq from http://vimdoc.sourceforge.net/
 NeoBundle     "tpope/vim-abolish"                                                                                     " easily search for, substitute, and abbreviate multiple variants of a word
 NeoBundle     "osyo-manga/vim-over"                                                                                   " :substitute preview
