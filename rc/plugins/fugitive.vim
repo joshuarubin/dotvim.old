@@ -27,3 +27,5 @@ autocmd MyAutoCmd User fugitive
   \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
   \   nnoremap <silent> <buffer> .. :edit %:h<cr> |
   \ endif
+
+let g:fugitive_git_executable = "env GIT_SSH_COMMAND='ssh -o ControlPersist=no' git"
