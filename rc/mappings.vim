@@ -305,4 +305,4 @@ if has('nvim')
 endif
 
 " ctrl-l to redraw the screen now
-noremap <c-l> :redraw!<cr>
+noremap <silent> <c-l> :redraw!<cr>
