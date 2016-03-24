@@ -303,3 +303,6 @@ if has('nvim')
   " esc to exit terminal mode
   tnoremap <esc> <c-\><c-n>
 endif
+
+" ctrl-l to redraw the screen now
+noremap <c-l> :redraw!<cr>
