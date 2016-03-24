@@ -214,7 +214,7 @@ inoremap <c-v> <c-g>u<c-o>gP
 vnoremap <c-c> y`]
 
 " ctrl-r: easier search and replace
-vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
+" vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 
 " ctrl-s: easier substitue
 vnoremap <c-s> :s/\%v//g<left><left><left>
@@ -304,5 +304,5 @@ if has('nvim')
   tnoremap <esc> <c-\><c-n>
 endif
 
-" ctrl-l to redraw the screen now
-noremap <silent> <c-l> :redraw!<cr>
+" ctrl-r to redraw the screen now
+noremap <silent> <c-r> :redraw!<cr>
