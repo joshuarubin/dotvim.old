@@ -8,7 +8,7 @@ if !has('nvim') && has("mouse_sgr")
   set ttymouse=sgr
 endif
 
-augroup HiglightTODO
+augroup HighlightTODO
   " ensure any instance TODO or FIXME is highlighted as an Error in any filetype
   autocmd!
   autocmd WinEnter,VimEnter * :silent! call matchadd('Error', 'TODO', -1)
