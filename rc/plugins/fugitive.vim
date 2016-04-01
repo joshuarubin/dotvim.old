@@ -11,7 +11,7 @@ nnoremap <silent> <leader>gr :Gremove<cr>
 nnoremap <silent> <leader>gw :Gwrite<cr>
 nnoremap <silent> <leader>ge :Gedit<cr>
 nnoremap <silent> <leader>gm :Gmove<cr>
-nnoremap <silent> <leader>g. :Gcd<cr>
+nnoremap <silent> <leader>g. :Gcd<cr>:pwd<cr>
 nnoremap <silent> <leader>gu :Gpull<cr>
 nnoremap <silent> <leader>gn :Gmerge<cr>
 nnoremap <silent> <leader>gf :Gfetch<cr>
