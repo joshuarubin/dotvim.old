@@ -32,8 +32,9 @@ NeoBundle "AndrewRadev/splitjoin.vim"   " simplifies the transition between mult
 NeoBundle "arnaud-lb/vim-php-namespace" " types 'use' statements for you
 
 " web
-NeoBundleLazy "amirh/HTML-AutoCloseTag", {"autoload":{"filetypes":["html","xml"]}} " automatically closes html tags once you finish typing them
-NeoBundleLazy "gregsexton/MatchTag",     {"autoload":{"filetypes":["html","xml"]}} " matchparen for html tags
+NeoBundleLazy "amirh/HTML-AutoCloseTag", {"autoload":{"filetypes":["html","xml"]}}  " automatically closes html tags once you finish typing them
+NeoBundleLazy "gregsexton/MatchTag",     {"autoload":{"filetypes":["html","xml"]}}  " matchparen for html tags
+NeoBundleLazy "kewah/vim-cssfmt",        {"autoload":{"filetypes":["css", "scss"]}} " format your css using cssfmt inside vim
 
 " javascript
 NeoBundleLazy "mmalecki/vim-node.js", {"autoload":{"filetypes":["javascript"]}} " file type detect which detects node.js shebang
