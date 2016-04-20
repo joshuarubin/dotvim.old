@@ -62,6 +62,7 @@ if has("nvim")
 endif
 
 NeoBundle "FredKSchott/CoVim"
+"NeoBundle "kiteco/plugins", {"name": "kite", "rtp": "vim-kite", "script_type": "plugin"}
 
 " NeoBundle "thinca/vim-qfreplace" " perform replacements in quickfix
 
