@@ -100,6 +100,10 @@ NeoBundle "ajh17/Spacegray.vim"              " loosely based on the spacegray xc
 NeoBundle "romainl/Apprentice"               " a dark, low-contrast, colorscheme
 NeoBundle "jnurmine/Zenburn"                 " a low-contrast colorscheme
 NeoBundle "morhetz/gruvbox"                  " a bright theme with pastel 'retro groove' colors
+NeoBundle "peaksea"                          " refined color, contains both gui and cterm256 for dark and light background
+NeoBundle "wesgibbs/vim-irblack"             " infinite red's ir_black vim theme
+NeoBundle "mayansmoke"                       " pleasant and ergonomic light-background color scheme
+NeoBundle "therubymug/vim-pyte"              " henning hasemann's pyte vim theme
 
 " neobundle tear down
 call neobundle#end()

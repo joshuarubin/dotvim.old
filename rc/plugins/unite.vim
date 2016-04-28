@@ -167,8 +167,8 @@ nmap <c-s><c-g> [unite]G
 nnoremap <silent> [unite]G :<c-u>UniteResume grep<cr>
 
 " f1: Show help
-nmap <f1> [unite]h
-nnoremap <silent> [unite]h :<c-u>Unite -buffer-name=help -auto-resize help<cr>
+" nmap <f1> [unite]h
+" nnoremap <silent> [unite]h :<c-u>Unite -buffer-name=help -auto-resize help<cr>
 
 " ctrl-sf: Quickly (s)earch in (f)ile
 nmap <c-s><c-f> [unite]l
