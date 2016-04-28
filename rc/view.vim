@@ -2,11 +2,11 @@ syntax enable
 
 set list
 
-if has("gui_running")
-  set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
-else
+" if has("gui_running")
+"   set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
+" else
   set listchars=tab:\ \ ,trail:•,extends:❯,precedes:❮,nbsp:.
-endif
+" endif
 
 set laststatus=2 " always show the statusline
 set title
