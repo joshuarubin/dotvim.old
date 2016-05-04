@@ -2,7 +2,7 @@
 NeoBundle     "tpope/vim-fugitive"
 
 nnoremap <silent> <leader>gs :Gstatus<cr>
-nnoremap <silent> <leader>gd :Gdiff<cr>
+nnoremap <silent> <leader>gd :Gvdiff<cr>
 nnoremap <silent> <leader>gc :Gcommit<cr>
 nnoremap <silent> <leader>gb :Gblame<cr>
 nnoremap <silent> <leader>gl :Glog<cr>
