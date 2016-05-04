@@ -12,7 +12,7 @@ let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_go_gometalinter_args='--deadline=10s --cyclo-over=10 -D gotype -t'
+let g:syntastic_go_gometalinter_args = "--vendor --fast --tests"
 
 " highlight link SyntasticError WarningMsg
 " highlight link SyntasticWarning Question
