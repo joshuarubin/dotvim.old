@@ -1,1 +1,1 @@
-set syntax=sh
+setlocal syntax=sh commentstring=#%s

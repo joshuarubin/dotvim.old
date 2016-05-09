@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead .envrc set filetype=envrc
+autocmd BufNewFile,BufRead .envrc setlocal filetype=envrc
