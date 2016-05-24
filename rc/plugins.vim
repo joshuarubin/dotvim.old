@@ -104,6 +104,7 @@ NeoBundle "peaksea"                          " refined color, contains both gui 
 NeoBundle "wesgibbs/vim-irblack"             " infinite red's ir_black vim theme
 NeoBundle "mayansmoke"                       " pleasant and ergonomic light-background color scheme
 NeoBundle "therubymug/vim-pyte"              " henning hasemann's pyte vim theme
+NeoBundle "dracula/vim", {"name": "dracula"} " a dark theme for vim
 
 " neobundle tear down
 call neobundle#end()
