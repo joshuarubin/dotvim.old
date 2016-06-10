@@ -60,7 +60,7 @@ nnoremap <leader>, <c-w>p
 " map <leader>et :tabe %%
 
 " adjust viewports to the same size
-map <leader>= <c-w>=
+noremap <leader>= <c-w>=
 
 " map <leader>ff to display all lines with keyword under cursor and ask which one to jump to
 nmap <leader>ff [I:let nr = input("Which one: ")<bar>exe "normal " . nr ."[\t"<cr>
