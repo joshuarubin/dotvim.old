@@ -19,13 +19,13 @@ endfunction
 if exists("$TMUX")
   NeoBundle "christoomey/vim-tmux-navigator"
 
-  autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-l> :TmuxNavigateRight<cr>
-  autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-j> :TmuxNavigateDown<cr>
+  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-l> :TmuxNavigateRight<cr>
+  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-j> :TmuxNavigateDown<cr>
 else
-  nmap <c-h> <c-w>h
-  nmap <c-j> <c-w>j
-  nmap <c-k> <c-w>k
-  nmap <c-l> <c-w>l
+  nnoremap <c-h> <c-w>h
+  nnoremap <c-j> <c-w>j
+  nnoremap <c-k> <c-w>k
+  nnoremap <c-l> <c-w>l
 
   if has("nvim")
     tmap <c-h> <c-\><c-n><c-w>h
@@ -122,6 +122,6 @@ else
     call s:tmux_bind_key('K', '<c-w>-', ['n', 'v', 'i', 't'])
   endif
 
-  autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-l> :wincmd l<cr>
-  autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-j> :wincmd j<cr>
+  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-l> :wincmd l<cr>
+  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-j> :wincmd j<cr>
 endif
