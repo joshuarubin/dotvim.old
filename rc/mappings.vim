@@ -308,5 +308,4 @@ endif
 noremap <silent> <c-a>r :redraw!<cr>
 
 " ctrl-w to delete the current buffer without closing the window
-nnoremap <silent> <c-w> :confirm :Kwbd<cr>
 nnoremap <silent> <c-w><c-w> :confirm :Kwbd<cr>
