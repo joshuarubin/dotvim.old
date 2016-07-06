@@ -1,5 +1,5 @@
 syntax enable
-set synmaxcol=120
+set synmaxcol=256
 
 set list
 

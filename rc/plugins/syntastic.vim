@@ -13,7 +13,7 @@ let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_go_gometalinter_args = "--vendor --tests -D gocyclo -D structcheck -D varcheck -D aligncheck -D testify -D test -D interfacer -D unconvert"
+let g:syntastic_go_gometalinter_args = "--vendor --tests -D gocyclo -D structcheck -D varcheck -D aligncheck -D testify -D test -D interfacer -D unconvert -D dupl"
 let g:syntastic_markdown_mdl_args = "-r '~MD013,~MD033'"
 
 " highlight link SyntasticError WarningMsg
