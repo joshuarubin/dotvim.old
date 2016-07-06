@@ -2,3 +2,4 @@
 NeoBundle "joshuarubin/vim-polyglot"
 
 let g:jsx_ext_required = 0
+let g:rustfmt_autosave = 1
