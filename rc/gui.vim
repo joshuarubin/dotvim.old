@@ -1,4 +1,5 @@
 set background=dark
+
 colorscheme apprentice
 
 set mouse=a " enable mouse usage (all modes)

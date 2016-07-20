@@ -70,7 +70,8 @@ set winminheight=1
 set ttyfast " assume fast terminal connection
 
 if has("conceal")
-  set conceallevel=1
+  set conceallevel=2
+  set concealcursor=niv
   set listchars+=conceal:Δ
 endif
 

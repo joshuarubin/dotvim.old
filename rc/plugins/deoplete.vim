@@ -9,14 +9,17 @@ NeoBundle "Shougo/deoplete.nvim"
 NeoBundle "Shougo/neosnippet"
 NeoBundle "Shougo/neosnippet-snippets"
 NeoBundle "Shougo/echodoc"
-NeoBundle 'zchee/deoplete-go', {'build': {'unix': 'make'}}
+NeoBundle "zchee/deoplete-go", {"build": {"unix": "make"}}
+NeoBundle "tpope/vim-endwise"
 
+let g:endwise_no_mappings = 1
 let g:echodoc_enable_at_startup = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#auto_complete_start_length = 1
 
 let g:neosnippet#data_directory = GetCacheDir("neosnippet")
-let g:neosnippet#snippets_directory = "~/.vim/bundle/vim-snippets/snippets,~/.vim/snippets," . globpath(&rtp, "gosnippets/snippets")
+let g:neosnippet#snippets_directory = join(globpath(&rtp, "snippets", 0, 1) + globpath(&rtp, "gosnippets/snippets", 0, 1), ",")
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:go_snippet_engine = "neosnippet"
 
@@ -38,15 +41,23 @@ imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 imap <expr> <c-g> deoplete#undo_completion()
 " imap <expr> <c-l> deoplete#complete_common_string()
 
-function! s:cleverCr()
-  return pumvisible() ? "\<c-y>" : "\<cr>"
+function! CleverCr()
+  if !pumvisible()
+    return "\<cr>\<Plug>DiscretionaryEnd"
+  endif
+
+  if neosnippet#expandable()
+    return "\<plug>(neosnippet_expand_or_jump)"
+  endif
+
+  return "\<c-y>"
 endfunction
 
-imap <silent> <cr> <c-r>=<sid>cleverCr()<cr>
-imap <expr> <s-cr> pumvisible() ? deoplete#smart_close_popup() . "\<cr>" : "\<cr>"
+imap <expr> <cr> CleverCr()
+imap <expr> <s-cr> pumvisible() ? deoplete#mappings#smart_close_popup() . "\<cr>" : "\<cr>"
 
 if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
+  let g:deoplete#omni#input_patterns = {}
 endif
 
 let g:deoplete#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'

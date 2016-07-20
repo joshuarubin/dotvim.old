@@ -1,0 +1,19 @@
+# json field tag
+snippet json
+abbr `json:key`
+	\`json:"${1:`go#util#snippetcase(matchstr(getline("."), '\w\+'))`}"\`
+
+# yaml field tag
+snippet yaml
+abbr `yaml:key`
+	\`yaml:"${1:`go#util#snippetcase(matchstr(getline("."), '\w\+'))`}"\`
+
+# Fmt Printf debug
+snippet ff
+abbr fmt.Printf(...)
+	fmt.Printf("${1} = %+v\n", $1)
+
+# log printf
+snippet lf
+abbr log.Printf(...)
+	log.Printf("${1} = %+v\n", $1)

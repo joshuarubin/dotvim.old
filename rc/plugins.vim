@@ -52,7 +52,6 @@ NeoBundleLazy "bitc/vim-hdevtools", {"autoload": {"filetypes": ["haskell"]}}
 NeoBundle "honza/vim-snippets" " contains snippets files for various programming languages
 
 " editing
-NeoBundle     "tpope/vim-endwise"                                        " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
 NeoBundle     "thinca/vim-visualstar"                                    " search for selection with '*' in visual mode
 NeoBundle     "tomtom/tcomment_vim"                                      " easy to use, file-type sensible comments
 NeoBundleLazy "editorconfig/editorconfig-vim", {"autoload":{"insert":1}} " editorconfig
@@ -94,7 +93,7 @@ NeoBundleLazy "guns/xterm-color-table.vim", {"autoload":{"commands":"XtermColorT
 " endif
 
 NeoBundle "nanotech/jellybeans.vim"          " colorful, dark color scheme
-NeoBundle "tomasr/molokai"                   " port of the monokai theme for textmate
+NeoBundle "fatih/molokai"                    " port of the monokai theme for textmate
 NeoBundle "chriskempson/vim-tomorrow-theme"  " a bright theme with pastel colours and sensible syntax highlighting
 NeoBundle "sjl/badwolf"                      " colorscheme pieced together from various colors
 NeoBundle "ajh17/Spacegray.vim"              " loosely based on the spacegray xcode theme
