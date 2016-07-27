@@ -6,7 +6,7 @@ NeoBundle "majutsushi/tagbar"
 " and make sure gotags is in your path
 let g:tagbar_type_go = {
   \ "ctagstype" : "go",
-  \ "kinds"     : [  "p:package", "i:imports:1", "c:constants", "v:variables",
+  \ "kinds"     : [  "p:package", "i:imports", "c:constants", "v:variables",
     \ "t:types",  "n:interfaces", "w:fields", "e:embedded", "m:methods",
     \ "r:constructor", "f:functions" ],
   \ "sro" : ".",

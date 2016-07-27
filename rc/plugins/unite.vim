@@ -121,6 +121,7 @@ NeoBundleLazy "Shougo/neossh.vim",               {"autoload":{"unite_sources":"s
 NeoBundle     "Shougo/neomru.vim"                                                                                                     " unite.vim mru sources, depends on shougo/unite.vim
 NeoBundle     "Shougo/unite-outline"                                                                                                  " unite source which provides the buffer with an outline view
 NeoBundle     "tsukkee/unite-tag"                                                                                                     " unite plugin for selecting tags or selecting files including tags
+NeoBundle     "Shougo/neoinclude.vim"                                                                                                 " include completion framework
 
 " map space to the prefix for Unite
 nnoremap [unite] <nop>
@@ -175,8 +176,8 @@ nmap <c-s><c-f> [unite]l
 nnoremap <silent> [unite]l :<c-u>Unite -buffer-name=search_file -start-insert -auto-resize line<cr>
 
 " ctrl-space: Quick scratch buffer
-nmap <c-space> [unite]<space>
-nnoremap <silent> [unite]<space> :<c-u>Unite -buffer-name=junk -start-insert -auto-resize junkfile junkfile/new<cr>
+" nmap <c-space> [unite]<space>
+" nnoremap <silent> [unite]<space> :<c-u>Unite -buffer-name=junk -start-insert -auto-resize junkfile junkfile/new<cr>
 
 nnoremap <f4> :UniteSessionSave
 
@@ -185,7 +186,7 @@ nmap <c-f> [unite]f
 nnoremap <silent> [unite]f :<c-u>Unite -auto-resize file_mru<cr>
 
 " nnoremap <silent> [unite]t :<c-u>Unite -input= tag<cr>
-nnoremap <silent> [unite]a :<c-u>Unite -input= tag<cr>
+" nnoremap <silent> [unite]a :<c-u>Unite -buffer-name=tag -start-insert tag/include<cr>
 nnoremap <silent> [unite]e :<c-u>Unite -buffer-name=register register<cr>
 nnoremap <silent> [unite]y :<c-u>Unite -buffer-name=yank -start-insert history/yank<cr>
 nnoremap <silent> [unite]m :<c-u>Unite -buffer-name=mappings -auto-resize -start-insert mapping<cr>
