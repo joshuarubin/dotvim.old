@@ -10,6 +10,7 @@ NeoBundle "Shougo/neosnippet"
 NeoBundle "Shougo/neosnippet-snippets"
 NeoBundle "Shougo/echodoc"
 NeoBundle "zchee/deoplete-go", {"build": {"unix": "make"}}
+NeoBundle "zchee/deoplete-jedi"
 NeoBundle "tpope/vim-endwise"
 
 let g:endwise_no_mappings = 1
