@@ -21,7 +21,9 @@ if &term =~ '^\(xterm\|screen\)$' && $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
-if has("gui_running")
+if exists("neovim_dot_app")
+  call MacSetFont("Hasklig", 11)
+elseif has("gui_running")
   if has("gui_macvim")
     set transparency=0
     set guifont=Inconsolata\ for\ Powerline:h12
