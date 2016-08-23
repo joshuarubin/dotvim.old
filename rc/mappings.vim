@@ -105,11 +105,11 @@ cnoremap <c-g> <right>
 cnoremap <c-v> <c-r>"
 
 " w!!: Writes using sudo
-cnoremap w!! w !sudo tee % >/dev/null
+" cnoremap w!! w !sudo tee % >/dev/null
 
 " some helpers to edit mode
 " http://vimcasts.org/e/14
-cnoremap %% <c-r>=fnameescape(expand("%:h"))."/"<cr>
+" cnoremap %% <c-r>=fnameescape(expand("%:h"))."/"<cr>
 
 " Q: Closes the window
 nnoremap Q :q<cr>

@@ -16,6 +16,8 @@ augroup HighlightTODO
   autocmd WinEnter,VimEnter * :silent! call matchadd('Error', 'FIXME', -1)
 augroup END
 
+highlight Comment cterm=italic
+
 " gnome-terminal colors
 if &term =~ '^\(xterm\|screen\)$' && $COLORTERM == 'gnome-terminal'
   set t_Co=256
