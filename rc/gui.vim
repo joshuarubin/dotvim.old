@@ -4,6 +4,7 @@ colorscheme apprentice
 
 set mouse=a " enable mouse usage (all modes)
 set mousehide
+set cursorline
 
 if !has('nvim') && has("mouse_sgr")
   set ttymouse=sgr

@@ -57,11 +57,11 @@ NeoBundle     "tomtom/tcomment_vim"                                      " easy 
 NeoBundleLazy "editorconfig/editorconfig-vim", {"autoload":{"insert":1}} " editorconfig
 
 " collaborative editing
-if has("nvim")
-  NeoBundle "floobits/floobits-neovim"
-endif
-
-NeoBundle "FredKSchott/CoVim"
+" if has("nvim")
+"   NeoBundle "floobits/floobits-neovim"
+" endif
+"
+" NeoBundle "FredKSchott/CoVim"
 "NeoBundle "kiteco/plugins", {"name": "kite", "rtp": "vim-kite", "script_type": "plugin"}
 
 " NeoBundle "thinca/vim-qfreplace" " perform replacements in quickfix
