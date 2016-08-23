@@ -27,6 +27,16 @@ else
   nnoremap <c-k> <c-w>k
   nnoremap <c-l> <c-w>l
 
+  vnoremap <c-h> <c-w>h
+  vnoremap <c-j> <c-w>j
+  vnoremap <c-k> <c-w>k
+  vnoremap <c-l> <c-w>l
+
+  inoremap <c-h> <esc><c-w>h
+  inoremap <c-j> <esc><c-w>j
+  inoremap <c-k> <esc><c-w>k
+  inoremap <c-l> <esc><c-w>l
+
   if has("nvim")
     tnoremap <c-h> <c-\><c-n><c-w>h
     tnoremap <c-j> <c-\><c-n><c-w>j
