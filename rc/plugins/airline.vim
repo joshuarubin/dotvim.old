@@ -8,12 +8,16 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#tab_min_count = 2
-let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#tab_min_count = 1
+let g:airline#extensions#tabline#buffer_min_count = 1
 let g:airline#extensions#tabline#fnamemod = ":t"
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_nr_format = "%s "
+let g:airline#extensions#tabline#buffers_label = 'buffers %{strftime("%l:%M")}'
+let g:airline#extensions#tabline#tabs_label = 'tabs %{strftime("%l:%M")}'
 " let g:airline#extensions#default#section_truncate_width = {}
+
+autocmd MyAutoCmd CursorHold,CursorHoldI * AirlineRefresh
 
 " let g:airline_left_sep = ''
 " let g:airline_left_alt_sep = ''
