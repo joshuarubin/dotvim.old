@@ -28,7 +28,8 @@ if exists("neovim_dot_app")
 elseif has("gui_running")
   if has("gui_macvim")
     set transparency=0
-    set guifont=Inconsolata\ for\ Powerline:h12
+    set macligatures
+    set guifont=Fira\ Code\ Retina:h11
   elseif has("gui_gtk")
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
   endif
