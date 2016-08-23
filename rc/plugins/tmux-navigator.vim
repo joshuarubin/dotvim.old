@@ -28,10 +28,10 @@ else
   nnoremap <c-l> <c-w>l
 
   if has("nvim")
-    tmap <c-h> <c-\><c-n><c-w>h
-    tmap <c-j> <c-\><c-n><c-w>j
-    tmap <c-k> <c-\><c-n><c-w>k
-    tmap <c-l> <c-\><c-n><c-w>l
+    tnoremap <c-h> <c-\><c-n><c-w>h
+    tnoremap <c-j> <c-\><c-n><c-w>j
+    tnoremap <c-k> <c-\><c-n><c-w>k
+    tnoremap <c-l> <c-\><c-n><c-w>l
 
     " switch to insert mode when switching to terminals
     autocmd MyAutoCmd BufWinEnter,WinEnter term://* startinsert
