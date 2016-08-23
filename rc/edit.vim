@@ -11,7 +11,7 @@ else
 endif
 
 set backspace=indent,eol,start  " allow backspace in insert mode
-set showmatch                   " show matching brackets
+set noshowmatch                 " don't show matching brackets
 set cpoptions-=m
 set matchtime=2                 " tens of a second to show matching parentheses
 set matchpairs+=<:>
