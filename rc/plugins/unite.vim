@@ -7,14 +7,14 @@ endif
 
 if neobundle#tap("unite.vim")
   function! neobundle#hooks.on_post_source(bundle)
-    function! airline#extensions#unite#apply(...)
-      if &ft == 'unite'
-        call a:1.add_section('airline_a', ' Unite ')
-        call a:1.add_section('airline_b', ' %{get(unite#get_context(), "buffer_name", "")} ')
-        call a:1.add_section('airline_c', ' ')
-        return 1
-      endif
-    endfunction
+    " function! airline#extensions#unite#apply(...)
+    "   if &ft == 'unite'
+    "     call a:1.add_section('airline_a', ' Unite ')
+    "     call a:1.add_section('airline_b', ' %{get(unite#get_context(), "buffer_name", "")} ')
+    "     call a:1.add_section('airline_c', ' ')
+    "     return 1
+    "   endif
+    " endfunction
 
     hi link uniteInputPrompt Special
 
@@ -24,6 +24,7 @@ if neobundle#tap("unite.vim")
       \   "prompt": "» ",
       \   "direction": "botright",
       \   "cursor_line_highlight": "PmenuSel",
+      \   "silent": 1,
       \ })
 
     call unite#custom#profile("source/grep", "context", {
@@ -112,7 +113,7 @@ if neobundle#tap("unite.vim")
   call neobundle#untap()
 endif
 
-NeoBundleLazy "osyo-manga/unite-airline_themes", {"autoload":{"unite_sources":"airline_themes"}}                                      " unite airline themes, duh
+" NeoBundleLazy "osyo-manga/unite-airline_themes", {"autoload":{"unite_sources":"airline_themes"}}                                      " unite airline themes, duh
 NeoBundleLazy "ujihisa/unite-colorscheme",       {"autoload":{"unite_sources":"colorscheme"}}                                         " unite plugin for changing your colorscheme
 NeoBundleLazy "Shougo/unite-help",               {"autoload":{"unite_sources":"help"}}                                                " unite plugin for help
 NeoBundleLazy "Shougo/unite-session",            {"autoload":{"unite_sources":["session","session/new"]}}                             " unite source which nominates sessions
@@ -219,6 +220,7 @@ elseif executable("ag")
   let g:unite_source_grep_recursive_opt = ""
 endif
 
+let g:unite_source_rec_min_cache_files = 1
 let g:unite_source_rec_max_cache_files = 99999
 
 autocmd MyAutoCmd BufEnter *

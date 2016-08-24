@@ -14,7 +14,7 @@ NeoBundle "zchee/deoplete-jedi"
 NeoBundle "tpope/vim-endwise"
 
 let g:endwise_no_mappings = 1
-let g:echodoc_enable_at_startup = 1
+let g:echodoc_enable_at_startup = 0
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_complete_start_length = 1

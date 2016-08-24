@@ -93,9 +93,9 @@ function! TabRename()
     let name = input('Tab name: ')
     let t:title = name
 
-    if exists(':AirlineRefresh')
-      :AirlineRefresh
-    endif
+    " if exists(':AirlineRefresh')
+    "   :AirlineRefresh
+    " endif
   endif
 endfunction
 
