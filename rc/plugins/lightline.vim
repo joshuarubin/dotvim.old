@@ -82,7 +82,7 @@ function! StatusLineInfo()
     return ""
   endif
 
-  if &filetype =~ 'vimfiler'
+  if &filetype =~ 'vimfiler\|fzf'
     return ""
   endif
 
@@ -136,7 +136,7 @@ function! s:readonly()
 endfunction
 
 function! s:filename(fmt)
-  if &filetype == 'fzf'
+  if &filetype == "fzf"
     return ""
   endif
 
@@ -151,6 +151,10 @@ function! s:filename(fmt)
   endif
 
   let fname = expand(a:fmt)
+
+  if fname =~ '^term:\/\/'
+    return 'term://'
+  endif
 
   if fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item')
     return g:lightline.ctrlp_item
@@ -221,6 +225,10 @@ function! LightLineFiletype()
     return ""
   endif
 
+  if &filetype == "fzf"
+    return ""
+  endif
+
   if &filetype !=# ''
     return &filetype
   endif
@@ -230,6 +238,10 @@ endfunction
 
 function! LightLineFileformat()
   if winwidth(0) < 70
+    return ""
+  endif
+
+  if &filetype =~ "fzf"
     return ""
   endif
 
@@ -256,8 +268,8 @@ function! LightLineMode()
     return 'CtrlP'
   endif
 
-  if &filetype == 'fzf'
-    return 'fzf'
+  if &filetype == "fzf"
+    return "fzf"
   endif
 
   if &filetype == 'unite'
