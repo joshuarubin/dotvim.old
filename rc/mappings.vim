@@ -74,9 +74,9 @@ vmap <leader>s :sort<cr>
 nnoremap <leader>w :w<cr>
 
 " shortcuts for windows
-nnoremap <leader>v <c-w>v
-nnoremap <leader>s <c-w>s
-nnoremap <leader>vsa :vert sba<cr>
+" nnoremap <leader>v <c-w>v
+" nnoremap <leader>s <c-w>s
+" nnoremap <leader>vsa :vert sba<cr>
 
 " json
 " nmap <leader>jt <esc>:%!python -m json.tool<cr><esc>:set filetype=json<cr>
