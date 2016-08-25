@@ -111,6 +111,12 @@ function! StatusLineLineInfo()
     return ""
   endif
 
+  let fname = expand('%:f')
+
+  if fname =~ '^term:\/\/'
+    return ""
+  endif
+
   " return '%3p%%  %l/%L☰ :%3v'
   return printf('%3.0f%%  %d/%d☰ :%3d',
     \   round((line('.') * 1.0) / line('$') * 100),
@@ -249,6 +255,12 @@ function! LightLineFiletype()
     return ""
   endif
 
+  let fname = expand('%:f')
+
+  if fname =~ '^term:\/\/'
+    return ""
+  endif
+
   if &filetype !=# ''
     return &filetype
   endif
@@ -262,6 +274,12 @@ function! LightLineFileformat()
   endif
 
   if s:is_no_fileformat_filetype()
+    return ""
+  endif
+
+  let fname = expand('%:f')
+
+  if fname =~ '^term:\/\/'
     return ""
   endif
 
