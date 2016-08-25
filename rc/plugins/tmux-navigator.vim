@@ -45,6 +45,7 @@ else
 
     " switch to insert mode when switching to terminals
     autocmd MyAutoCmd BufWinEnter,WinEnter term://* startinsert
+    autocmd MyAutoCmd BufLeave term://* stopinsert
     autocmd MyAutoCmd TermOpen term://* set winfixheight
 
     " emulate tmux in neovim

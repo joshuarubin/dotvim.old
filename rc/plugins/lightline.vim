@@ -7,6 +7,11 @@ let g:buftabline_numbers=1
 let g:buftabline_indicators=1
 let g:buftabline_separators=1
 let g:lightline_tagbar_disabled=1
+let g:lightline_readonly_filetypes = ["help", "vimfiler", "tagbar", "man"]
+let g:lightline_filetype_mode_filetypes = ["help", "man", "fzf", "unite", "vimfiler", "tagbar"]
+let g:lightline_no_lineinfo_filetypes = ["vimfiler", "fzf", "tagbar"]
+let g:lightline_no_fileformat_filetypes = ["fzf", "man", "help", "tagbar", "vimfiler"]
+let g:lightline_no_filefilename_filetypes = ["fzf", "vimfiler", "tagbar"]
 
 let g:lightline = {
       \ 'colorscheme': 'apprentice',
@@ -58,6 +63,26 @@ let g:lightline = {
       \ 'enable': { 'statusline': 1, 'tabline': 0 },
       \ }
 
+function s:is_filetype_mode_filetype()
+  return index(g:lightline_filetype_mode_filetypes, &filetype) >= 0
+endfunction
+
+function s:is_no_lineinfo_filetype()
+  return index(g:lightline_no_lineinfo_filetypes, &filetype) >= 0
+endfunction
+
+function s:is_no_fileformat_filetype()
+  return index(g:lightline_no_fileformat_filetypes, &filetype) >= 0
+endfunction
+
+function s:is_no_filename_filetype()
+  return index(g:lightline_no_filefilename_filetypes, &filetype) >= 0
+endfunction
+
+function s:is_readonly_filetype()
+  return index(g:lightline_readonly_filetypes, &filetype) >= 0
+endfunction
+
 let s:lightline_tagbar_last_lookup_time = 0
 let s:lightline_tagbar_last_lookup_val = ''
 function! LightLineTagbar()
@@ -77,12 +102,12 @@ function! LightLineTagbar()
   return s:lightline_tagbar_last_lookup_val
 endfunction
 
-function! StatusLineInfo()
+function! StatusLineLineInfo()
   if winwidth(0) < 70
     return ""
   endif
 
-  if &filetype =~ 'vimfiler\|fzf'
+  if s:is_no_lineinfo_filetype()
     return ""
   endif
 
@@ -96,7 +121,7 @@ function! StatusLineInfo()
 endfunction
 
 function! LightLineLineInfo()
-  return '%{StatusLineInfo()}'
+  return '%{StatusLineLineInfo()}'
 endfunction
 
 function! LightLinePaste()
@@ -124,7 +149,7 @@ function! LightLineCrypt()
 endfunction
 
 function! s:readonly()
-  if &filetype =~ 'help\|vimfiler'
+  if s:is_readonly_filetype()
     return ""
   endif
 
@@ -136,14 +161,13 @@ function! s:readonly()
 endfunction
 
 function! s:filename(fmt)
-  if &filetype == "fzf"
+  if s:is_no_filename_filetype()
     return ""
   endif
 
-  if &filetype == 'vimfiler'
-    " return vimfiler#get_status_string()
-    return "vimfiler"
-  endif
+  " if &filetype == 'vimfiler'
+  "   return vimfiler#get_status_string()
+  " endif
 
   if &filetype == 'unite'
     return get(unite#get_context(), "buffer_name", "")
@@ -160,10 +184,6 @@ function! s:filename(fmt)
     return g:lightline.ctrlp_item
   endif
 
-  if fname == '__Tagbar__'
-    return "tagbar"
-  endif
-
   if fname != ''
     return fname
   endif
@@ -172,7 +192,7 @@ function! s:filename(fmt)
 endfunction
 
 function! s:modified()
-  if &filetype =~ 'help\|vimfiler\|tagbar'
+  if s:is_readonly_filetype()
     return ""
   endif
 
@@ -201,7 +221,7 @@ function! LightLineFugitive()
       return ""
     endif
 
-    if &filetype =~ 'help\|vimfiler'
+    if s:is_readonly_filetype()
       return ""
     endif
 
@@ -225,7 +245,7 @@ function! LightLineFiletype()
     return ""
   endif
 
-  if &filetype == "fzf"
+  if s:is_no_fileformat_filetype()
     return ""
   endif
 
@@ -241,7 +261,7 @@ function! LightLineFileformat()
     return ""
   endif
 
-  if &filetype =~ "fzf"
+  if s:is_no_fileformat_filetype()
     return ""
   endif
 
@@ -254,30 +274,14 @@ function! LightLineFileformat()
 endfunction
 
 function! LightLineMode()
-  if winwidth(0) < 70
-    return ""
+  if s:is_filetype_mode_filetype()
+    return toupper(&filetype)
   endif
 
   let fname = expand('%:t')
 
-  if fname == '__Tagbar__'
-    return 'Tagbar'
-  endif
-
   if fname == 'ControlP'
-    return 'CtrlP'
-  endif
-
-  if &filetype == "fzf"
-    return "fzf"
-  endif
-
-  if &filetype == 'unite'
-    return 'Unite'
-  endif
-
-  if &filetype == 'vimfiler'
-    return 'VimFiler'
+    return 'CTRLP'
   endif
 
   return lightline#mode()

@@ -86,6 +86,7 @@ NeoBundle     "chrisbra/vim_faq"                                                
 NeoBundle     "tpope/vim-abolish"                                                                                     " easily search for, substitute, and abbreviate multiple variants of a word
 NeoBundle     "osyo-manga/vim-over"                                                                                   " :substitute preview
 NeoBundleLazy "guns/xterm-color-table.vim", {"autoload":{"commands":"XtermColorTable"}}                               " all 256 xterm colors with their rgb equivalents
+NeoBundle     "rkitover/vimpager.git"                                                                                 " use vim as $PAGER
 
 " color schemes
 " if has("gui") || v:version >= 703
