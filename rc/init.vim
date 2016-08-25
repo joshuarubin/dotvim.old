@@ -2,6 +2,7 @@ let g:mapleader = ","
 let s:cache_dir = "~/.vim/.cache/"
 
 set encoding=utf-8 " set encoding for text
+set dictionary=/usr/share/dict/words
 
 " prefer locally installed python
 if executable("/usr/local/bin/python")

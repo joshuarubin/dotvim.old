@@ -127,10 +127,10 @@ nnoremap R mqHmwgg=G`wzt`q
 nnoremap U :redo<cr>
 
 " _ : Quick horizontal splits
-nnoremap _ :sp<cr>
+nnoremap <silent> _ :sp<cr>
 
 " | : Quick vertical splits
-nnoremap <bar> :vsp<cr>
+nnoremap <silent> <bar> :vsp<cr>
 
 " H: Go to beginning of line.
 "noremap H ^

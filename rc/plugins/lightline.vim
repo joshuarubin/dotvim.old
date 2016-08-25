@@ -18,7 +18,7 @@ let g:lightline = {
       \   'right': [
       \     [ 'syntastic', 'lineinfo' ],
       \     [ 'fileformat' ],
-      \     [ 'tagbar', 'filetype' ]
+      \     [ 'filetype' ]
       \   ],
       \ },
       \ 'inactive': {
@@ -28,7 +28,7 @@ let g:lightline = {
       \     [ 'fullfilename' ]
       \   ],
       \   'right': [
-      \     [ ],
+      \     [ 'lineinfo' ],
       \     [ 'fileformat' ],
       \     [ 'filetype' ]
       \   ]
@@ -68,10 +68,11 @@ function! LightLineTagbar()
     let s:lightline_tagbar_last_lookup_val = tagbar#currenttag('%s', '')
     let s:lightline_tagbar_last_lookup_time = localtime()
   endif
+
   return s:lightline_tagbar_last_lookup_val
 endfunction
 
-function! LightLineLineInfo()
+function! StatusLineInfo()
   if winwidth(0) < 70
     return ""
   endif
@@ -80,7 +81,17 @@ function! LightLineLineInfo()
     return ""
   endif
 
-  return '%3p%%  %l/%L☰ :%3v'
+  " return '%3p%%  %l/%L☰ :%3v'
+  return printf('%3.0f%%  %d/%d☰ :%3d',
+    \   round((line('.') * 1.0) / line('$') * 100),
+    \   line('.'),
+    \   line('$'),
+    \   col('.')
+    \ )
+endfunction
+
+function! LightLineLineInfo()
+  return '%{StatusLineInfo()}'
 endfunction
 
 function! LightLinePaste()
@@ -107,7 +118,7 @@ function! LightLineCrypt()
   return ""
 endfunction
 
-function! LightLineReadonly()
+function! s:readonly()
   if &filetype =~ 'help\|vimfiler'
     return ""
   endif
@@ -119,15 +130,9 @@ function! LightLineReadonly()
   return ""
 endfunction
 
-function! LLFilename(fmt)
-  let fname = expand(a:fmt)
-
-  if fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item')
-    return g:lightline.ctrlp_item
-  endif
-
-  if fname == '__Tagbar__'
-    return "tagbar"
+function! s:filename(fmt)
+  if &filetype == 'fzf'
+    return ""
   endif
 
   if &filetype == 'vimfiler'
@@ -140,6 +145,16 @@ function! LLFilename(fmt)
     " return get(unite#get_context(), "buffer_name", "") . ' | ' . unite#get_status_string()
   endif
 
+  let fname = expand(a:fmt)
+
+  if fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item')
+    return g:lightline.ctrlp_item
+  endif
+
+  if fname == '__Tagbar__'
+    return "tagbar"
+  endif
+
   if fname != ''
     return fname
   endif
@@ -147,13 +162,10 @@ function! LLFilename(fmt)
   return '[No Name]'
 endfunction
 
-function! LLModified()
+function! s:modified()
   if &filetype =~ 'help\|vimfiler\|tagbar'
     return ""
   endif
-
-  " TODO(jrubin)
-  " return "%m"
 
   if &modified
     return "[+]"
@@ -167,13 +179,12 @@ function! LLModified()
 endfunction
 
 function! LightLineFilename()
-  return LLFilename('%:t') . LLModified() . LightLineReadonly()
+  return s:filename('%:t') . s:modified() . s:readonly()
 endfunction
 
 function! LightLineFullFilename()
-  return LLFilename('%:f') . LLModified() . LightLineReadonly()
+  return s:filename('%:f') . s:modified() . s:readonly()
 endfunction
-
 
 function! LightLineFugitive()
   try
@@ -189,7 +200,7 @@ function! LightLineFugitive()
       let mark = ''
       let branch = fugitive#head()
 
-      if branch !=# ''
+      if branch != ''
         return mark . ' ' . branch
       endif
     endif
@@ -238,6 +249,10 @@ function! LightLineMode()
 
   if fname == 'ControlP'
     return 'CtrlP'
+  endif
+
+  if &filetype == 'fzf'
+    return 'fzf'
   endif
 
   if &filetype == 'unite'

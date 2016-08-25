@@ -30,7 +30,7 @@ elseif has("gui_running")
   if has("gui_macvim")
     set transparency=0
     set macligatures
-    set guifont=Fira\ Code\ Retina:h11
+    set guifont=Hasklig:h12
   elseif has("gui_gtk")
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
   endif

@@ -124,6 +124,8 @@ NeoBundle     "Shougo/unite-outline"                                            
 NeoBundle     "tsukkee/unite-tag"                                                                                                     " unite plugin for selecting tags or selecting files including tags
 NeoBundle     "Shougo/neoinclude.vim"                                                                                                 " include completion framework
 
+if !has('nvim') " nvim uses fzf
+
 " map space to the prefix for Unite
 nnoremap [unite] <nop>
 nmap <space> [unite]
@@ -198,6 +200,8 @@ nnoremap <silent> [unite]c :<c-u>Unite -buffer-name=colorschemes -winheight=10 -
 
 " nnoremap <silent> [unite]p :<c-u>Unite -buffer-name=sessions session<cr>
 
+endif """ !has('nvim')
+
 let g:unite_data_directory=GetCacheDir("unite")
 let g:unite_source_tag_max_fname_length = 70
 let g:unite_source_history_yank_enable=1     " enable history yank source
@@ -223,10 +227,10 @@ endif
 let g:unite_source_rec_min_cache_files = 1
 let g:unite_source_rec_max_cache_files = 99999
 
-autocmd MyAutoCmd BufEnter *
-\   if empty(&buftype)
-\|    nnoremap <buffer> <c-]> :<c-u>UniteWithCursorWord -immediately tag<cr>
-\| endif
+" autocmd MyAutoCmd BufEnter *
+" \   if empty(&buftype)
+" \|    nnoremap <buffer> <c-]> :<c-u>UniteWithCursorWord -immediately tag<cr>
+" \| endif
 
 " custom Unite settings
 autocmd MyAutoCmd FileType unite call s:unite_settings()
