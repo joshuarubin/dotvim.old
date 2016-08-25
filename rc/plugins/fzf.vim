@@ -9,8 +9,7 @@ NeoBundle "junegunn/fzf.vim"
 " nnoremap <silent> <c-p> :FZF<cr>
 
 " close fzf with <esc>
-autocmd MyAutoCmd FileType fzf tnoremap <buffer> <esc> <c-\><c-n>:q<cr>
-autocmd MyAutoCmd FileType fzf nnoremap <buffer> <esc> :q<cr>
+autocmd MyAutoCmd FileType fzf tnoremap <buffer> <esc> <esc>
 
 " ensure <c-j> and <c-k> work properly within fzf window
 autocmd MyAutoCmd FileType fzf tnoremap <buffer> <c-j> <c-j>
@@ -18,7 +17,7 @@ autocmd MyAutoCmd FileType fzf tnoremap <buffer> <c-k> <c-k>
 
 let g:fzf_history_dir = GetCacheDir("fzf")
 let g:fzf_buffers_jump = 1
-let g:fzf_layout = { 'down': '25%' }
+let g:fzf_layout = { 'down': '~25%' }
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)

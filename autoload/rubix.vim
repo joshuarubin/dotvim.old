@@ -15,7 +15,7 @@ endfunction
 function! rubix#project_dir()
   let path = &filetype ==# 'vimfiler' ?
     \ b:vimfiler.current_dir :
-    \ getcwd()
+    \ rubix#buffer_dir()
   return s:path2project_directory(path)
 endfunction
 
@@ -165,8 +165,7 @@ function! s:parse_source_path(path) abort
   " Expand ?!/buffer_project_subdir, !/project_subdir and ?/buffer_subdir
   if a:path =~ '^?!'
     " Use project directory from buffer directory
-    let path = s:get_buffer_directory(bufnr('%'))
-    let path = s:path2project_directory(path) . a:path[2:]
+    let path = rubix#project_dir() . a:path[2:]
   elseif a:path =~ '^!'
     " Use project directory from cwd
     let path = &filetype ==# 'vimfiler' ?
@@ -175,7 +174,7 @@ function! s:parse_source_path(path) abort
     let path = s:path2project_directory(path) . a:path[1:]
   elseif a:path =~ '^?'
     " Use buffer directory
-    let path = s:get_buffer_directory(bufnr('%')) . a:path[1:]
+    let path = rubix#buffer_dir() . a:path[1:]
   else
     let path = a:path
   endif
