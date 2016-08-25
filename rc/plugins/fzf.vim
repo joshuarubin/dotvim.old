@@ -17,7 +17,7 @@ autocmd MyAutoCmd FileType fzf tnoremap <buffer> <c-k> <c-k>
 
 let g:fzf_history_dir = GetCacheDir("fzf")
 let g:fzf_buffers_jump = 1
-let g:fzf_layout = { 'down': '~25%' }
+let g:fzf_layout = { 'down': '10' }
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
