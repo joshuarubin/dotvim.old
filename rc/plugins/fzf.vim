@@ -63,7 +63,6 @@ nnoremap <silent> [fzf]p :FilesProjectDir<cr>
 nnoremap <silent> <c-b>  :Buffers<cr>
 nnoremap <silent> [fzf]b :Buffers<cr>
 
-" TODO(jrubin) make an actual mru
 " <c-f>, <space>f: Search MRU files
 nnoremap <silent> <c-f>  :History<cr>
 nnoremap <silent> [fzf]f :History<cr>
@@ -74,13 +73,11 @@ nnoremap <silent> [fzf]: :History:<cr>
 " <space>/: Search search-history
 nnoremap <silent> [fzf]/ :History/<cr>
 
-" <c-s><c-d>, <space>g: (S)earch word in project (d)irectory (prompt for word)
+" <c-s><c-d>: (S)earch word in project (d)irectory (prompt for word)
 nnoremap <silent> <c-s><c-d> :AgProjectDirPrompt<cr>
-nnoremap <silent> [fzf]g     :AgProjectDirPrompt<cr>
 
-" <c-s><c-s>, <space>]: (S)earch word under cur(s)or in current directory
+" <c-s><c-s>: (S)earch word under cur(s)or in current directory
 nnoremap <silent> <c-s><c-s> :AgProjectDirCursor<cr>
-nnoremap <silent> [fzf]]     :AgProjectDirCursor<cr>
 
 " ctrl-sf: Quickly (s)earch in (f)ile
 nnoremap <silent> <c-s><c-f> :BLines<cr>
@@ -88,13 +85,12 @@ nnoremap <silent> <c-s><c-f> :BLines<cr>
 " <space>m: Search (normal mode) vim mappings
 nnoremap <silent> [fzf]m :Maps<cr>
 
-" TODO(jrubin)
+" <space>c: Search colorschemes
+nnoremap <silent> [fzf]c :Colors<cr>
+
 " Lines (search all buffers)
-"
 " GFiles (git files)
-" Colors (colorschemes)
 " Commits (git commits)
 " BCommits (git commits current buffer)
 " Commands (all vim commands)
-" Maps (vim mappings)
 " Filetypes (change buffer filetype)
