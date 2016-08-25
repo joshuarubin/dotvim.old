@@ -6,6 +6,7 @@ let g:buftabline_show=1
 let g:buftabline_numbers=1
 let g:buftabline_indicators=1
 let g:buftabline_separators=1
+let g:lightline_tagbar_disabled=1
 
 let g:lightline = {
       \ 'colorscheme': 'apprentice',
@@ -18,7 +19,7 @@ let g:lightline = {
       \   'right': [
       \     [ 'syntastic', 'lineinfo' ],
       \     [ 'fileformat' ],
-      \     [ 'filetype' ]
+      \     [ 'tagbar', 'filetype' ]
       \   ],
       \ },
       \ 'inactive': {
@@ -60,6 +61,10 @@ let g:lightline = {
 let s:lightline_tagbar_last_lookup_time = 0
 let s:lightline_tagbar_last_lookup_val = ''
 function! LightLineTagbar()
+  if exists('g:lightline_tagbar_disabled') && g:lightline_tagbar_disabled
+    return ""
+  endif
+
   if &filetype =~ 'tagbar'
     return ""
   endif
