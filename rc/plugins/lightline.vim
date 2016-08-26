@@ -7,11 +7,11 @@ let g:buftabline_numbers=1
 let g:buftabline_indicators=1
 let g:buftabline_separators=1
 let g:lightline_tagbar_disabled=1
-let g:lightline_readonly_filetypes = ["help", "vimfiler", "tagbar", "man"]
-let g:lightline_filetype_mode_filetypes = ["help", "man", "fzf", "unite", "vimfiler", "tagbar"]
+let g:lightline_readonly_filetypes = ["help", "vimfiler", "tagbar", "man", "qf"]
+let g:lightline_filetype_mode_filetypes = ["help", "man", "fzf", "unite", "vimfiler", "tagbar", "qf"]
 let g:lightline_no_lineinfo_filetypes = ["vimfiler", "fzf", "tagbar"]
-let g:lightline_no_fileformat_filetypes = ["fzf", "man", "help", "tagbar", "vimfiler"]
-let g:lightline_no_filefilename_filetypes = ["fzf", "vimfiler", "tagbar"]
+let g:lightline_no_fileformat_filetypes = ["fzf", "man", "help", "tagbar", "vimfiler", "qf"]
+let g:lightline_no_filename_filetypes = ["fzf", "vimfiler", "tagbar", "qf"]
 
 let g:lightline = {
       \ 'colorscheme': 'apprentice',
@@ -76,7 +76,7 @@ function s:is_no_fileformat_filetype()
 endfunction
 
 function s:is_no_filename_filetype()
-  return index(g:lightline_no_filefilename_filetypes, &filetype) >= 0
+  return index(g:lightline_no_filename_filetypes, &filetype) >= 0
 endfunction
 
 function s:is_readonly_filetype()

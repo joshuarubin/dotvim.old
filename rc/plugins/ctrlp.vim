@@ -1,3 +1,5 @@
+finish " disabled in favor of fzf
+
 " fuzzy file, buffer, mru, tag, etc finder
 NeoBundle "ctrlpvim/ctrlp.vim"
 

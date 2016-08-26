@@ -1,7 +1,3 @@
-function! rubix#cursor_word()
-  return expand('<cword>')
-endfunction
-
 function! rubix#current_dir()
   return &filetype ==# 'vimfiler' ?
     \ b:vimfiler.current_dir :

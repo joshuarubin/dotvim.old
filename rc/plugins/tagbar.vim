@@ -17,3 +17,6 @@ let g:tagbar_type_go = {
   \ }
 
 nnoremap <silent> <c-g> :TagbarToggle<cr>
+
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
