@@ -66,6 +66,8 @@ function! s:build_go_files()
   endif
 endfunction
 
+" maps must be recursive
+
 " autocmd MyAutoCmd FileType go nmap <buffer> <leader>d <plug>(go-doc)
 autocmd MyAutoCmd FileType go nmap <buffer> <leader>r <plug>(go-run)
 autocmd MyAutoCmd FileType go nmap <buffer> <leader>b :<c-u>call <sid>build_go_files()<cr>

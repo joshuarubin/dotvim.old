@@ -30,6 +30,7 @@ endif
 
 let g:deoplete#keyword_patterns['default'] = '\h\w*'
 
+" must be recursive
 imap <c-k> <plug>(neosnippet_expand_or_jump)
 smap <c-k> <plug>(neosnippet_expand_or_jump)
 xmap <c-k> <plug>(neosnippet_expand_target)
@@ -54,6 +55,7 @@ function! CleverCr()
   return "\<c-y>"
 endfunction
 
+" must be recursive
 imap <expr> <cr> CleverCr()
 imap <expr> <s-cr> pumvisible() ? deoplete#mappings#smart_close_popup() . "\<cr>" : "\<cr>"
 

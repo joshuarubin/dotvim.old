@@ -9,6 +9,7 @@ let g:EasyMotion_move_highlight = 0
 highlight link EasyMotionTarget WarningMsg
 highlight link EasyMotionShade  Comment
 
+" must be recursive mappings
 map f <plug>(easymotion-f)
 map t <plug>(easymotion-t)
 map F <plug>(easymotion-F)

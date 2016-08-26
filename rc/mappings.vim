@@ -1,18 +1,18 @@
-nmap <leader>f0 :set foldlevel=0<cr>
-nmap <leader>f1 :set foldlevel=1<cr>
-nmap <leader>f2 :set foldlevel=2<cr>
-nmap <leader>f3 :set foldlevel=3<cr>
-nmap <leader>f4 :set foldlevel=4<cr>
-nmap <leader>f5 :set foldlevel=5<cr>
-nmap <leader>f6 :set foldlevel=6<cr>
-nmap <leader>f7 :set foldlevel=7<cr>
-nmap <leader>f8 :set foldlevel=8<cr>
-nmap <leader>f9 :set foldlevel=9<cr>
+nnoremap <leader>f0 :set foldlevel=0<cr>
+nnoremap <leader>f1 :set foldlevel=1<cr>
+nnoremap <leader>f2 :set foldlevel=2<cr>
+nnoremap <leader>f3 :set foldlevel=3<cr>
+nnoremap <leader>f4 :set foldlevel=4<cr>
+nnoremap <leader>f5 :set foldlevel=5<cr>
+nnoremap <leader>f6 :set foldlevel=6<cr>
+nnoremap <leader>f7 :set foldlevel=7<cr>
+nnoremap <leader>f8 :set foldlevel=8<cr>
+nnoremap <leader>f9 :set foldlevel=9<cr>
 
-nmap <silent> <leader>n :silent :nohlsearch<cr>
+nnoremap <silent> <leader>n :silent :nohlsearch<cr>
 
 " find merge conflict markers
-map <leader>fc /\v^[<\|=>]{7}( .*\|$)<cr>
+noremap <leader>fc /\v^[<\|=>]{7}( .*\|$)<cr>
 
 " <leader>``: Force quit all
 nnoremap <leader>`` :qa!<cr>
@@ -54,22 +54,22 @@ nnoremap <leader>, <c-w>p
 
 " some helpers to edit mode
 " http://vimcasts.org/e/14
-" map <leader>ew :e %%
-" map <leader>es :sp %%
-" map <leader>ev :vsp %%
-" map <leader>et :tabe %%
+" noremap <leader>ew :e %%
+" noremap <leader>es :sp %%
+" noremap <leader>ev :vsp %%
+" noremap <leader>et :tabe %%
 
 " adjust viewports to the same size
 noremap <leader>= <c-w>=
 
-" map <leader>ff to display all lines with keyword under cursor and ask which one to jump to
-nmap <leader>ff [I:let nr = input("Which one: ")<bar>exe "normal " . nr ."[\t"<cr>
+" noremap <leader>ff to display all lines with keyword under cursor and ask which one to jump to
+" nnoremap <leader>ff [I:let nr = input("Which one: ")<bar>exe "normal " . nr ."[\t"<cr>
 
 " formatting shortcuts
-" TODO(jrubin) use mqHmwgg=G`wzt`q like `R` (Reindent) map?
-nmap <leader>fef :call Preserve("normal gg=G")<cr>
-nmap <leader>f$ :call StripTrailingWhitespace()<cr>
-vmap <leader>s :sort<cr>
+" TODO(jrubin) use mqHmwgg=G`wzt`q like `R` (Reindent) noremap?
+nnoremap <leader>fef :call Preserve("normal gg=G")<cr>
+nnoremap <leader>f$ :call StripTrailingWhitespace()<cr>
+vnoremap <leader>s :sort<cr>
 
 nnoremap <leader>w :w<cr>
 
@@ -79,11 +79,11 @@ nnoremap <leader>w :w<cr>
 " nnoremap <leader>vsa :vert sba<cr>
 
 " json
-" nmap <leader>jt <esc>:%!python -m json.tool<cr><esc>:set filetype=json<cr>
+" nnoremap <leader>jt <esc>:%!python -m json.tool<cr><esc>:set filetype=json<cr>
 
 " change working directory to that of the current file
-" cmap cwd lcd %:p:h
-" cmap cd. lcd %:p:h
+" cnoremap cwd lcd %:p:h
+" cnoremap cd. lcd %:p:h
 
 " bash like keys for the command line. These resemble personal zsh mappings
 cnoremap <c-a> <home>
@@ -159,8 +159,8 @@ nnoremap <c-s><c-r> :%s/<c-r><c-w>//gc<left><left><left>
 "nnoremap <c-b> <c-^>
 
 " cycle through buffers with ctrl-f/g
-" nmap <c-f> :bnext<cr>
-" nmap <c-g> :bprev<cr>
+" nnoremap <c-f> :bnext<cr>
+" nnoremap <c-g> :bprev<cr>
 
 " ctrl-h: Move word back. Consistent with zsh
 "noremap <c-h> b
@@ -291,10 +291,10 @@ xnoremap . :normal.<cr>
 " @: repeats macro on every line
 xnoremap @ :normal@
 
-" tab: Indent
+" tab: Indent (allow recursive)
 xmap <tab> >
 
-" shift-tab: unindent
+" shift-tab: unindent (allow recursive)
 xmap <s-tab> <
 
 if has('nvim')

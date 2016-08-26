@@ -1,11 +1,14 @@
-finish " disabled in favor of fzf
-
 " search and display information from arbitrary sources like files, buffers, recently used files or registers, replaced kien/ctrlp.vim
 NeoBundle "Shougo/unite.vim", {"vim_version": "7.3"}
 
 if v:version < 703
   finish
 endif
+
+" other plugins like vimfiler need unite, so load it, but do not apply any
+" other settings
+
+finish " disabled in favor of fzf
 
 if neobundle#tap("unite.vim")
   function! neobundle#hooks.on_post_source(bundle)

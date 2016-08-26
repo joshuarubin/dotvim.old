@@ -22,6 +22,8 @@ let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '10' }
 let g:fzf_nvim_statusline = 0
 
+" maps are recursive where necessary
+
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)

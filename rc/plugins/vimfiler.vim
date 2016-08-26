@@ -16,6 +16,8 @@ let g:vimfiler_data_directory = GetCacheDir("vimfiler")
 let g:vimfiler_quick_look_command = "qlmanage -p"
 let g:vimfiler_ignore_filters = ['matcher_ignore_pattern', 'matcher_ignore_wildignore']
 
+" maps must be recursive
+
 " make enter expand the directory like NERDTree
 autocmd MyAutoCmd FileType vimfiler nmap <silent><buffer><expr> <cr> vimfiler#smart_cursor_map(
   \ "\<Plug>(vimfiler_expand_tree)",

@@ -2,6 +2,7 @@
 " NeoBundleLazy "zhaocai/GoldenView.Vim", {"autoload":{"mappings":["<Plug>ToggleGoldenViewAutoResize"]}}
 NeoBundle "zhaocai/GoldenView.Vim"
 
+" must be recursive
 nmap <f5> <plug>ToggleGoldenViewAutoResize
 let g:goldenview__enable_default_mapping = 0
 let g:goldenview__enable_at_startup = 0
