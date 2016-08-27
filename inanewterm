@@ -10,7 +10,8 @@ osascript -e \
         set cmd to cmd & "cd " & quoted form of (item 2 of argv) & "; "
         set cmd to cmd & (item 1 of argv)
         set cmd to cmd & "; exit"
-        set myterm to (create window with default profile command "/bin/sh -l")
+        set myterm to (create window with default profile command "/bin/bash -l")
+        set bounds of myterm to {0, 0, 1280, 720}
         tell current session of myterm
           write text cmd
         end tell

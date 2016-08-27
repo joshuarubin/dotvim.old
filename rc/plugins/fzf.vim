@@ -21,6 +21,7 @@ let g:fzf_history_dir = GetCacheDir("fzf")
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '10' }
 let g:fzf_nvim_statusline = 0
+let g:fzf_files_options = '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
 " maps are recursive where necessary
 
