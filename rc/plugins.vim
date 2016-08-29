@@ -25,6 +25,7 @@ endfor
 " core
 NeoBundle "tpope/vim-repeat"    " enable repeating supported plugin maps with '.'
 NeoBundle "tpope/vim-eunuch"    " sugar for the unix shell commands
+NeoBundle "direnv/direnv.vim"   " direnv support
 " NeoBundle "tpope/vim-obsession" " continuously updated session files
 
 " general programming

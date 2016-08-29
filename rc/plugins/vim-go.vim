@@ -78,6 +78,7 @@ autocmd MyAutoCmd FileType go nmap <buffer> <leader>e <plug>(go-rename)
 " autocmd MyAutoCmd FileType go nmap <buffer> <leader>dv <plug>(go-def-vertical)
 " autocmd MyAutoCmd FileType go nmap <buffer> <leader>dt <plug>(go-def-tab)
 autocmd MyAutoCmd FileType go nmap <buffer> gd <plug>(go-def-split)
+autocmd MyAutoCmd FileType go nmap <buffer> <leader>i <plug>(go-info)
 
 autocmd MyAutoCmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd MyAutoCmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
