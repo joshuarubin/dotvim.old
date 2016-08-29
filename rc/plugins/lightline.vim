@@ -22,7 +22,7 @@ let g:lightline = {
       \     [ 'filename', 'ctrlpmark' ],
       \   ],
       \   'right': [
-      \     [ 'syntastic', 'lineinfo' ],
+      \     [ 'neomake', 'syntastic', 'lineinfo' ],
       \     [ 'fileformat' ],
       \     [ 'tagbar', 'filetype' ]
       \   ],
@@ -53,10 +53,12 @@ let g:lightline = {
       \ },
       \ 'component_expand': {
       \   'syntastic': 'SyntasticStatuslineFlag',
+      \   'neomake':   'neomake#statusline#LoclistStatus',
       \   'lineinfo':  'LightLineLineInfo',
       \ },
       \ 'component_type': {
       \   'syntastic': 'error',
+      \   'neomake':   'error',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
@@ -341,6 +343,12 @@ endfunction
 function! SyntasticCheckHook(errors)
   call lightline#update()
 endfunction
+
+function! OnNeomakeCountsChanged()
+  call lightline#update()
+endfunction
+
+autocmd MyAutoCmd User NeomakeCountsChanged call OnNeomakeCountsChanged()
 
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
