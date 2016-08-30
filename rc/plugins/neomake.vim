@@ -32,6 +32,9 @@ let g:neomake_coffee_coffeelint_args = [ '--reporter=csv', '-f', '~/.vim/coffeel
 " markdown
 let g:neomake_markdown_mdl_args = [ '-r', '~MD013,~MD033' ]
 
+" c
+let g:neomake_c_clang_args = ['-fsyntax-only', '-Wall', '-Wextra', '-Weverything']
+
 " go
 let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
 let g:neomake_go_gometalinter_maker = {

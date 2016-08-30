@@ -22,17 +22,17 @@ function! s:mkdir_as_necessary(dir, force)
   endif
 endfunction
 
-function! CursorPing()
-  set cursorcolumn
-  set cursorline
-  redraw
-  sleep 200m
-  set nocursorcolumn
-  set nocursorline
-endfunction
-
-" enter: Highlight cursor location
-nnoremap <silent> <cr> :call CursorPing()<cr>
+" function! CursorPing()
+"   set cursorcolumn
+"   set cursorline
+"   redraw
+"   sleep 200m
+"   set nocursorcolumn
+"   set nocursorline
+" endfunction
+"
+" " enter: Highlight cursor location
+" nnoremap <silent> <cr> :call CursorPing()<cr>
 
 " go back to previous position of cursor if any
 autocmd MyAutoCmd BufReadPost *
