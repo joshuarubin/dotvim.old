@@ -68,6 +68,7 @@ set splitbelow
 set winheight=10
 set winminheight=1
 set ttyfast " assume fast terminal connection
+set lazyredraw
 
 if has("conceal")
   set conceallevel=2
