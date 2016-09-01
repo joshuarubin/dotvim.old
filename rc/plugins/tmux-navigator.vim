@@ -107,16 +107,19 @@ else
     call s:tmux_bind_key(']', 'pa', ['n', 'v', 'i', 't'])
 
     " <c-a>h switch to window to left
-    call s:tmux_bind_key('h', '<c-w><c-h>', ['n', 'v', 'i', 't'])
+    call s:tmux_bind_key('h', '<c-w>h', ['n', 'v', 'i', 't'])
 
     " <c-a>j switch to window below
-    call s:tmux_bind_key('j', '<c-w><c-j>', ['n', 'v', 'i', 't'])
+    call s:tmux_bind_key('j', '<c-w>j', ['n', 'v', 'i', 't'])
 
     " <c-a>k switch to window above
-    call s:tmux_bind_key('k', '<c-w><c-k>', ['n', 'v', 'i', 't'])
+    call s:tmux_bind_key('k', '<c-w>k', ['n', 'v', 'i', 't'])
 
     " <c-a>l switch to window to right
-    call s:tmux_bind_key('l', '<c-w><c-l>', ['n', 'v', 'i', 't'])
+    call s:tmux_bind_key('l', '<c-w>l', ['n', 'v', 'i', 't'])
+
+    " <c-a>; switch to previous window
+    call s:tmux_bind_key(';', '<c-w>p', ['n', 'v', 'i', 't'])
 
     " <c-a>: enter command mode
     call s:tmux_bind_key(':', ':', ['t'])
