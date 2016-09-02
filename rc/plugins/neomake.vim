@@ -5,7 +5,7 @@ endif
 " asynchronous :make using neovim's job-control functionality
 NeoBundle "neomake/neomake"
 
-autocmd MyAutoCmd BufWritePre * if expand('%') !~ '^fugitive:\/\/' | Neomake | endif
+autocmd MyAutoCmd BufWritePost * if expand('%') !~ '^fugitive:\/\/' | Neomake | endif
 
 let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
