@@ -54,7 +54,10 @@ let g:go_metalinter_enabled  = [
 \   'goconst',
 \   'gocyclo',
 \   'lll',
-\   'dupl'
+\   'dupl',
+\   'misspell',
+\   'unused',
+\   'gofmt'
 \ ]
 
 " run :GoBuild or :GoTestCompile based on the go file

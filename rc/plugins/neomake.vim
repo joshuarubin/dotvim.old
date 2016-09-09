@@ -41,6 +41,8 @@ let g:neomake_go_gometalinter_maker = {
   \ 'args': [
   \   '--vendor',
   \   '--tests',
+  \   '--enable-gc',
+  \   '--concurrency=7',
   \   '-D', 'gocyclo',
   \   '-D', 'structcheck',
   \   '-D', 'varcheck',
@@ -50,6 +52,9 @@ let g:neomake_go_gometalinter_maker = {
   \   '-D', 'interfacer',
   \   '-D', 'unconvert',
   \   '-D', 'dupl',
+  \   '-E', 'misspell',
+  \   '-E', 'unused',
+  \   '-E', 'gofmt',
   \   '%:p:h',
   \ ],
   \ 'append_file': 0,
