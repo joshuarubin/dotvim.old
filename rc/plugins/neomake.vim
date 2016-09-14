@@ -42,7 +42,7 @@ let g:neomake_go_gometalinter_maker = {
   \   '--vendor',
   \   '--tests',
   \   '--enable-gc',
-  \   '--concurrency=7',
+  \   '--concurrency=3',
   \   '-D', 'gocyclo',
   \   '-D', 'structcheck',
   \   '-D', 'varcheck',
