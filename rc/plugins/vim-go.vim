@@ -13,8 +13,8 @@ let g:go_auto_type_info = 0
 let g:go_fmt_experimental = 0
 
 let g:go_list_height = 10
-" let g:go_def_mode = "guru"
-let g:go_def_mode = "godef"
+let g:go_def_mode = "guru"
+" let g:go_def_mode = "godef"
 let g:go_def_reuse_buffer = 1
 
 " let g:go_highlight_operators = 1
