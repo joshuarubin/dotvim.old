@@ -18,6 +18,9 @@ let g:neomake_javascript_eslint_args = [ '-f', 'compact', '--config', '~/.vim/es
 let g:neomake_javascript_standard_args = [ '--config', '~/.vim/eslint.config.json' ]
 let g:neomake_javascript_enabled_makers = [ 'standard' ]
 
+" jsx (superset of javascript)
+let g:neomake_jsx_enabled_makers = ['jshint', 'standard']
+
 " typescript
 let g:neomake_typescript_tsc_args = [ '-t', 'ES5', '--module', 'commonjs' ]
 let g:neomake_typescript_tslint_args = [ '-c', '~/.vim/tslint.config.json' ]
@@ -55,6 +58,7 @@ let g:neomake_go_gometalinter_maker = {
   \   '-E', 'misspell',
   \   '-E', 'unused',
   \   '-E', 'gofmt',
+  \   '-E', 'gas',
   \   '%:p:h',
   \ ],
   \ 'append_file': 0,
