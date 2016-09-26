@@ -215,7 +215,12 @@ let g:unite_source_file_mru_limit = 1000
 let g:unite_source_file_mru_filename_format = ":~:."
 let g:unite_source_file_mru_time_format = ""
 
-if executable("ag")
+if executable("rg")
+  let g:unite_source_rec_async_command = ["rg", "--follow", "--no-heading", "--vimgrep", "-e", ""]
+  let g:unite_source_grep_command = "rg"
+  let g:unite_source_grep_default_opts = "--vimgrep"
+  let g:unite_source_grep_recursive_opt = ""
+elseif executable("ag")
   let g:unite_source_rec_async_command = ["ag", "--follow", "--nocolor", "--nogroup", "-g", ""]
   let g:unite_source_grep_command = "ag"
   let g:unite_source_grep_default_opts = "--vimgrep"

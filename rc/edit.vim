@@ -22,7 +22,10 @@ set infercase " ignore case on insert completion
 " set foldmethod=syntax
 " set foldlevelstart=99
 
-if executable("ag")
+if executable("rg")
+  set grepprg=rg\ --no-heading\ --vimgrep\ --smart-case\ --follow
+  set grepformat=%f:%l:%c:%m
+elseif executable("ag")
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
   set grepformat=%f:%l:%c:%m
 else

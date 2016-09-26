@@ -45,15 +45,30 @@ command! -bang FilesBufferDir  call fzf#vim#files(rubix#buffer_dir(),  fzf#vim#l
 command! -bang FilesCurrentDir call fzf#vim#files(rubix#current_dir(), fzf#vim#layout(<bang>0))
 command! -bang FilesInputDir   call fzf#vim#files(rubix#input_dir(),   fzf#vim#layout(<bang>0))
 
+command! -bang -nargs=* RgProjectDir call rubix#fzf#rg(<q-args>, rubix#project_dir(), fzf#vim#layout(<bang>0))
+command! -bang -nargs=* RgBufferDir  call rubix#fzf#rg(<q-args>,  rubix#buffer_dir(), fzf#vim#layout(<bang>0))
+command! -bang -nargs=* RgCurrentDir call rubix#fzf#rg(<q-args>, rubix#current_dir(), fzf#vim#layout(<bang>0))
+command! -bang -nargs=* RgInputDir   call rubix#fzf#rg(<q-args>,   rubix#input_dir(), fzf#vim#layout(<bang>0))
+
 command! -bang -nargs=* AgProjectDir call rubix#fzf#ag(<q-args>, rubix#project_dir(), fzf#vim#layout(<bang>0))
 command! -bang -nargs=* AgBufferDir  call rubix#fzf#ag(<q-args>,  rubix#buffer_dir(), fzf#vim#layout(<bang>0))
 command! -bang -nargs=* AgCurrentDir call rubix#fzf#ag(<q-args>, rubix#current_dir(), fzf#vim#layout(<bang>0))
 command! -bang -nargs=* AgInputDir   call rubix#fzf#ag(<q-args>,   rubix#input_dir(), fzf#vim#layout(<bang>0))
 
+command! -bang RgProjectDirCursor call rubix#fzf#rg(expand('<cword>'), rubix#project_dir(), fzf#vim#layout(<bang>0))
+command! -bang RgBufferDirCursor  call rubix#fzf#rg(expand('<cword>'), rubix#buffer_dir(),  fzf#vim#layout(<bang>0))
+command! -bang RgCurrentDirCursor call rubix#fzf#rg(expand('<cword>'), rubix#current_dir(), fzf#vim#layout(<bang>0))
+command! -bang RgInputDirCursor   call rubix#fzf#rg(expand('<cword>'), rubix#input_dir(),   fzf#vim#layout(<bang>0))
+
 command! -bang AgProjectDirCursor call rubix#fzf#ag(expand('<cword>'), rubix#project_dir(), fzf#vim#layout(<bang>0))
 command! -bang AgBufferDirCursor  call rubix#fzf#ag(expand('<cword>'), rubix#buffer_dir(),  fzf#vim#layout(<bang>0))
 command! -bang AgCurrentDirCursor call rubix#fzf#ag(expand('<cword>'), rubix#current_dir(), fzf#vim#layout(<bang>0))
 command! -bang AgInputDirCursor   call rubix#fzf#ag(expand('<cword>'), rubix#input_dir(),   fzf#vim#layout(<bang>0))
+
+command! -bang RgProjectDirPrompt call rubix#fzf#rg(rubix#input_word(), rubix#project_dir(), fzf#vim#layout(<bang>0))
+command! -bang RgBufferDirPrompt  call rubix#fzf#rg(rubix#input_word(), rubix#buffer_dir(),  fzf#vim#layout(<bang>0))
+command! -bang RgCurrentDirPrompt call rubix#fzf#rg(rubix#input_word(), rubix#current_dir(), fzf#vim#layout(<bang>0))
+command! -bang RgInputDirPrompt   call rubix#fzf#rg(rubix#input_word(), rubix#input_dir(),   fzf#vim#layout(<bang>0))
 
 command! -bang AgProjectDirPrompt call rubix#fzf#ag(rubix#input_word(), rubix#project_dir(), fzf#vim#layout(<bang>0))
 command! -bang AgBufferDirPrompt  call rubix#fzf#ag(rubix#input_word(), rubix#buffer_dir(),  fzf#vim#layout(<bang>0))
@@ -79,10 +94,10 @@ nnoremap <silent> [fzf]: :History:<cr>
 nnoremap <silent> [fzf]/ :History/<cr>
 
 " <c-s><c-d>: (S)earch word in project (d)irectory (prompt for word)
-nnoremap <silent> <c-s><c-d> :AgProjectDirPrompt<cr>
+nnoremap <silent> <c-s><c-d> :RgProjectDirPrompt<cr>
 
 " <c-s><c-s>: (S)earch word under cur(s)or in current directory
-nnoremap <silent> <c-s><c-s> :AgProjectDirCursor<cr>
+nnoremap <silent> <c-s><c-s> :RgProjectDirCursor<cr>
 
 " <c-s><c-f>: Quickly (s)earch in (f)ile
 nnoremap <silent> <c-s><c-f> :BLines<cr>
