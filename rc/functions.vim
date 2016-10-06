@@ -48,31 +48,31 @@ if gitroot != ""
   let &tags = &tags . "," . gitroot . "/.git/tags"
 endif
 
-if !has("gui_running")
-  " for tmux to automatically set paste and nopaste mode at the time pasting (as
-  " happens in VIM UI)
-  function! s:wrap_for_tmux(s)
-    if !exists('$TMUX')
-      return a:s
-    endif
-
-    let tmux_start = "\<Esc>Ptmux;"
-    let tmux_end = "\<Esc>\\"
-
-    return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
-  endfunction
-
-  let &t_SI .= s:wrap_for_tmux("\<Esc>[?2004h")
-  let &t_EI .= s:wrap_for_tmux("\<Esc>[?2004l")
-
-  function! s:xterm_paste_begin()
-    set pastetoggle=<Esc>[201~
-    set paste
-    return ""
-  endfunction
-
-  inoremap <special> <expr> <Esc>[200~ <sid>xterm_paste_begin()
-endif
+" if !has("gui_running")
+"   " for tmux to automatically set paste and nopaste mode at the time pasting (as
+"   " happens in VIM UI)
+"   function! s:wrap_for_tmux(s)
+"     if !exists('$TMUX')
+"       return a:s
+"     endif
+"
+"     let tmux_start = "\<Esc>Ptmux;"
+"     let tmux_end = "\<Esc>\\"
+"
+"     return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+"   endfunction
+"
+"   let &t_SI .= s:wrap_for_tmux("\<Esc>[?2004h")
+"   let &t_EI .= s:wrap_for_tmux("\<Esc>[?2004l")
+"
+"   function! s:xterm_paste_begin()
+"     set pastetoggle=<Esc>[201~
+"     set paste
+"     return ""
+"   endfunction
+"
+"   inoremap <special> <expr> <Esc>[200~ <sid>xterm_paste_begin()
+" endif
 
 function! AutoStripTrailingWhitespace()
   if exists('b:auto_strip_trailing_whitespace')
