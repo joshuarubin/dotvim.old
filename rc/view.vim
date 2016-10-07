@@ -39,24 +39,9 @@ set wildignore+=
       \*.o,
       \*.obj,
       \*~,
-      \*/log/*,
-      \*/tmp/*,
-      \*/vendor/*,
-      \*/Godeps/*,
-      \*/node_modules/*,
-      \*/bower_components/*,
-      \*.png,
-      \*.jpg,
-      \*.gif,
       \*.so,
       \*.swp,
-      \*.zip,
-      \*.pdf,
-      \*/.Trash/**,
-      \*/.hg/**,
-      \*/.svn/**,
-      \*/.idea/**,
-      \*/.DS_Store
+      \*.DS_Store
 
 set history=1000 " store lots of :cmdline history
 set showfulltag

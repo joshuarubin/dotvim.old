@@ -1,3 +1,5 @@
+finish " disabled
+
 " a powerful file explorer
 NeoBundle "Shougo/vimfiler.vim", {"vim_version": "7.3"}
 
@@ -24,7 +26,7 @@ autocmd MyAutoCmd FileType vimfiler nmap <silent><buffer><expr> <cr> vimfiler#sm
   \ "\<Plug>(vimfiler_edit_file)")
 
 autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-r> <Plug>(vimfiler_redraw_screen)
-autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-h> <Plug>(vimfiler_switch_to_history_directory)
+" autocmd MyAutoCmd FileType vimfiler nmap <buffer> <c-h> <Plug>(vimfiler_switch_to_history_directory)
 
 if neobundle#tap("vimfiler.vim")
   function! neobundle#hooks.on_post_source(bundle)

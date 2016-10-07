@@ -1,3 +1,5 @@
+finish " disabled since vimfiler has also been disabled
+
 " search and display information from arbitrary sources like files, buffers, recently used files or registers, replaced kien/ctrlp.vim
 NeoBundle "Shougo/unite.vim", {"vim_version": "7.3"}
 

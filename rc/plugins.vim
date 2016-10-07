@@ -83,7 +83,7 @@ if exists("$TMUX")
 endif
 
 NeoBundle     "vimwiki"                                                                                               " personal wiki
-NeoBundle     "qpkorr/vim-bufkill"                                                                                    " unload/delete/wipe a buffer, keep its window(s), display last accessed buffer(s)
+" NeoBundle     "qpkorr/vim-bufkill"                                                                                    " unload/delete/wipe a buffer, keep its window(s), display last accessed buffer(s)
 NeoBundle     "chrisbra/vim_faq"                                                                                      " the vim faq from http://vimdoc.sourceforge.net/
 NeoBundle     "tpope/vim-abolish"                                                                                     " easily search for, substitute, and abbreviate multiple variants of a word
 NeoBundle     "osyo-manga/vim-over"                                                                                   " :substitute preview

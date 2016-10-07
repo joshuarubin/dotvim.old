@@ -126,3 +126,6 @@ function! DeleteHiddenBuffers()
   endfor
   echon "Deleted " . l:tally . " buffers"
 endfun
+
+autocmd MyAutoCmd InsertEnter * :setlocal nohlsearch
+autocmd MyAutoCmd InsertLeave * :setlocal hlsearch

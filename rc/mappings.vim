@@ -123,6 +123,16 @@ nnoremap R mqHmwgg=G`wzt`q
 " Y: Remove join lines to this, Y looks like a join of two lines into one
 "noremap Y J
 
+" J: join without the cursor jumping around
+nnoremap J mzJ`z
+
+" j, k: move up and down by row (of a wrapped line), not line
+nnoremap j gj
+nnoremap k gk
+
+" Y: yank from the cursor to the end of the line (like D and C)
+nnoremap Y y$
+
 " U: Redos since 'u' undos
 nnoremap U :redo<cr>
 
