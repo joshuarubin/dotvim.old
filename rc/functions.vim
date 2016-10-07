@@ -129,3 +129,4 @@ endfun
 
 autocmd MyAutoCmd InsertEnter * :setlocal nohlsearch
 autocmd MyAutoCmd InsertLeave * :setlocal hlsearch
+autocmd MyAutoCmd FileType help,man wincmd L

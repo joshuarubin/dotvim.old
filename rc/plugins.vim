@@ -56,7 +56,7 @@ NeoBundle "honza/vim-snippets" " contains snippets files for various programming
 NeoBundle     "thinca/vim-visualstar"                                    " search for selection with '*' in visual mode
 NeoBundle     "tomtom/tcomment_vim"                                      " easy to use, file-type sensible comments
 NeoBundleLazy "editorconfig/editorconfig-vim", {"autoload":{"insert":1}} " editorconfig
-NeoBundle     "junegunn/vim-peekaboo"                                    " see the contents of the registers
+" NeoBundle     "junegunn/vim-peekaboo"                                    " see the contents of the registers
 
 " collaborative editing
 " if has("nvim")

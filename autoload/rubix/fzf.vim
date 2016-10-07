@@ -28,8 +28,7 @@ function! rubix#fzf#rg_raw(command_suffix, ...)
   \ 'source':  'rg --no-heading --vimgrep --smart-case --follow '.a:command_suffix,
   \ 'sink*':    s:function('s:rg_handler'),
   \ 'options': '--ansi --delimiter : --nth 4..,.. --prompt "rg> " '.
-  \            '--multi --bind alt-a:select-all,alt-d:deselect-all '.
-  \            '--color hl:68,hl+:110'}), a:000)
+  \            '--multi --bind alt-a:select-all,alt-d:deselect-all'}), a:000)
 endfunction
 
 " ag command suffix, [options]
@@ -38,8 +37,7 @@ function! rubix#fzf#ag_raw(command_suffix, ...)
   \ 'source':  'ag --nogroup --column --color '.a:command_suffix,
   \ 'sink*':    s:function('s:ag_handler'),
   \ 'options': '--ansi --delimiter : --nth 4..,.. --prompt "Ag> " '.
-  \            '--multi --bind alt-a:select-all,alt-d:deselect-all '.
-  \            '--color hl:68,hl+:110'}), a:000)
+  \            '--multi --bind alt-a:select-all,alt-d:deselect-all'}), a:000)
 endfunction
 
 function! s:fzf(name, opts, extra)
