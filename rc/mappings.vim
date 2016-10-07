@@ -184,7 +184,7 @@ nnoremap <c-s><c-r> :%s/<c-r><c-w>//gc<left><left><left>
 inoremap <c-w> <c-g>u<c-w>
 
 " ctrl-e: Go to end of line
-inoremap <c-e> <esc>A
+" inoremap <c-e> <esc>A
 
 " ctrl-u: Delete til beginning of line, create undo point
 inoremap <c-u> <c-g>u<c-u>
