@@ -4,11 +4,7 @@ set shiftround
 set modeline
 
 " use clipboard register
-if has('unnamedplus')
-  set clipboard& clipboard+=unnamedplus
-else
-  set clipboard& clipboard+=unnamed
-endif
+set clipboard=unnamed
 
 set backspace=indent,eol,start  " allow backspace in insert mode
 set noshowmatch                 " don't show matching brackets
