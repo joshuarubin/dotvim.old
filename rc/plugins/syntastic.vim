@@ -1,5 +1,7 @@
-if has("nvim") " use neomake
-  finish
+if has("nvim")
+  finish "use neomake
+elseif v:version >= 800 && (v:version > 800 || has("patch0027"))
+  finish "use neomake
 endif
 
 " syntax checking

@@ -1,5 +1,9 @@
-if !has("nvim") " use syntastic
-  finish
+if has("nvim")
+  " noop
+elseif v:version >= 800 && (v:version > 800 || has("patch0027"))
+  " noop
+else
+  finish " use syntastic
 endif
 
 " asynchronous :make using neovim's job-control functionality
