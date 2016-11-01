@@ -43,9 +43,16 @@ else
     tnoremap <c-k> <c-\><c-n><c-w>k
     tnoremap <c-l> <c-\><c-n><c-w>l
 
+    tnoremap <c-y> <c-\><c-n><c-y>
+    tnoremap <c-u> <c-\><c-n><c-u>
+    " tnoremap <c-b> <c-\><c-n><c-b>
+    tnoremap <c-e> <c-\><c-n><c-e>
+    " tnoremap <c-d> <c-\><c-n><c-d>
+    " tnoremap <c-f> <c-\><c-n><c-f>
+
     " switch to insert mode when switching to terminals
-    autocmd MyAutoCmd BufWinEnter,WinEnter term://* startinsert
-    autocmd MyAutoCmd BufLeave term://* stopinsert
+    " autocmd MyAutoCmd BufWinEnter,WinEnter term://* startinsert
+    " autocmd MyAutoCmd BufLeave term://* stopinsert
     autocmd MyAutoCmd TermOpen term://* set winfixheight
 
     " emulate tmux in neovim
