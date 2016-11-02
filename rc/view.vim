@@ -1,4 +1,3 @@
-syntax enable
 set synmaxcol=256
 
 set list

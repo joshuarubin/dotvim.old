@@ -1,6 +1,8 @@
 set background=dark
 
-colorscheme apprentice
+if has#colorscheme("apprentice")
+  colorscheme apprentice
+endif
 
 set mouse=a " enable mouse usage (all modes)
 set mousehide
