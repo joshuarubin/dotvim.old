@@ -1,13 +1,13 @@
-nnoremap <leader>f0 :set foldlevel=0<cr>
-nnoremap <leader>f1 :set foldlevel=1<cr>
-nnoremap <leader>f2 :set foldlevel=2<cr>
-nnoremap <leader>f3 :set foldlevel=3<cr>
-nnoremap <leader>f4 :set foldlevel=4<cr>
-nnoremap <leader>f5 :set foldlevel=5<cr>
-nnoremap <leader>f6 :set foldlevel=6<cr>
-nnoremap <leader>f7 :set foldlevel=7<cr>
-nnoremap <leader>f8 :set foldlevel=8<cr>
-nnoremap <leader>f9 :set foldlevel=9<cr>
+" nnoremap <leader>f0 :set foldlevel=0<cr>
+" nnoremap <leader>f1 :set foldlevel=1<cr>
+" nnoremap <leader>f2 :set foldlevel=2<cr>
+" nnoremap <leader>f3 :set foldlevel=3<cr>
+" nnoremap <leader>f4 :set foldlevel=4<cr>
+" nnoremap <leader>f5 :set foldlevel=5<cr>
+" nnoremap <leader>f6 :set foldlevel=6<cr>
+" nnoremap <leader>f7 :set foldlevel=7<cr>
+" nnoremap <leader>f8 :set foldlevel=8<cr>
+" nnoremap <leader>f9 :set foldlevel=9<cr>
 
 nnoremap <silent> <leader>n :silent :nohlsearch<cr>
 
@@ -30,18 +30,18 @@ nnoremap <leader>q :qa<cr>
 "nnoremap <leader>o :only<cr>
 
 " <leader>p: Copy the full path of the current file to the clipboard
-nnoremap <silent> <leader>p :let @+=expand("%:p")<cr>:echo "Copied current file \ path '".expand("%:p")."' to clipboard"<cr>
+" nnoremap <silent> <leader>p :let @+=expand("%:p")<cr>:echo "Copied current file \ path '".expand("%:p")."' to clipboard"<cr>
 
-" <leader>s: Spell checking shortcuts
-nnoremap <leader>ss :setlocal spell!<cr>:echo "spell ="&spell<cr>
-nnoremap <leader>sj ]s
-nnoremap <leader>sk [s
-nnoremap <leader>sa zg]s
-nnoremap <leader>sd 1z=
-nnoremap <leader>sf z=
+" " <leader>s: Spell checking shortcuts
+" nnoremap <leader>ss :setlocal spell!<cr>:echo "spell ="&spell<cr>
+" nnoremap <leader>sj ]s
+" nnoremap <leader>sk [s
+" nnoremap <leader>sa zg]s
+" nnoremap <leader>sd 1z=
+" nnoremap <leader>sf z=
 
 " <leader>f: Open Quickfix
-nnoremap <silent> <leader>f :botright copen<cr>
+" nnoremap <silent> <leader>f :botright copen<cr>
 
 " <leader>cd: Switch to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -187,7 +187,7 @@ inoremap <c-w> <c-g>u<c-w>
 " inoremap <c-e> <esc>A
 
 " ctrl-u: Delete til beginning of line, create undo point
-inoremap <c-u> <c-g>u<c-u>
+" inoremap <c-u> <c-g>u<c-u>
 
 " ctrl-a: Go to beginning of line
 inoremap <c-a> <esc>I

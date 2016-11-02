@@ -35,7 +35,7 @@ autocmd MyAutoCmd BufWritePost .vimrc,vimrc,*.rc.vim,neobundle.toml
       \ NeoBundleClearCache | source $MYVIMRC | redraw
 
 set timeout timeoutlen=3000 ttimeoutlen=100
-set updatetime=100
+set updatetime=500
 set virtualedit=block
 
 " check timestamp more for 'autoread'

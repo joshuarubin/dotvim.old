@@ -1,3 +1,5 @@
+finish " disabled
+
 NeoBundle "TaskList.vim"
 let g:tlWindowPosition = 1
 

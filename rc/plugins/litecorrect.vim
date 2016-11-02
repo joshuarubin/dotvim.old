@@ -1,3 +1,5 @@
+finish " disabled
+
 " lightweight auto-correction
 NeoBundle "reedes/vim-litecorrect"
 

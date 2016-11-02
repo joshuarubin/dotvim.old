@@ -14,7 +14,7 @@ let g:lightline_no_fileformat_filetypes = ["fzf", "man", "help", "tagbar", "vimf
 let g:lightline_no_filename_filetypes = ["fzf", "vimfiler", "tagbar", "qf"]
 
 let g:lightline = {
-      \ 'colorscheme': 'apprentice',
+      \ 'colorscheme': 'hybrid',
       \ 'active': {
       \   'left': [
       \     [ 'mode', 'crypt', 'paste', 'spell' ],
@@ -24,7 +24,7 @@ let g:lightline = {
       \   'right': [
       \     [ 'neomake', 'syntastic', 'lineinfo' ],
       \     [ 'fileformat' ],
-      \     [ 'tagbar', 'filetype' ]
+      \     [ 'gojob', 'gotype', 'tagbar', 'filetype' ]
       \   ],
       \ },
       \ 'inactive': {
@@ -36,7 +36,7 @@ let g:lightline = {
       \   'right': [
       \     [ 'lineinfo' ],
       \     [ 'fileformat' ],
-      \     [ 'filetype' ]
+      \     [ 'gojob', 'filetype' ]
       \   ]
       \ },
       \ 'component_function': {
@@ -50,11 +50,13 @@ let g:lightline = {
       \   'spell':        'LightLineSpell',
       \   'paste':        'LightLinePaste',
       \   'tagbar':       'LightLineTagbar',
+      \   'gojob':        'go#jobcontrol#Statusline',
       \ },
       \ 'component_expand': {
       \   'syntastic': 'SyntasticStatuslineFlag',
       \   'neomake':   'neomake#statusline#LoclistStatus',
       \   'lineinfo':  'LightLineLineInfo',
+      \   'gotype':    'go#complete#GetInfo',
       \ },
       \ 'component_type': {
       \   'syntastic': 'error',
@@ -344,11 +346,8 @@ function! SyntasticCheckHook(errors)
   call lightline#update()
 endfunction
 
-function! OnNeomakeCountsChanged()
-  call lightline#update()
-endfunction
-
-autocmd MyAutoCmd User NeomakeCountsChanged call OnNeomakeCountsChanged()
+autocmd MyAutoCmd User NeomakeCountsChanged call lightline#update()
+autocmd MyAutoCmd CursorHold *.go call lightline#update()
 
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0

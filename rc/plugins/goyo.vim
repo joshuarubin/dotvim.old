@@ -1,3 +1,5 @@
+finish " disabled
+
 " distraction-free writing in vim
 NeoBundle "junegunn/goyo.vim"
 

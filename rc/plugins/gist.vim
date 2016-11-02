@@ -1,3 +1,5 @@
+finish " disabled
+
 " vimscript for creating gists (http://gist.github.com)
 NeoBundleLazy "mattn/gist-vim", {"depends":"mattn/webapi-vim","autoload":{"commands":"Gist"}}
 

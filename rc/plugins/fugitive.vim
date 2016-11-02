@@ -1,5 +1,5 @@
 " a git wrapper so awesome, it should be illegal
-NeoBundle     "tpope/vim-fugitive"
+NeoBundle "tpope/vim-fugitive"
 
 nnoremap <silent> <leader>gs :Gstatus<cr>
 nnoremap <silent> <leader>gd :Gvdiff<cr>

@@ -1,3 +1,5 @@
+finish " disabled
+
 " color schemes for hackers
 NeoBundle "chriskempson/base16-vim"
 

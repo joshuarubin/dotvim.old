@@ -1,3 +1,5 @@
+finish " disabled
+
 " visually display indent levels in code
 NeoBundle "nathanaelkane/vim-indent-guides"
 

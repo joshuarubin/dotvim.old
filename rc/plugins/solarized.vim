@@ -1,3 +1,5 @@
+finish " disabled
+
 " precision colorscheme (http://ethanschoonover.com/solarized)
 NeoBundle "altercation/vim-colors-solarized"
 

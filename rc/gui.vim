@@ -1,7 +1,7 @@
 set background=dark
 
-if has#colorscheme("apprentice")
-  colorscheme apprentice
+if has#colorscheme("hybrid")
+  colorscheme hybrid
 endif
 
 set mouse=a " enable mouse usage (all modes)
