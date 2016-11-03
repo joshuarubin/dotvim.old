@@ -39,6 +39,7 @@ let g:syntastic_go_gometalinter_args = "
   \ -D interfacer
   \ -D unconvert
   \ -D deadcode
+  \ -D gotype
   \ -E staticcheck
   \ -E gas
   \ -E vet

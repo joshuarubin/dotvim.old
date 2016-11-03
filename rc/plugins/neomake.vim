@@ -62,6 +62,7 @@ let g:neomake_go_gometalinter_maker = {
   \   '-D', 'interfacer',
   \   '-D', 'unconvert',
   \   '-D', 'deadcode',
+  \   '-D', 'gotype',
   \   '-E', 'staticcheck',
   \   '-E', 'gas',
   \   '-E', 'vet',
