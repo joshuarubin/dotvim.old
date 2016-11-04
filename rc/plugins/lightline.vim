@@ -19,7 +19,7 @@ let g:lightline = {
       \   'left': [
       \     [ 'mode', 'crypt', 'paste', 'spell' ],
       \     [ 'fugitive' ],
-      \     [ 'filename', 'ctrlpmark' ],
+      \     [ 'filename', 'termtitle', 'ctrlpmark' ],
       \   ],
       \   'right': [
       \     [ 'neomake', 'syntastic', 'lineinfo' ],
@@ -31,7 +31,7 @@ let g:lightline = {
       \   'left': [
       \     [ ],
       \     [ ],
-      \     [ 'fullfilename' ]
+      \     [ 'fullfilename', 'termtitle' ]
       \   ],
       \   'right': [
       \     [ 'lineinfo' ],
@@ -51,12 +51,13 @@ let g:lightline = {
       \   'paste':        'LightLinePaste',
       \   'tagbar':       'LightLineTagbar',
       \   'gojob':        'go#jobcontrol#Statusline',
+      \   'termtitle':    'LightLineTermTitle',
       \ },
       \ 'component_expand': {
       \   'syntastic': 'SyntasticStatuslineFlag',
       \   'neomake':   'neomake#statusline#LoclistStatus',
       \   'lineinfo':  'LightLineLineInfo',
-      \   'gotype':    'go#complete#GetInfo',
+      \   'gotype':    'LightLineGoType',
       \ },
       \ 'component_type': {
       \   'syntastic': 'error',
@@ -67,23 +68,23 @@ let g:lightline = {
       \ 'enable': { 'statusline': 1, 'tabline': 0 },
       \ }
 
-function s:is_filetype_mode_filetype()
+function! s:is_filetype_mode_filetype()
   return index(g:lightline_filetype_mode_filetypes, &filetype) >= 0
 endfunction
 
-function s:is_no_lineinfo_filetype()
+function! s:is_no_lineinfo_filetype()
   return index(g:lightline_no_lineinfo_filetypes, &filetype) >= 0
 endfunction
 
-function s:is_no_fileformat_filetype()
+function! s:is_no_fileformat_filetype()
   return index(g:lightline_no_fileformat_filetypes, &filetype) >= 0
 endfunction
 
-function s:is_no_filename_filetype()
+function! s:is_no_filename_filetype()
   return index(g:lightline_no_filename_filetypes, &filetype) >= 0
 endfunction
 
-function s:is_readonly_filetype()
+function! s:is_readonly_filetype()
   return index(g:lightline_readonly_filetypes, &filetype) >= 0
 endfunction
 
@@ -130,6 +131,14 @@ function! StatusLineLineInfo()
     \ )
 endfunction
 
+function! LightLineGoType()
+  if &filetype == 'go'
+    return go#complete#GetInfo()
+  endif
+
+  return ""
+endfunction
+
 function! LightLineLineInfo()
   return '%{StatusLineLineInfo()}'
 endfunction
@@ -170,6 +179,14 @@ function! s:readonly()
   return ""
 endfunction
 
+function! LightLineTermTitle()
+  if exists('b:term_title')
+    return b:term_title
+  endif
+
+  return ""
+endfunction
+
 function! s:filename(fmt)
   if s:is_no_filename_filetype()
     return ""
@@ -187,7 +204,8 @@ function! s:filename(fmt)
   let fname = expand(a:fmt)
 
   if fname =~ '^term:\/\/'
-    return 'term://'
+    " return the "short filename" (e.g. shell name)
+    return s:filename('%:t')
   endif
 
   if fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item')
@@ -316,7 +334,7 @@ function! CtrlPMark()
           \ , g:lightline.ctrlp_next], 0)
   endif
 
-  return ''
+  return ""
 endfunction
 
 let g:ctrlp_status_func = {

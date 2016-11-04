@@ -248,13 +248,13 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap c "_c
 
 " Up Down Left Right resize splits
-nnoremap <up>    <c-w>+
-nnoremap <down>  <c-w>-
-nnoremap <left>  <c-w><
-nnoremap <right> <c-w>>
+" nnoremap <up>    <c-w>+
+" nnoremap <down>  <c-w>-
+" nnoremap <left>  <c-w><
+" nnoremap <right> <c-w>>
 
 " tab: Go to matching element
-nnoremap <tab> %
+" nnoremap <tab> %
 
 " sane regex
 " nnoremap / /\v

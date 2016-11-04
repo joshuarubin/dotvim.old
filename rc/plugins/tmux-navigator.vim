@@ -50,6 +50,10 @@ else
     " tnoremap <c-d> <c-\><c-n><c-d>
     " tnoremap <c-f> <c-\><c-n><c-f>
 
+    " switch to insert mode and press <up> for shell history when in normal mode
+    autocmd MyAutoCmd TermOpen term://* nnoremap <buffer> <up> i<up>
+    autocmd MyAutoCmd TermOpen term://* nnoremap <buffer> <c-r> i<c-r>
+
     " switch to insert mode when switching to terminals
     " autocmd MyAutoCmd BufWinEnter,WinEnter term://* startinsert
     " autocmd MyAutoCmd BufLeave term://* stopinsert
