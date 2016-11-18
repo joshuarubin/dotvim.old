@@ -124,7 +124,7 @@ nnoremap R mqHmwgg=G`wzt`q
 "noremap Y J
 
 " J: join without the cursor jumping around
-nnoremap J mzJ`z
+"nnoremap J mzJ`z
 
 " j, k: move up and down by row (of a wrapped line), not line
 " nnoremap j gj

@@ -23,36 +23,18 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 
 let g:syntastic_go_gometalinter_args = "
-  \ --vendor
   \ --tests
   \ --enable-gc
   \ --concurrency=3
-  \ -D gocyclo
-  \ -D dupl
+  \ --fast
   \ -D aligncheck
-  \ -D test
-  \ -D testify
-  \ -D lll
-  \ -D structcheck
-  \ -D varcheck
-  \ -D errcheck
-  \ -D interfacer
-  \ -D unconvert
-  \ -D deadcode
+  \ -D dupl
+  \ -D gocyclo
   \ -D gotype
-  \ -E staticcheck
-  \ -E gas
-  \ -E vet
-  \ -E golint
-  \ -E vetshadow
-  \ -E ineffassign
-  \ -E goconst
+  \ -E errcheck
   \ -E misspell
   \ -E unused
-  \ -E gosimple
-  \ -E gofmt
   \"
-
 
 let g:syntastic_markdown_mdl_args = "-r '~MD013,~MD033'"
 

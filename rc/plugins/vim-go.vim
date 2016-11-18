@@ -35,21 +35,9 @@ else
 endif
 
 let g:go_metalinter_enabled  = [
-\   'vet',
-\   'golint',
-\   'vetshadow',
-\   'ineffassign',
-\   'goconst',
+\   'errcheck',
 \   'misspell',
 \   'unused',
-\   'gosimple',
-\   'gofmt',
-\   'structcheck',
-\   'varcheck',
-\   'errcheck',
-\   'interfacer',
-\   'unconvert',
-\   'deadcode',
 \ ]
 
 " run :GoBuild or :GoTestCompile based on the go file
