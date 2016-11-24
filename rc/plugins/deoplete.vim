@@ -8,6 +8,7 @@ if has('nvim') && has('python3')
 endif
 
 function! OnDeopleteLoaded(info)
+  UpdateRemotePlugins
   call deoplete#custom#set('_', 'converters',
         \ ['converter_auto_paren',
         \  'converter_auto_delimiter',
