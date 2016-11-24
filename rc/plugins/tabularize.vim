@@ -1,5 +1,5 @@
 " text filtering and alignment
-NeoBundleLazy "godlygeek/tabular", {"autoload":{"commands":"Tabularize"}}
+Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 nnoremap <leader>a&     :Tabularize /&<cr>
 vnoremap <leader>a&     :Tabularize /&<cr>

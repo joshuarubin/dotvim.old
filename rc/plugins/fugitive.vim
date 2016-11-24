@@ -1,5 +1,6 @@
 " a git wrapper so awesome, it should be illegal
-NeoBundle "tpope/vim-fugitive"
+Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 
 nnoremap <silent> <leader>gs :Gstatus<cr>
 nnoremap <silent> <leader>gd :Gvdiff<cr>
@@ -15,6 +16,8 @@ nnoremap <silent> <leader>g. :Gcd<cr>:pwd<cr>
 nnoremap <silent> <leader>gu :Gpull<cr>
 nnoremap <silent> <leader>gn :Gmerge<cr>
 nnoremap <silent> <leader>gf :Gfetch<cr>
+nnoremap <silent> <leader>gv :Gitv<cr>
+nnoremap <silent> <leader>gV :Gitv!<cr>
 
 " mnemonic _i_nteractive
 " nnoremap <silent> <leader>gi :Git add -p %<cr>

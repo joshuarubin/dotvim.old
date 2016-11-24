@@ -1,5 +1,5 @@
 " improving on vim's native sentence text object and motion, depends on kana/vim-textobject-user
-NeoBundle "reedes/vim-textobj-sentence"
+Plug 'reedes/vim-textobj-sentence'
 
 augroup textobj_sentence
   autocmd!

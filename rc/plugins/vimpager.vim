@@ -1,9 +1,5 @@
 " use vim as $PAGER
-NeoBundle "rkitover/vimpager.git", {
-  \ 'build' : {
-    \   'others': 'sh -c "make && ln -s man man1"',
-  \   }
-  \ }
+Plug 'rkitover/vimpager', { 'do': 'make; ln -s man man1' }
 
 let g:vimpager = {}
 let g:vimpager.passthrough = 0

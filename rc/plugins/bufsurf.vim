@@ -1,5 +1,5 @@
 " enables surfing through buffers based on viewing history per window
-NeoBundle "ton/vim-bufsurf"
+Plug 'ton/vim-bufsurf'
 
 " Z: Bufsurf back
 nnoremap <silent> Z :BufSurfBack<cr>

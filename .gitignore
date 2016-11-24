@@ -1,5 +1,3 @@
-/bundle/*/
-!/bundle/neobundle.vim/
+/plugged/
 /.cache/
 /spell/
-/bundle/NeoBundle.lock

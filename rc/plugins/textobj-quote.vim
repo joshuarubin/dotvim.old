@@ -1,5 +1,5 @@
 " use ‘curly’ quote characters, depends on kana/vim-textobject-user
-NeoBundle "reedes/vim-textobj-quote"
+Plug 'reedes/vim-textobj-quote'
 
 augroup textobj_quote
   autocmd!

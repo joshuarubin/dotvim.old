@@ -15,10 +15,10 @@ function! s:tmux_bind_key(k, v, modes) abort
   endfor
 endfunction
 
+Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
+
 " seamless navigation between tmux panes and vim splits
 if exists("$TMUX")
-  NeoBundle "christoomey/vim-tmux-navigator"
-
   autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-l> :TmuxNavigateRight<cr>
   autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-j> :TmuxNavigateDown<cr>
 else

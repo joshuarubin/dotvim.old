@@ -1,6 +1,6 @@
 " fuzzy finder
-NeoBundle "junegunn/fzf"
-NeoBundle "junegunn/fzf.vim"
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " nnoremap <silent> <c-p> :FZF<cr>
 

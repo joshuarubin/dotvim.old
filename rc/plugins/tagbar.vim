@@ -1,5 +1,5 @@
 " displays tags in a window, ordered by scope http://majutsushi.github.com/tagbar/
-NeoBundle "majutsushi/tagbar"
+Plug 'majutsushi/tagbar'
 
 " if using go please install the gotags program using the following
 " go install github.com/jstemmer/gotags

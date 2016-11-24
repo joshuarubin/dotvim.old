@@ -1,5 +1,5 @@
 " vim motions on speed!
-NeoBundle "Lokaltog/vim-easymotion"
+Plug 'Lokaltog/vim-easymotion'
 
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1

@@ -1,17 +1,30 @@
 " neocomplete + neosnippet + neosnippet-snippets requires lua
 " youcompleteme + ultisnips is the fallback without lua
 " nvim defaults to deoplete
-if !has('nvim') || !has('python3')
-  finish
+
+let g:rubix_deoplete = 0
+if has('nvim') && has('python3')
+  let g:rubix_deoplete = 1
 endif
 
-NeoBundle "Shougo/deoplete.nvim"
-NeoBundle "Shougo/neosnippet"
-NeoBundle "Shougo/neosnippet-snippets"
-NeoBundle "Shougo/echodoc"
-NeoBundle "zchee/deoplete-go", {"build": {"unix": "make"}}
-NeoBundle "zchee/deoplete-jedi"
-NeoBundle "tpope/vim-endwise"
+function! OnDeopleteLoaded(info)
+  call deoplete#custom#set('_', 'converters',
+        \ ['converter_auto_paren',
+        \  'converter_auto_delimiter',
+        \  'converter_remove_overlap'])
+endfunction
+
+Plug 'Shougo/deoplete.nvim', Cond(g:rubix_deoplete, { 'do': function('OnDeopleteLoaded') })
+Plug 'Shougo/neosnippet', Cond(g:rubix_deoplete)
+Plug 'Shougo/neosnippet-snippets', Cond(g:rubix_deoplete)
+Plug 'Shougo/echodoc', Cond(g:rubix_deoplete)
+Plug 'zchee/deoplete-go', Cond(g:rubix_deoplete, { 'do': 'make' })
+Plug 'zchee/deoplete-jedi', Cond(g:rubix_deoplete)
+Plug 'tpope/vim-endwise', Cond(g:rubix_deoplete)
+
+if !g:rubix_deoplete
+  finish
+endif
 
 let g:endwise_no_mappings = 1
 let g:echodoc_enable_at_startup = 0
@@ -79,12 +92,3 @@ autocmd MyAutoCmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#align_class = 1
-
-if neobundle#tap("deoplete.nvim")
-  function! neobundle#hooks.on_post_source(bundle)
-    call deoplete#custom#set('_', 'converters',
-          \ ['converter_auto_paren',
-          \  'converter_auto_delimiter',
-          \  'converter_remove_overlap'])
-  endfunction
-endif

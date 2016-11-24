@@ -1,10 +1,15 @@
-if !has("python")
-  " disable if python support not present
-  finish
+let g:rubix_jedi = 0
+if has('python')
+  " require python support
+  let g:rubix_jedi = 1
 endif
 
 " awesome python autocompletion
-NeoBundleLazy "davidhalter/jedi-vim", {"autoload":{"filetypes":["python"]}}
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+if !g:rubix_jedi
+  finish
+endif
 
 let g:jedi#popup_on_dot           = 0
 let g:jedi#use_splits_not_buffers = "bottom"

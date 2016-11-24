@@ -1,5 +1,5 @@
 " pairs of handy bracket mappings
-NeoBundle "tpope/vim-unimpaired"
+Plug 'tpope/vim-unimpaired'
 
 "nmap <c-up> [e
 "nmap <c-down> ]e

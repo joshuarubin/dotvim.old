@@ -1,5 +1,5 @@
 " full featured go development environment support for vim
-NeoBundle "fatih/vim-go"
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 let g:go_def_mapping_enabled = 0
 let g:go_fmt_command = "goimports"

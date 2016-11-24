@@ -1,15 +1,22 @@
 " neocomplete + neosnippet + neosnippet-snippets requires lua
 " youcompleteme + ultisnips is the fallback without lua
 " nvim defaults to deoplete
-if !has("lua") || has('nvim')
-  finish
+
+let g:rubix_neocomplete = 0
+if has('lua') && !has('nvim') && (v:version > 703 || v:version == 703 && has('patch885'))
+  let g:rubix_neocomplete = 1
 endif
 
-NeoBundleLazy "Shougo/neocomplete.vim", {"autoload":{"insert":1}, "vim_version":'7.3.885'}  " next generation completion framework
-NeoBundle "Shougo/neosnippet"
-NeoBundle "Shougo/neosnippet-snippets"
-NeoBundle "Shougo/echodoc"
-NeoBundle "tpope/vim-endwise"
+" next generation completion framework
+Plug 'Shougo/neocomplete.vim', Cond(g:rubix_neocomplete)
+Plug 'Shougo/neosnippet', Cond(g:rubix_neocomplete)
+Plug 'Shougo/neosnippet-snippets', Cond(g:rubix_neocomplete)
+Plug 'Shougo/echodoc', Cond(g:rubix_neocomplete)
+Plug 'tpope/vim-endwise', Cond(g:rubix_neocomplete)
+
+if !g:rubix_neocomplete
+  finish
+endif
 
 let g:endwise_no_mappings = 1
 let g:echodoc_enable_at_startup = 1

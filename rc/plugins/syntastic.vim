@@ -1,11 +1,18 @@
+let g:rubix_syntastic = 1
 if has("nvim")
-  finish "use neomake
+  " use neomake
+  let g:rubix_syntastic = 0
 elseif v:version >= 800 && (v:version > 800 || has("patch0027"))
-  finish "use neomake
+  " use neomake
+  let g:rubix_syntastic = 0
 endif
 
 " syntax checking
-NeoBundle "scrooloose/syntastic"
+Plug 'scrooloose/syntastic', Cond(g:rubix_syntastic)
+
+if !g:rubix_syntastic
+  finish
+endif
 
 let g:syntastic_javascript_jshint_args = "--config ~/.vim/jshint.config.json"
 let g:syntastic_javascript_eslint_args = "--config ~/.vim/eslint.config.json"

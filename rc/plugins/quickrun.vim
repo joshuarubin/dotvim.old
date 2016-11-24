@@ -1,5 +1,5 @@
 " run a command and show its result quickly
-NeoBundle "thinca/vim-quickrun"
+Plug 'thinca/vim-quickrun'
 
 let g:quickrun_config = {}
 let g:quickrun_config.markdown = {
