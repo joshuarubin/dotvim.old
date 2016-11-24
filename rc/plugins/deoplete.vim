@@ -16,27 +16,17 @@ function! OnDeopleteLoaded(info)
 endfunction
 
 Plug 'Shougo/deoplete.nvim', Cond(g:rubix_deoplete, { 'do': function('OnDeopleteLoaded') })
-Plug 'Shougo/neosnippet', Cond(g:rubix_deoplete)
-Plug 'Shougo/neosnippet-snippets', Cond(g:rubix_deoplete)
-Plug 'Shougo/echodoc', Cond(g:rubix_deoplete)
 Plug 'zchee/deoplete-go', Cond(g:rubix_deoplete, { 'do': 'make' })
 Plug 'zchee/deoplete-jedi', Cond(g:rubix_deoplete)
-Plug 'tpope/vim-endwise', Cond(g:rubix_deoplete)
 
 if !g:rubix_deoplete
   finish
 endif
 
-let g:endwise_no_mappings = 1
 let g:echodoc_enable_at_startup = 0
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_complete_start_length = 1
-
-let g:neosnippet#data_directory = GetCacheDir("neosnippet")
-let g:neosnippet#snippets_directory = join(globpath(&rtp, "snippets", 0, 1) + globpath(&rtp, "gosnippets/snippets", 0, 1), ",")
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:go_snippet_engine = "neosnippet"
 
 if !exists('g:deoplete#keyword_patterns')
     let g:deoplete#keyword_patterns = {}
@@ -44,33 +34,10 @@ endif
 
 let g:deoplete#keyword_patterns['default'] = '\h\w*'
 
-" must be recursive
-imap <c-k> <plug>(neosnippet_expand_or_jump)
-smap <c-k> <plug>(neosnippet_expand_or_jump)
-xmap <c-k> <plug>(neosnippet_expand_target)
-
-smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
-
-imap <expr> <tab> pumvisible() ? "\<c-n>" : (neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>")
-imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-
 imap <expr> <c-g> deoplete#undo_completion()
 " imap <expr> <c-l> deoplete#complete_common_string()
 
-function! CleverCr()
-  if !pumvisible()
-    return "\<cr>\<Plug>DiscretionaryEnd"
-  endif
-
-  if neosnippet#expandable()
-    return "\<plug>(neosnippet_expand_or_jump)"
-  endif
-
-  return "\<c-y>"
-endfunction
-
 " must be recursive
-imap <expr> <cr> CleverCr()
 imap <expr> <s-cr> pumvisible() ? deoplete#mappings#smart_close_popup() . "\<cr>" : "\<cr>"
 
 if !exists('g:deoplete#omni#input_patterns')

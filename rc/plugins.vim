@@ -28,7 +28,7 @@ Plug 'amirh/HTML-AutoCloseTag', { 'for': ['html', 'xml'] }
 Plug 'gregsexton/MatchTag', { 'for': ['html', 'xml'] }
 
 " format your css using cssfmt inside vim
-Plug 'gregsexton/MatchTag', { 'for': ['css', 'scss'] }
+Plug 'kewah/vim-cssfmt', { 'for': ['css', 'scss'] }
 
 " haskell
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
@@ -54,8 +54,6 @@ Plug 'kana/vim-textobj-entire'
 
 " underscore text-object
 Plug 'lucapette/vim-textobj-underscore'
-
-Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
 
 " easily search for, substitute, and abbreviate multiple variants of a word
 Plug 'tpope/vim-abolish'
