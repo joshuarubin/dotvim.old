@@ -236,11 +236,11 @@ function! s:modified()
 endfunction
 
 function! LightLineFilename()
-  return s:filename('%:t') . s:modified() . s:readonly()
+  return s:filename('%:.') . s:modified() . s:readonly()
 endfunction
 
 function! LightLineFullFilename()
-  return s:filename('%:f') . s:modified() . s:readonly()
+  return s:filename('%:p') . s:modified() . s:readonly()
 endfunction
 
 function! LightLineFugitive()
