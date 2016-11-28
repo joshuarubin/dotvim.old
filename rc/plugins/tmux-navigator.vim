@@ -59,6 +59,9 @@ else
     " autocmd MyAutoCmd BufLeave term://* stopinsert
     autocmd MyAutoCmd TermOpen term://* set winfixheight
 
+    " disable macros in terminal windows
+    autocmd MyAutoCmd TermOpen term://* nnoremap <buffer> q iq
+
     " emulate tmux in neovim
 
     " <c-a>c opens a new tab

@@ -307,12 +307,12 @@ xmap <tab> >
 " shift-tab: unindent (allow recursive)
 xmap <s-tab> <
 
-if has('nvim')
-  " terminal mode mappings
-
-  " esc to exit terminal mode
-  tnoremap <esc> <c-\><c-n>
-endif
+" if has('nvim')
+"   " terminal mode mappings
+"
+"   " esc to exit terminal mode
+"   tnoremap <esc> <c-\><c-n>
+" endif
 
 " ctrl-a r to redraw the screen now
 noremap <silent> <c-a>r :redraw!<cr>
