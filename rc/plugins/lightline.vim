@@ -180,6 +180,8 @@ function! s:readonly()
 endfunction
 
 function! LightLineTermTitle()
+  call UpdateTitle()
+
   if exists('b:term_title')
     return b:term_title
   endif

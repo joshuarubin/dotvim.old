@@ -22,18 +22,6 @@ function! s:mkdir_as_necessary(dir, force)
   endif
 endfunction
 
-" function! CursorPing()
-"   set cursorcolumn
-"   set cursorline
-"   redraw
-"   sleep 200m
-"   set nocursorcolumn
-"   set nocursorline
-" endfunction
-"
-" " enter: Highlight cursor location
-" nnoremap <silent> <cr> :call CursorPing()<cr>
-
 " go back to previous position of cursor if any
 autocmd MyAutoCmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -47,32 +35,6 @@ let gitroot = substitute(system("git rev-parse --show-toplevel"), '[\n\r]', "", 
 if gitroot != ""
   let &tags = &tags . "," . gitroot . "/.git/tags"
 endif
-
-" if !has("gui_running")
-"   " for tmux to automatically set paste and nopaste mode at the time pasting (as
-"   " happens in VIM UI)
-"   function! s:wrap_for_tmux(s)
-"     if !exists('$TMUX')
-"       return a:s
-"     endif
-"
-"     let tmux_start = "\<Esc>Ptmux;"
-"     let tmux_end = "\<Esc>\\"
-"
-"     return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
-"   endfunction
-"
-"   let &t_SI .= s:wrap_for_tmux("\<Esc>[?2004h")
-"   let &t_EI .= s:wrap_for_tmux("\<Esc>[?2004l")
-"
-"   function! s:xterm_paste_begin()
-"     set pastetoggle=<Esc>[201~
-"     set paste
-"     return ""
-"   endfunction
-"
-"   inoremap <special> <expr> <Esc>[200~ <sid>xterm_paste_begin()
-" endif
 
 function! AutoStripTrailingWhitespace()
   if exists('b:auto_strip_trailing_whitespace')
@@ -92,10 +54,6 @@ function! TabRename()
   if exists('*gettabvar')
     let name = input('Tab name: ')
     let t:title = name
-
-    " if exists(':AirlineRefresh')
-    "   :AirlineRefresh
-    " endif
   endif
 endfunction
 
@@ -104,8 +62,6 @@ let g:lasttab = 1
 function! LastTab()
   :execute "tabnext ".g:lasttab
 endfunction
-
-autocmd MyAutoCmd TabLeave * let g:lasttab = tabpagenr()
 
 command! -nargs=* Only call DeleteHiddenBuffers()
 function! DeleteHiddenBuffers()

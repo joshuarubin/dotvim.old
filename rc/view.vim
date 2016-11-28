@@ -70,3 +70,14 @@ set sidescrolloff=15
 set sidescroll=1
 set scrolljump=3
 set numberwidth=1
+
+function! UpdateTitle()
+  if exists('b:term_title')
+    let &titlestring='term://'.b:term_title
+    return
+  endif
+
+  set titlestring=
+endfunction
+
+autocmd MyAutoCmd BufEnter * call UpdateTitle()
