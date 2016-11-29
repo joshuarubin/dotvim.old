@@ -12,6 +12,7 @@ let g:lightline_filetype_mode_filetypes = ["help", "man", "fzf", "unite", "vimfi
 let g:lightline_no_lineinfo_filetypes = ["vimfiler", "fzf", "tagbar"]
 let g:lightline_no_fileformat_filetypes = ["fzf", "man", "help", "tagbar", "vimfiler", "qf"]
 let g:lightline_no_filename_filetypes = ["fzf", "vimfiler", "tagbar", "qf"]
+let g:lightline_no_termtitle_filetypes = ["fzf"]
 
 let g:lightline = {
       \ 'colorscheme': 'hybrid',
@@ -78,6 +79,10 @@ endfunction
 
 function! s:is_no_fileformat_filetype()
   return index(g:lightline_no_fileformat_filetypes, &filetype) >= 0
+endfunction
+
+function! s:is_no_termtitle_filetype()
+  return index(g:lightline_no_termtitle_filetypes, &filetype) >= 0
 endfunction
 
 function! s:is_no_filename_filetype()
@@ -182,6 +187,10 @@ endfunction
 function! LightLineTermTitle()
   call UpdateTitle()
 
+  if s:is_no_termtitle_filetype()
+    return ""
+  endif
+
   if exists('b:term_title')
     return b:term_title
   endif
@@ -280,10 +289,6 @@ function! LightLineFiletype()
   endif
 
   let fname = expand('%:f')
-
-  if fname =~ '^term:\/\/'
-    return ""
-  endif
 
   if &filetype !=# ''
     return &filetype

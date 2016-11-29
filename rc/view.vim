@@ -72,6 +72,11 @@ set scrolljump=3
 set numberwidth=1
 
 function! UpdateTitle()
+  if &filetype == 'fzf'
+    let &titlestring='fzf'
+    return
+  endif
+
   if exists('b:term_title')
     let &titlestring='term://'.b:term_title
     return
