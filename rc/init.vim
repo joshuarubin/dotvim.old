@@ -45,6 +45,16 @@ call s:ensure_exists(&backupdir)
 let &directory=GetCacheDir("swap")
 call s:ensure_exists(&directory)
 
+if has('termguicolors')
+  " belongs in 'gui' but has to be set before plugins are loaded
+  set termguicolors
+
+  if !has('nvim')
+    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+  endif
+endif
+
 augroup MyAutoCmd
   autocmd!
 augroup END
