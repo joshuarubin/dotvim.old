@@ -10,7 +10,6 @@ endif
 Plug 'Shougo/neosnippet', Cond(g:rubix_neosnippet)
 Plug 'Shougo/neosnippet-snippets', Cond(g:rubix_neosnippet)
 Plug 'Shougo/echodoc', Cond(g:rubix_neosnippet)
-Plug 'tpope/vim-endwise', Cond(g:rubix_neosnippet)
 
 if !g:rubix_neosnippet
   finish
@@ -35,8 +34,14 @@ imap <expr> <tab> pumvisible() ? "\<c-n>" : (neosnippet#expandable_or_jumpable()
 imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 
 function! CleverCr()
+  " NOTE: use double quotes to properly expand <cr> into escape strings
+
   if !pumvisible()
-    " return "\<plug>(DiscretionaryEnd)"
+    if maparg('<plug>DiscretionaryEnd', 'i') != ''
+      " if 'tpope/vim-endwise' is installed
+      return "\<cr>\<plug>DiscretionaryEnd"
+    endif
+
     return "\<cr>"
   endif
 
@@ -49,3 +54,6 @@ endfunction
 
 " must be recursive
 imap <expr> <cr> CleverCr()
+
+" since endwise mappings were disabled, this restores its default
+imap <expr> <c-x><cr> "<plug>AlwaysEnd"

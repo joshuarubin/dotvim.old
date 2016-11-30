@@ -61,6 +61,9 @@ Plug 'tpope/vim-abolish'
 " :substitute preview
 Plug 'osyo-manga/vim-over'
 
+" automatically add 'end', 'endfunction', 'endif', etc.
+Plug 'tpope/vim-endwise'
+
 " Add plugins to &runtimepath
 call plug#end()
 
