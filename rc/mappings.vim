@@ -1,14 +1,3 @@
-" nnoremap <leader>f0 :set foldlevel=0<cr>
-" nnoremap <leader>f1 :set foldlevel=1<cr>
-" nnoremap <leader>f2 :set foldlevel=2<cr>
-" nnoremap <leader>f3 :set foldlevel=3<cr>
-" nnoremap <leader>f4 :set foldlevel=4<cr>
-" nnoremap <leader>f5 :set foldlevel=5<cr>
-" nnoremap <leader>f6 :set foldlevel=6<cr>
-" nnoremap <leader>f7 :set foldlevel=7<cr>
-" nnoremap <leader>f8 :set foldlevel=8<cr>
-" nnoremap <leader>f9 :set foldlevel=9<cr>
-
 nnoremap <silent> <leader>n :silent :nohlsearch<cr>
 
 " find merge conflict markers
@@ -17,31 +6,8 @@ noremap <leader>fc /\v^[<\|=>]{7}( .*\|$)<cr>
 " <leader>``: Force quit all
 nnoremap <leader>`` :qa!<cr>
 
-" <leader>0: Run the visually selected code in python and replace it with the output
-" vnoremap <silent> <leader>0 :!python<cr>
-
 " <leader>q: Quit all, very useful in vimdiff
 nnoremap <leader>q :qa<cr>
-
-" <leader>e: Fast editing of the .vimrc
-" execute "nnoremap <leader>e :e!" . fnameescape($MYVIMRC) . "<cr>"
-
-" <leader>o: only
-"nnoremap <leader>o :only<cr>
-
-" <leader>p: Copy the full path of the current file to the clipboard
-" nnoremap <silent> <leader>p :let @+=expand("%:p")<cr>:echo "Copied current file \ path '".expand("%:p")."' to clipboard"<cr>
-
-" " <leader>s: Spell checking shortcuts
-" nnoremap <leader>ss :setlocal spell!<cr>:echo "spell ="&spell<cr>
-" nnoremap <leader>sj ]s
-" nnoremap <leader>sk [s
-" nnoremap <leader>sa zg]s
-" nnoremap <leader>sd 1z=
-" nnoremap <leader>sf z=
-
-" <leader>f: Open Quickfix
-" nnoremap <silent> <leader>f :botright copen<cr>
 
 " <leader>cd: Switch to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -52,18 +18,8 @@ nnoremap <leader>m <c-w>_<c-w><bar>
 " <leader>,: Switch to previous split
 nnoremap <leader>, <c-w>p
 
-" some helpers to edit mode
-" http://vimcasts.org/e/14
-" noremap <leader>ew :e %%
-" noremap <leader>es :sp %%
-" noremap <leader>ev :vsp %%
-" noremap <leader>et :tabe %%
-
 " adjust viewports to the same size
 noremap <leader>= <c-w>=
-
-" noremap <leader>ff to display all lines with keyword under cursor and ask which one to jump to
-" nnoremap <leader>ff [I:let nr = input("Which one: ")<bar>exe "normal " . nr ."[\t"<cr>
 
 " formatting shortcuts
 " TODO(jrubin) use mqHmwgg=G`wzt`q like `R` (Reindent) noremap?
@@ -73,18 +29,6 @@ vnoremap <leader>s :sort<cr>
 
 nnoremap <leader>w :w<cr>
 
-" shortcuts for windows
-" nnoremap <leader>v <c-w>v
-" nnoremap <leader>s <c-w>s
-" nnoremap <leader>vsa :vert sba<cr>
-
-" json
-" nnoremap <leader>jt <esc>:%!python -m json.tool<cr><esc>:set filetype=json<cr>
-
-" change working directory to that of the current file
-" cnoremap cwd lcd %:p:h
-" cnoremap cd. lcd %:p:h
-
 " bash like keys for the command line. These resemble personal zsh mappings
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
@@ -92,9 +36,6 @@ cnoremap <c-e> <end>
 " ctrl-[hl]: Move left/right by word
 cnoremap <c-h> <s-left>
 cnoremap <c-l> <s-right>
-
-" ctrl-space: Show history TODO(jrubin)
-"cnoremap <c-@> <c-f>
 
 cnoremap <c-j> <down>
 cnoremap <c-k> <up>
@@ -104,13 +45,6 @@ cnoremap <c-g> <right>
 " ctrl-v: Paste
 cnoremap <c-v> <c-r>"
 
-" w!!: Writes using sudo
-" cnoremap w!! w !sudo tee % >/dev/null
-
-" some helpers to edit mode
-" http://vimcasts.org/e/14
-" cnoremap %% <c-r>=fnameescape(expand("%:h"))."/"<cr>
-
 " Q: Closes the window
 nnoremap Q :q<cr>
 
@@ -119,9 +53,6 @@ nnoremap W :w<cr>
 
 " R: Reindent entire file TODO(jrubin) use Preserve()?
 nnoremap R mqHmwgg=G`wzt`q
-
-" Y: Remove join lines to this, Y looks like a join of two lines into one
-"noremap Y J
 
 " J: join without the cursor jumping around
 "nnoremap J mzJ`z
@@ -142,52 +73,15 @@ nnoremap <silent> _ :sp<cr>
 " | : Quick vertical splits
 nnoremap <silent> <bar> :vsp<cr>
 
-" H: Go to beginning of line.
-"noremap H ^
-
-"noremap L g_
-
-" :: Remap to ,. After all the remapping, ; goes to command mode, . repeats
-" fFtT, : repeats it backward, and , is the leader
-"noremap : ,
-
-" N: Find next occurrence backward
-"nnoremap N Nzzzv
-
 " +/-: Increment number
-" nnoremap + <c-a>
-" nnoremap - <c-x>
+nnoremap + <c-a>
+nnoremap - <c-x>
 
 " ctrl-sr: Easier (s)earch and (r)eplace
 nnoremap <c-s><c-r> :%s/<c-r><c-w>//gc<left><left><left>
 
-" ctrl-z: Cycle through the splits. I don't ever use enough splits to justify
-" wasting 4 very easy to hit keys for them.
-"nnoremap <c-z> <c-w>w
-
-" ctrl-b: Go (b)ack. Go to previous buffer
-"nnoremap <c-b> <c-^>
-
-" cycle through buffers with ctrl-f/g
-" nnoremap <c-f> :bnext<cr>
-" nnoremap <c-g> :bprev<cr>
-
-" ctrl-h: Move word back. Consistent with zsh
-"noremap <c-h> b
-"inoremap <c-h> <c-o>b
-
-" ctrl-l: Move word forward. Consistent with zsh
-"noremap <c-l> w
-"inoremap <c-l> <c-o>w
-
 " ctrl-w: Delete previous word, create undo point
 inoremap <c-w> <c-g>u<c-w>
-
-" ctrl-e: Go to end of line
-" inoremap <c-e> <esc>A
-
-" ctrl-u: Delete til beginning of line, create undo point
-" inoremap <c-u> <c-g>u<c-u>
 
 " ctrl-a: Go to beginning of line
 inoremap <c-a> <esc>I
@@ -201,13 +95,6 @@ inoremap <c-f> <Left>
 " ctrl-g: Move cursor right
 inoremap <c-g> <Right>
 
-" ctrl-j: Move cursor up
-"inoremap <expr> <c-j> pumvisible() ? "\<c-e>\<Down>" : "\<Down>"
-
-" ctrl-k: Move cursor up
-"inoremap <expr> <c-k> pumvisible() ? "\<c-e>\<Up>" : "\<Up>"
-
-" inoremap <expr> <esc>  pumvisible() ? "\<c-e>" : "\<esc>"
 inoremap <expr> <down> pumvisible() ? "\<c-n>" : "\<down>"
 inoremap <expr> <up>   pumvisible() ? "\<c-p>" : "\<up>"
 
@@ -217,20 +104,8 @@ inoremap <c-c> <c-o>o
 " ctrl-v: Paste. For some reason, <c-o> is not creating an undo point in the mapping
 inoremap <c-v> <c-g>u<c-o>gP
 
-" ctrl-/: Undo TODO(jrubin)
-"inoremap <c-_> <c-o>u
-
 " ctrl-c: copy (works with system clipboard due to clipboard setting)
 vnoremap <c-c> y`]
-
-" ctrl-r: easier search and replace
-" vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
-
-" ctrl-s: easier substitue
-" vnoremap <c-s> :s/\%v//g<left><left><left>
-
-" p: Paste
-"nnoremap p gp
 
 " d: Delete into the blackhole register to not clobber the last yank
 nnoremap d "_d
@@ -241,40 +116,8 @@ nnoremap dd dd
 " gp to visually select pasted text
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-" ;: Command mode
-"noremap ; :
-
 " c: Change into the blackhole register to not clobber the last yank
 nnoremap c "_c
-
-" Up Down Left Right resize splits
-" nnoremap <up>    <c-w>+
-" nnoremap <down>  <c-w>-
-" nnoremap <left>  <c-w><
-" nnoremap <right> <c-w>>
-
-" tab: Go to matching element
-" nnoremap <tab> %
-
-" sane regex
-" nnoremap / /\v
-" vnoremap / /\v
-"
-" nnoremap ? ?\v
-" vnoremap ? ?\v
-"
-" nnoremap :s/ :s/\v
-
-" command-line window
-" nnoremap q: q:i
-" nnoremap q/ q/i
-" nnoremap q? q?i
-
-" folds
-nnoremap zr zr:echo &foldlevel<cr>
-nnoremap zm zm:echo &foldlevel<cr>
-nnoremap zR zR:echo &foldlevel<cr>
-nnoremap zM zM:echo &foldlevel<cr>
 
 " y: Yank and go to end of selection
 xnoremap y y`]
@@ -307,15 +150,207 @@ xmap <tab> >
 " shift-tab: unindent (allow recursive)
 xmap <s-tab> <
 
-" if has('nvim')
-"   " terminal mode mappings
-"
-"   " esc to exit terminal mode
-"   tnoremap <esc> <c-\><c-n>
-" endif
-
 " ctrl-a r to redraw the screen now
 noremap <silent> <c-a>r :redraw!<cr>
 
 " ctrl-w to delete the current buffer without closing the window
 nnoremap <silent> <c-w><c-w> :confirm :Kwbd<cr>
+
+" scrolling in insert mode
+inoremap <c-d> <s-down>
+inoremap <c-u> <s-up>
+inoremap <c-e> <c-x><c-e>
+inoremap <c-y> <c-x><c-y>
+
+" plugin specific mappings
+
+" dispatch
+nnoremap <silent> <leader>k :Make<cr>
+
+" surround
+" ctrl-sw: Quickly surround word (must be recursive)
+nmap <c-s><c-w> ysiw
+
+" dash (must be recursive)
+nmap <silent> <leader>d <plug>DashSearch
+
+" undotree
+nnoremap <leader>u :UndotreeToggle<cr>
+
+" gitgutter
+nnoremap <silent> <leader>gg :GitGutterToggle<cr>
+
+" bufsurf
+nnoremap <silent> Z :BufSurfBack<cr>
+nnoremap <silent> X :BufSurfForward<cr>
+
+" vimpager
+nnoremap <silent> <leader>v :Page<cr>
+
+" dash
+autocmd MyAutoCmd FileType python nmap <buffer> K <plug>DashSearch
+
+" easymotion (must be recursive)
+map f <plug>(easymotion-f)
+map t <plug>(easymotion-t)
+map F <plug>(easymotion-F)
+map T <plug>(easymotion-T)
+
+" tagbar
+nnoremap <silent> <c-g> :TagbarToggle<cr>
+
+" tabularize
+nnoremap <leader>a&     :Tabularize /&<cr>
+vnoremap <leader>a&     :Tabularize /&<cr>
+nnoremap <leader>a=     :Tabularize /=<cr>
+vnoremap <leader>a=     :Tabularize /=<cr>
+nnoremap <leader>a:     :Tabularize /:<cr>
+vnoremap <leader>a:     :Tabularize /:<cr>
+nnoremap <leader>a::    :Tabularize /:\zs<cr>
+vnoremap <leader>a::    :Tabularize /:\zs<cr>
+nnoremap <leader>a,     :Tabularize /,<cr>
+vnoremap <leader>a,     :Tabularize /,<cr>
+nnoremap <leader>a,,    :Tabularize /,\zs<cr>
+vnoremap <leader>a,,    :Tabularize /,\zs<cr>
+nnoremap <leader>a<bar> :Tabularize /<bar><cr>
+vnoremap <leader>a<bar> :Tabularize /<bar><cr>
+nnoremap <leader>a\|    :Tabularize /\|<cr>
+vnoremap <leader>a\|    :Tabularize /\|<cr>
+nnoremap <leader>a#     :Tabularize /#<cr>
+vnoremap <leader>a#     :Tabularize /#<cr>
+
+" fugitive/gitv
+nnoremap <silent> <leader>gs :Gstatus<cr>
+nnoremap <silent> <leader>gd :Gvdiff<cr>
+nnoremap <silent> <leader>gc :Gcommit<cr>
+nnoremap <silent> <leader>gb :Gblame<cr>
+nnoremap <silent> <leader>gl :Glog<cr>
+nnoremap <silent> <leader>gp :Gpush<cr>
+nnoremap <silent> <leader>gr :Gremove<cr>
+nnoremap <silent> <leader>gw :Gwrite<cr>
+nnoremap <silent> <leader>ge :Gedit<cr>
+nnoremap <silent> <leader>gm :Gmove<cr>
+nnoremap <silent> <leader>g. :Gcd<cr>:pwd<cr>
+nnoremap <silent> <leader>gu :Gpull<cr>
+nnoremap <silent> <leader>gn :Gmerge<cr>
+nnoremap <silent> <leader>gf :Gfetch<cr>
+nnoremap <silent> <leader>gv :Gitv<cr>
+nnoremap <silent> <leader>gV :Gitv!<cr>
+
+if g:rubix_complete == 'neocomplete'
+  imap <expr> <c-g> neocomplete#undo_completion()
+  imap <expr> <s-cr> pumvisible() ? neocomplete#smart_close_popup() . "\<cr>" : "\<cr>"
+endif
+
+if g:rubix_complete == 'deoplete'
+  imap <expr> <c-g> deoplete#undo_completion()
+  imap <expr> <s-cr> pumvisible() ? deoplete#mappings#smart_close_popup() . "\<cr>" : "\<cr>"
+endif
+
+if g:rubix_snippet == 'neosnippet'
+  imap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<esc>\<c-w>k"
+  smap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<c-w>k"
+  smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
+  imap <expr> <tab> pumvisible() ? "\<c-n>" : (neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>")
+  imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+  imap <expr> <cr> NeoSnippetCr()
+endif
+
+if g:rubix_snippet == 'ultisnips'
+  smap <expr> <tab> UltiSnipsTab()
+  imap <expr> <tab> UltiSnipsTab()
+  imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+  imap <expr> <cr> UltiSnipsCr()
+endif
+
+" snippets handle the <cr> mapping, but since all (2) endwise mappings were
+" disabled, this restores the other one
+imap <expr> <c-x><cr> "<plug>AlwaysEnd"
+
+" tmux style navigation
+if exists("$TMUX")
+  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-l> :TmuxNavigateRight<cr>
+  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-j> :TmuxNavigateDown<cr>
+else
+  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-l> :wincmd l<cr>
+  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-j> :wincmd j<cr>
+
+  nnoremap <c-h> <c-w>h
+  nnoremap <c-j> <c-w>j
+  nnoremap <c-k> <c-w>k
+  nnoremap <c-l> <c-w>l
+
+  vnoremap <c-h> <c-w>h
+  vnoremap <c-j> <c-w>j
+  vnoremap <c-l> <c-w>l
+
+  inoremap <c-h> <esc><c-w>h
+  inoremap <c-j> <esc><c-w>j
+  inoremap <c-l> <esc><c-w>l
+
+  " <c-k> is also the snippet expand key,
+  " only overwrite if it is not already set
+  " and check for smap and xmap separately (from vmap)
+
+  if maparg('<c-k>', 'x') == ''
+    xnoremap <c-k> <c-w>k
+  endif
+
+  if maparg('<c-k>', 's') == ''
+    snoremap <c-k> <c-w>k
+  endif
+
+  if maparg('<c-k>', 'i') == ''
+    inoremap <c-k> <esc><c-w>k
+  endif
+
+  if has("nvim")
+    tnoremap <c-h> <c-\><c-n><c-w>h
+    tnoremap <c-j> <c-\><c-n><c-w>j
+    tnoremap <c-k> <c-\><c-n><c-w>k
+    tnoremap <c-l> <c-\><c-n><c-w>l
+    tnoremap <c-y> <c-\><c-n><c-y>
+    tnoremap <c-u> <c-\><c-n><c-u>
+
+    " switch to insert mode and press <up> for shell history when in normal mode
+    autocmd MyAutoCmd TermOpen term://* nnoremap <buffer> <up> i<up>
+    autocmd MyAutoCmd TermOpen term://* nnoremap <buffer> <c-r> i<c-r>
+
+    " disable macros in terminal windows
+    autocmd MyAutoCmd TermOpen term://* nnoremap <buffer> q iq
+  endif
+endif
+
+" fzf
+if has("nvim")
+  " close fzf with <esc>
+  autocmd MyAutoCmd FileType fzf tnoremap <buffer> <esc> <esc>
+
+  " ensure <c-j> and <c-k> work properly within fzf window
+  autocmd MyAutoCmd FileType fzf tnoremap <buffer> <c-j> <c-j>
+  autocmd MyAutoCmd FileType fzf tnoremap <buffer> <c-k> <c-k>
+endif
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+nnoremap <silent> <c-p> :FilesProjectDir<cr>
+nnoremap <silent> <c-b> :Buffers<cr>
+nnoremap <silent> <c-f> :History<cr>
+nnoremap <silent> <c-s><c-d> :RgProjectDirPrompt<cr>
+nnoremap <silent> <c-s><c-s> :RgProjectDirCursor<cr>
+nnoremap <silent> <c-s><c-f> :BLines<cr>
+
+" netrw
+noremap <silent> <c-n> :call ToggleNetrw()<cr>
+
+" vim-go
+autocmd MyAutoCmd FileType go nmap <buffer> <leader>r <plug>(go-run)
+autocmd MyAutoCmd FileType go nmap <buffer> <leader>b :call BuildGoFiles()<cr>
+autocmd MyAutoCmd FileType go nmap <buffer> <leader>t <plug>(go-test)
+autocmd MyAutoCmd FileType go nmap <buffer> <leader>e <plug>(go-rename)
+autocmd MyAutoCmd FileType go nmap <buffer> gd <plug>(go-def-vertical)
+autocmd MyAutoCmd FileType go nmap <buffer> <leader>i <plug>(go-info)

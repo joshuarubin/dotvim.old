@@ -1,19 +1,3 @@
-let g:rubix_syntastic = 1
-if has("nvim")
-  " use neomake
-  let g:rubix_syntastic = 0
-elseif v:version >= 800 && (v:version > 800 || has("patch0027"))
-  " use neomake
-  let g:rubix_syntastic = 0
-endif
-
-" syntax checking
-Plug 'scrooloose/syntastic', Cond(g:rubix_syntastic)
-
-if !g:rubix_syntastic
-  finish
-endif
-
 let g:syntastic_javascript_jshint_args = "--config ~/.vim/jshint.config.json"
 let g:syntastic_javascript_eslint_args = "--config ~/.vim/eslint.config.json"
 let g:syntastic_javascript_standard_args = "--config ~/.vim/eslint.config.json"
@@ -45,15 +29,15 @@ let g:syntastic_go_gometalinter_args = "
 
 let g:syntastic_markdown_mdl_args = "-r '~MD013,~MD033'"
 
-" highlight link SyntasticError WarningMsg
-" highlight link SyntasticWarning Question
 highlight link SyntasticErrorSign WarningMsg
 highlight link SyntasticWarningSign Question
 
-" show errors from all checkers
-autocmd MyAutoCmd FileType go let g:syntastic_aggregate_errors = 1
-autocmd MyAutoCmd FileType typescript let g:syntastic_aggregate_errors = 1
+if g:rubix_syntax == 'syntastic'
+  " show errors from all checkers
+  autocmd MyAutoCmd FileType go let g:syntastic_aggregate_errors = 1
+  autocmd MyAutoCmd FileType typescript let g:syntastic_aggregate_errors = 1
 
-" autocmd MyAutoCmd FileType go let g:syntastic_go_checkers = ['go', 'govet', 'golint']
-autocmd MyAutoCmd FileType go let g:syntastic_go_checkers = ['go', 'gometalinter']
-autocmd MyAutoCmd FileType typescript let g:syntastic_typescript_checkers = ["tsc", "tslint"]
+  " autocmd MyAutoCmd FileType go let g:syntastic_go_checkers = ['go', 'govet', 'golint']
+  autocmd MyAutoCmd FileType go let g:syntastic_go_checkers = ['go', 'gometalinter']
+  autocmd MyAutoCmd FileType typescript let g:syntastic_typescript_checkers = ["tsc", "tslint"]
+endif

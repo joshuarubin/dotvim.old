@@ -1,6 +1,3 @@
-" full featured go development environment support for vim
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-
 let g:go_def_mapping_enabled = 0
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
@@ -27,6 +24,7 @@ let g:go_highlight_trailing_whitespace_error = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_format_strings = 1
+let g:go_snippet_engine = g:rubix_snippet
 
 if has("nvim")
   let g:go_term_enabled = 1
@@ -41,7 +39,7 @@ let g:go_metalinter_enabled  = [
 \ ]
 
 " run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
+function! BuildGoFiles()
   let l:file = expand('%')
   if l:file =~# '^\f\+_test\.go$'
     call go#cmd#Test(0, 1)
@@ -49,20 +47,6 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
-
-" maps must be recursive
-
-" autocmd MyAutoCmd FileType go nmap <buffer> <leader>d <plug>(go-doc)
-autocmd MyAutoCmd FileType go nmap <buffer> <leader>r <plug>(go-run)
-autocmd MyAutoCmd FileType go nmap <buffer> <leader>b :<c-u>call <sid>build_go_files()<cr>
-" autocmd MyAutoCmd FileType go nmap <buffer> <leader>b <plug>(go-build)
-autocmd MyAutoCmd FileType go nmap <buffer> <leader>t <plug>(go-test)
-autocmd MyAutoCmd FileType go nmap <buffer> <leader>e <plug>(go-rename)
-" autocmd MyAutoCmd FileType go nmap <buffer> <leader>ds <plug>(go-def-split)
-" autocmd MyAutoCmd FileType go nmap <buffer> <leader>dv <plug>(go-def-vertical)
-" autocmd MyAutoCmd FileType go nmap <buffer> <leader>dt <plug>(go-def-tab)
-autocmd MyAutoCmd FileType go nmap <buffer> gd <plug>(go-def-vertical)
-autocmd MyAutoCmd FileType go nmap <buffer> <leader>i <plug>(go-info)
 
 autocmd MyAutoCmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd MyAutoCmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')

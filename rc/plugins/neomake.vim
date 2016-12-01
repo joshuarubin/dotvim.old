@@ -1,18 +1,6 @@
-let g:rubix_neomake = 0
-if has("nvim")
-  let g:rubix_neomake = 1
-elseif v:version >= 800 && (v:version > 800 || has("patch0027"))
-  let g:rubix_neomake = 1
+if g:rubix_syntax == 'neomake'
+  autocmd MyAutoCmd BufWritePost * if expand('%') !~ '^fugitive:\/\/' | Neomake | endif
 endif
-
-" asynchronous :make using neovim's job-control functionality
-Plug 'neomake/neomake', Cond(g:rubix_neomake)
-
-if !g:rubix_neomake
-  finish
-endif
-
-autocmd MyAutoCmd BufWritePost * if expand('%') !~ '^fugitive:\/\/' | Neomake | endif
 
 let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}

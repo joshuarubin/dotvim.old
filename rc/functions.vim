@@ -86,3 +86,86 @@ endfun
 autocmd MyAutoCmd InsertEnter * :setlocal nohlsearch
 autocmd MyAutoCmd InsertLeave * :setlocal hlsearch
 autocmd MyAutoCmd FileType help,man wincmd L
+
+function! NeoSnippetCr()
+  " NOTE: use double quotes to properly expand <cr> into escape strings
+
+  if !pumvisible()
+    if maparg('<plug>DiscretionaryEnd', 'i') != ''
+      " if 'tpope/vim-endwise' is installed
+      return "\<cr>\<plug>DiscretionaryEnd"
+    endif
+
+    return "\<cr>"
+  endif
+
+  if neosnippet#expandable()
+    return "\<plug>(neosnippet_expand_or_jump)"
+  endif
+
+  return "\<c-y>"
+endfunction
+
+function! UltiSnipsTab()
+  if pumvisible()
+    return "\<c-n>"
+  endif
+
+  call UltiSnips#ExpandSnippetOrJump()
+  if g:ulti_expand_or_jump_res != 0
+    return ""
+  endif
+
+  return "\<tab>"
+endfunction
+
+function! UltiSnipsCr()
+  " NOTE: use double quotes to properly expand <cr> into escape strings
+
+  if !pumvisible()
+    if maparg('<plug>DiscretionaryEnd', 'i') != ''
+      " if 'tpope/vim-endwise' is installed
+      return "\<cr>\<plug>DiscretionaryEnd"
+    endif
+
+    return "\<cr>"
+  endif
+
+  return "\<c-k>"
+endfunction
+
+function! YAPF()
+  " preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+
+  let l:cmd = 'yapf'
+
+  " Call YAPF with the current buffer
+  let l:formatted_text = system(l:cmd, join(getline(1, '$'), "\n") . "\n")
+
+  if v:shell_error != 0 && v:shell_error != 2
+    return
+  endif
+
+  " Update the buffer.
+  execute '1,' . string(line('$')) . 'delete'
+  call setline(1, split(l:formatted_text, "\n"))
+
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+function! ToggleNetrw() abort
+  if exists('s:is_open')
+    " close it
+    unlet s:is_open
+    exec 'Lexplore'
+    return
+  endif
+
+  let s:is_open = 1
+  exec 'Lexplore ' . rubix#project_dir()
+endfunction
