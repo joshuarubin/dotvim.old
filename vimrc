@@ -10,9 +10,9 @@ function! s:source_rc(path)
 endfunction
 
 call s:source_rc("init")
+call s:source_rc("functions")
 call s:source_rc("view")
 call s:source_rc("plugins")
-call s:source_rc("functions")
 call s:source_rc("edit")
 call s:source_rc("mappings")
 call s:source_rc("gui")

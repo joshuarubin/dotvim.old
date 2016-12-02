@@ -340,8 +340,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <silent> <c-p> :FilesProjectDir<cr>
 nnoremap <silent> <c-b> :Buffers<cr>
 nnoremap <silent> <c-f> :History<cr>
-nnoremap <silent> <c-s><c-d> :RgProjectDirPrompt<cr>
+nnoremap <silent> <c-s><c-a> :RgRepeat<cr>
 nnoremap <silent> <c-s><c-s> :RgProjectDirCursor<cr>
+nnoremap <silent> <c-s><c-d> :RgProjectDirPrompt<cr>
 nnoremap <silent> <c-s><c-f> :BLines<cr>
 
 " netrw
@@ -354,3 +355,4 @@ autocmd MyAutoCmd FileType go nmap <buffer> <leader>t <plug>(go-test)
 autocmd MyAutoCmd FileType go nmap <buffer> <leader>e <plug>(go-rename)
 autocmd MyAutoCmd FileType go nmap <buffer> gd <plug>(go-def-vertical)
 autocmd MyAutoCmd FileType go nmap <buffer> <leader>i <plug>(go-info)
+autocmd MyAutoCmd FileType go nmap <buffer> <silent> K :ZbDoc<cr>

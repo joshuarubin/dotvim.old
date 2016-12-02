@@ -2,8 +2,11 @@ function! s:q1(str)
   return "'".substitute(a:str, "'", "'\\\\''", 'g')."'"
 endfunction
 
+let s:last = ["", ""]
+
 " query, path, [[rg options], options]
 function! rubix#fzf#rg(query, path, ...)
+  let s:last = [a:query, a:path]
   let query = empty(a:query) ? '^(?=.)' : a:query
   let path = empty(a:path) ? rubix#current_dir() : a:path
   let args = copy(a:000)
@@ -14,6 +17,7 @@ endfunction
 
 " query, path, [[ag options], options]
 function! rubix#fzf#ag(query, path, ...)
+  let s:last = [a:query, a:path]
   let query = empty(a:query) ? '^(?=.)' : a:query
   let path = empty(a:path) ? rubix#current_dir() : a:path
   let args = copy(a:000)
@@ -24,5 +28,13 @@ endfunction
 
 " rg command suffix, [options]
 function! rubix#fzf#rg_raw(command_suffix, ...)
-  return call('fzf#vim#grep', extend(['rg --no-heading --vimgrep --smart-case --follow '.a:command_suffix, 1], a:000))
+  return call('fzf#vim#grep', extend(['rg --no-heading --vimgrep --smart-case '.a:command_suffix, 1], a:000))
+endfunction
+
+function! rubix#fzf#rg_repeat(...)
+  return call('rubix#fzf#rg', extend(copy(s:last), copy(a:000)))
+endfunction
+
+function! rubix#fzf#ag_repeat(...)
+  return call('rubix#fzf#ag', extend(copy(s:last), copy(a:000)))
 endfunction

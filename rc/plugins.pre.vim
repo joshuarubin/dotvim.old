@@ -1,10 +1,5 @@
 " settings before plugins are loaded
 
-function! Cond(cond, ...)
-  let opts = get(a:000, 0, {})
-  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
-endfunction
-
 " neocomplete + neosnippet + neosnippet-snippets requires lua
 " youcompleteme + ultisnips is the fallback without lua
 " nvim defaults to deoplete

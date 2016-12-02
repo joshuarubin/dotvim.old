@@ -1,5 +1,5 @@
 if has("gui_macvim")
-  let g:fzf_launcher = '~/.vim/inanewterm %s'
+  let g:fzf_launcher = '~/.vim/misc/inanewterm %s'
 endif
 
 let g:fzf_history_dir = GetCacheDir("fzf")
@@ -41,3 +41,6 @@ command! -bang AgProjectDirPrompt call rubix#fzf#ag(rubix#input_word(), rubix#pr
 command! -bang AgBufferDirPrompt  call rubix#fzf#ag(rubix#input_word(), rubix#buffer_dir(),  fzf#vim#layout(<bang>0))
 command! -bang AgCurrentDirPrompt call rubix#fzf#ag(rubix#input_word(), rubix#current_dir(), fzf#vim#layout(<bang>0))
 command! -bang AgInputDirPrompt   call rubix#fzf#ag(rubix#input_word(), rubix#input_dir(),   fzf#vim#layout(<bang>0))
+
+command! -bang RgRepeat call rubix#fzf#rg_repeat(fzf#vim#layout(<bang>0))
+command! -bang AgRepeat call rubix#fzf#ag_repeat(fzf#vim#layout(<bang>0))

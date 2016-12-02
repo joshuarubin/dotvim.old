@@ -68,3 +68,24 @@ set smartcase  " smart case matching
 set incsearch  " incremental search
 set hlsearch
 set wrapscan
+
+set tags=./tags;/,~/.vimtags
+
+" make tags placed in .git/tags file available in all levels of a repository
+let gitroot = substitute(system("git rev-parse --show-toplevel"), '[\n\r]', "", "g")
+if gitroot != ""
+  let &tags = &tags . "," . gitroot . "/.git/tags"
+endif
+
+" make directory automatically
+autocmd MyAutoCmd BufWritePre * call MkdirAsNecessary(expand('<afile>:p:h'), v:cmdbang)
+
+" go back to previous position of cursor if any
+autocmd MyAutoCmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \  execute 'normal! g`"zvzz' |
+  \ endif
+
+" automatically strip whitespace trailing on save for these files (add "let
+" b:auto_strip_trailing_whitespace = 1" in ftplugin files to enable)
+autocmd MyAutoCmd BufWritePre * call AutoStripTrailingWhitespace()

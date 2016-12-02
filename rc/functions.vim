@@ -10,31 +10,13 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
-" make directory automatically
-autocmd MyAutoCmd BufWritePre *
-      \ call s:mkdir_as_necessary(expand('<afile>:p:h'), v:cmdbang)
-
-function! s:mkdir_as_necessary(dir, force)
+function! MkdirAsNecessary(dir, force)
   if !isdirectory(a:dir) && &l:buftype == '' &&
         \ (a:force || input(printf('"%s" does not exist. Create? [y/N]',
         \              a:dir)) =~? '^y\%[es]$')
     call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
   endif
 endfunction
-
-" go back to previous position of cursor if any
-autocmd MyAutoCmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \  execute 'normal! g`"zvzz' |
-  \ endif
-
-set tags=./tags;/,~/.vimtags
-
-" make tags placed in .git/tags file available in all levels of a repository
-let gitroot = substitute(system("git rev-parse --show-toplevel"), '[\n\r]', "", "g")
-if gitroot != ""
-  let &tags = &tags . "," . gitroot . "/.git/tags"
-endif
 
 function! AutoStripTrailingWhitespace()
   if exists('b:auto_strip_trailing_whitespace')
@@ -45,10 +27,6 @@ endfunction
 function! StripTrailingWhitespace()
   call Preserve("%s/\\s\\+$//e")
 endfunction
-
-" automatically strip whitespace trailing on save for these files (add "let
-" b:auto_strip_trailing_whitespace = 1" in ftplugin files to enable)
-autocmd MyAutoCmd BufWritePre * call AutoStripTrailingWhitespace()
 
 function! TabRename()
   if exists('*gettabvar')
@@ -82,10 +60,6 @@ function! DeleteHiddenBuffers()
   endfor
   echon "Deleted " . l:tally . " buffers"
 endfun
-
-autocmd MyAutoCmd InsertEnter * :setlocal nohlsearch
-autocmd MyAutoCmd InsertLeave * :setlocal hlsearch
-autocmd MyAutoCmd FileType help,man wincmd L
 
 function! NeoSnippetCr()
   " NOTE: use double quotes to properly expand <cr> into escape strings
@@ -169,3 +143,24 @@ function! ToggleNetrw() abort
   let s:is_open = 1
   exec 'Lexplore ' . rubix#project_dir()
 endfunction
+
+function! UpdateTitle()
+  if &filetype == 'fzf'
+    let &titlestring='fzf'
+    return
+  endif
+
+  if exists('b:term_title')
+    let &titlestring='term://'.b:term_title
+    return
+  endif
+
+  set titlestring=
+endfunction
+
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
+command! -nargs=* -complete=customlist,ge#complete#complete_package_id ZbDoc :execute rubix#go#doc(<f-args>)

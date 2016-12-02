@@ -96,7 +96,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 
 " full featured go development environment support for vim
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go'
+Plug 'garyburd/go-explorer'
 
 " lua
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
