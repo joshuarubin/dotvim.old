@@ -78,7 +78,7 @@ if gitroot != ""
 endif
 
 " make directory automatically
-autocmd MyAutoCmd BufWritePre * call MkdirAsNecessary(expand('<afile>:p:h'), v:cmdbang)
+autocmd MyAutoCmd BufWritePre * call rubix#mkdir(expand('<afile>:p:h'), v:cmdbang)
 
 " go back to previous position of cursor if any
 autocmd MyAutoCmd BufReadPost *
@@ -88,4 +88,6 @@ autocmd MyAutoCmd BufReadPost *
 
 " automatically strip whitespace trailing on save for these files (add "let
 " b:auto_strip_trailing_whitespace = 1" in ftplugin files to enable)
-autocmd MyAutoCmd BufWritePre * call AutoStripTrailingWhitespace()
+autocmd MyAutoCmd BufWritePre * call rubix#auto_trim()
+
+command! -nargs=* Only call rubix#only()

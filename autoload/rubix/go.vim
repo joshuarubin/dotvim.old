@@ -47,3 +47,13 @@ function! rubix#go#doc(...) abort
   let words = call('rubix#go#word', [a:000])
   return call('ge#doc#open', copy(words))
 endfunction
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! rubix#go#build()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction

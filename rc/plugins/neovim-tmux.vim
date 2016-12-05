@@ -36,7 +36,7 @@ call s:tmux_bind_key('v', ':vsplit<cr>', ['n', 'v', 'i', 't'])
 call s:tmux_bind_key('t', ':terminal<cr>', ['n', 'v', 'i'])
 
 " <c-a>a switches to the previous tab
-call s:tmux_bind_key('a', ':call LastTab()<cr>', ['n', 'v', 'i', 't'])
+call s:tmux_bind_key('a', ':call rubix#last_tab()<cr>', ['n', 'v', 'i', 't'])
 
 " open the current buffer in a new tab
 call s:tmux_bind_key('!', ':tabe %<cr>', ['n', 'v', 'i', 't'])
@@ -98,7 +98,7 @@ call s:tmux_bind_key(':', ':', ['t'])
 call s:tmux_bind_key('[', 'v', ['t'])
 
 " <c-a>, rename tab
-call s:tmux_bind_key(',', ':call TabRename()<cr>', ['n', 'v', 'i', 't'])
+call s:tmux_bind_key(',', ':call rubix#rename_tab()<cr>', ['n', 'v', 'i', 't'])
 
 " <c-a>H <c-a>J <c-a>K <c-a>L resize window
 call s:tmux_bind_key('H', '<c-w><', ['n', 'v', 'i', 't'])

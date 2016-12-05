@@ -1,5 +1,4 @@
 let g:mapleader = ","
-let s:cache_dir = "~/.vim/.cache/"
 
 if has("shada")
   set shada=!,'1000,<50,s10,h
@@ -17,33 +16,18 @@ if executable("/usr/local/bin/python3")
   let g:python3_host_prog = "/usr/local/bin/python3"
 endif
 
-function! GetCacheDir(suffix)
-  return resolve(expand(s:cache_dir . a:suffix))
-endfunction
-
-function! s:ensure_exists(path)
-  if !isdirectory(expand(a:path))
-    call mkdir(expand(a:path))
-  endif
-endfunction
-
-call s:ensure_exists(s:cache_dir)
-
 " persistent undo
 if has("persistent_undo")
   set undofile
-  let &undodir=GetCacheDir("undo")
-  call s:ensure_exists(&undodir)
+  let &undodir=rubix#cache#dir("undo")
 endif
 
 " backups
 set backup
-let &backupdir=GetCacheDir("backup")
-call s:ensure_exists(&backupdir)
+let &backupdir=rubix#cache#dir("backup")
 
 " swap files
-let &directory=GetCacheDir("swap")
-call s:ensure_exists(&directory)
+let &directory=rubix#cache#dir("swap")
 
 if has('termguicolors')
   " belongs in 'gui' but has to be set before plugins are loaded
@@ -53,6 +37,11 @@ if has('termguicolors')
     let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
     let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
   endif
+endif
+
+" gnome-terminal colors
+if &term =~ '^\(xterm\|screen\)$' && $COLORTERM == 'gnome-terminal'
+  set t_Co=256
 endif
 
 augroup MyAutoCmd

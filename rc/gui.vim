@@ -21,11 +21,6 @@ augroup END
 
 highlight Comment gui=italic cterm=italic
 
-" gnome-terminal colors
-if &term =~ '^\(xterm\|screen\)$' && $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
-
 if exists("neovim_dot_app")
   call MacSetFont("Hasklig", 11)
 elseif has("gui_running")

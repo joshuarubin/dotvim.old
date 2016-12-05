@@ -8,3 +8,4 @@ nnoremap <buffer> S ?\|\zs\S\+\ze\|<cr>
 nnoremap <buffer> q :q<cr>
 
 autocmd MyAutoCmd BufEnter <buffer> wincmd L
+:wincmd L

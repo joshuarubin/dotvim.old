@@ -1,7 +1,5 @@
 function! rubix#current_dir()
-  return &filetype ==# 'vimfiler' ?
-    \ b:vimfiler.current_dir :
-    \ fnamemodify(getcwd(), ':p')
+  return fnamemodify(getcwd(), ':p')
 endfunction
 
 function! rubix#buffer_dir()
@@ -9,10 +7,7 @@ function! rubix#buffer_dir()
 endfunction
 
 function! rubix#project_dir()
-  let path = &filetype ==# 'vimfiler' ?
-    \ b:vimfiler.current_dir :
-    \ rubix#buffer_dir()
-  return s:path2project_directory(path)
+  return s:path2project_directory(rubix#buffer_dir())
 endfunction
 
 function! rubix#input_dir()
@@ -135,19 +130,7 @@ function! s:path2project_directory(path, ...) abort
 endfunction
 
 function! s:get_buffer_directory(bufnr) abort
-  let filetype = getbufvar(a:bufnr, '&filetype')
-  if filetype ==# 'vimfiler'
-    let dir = getbufvar(a:bufnr, 'vimfiler').current_dir
-  elseif filetype ==# 'vimshell'
-    let dir = getbufvar(a:bufnr, 'vimshell').current_dir
-  elseif filetype ==# 'vinarise'
-    let dir = getbufvar(a:bufnr, 'vinarise').current_dir
-  else
-    let path = bufname(a:bufnr)
-    let dir = s:path2directory(path)
-  endif
-
-  return dir
+  return s:path2directory(bufname(a:bufnr))
 endfunction
 
 function! s:expand(path) abort
@@ -164,9 +147,7 @@ function! s:parse_source_path(path) abort
     let path = rubix#project_dir() . a:path[2:]
   elseif a:path =~ '^!'
     " Use project directory from cwd
-    let path = &filetype ==# 'vimfiler' ?
-          \ b:vimfiler.current_dir :
-          \ getcwd()
+    let path = getcwd()
     let path = s:path2project_directory(path) . a:path[1:]
   elseif a:path =~ '^?'
     " Use buffer directory
@@ -187,4 +168,166 @@ function! s:parse_source_path(path) abort
   endif
 
   return path
+endfunction
+
+function! rubix#preserve(command)
+  " preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " do the business:
+  execute a:command
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+function! rubix#mkdir(dir, force)
+  if !isdirectory(a:dir) && &l:buftype == '' &&
+        \ (a:force || input(printf('"%s" does not exist. Create? [y/N]',
+        \              a:dir)) =~? '^y\%[es]$')
+    call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+  endif
+endfunction
+
+function! rubix#auto_trim()
+  if exists('b:auto_strip_trailing_whitespace')
+    call rubix#trim()
+  endif
+endfunction
+
+function! rubix#trim()
+  call rubix#preserve("%s/\\s\\+$//e")
+endfunction
+
+function! rubix#rename_tab()
+  if exists('*gettabvar')
+    let name = input('Tab name: ')
+    let t:title = name
+  endif
+endfunction
+
+let s:last_tab = 1
+function! rubix#last_tab()
+  :execute "tabnext ".s:last_tab
+endfunction
+
+function! rubix#tab_leave()
+  let s:last_tab = tabpagenr()
+endfunction
+
+function! rubix#only()
+  " figure out which buffers are visible in any tab
+  let visible = {}
+  for t in range(1, tabpagenr('$'))
+    for b in tabpagebuflist(t)
+      let visible[b] = 1
+    endfor
+  endfor
+  " close any buffer that are loaded and not visible
+  let l:tally = 0
+  for b in range(1, bufnr('$'))
+    if bufloaded(b) && !has_key(visible, b) && !getbufvar(b, "&mod")
+      let l:tally += 1
+      exe 'bw ' . b
+    endif
+  endfor
+  echon "Deleted " . l:tally . " buffers"
+endfun
+
+function! rubix#neosnippet_cr()
+  " NOTE: use double quotes to properly expand <cr> into escape strings
+
+  if !pumvisible()
+    if maparg('<plug>DiscretionaryEnd', 'i') != ''
+      " if 'tpope/vim-endwise' is installed
+      return "\<cr>\<plug>DiscretionaryEnd"
+    endif
+
+    return "\<cr>"
+  endif
+
+  if neosnippet#expandable()
+    return "\<plug>(neosnippet_expand_or_jump)"
+  endif
+
+  return "\<c-y>"
+endfunction
+
+function! rubix#ultisnips_tab()
+  if pumvisible()
+    return "\<c-n>"
+  endif
+
+  call UltiSnips#ExpandSnippetOrJump()
+  if g:ulti_expand_or_jump_res != 0
+    return ""
+  endif
+
+  return "\<tab>"
+endfunction
+
+function! rubix#ultisnips_cr()
+  " NOTE: use double quotes to properly expand <cr> into escape strings
+
+  if !pumvisible()
+    if maparg('<plug>DiscretionaryEnd', 'i') != ''
+      " if 'tpope/vim-endwise' is installed
+      return "\<cr>\<plug>DiscretionaryEnd"
+    endif
+
+    return "\<cr>"
+  endif
+
+  return "\<c-k>"
+endfunction
+
+function! rubix#yapf()
+  " preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+
+  let l:cmd = 'yapf'
+
+  " Call YAPF with the current buffer
+  let l:formatted_text = system(l:cmd, join(getline(1, '$'), "\n") . "\n")
+
+  if v:shell_error != 0 && v:shell_error != 2
+    return
+  endif
+
+  " Update the buffer.
+  execute '1,' . string(line('$')) . 'delete'
+  call setline(1, split(l:formatted_text, "\n"))
+
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+function! rubix#toggle_netrw() abort
+  if exists('s:is_open')
+    " close it
+    unlet s:is_open
+    exec 'Lexplore'
+    return
+  endif
+
+  let s:is_open = 1
+  exec 'Lexplore ' . rubix#project_dir()
+endfunction
+
+function! rubix#update_title()
+  if &filetype == 'fzf'
+    let &titlestring='fzf'
+    return
+  endif
+
+  if exists('b:term_title')
+    let &titlestring='term://'.b:term_title
+    return
+  endif
+
+  set titlestring=
 endfunction

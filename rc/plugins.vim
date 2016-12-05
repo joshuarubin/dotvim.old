@@ -13,21 +13,21 @@ Plug 'chrisbra/Colorizer'
 " search for terms using [Dash.app](http://kapeli.com/), making API lookups simple
 Plug 'rizzatti/funcoo.vim' | Plug 'rizzatti/dash.vim'
 " completion
-Plug 'Shougo/deoplete.nvim', Cond(g:rubix_complete == 'deoplete', { 'do': ':UpdateRemotePlugins' })
-Plug 'zchee/deoplete-go', Cond(g:rubix_complete == 'deoplete', { 'do': 'make' })
-Plug 'zchee/deoplete-jedi', Cond(g:rubix_complete == 'deoplete')
-Plug 'Shougo/neocomplete.vim', Cond(g:rubix_complete == 'neocomplete')
-Plug 'Valloric/YouCompleteMe', Cond(g:rubix_complete == 'youcompleteme', { 'do': './install.py --gocode-completer --clang-completer' })
+Plug 'Shougo/deoplete.nvim', rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': ':UpdateRemotePlugins' })
+Plug 'zchee/deoplete-go', rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': 'make' })
+Plug 'zchee/deoplete-jedi', rubix#plug#cond(g:rubix_complete == 'deoplete')
+Plug 'Shougo/neocomplete.vim', rubix#plug#cond(g:rubix_complete == 'neocomplete')
+Plug 'Valloric/YouCompleteMe', rubix#plug#cond(g:rubix_complete == 'youcompleteme', { 'do': './install.py --gocode-completer --clang-completer' })
 
 " snippets
-Plug 'Shougo/neosnippet', Cond(g:rubix_snippet == 'neosnippet')
-Plug 'Shougo/neosnippet-snippets', Cond(g:rubix_snippet == 'neosnippet')
-Plug 'SirVer/ultisnips', Cond(g:rubix_snippet == 'ultisnips')
+Plug 'Shougo/neosnippet', rubix#plug#cond(g:rubix_snippet == 'neosnippet')
+Plug 'Shougo/neosnippet-snippets', rubix#plug#cond(g:rubix_snippet == 'neosnippet')
+Plug 'SirVer/ultisnips', rubix#plug#cond(g:rubix_snippet == 'ultisnips')
 Plug 'honza/vim-snippets'
 
 " displays function signatures from completions in the command line
-Plug 'Shougo/echodoc', Cond(g:rubix_shougo)
-Plug 'Shougo/context_filetype.vim', Cond(g:rubix_shougo)
+Plug 'Shougo/echodoc', rubix#plug#cond(g:rubix_shougo)
+Plug 'Shougo/context_filetype.vim', rubix#plug#cond(g:rubix_shougo)
 
 " asynchronous build and test dispatcher
 Plug 'tpope/vim-dispatch'
@@ -48,19 +48,19 @@ Plug 'junegunn/fzf.vim'
 Plug 'cocopon/lightline-hybrid.vim'
 
 " awesome python autocompletion
-Plug 'davidhalter/jedi-vim', Cond(g:rubix_jedi, { 'for': 'python' })
+Plug 'davidhalter/jedi-vim', rubix#plug#cond(g:rubix_jedi, { 'for': 'python' })
 
 " a light and configurable statusline/tabline
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 
 " helps you to create python code very quickly
-Plug 'klen/python-mode', Cond(g:rubix_python_mode, { 'for': 'python' })
+Plug 'klen/python-mode', rubix#plug#cond(g:rubix_python_mode, { 'for': 'python' })
 
 " run a command and show its result quickly
 Plug 'thinca/vim-quickrun'
 
-Plug 'racer-rust/vim-racer', Cond(g:rubix_rust_racer, { 'for': 'rust' })
+Plug 'racer-rust/vim-racer', rubix#plug#cond(g:rubix_rust_racer, { 'for': 'rust' })
 
 " shows recently used files, bookmarks and sessions
 Plug 'mhinz/vim-startify'
@@ -69,8 +69,8 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 
 " syntax checking
-Plug 'scrooloose/syntastic', Cond(g:rubix_syntax == 'syntastic')
-Plug 'neomake/neomake', Cond(g:rubix_syntax == 'neomake')
+Plug 'scrooloose/syntastic', rubix#plug#cond(g:rubix_syntax == 'syntastic')
+Plug 'neomake/neomake', rubix#plug#cond(g:rubix_syntax == 'neomake')
 
 " text filtering and alignment
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
@@ -84,7 +84,7 @@ Plug 'reedes/vim-textobj-quote'
 " improving on vim's native sentence text object and motion, depends on kana/vim-textobject-user
 Plug 'reedes/vim-textobj-sentence'
 
-Plug 'tmux-plugins/vim-tmux-focus-events', Cond(exists('$TMUX'))
+Plug 'tmux-plugins/vim-tmux-focus-events', rubix#plug#cond(exists('$TMUX'))
 
 " display your undo history in a graph
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
@@ -160,9 +160,5 @@ Plug 'tpope/vim-endwise'
 
 " Add plugins to &runtimepath
 call plug#end()
-
-" required
-filetype plugin indent on
-syntax enable
 
 execute 'source' fnameescape('~/.vim/rc/plugins.post.vim')

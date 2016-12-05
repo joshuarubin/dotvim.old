@@ -43,15 +43,9 @@ if executable('racer') && !empty($RUST_SRC_PATH)
   let g:rubix_rust_racer = 1
 endif
 
-" enable omni completion
-autocmd MyAutoCmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd MyAutoCmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd MyAutoCmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd MyAutoCmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd MyAutoCmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd MyAutoCmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-autocmd MyAutoCmd TermOpen term://* set winfixheight
+if has('nvim')
+  autocmd MyAutoCmd TermOpen term://* set winfixheight
+endif
 
 " plugin specific configuration that is too short to justify its own file
 
@@ -69,7 +63,6 @@ let g:hybrid_reduced_contrast = 1
 
 " neco-ghc
 let g:haskellmode_completion_ghc = 0
-autocmd MyAutoCmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " vim-polyglot
 let g:jsx_ext_required = 0
@@ -91,24 +84,12 @@ let g:lua_complete_dynamic = 0 " interferes with YouCompleteMe
 let g:vimpager = {}
 let g:vimpager.passthrough = 0
 let g:no_cecutil_maps = 1
-autocmd MyAutoCmd FileType man :Page
 
 " startify
-let g:startify_session_dir = GetCacheDir("sessions")
+let g:startify_session_dir = rubix#cache#dir("sessions")
 let g:startify_change_to_vcs_root = 1
 let g:startify_show_sessions = 1
 let g:startify_session_persistence = 1
-autocmd MyAutoCmd FileType startify setlocal nospell
-
-" textobj-quote
-autocmd MyAutoCmd FileType markdown call textobj#quote#init()
-autocmd MyAutoCmd FileType textile  call textobj#quote#init()
-autocmd MyAutoCmd FileType text     call textobj#quote#init({"educate": 0})
-
-" textobj-sentence
-autocmd MyAutoCmd FileType markdown call textobj#sentence#init()
-autocmd MyAutoCmd FileType textile  call textobj#sentence#init()
-autocmd MyAutoCmd FileType text     call textobj#sentence#init()
 
 " quickrun
 let g:quickrun_config = {}
@@ -196,7 +177,7 @@ let g:ycm_semantic_triggers =  {
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_auto_delimiter = 1
-let g:neocomplete#data_directory=GetCacheDir("neocomplete")
+let g:neocomplete#data_directory=rubix#cache#dir("neocomplete")
 let g:neocomplete#auto_completion_start_length = 1
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
@@ -231,17 +212,12 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 let g:deoplete#sources#go#align_class = 1
 
 " neosnippet
-let g:neosnippet#data_directory = GetCacheDir("neosnippet")
+let g:neosnippet#data_directory = rubix#cache#dir("neosnippet")
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 " ultisnips
 let g:UltiSnipsExpandTrigger = "<c-k>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
-
-" yapf
-if executable("yapf")
-  autocmd MyAutoCmd FileType python autocmd BufWritePre <buffer> call YAPF()
-endif
 
 " netrw
 let g:netrw_winsize = -30 " absolute width of netrw window
@@ -258,7 +234,7 @@ let g:netrw_list_hide =
       \ ',' . join(map(split(&wildignore, ','), '"^".' . s:escape . '. "$"'), ',') .
       \ ',^\.\.\=/\=$' .
       \ ',' . netrw_gitignore#Hide()
-let g:netrw_home=GetCacheDir("netrw")
+let g:netrw_home=rubix#cache#dir("netrw")
 
 " load larger plugin specific configuration
 for f in split(glob('~/.vim/rc/plugins/*.vim'), '\n')

@@ -22,9 +22,8 @@ nnoremap <leader>, <c-w>p
 noremap <leader>= <c-w>=
 
 " formatting shortcuts
-" TODO(jrubin) use mqHmwgg=G`wzt`q like `R` (Reindent) noremap?
-nnoremap <leader>fef :call Preserve("normal gg=G")<cr>
-nnoremap <leader>f$ :call StripTrailingWhitespace()<cr>
+nnoremap <leader>fef :call rubix#preserve('normal gg=G')<cr>
+nnoremap <leader>f$ :call rubix#trim()<cr>
 vnoremap <leader>s :sort<cr>
 
 nnoremap <leader>w :w<cr>
@@ -51,7 +50,7 @@ nnoremap Q :q<cr>
 " W: Save
 nnoremap W :w<cr>
 
-" R: Reindent entire file TODO(jrubin) use Preserve()?
+" R: Reindent entire file TODO(jrubin) use rubix#preserve()?
 nnoremap R mqHmwgg=G`wzt`q
 
 " J: join without the cursor jumping around
@@ -187,9 +186,6 @@ nnoremap <silent> X :BufSurfForward<cr>
 " vimpager
 nnoremap <silent> <leader>v :Page<cr>
 
-" dash
-autocmd MyAutoCmd FileType python nmap <buffer> K <plug>DashSearch
-
 " easymotion (must be recursive)
 map f <plug>(easymotion-f)
 map t <plug>(easymotion-t)
@@ -253,14 +249,14 @@ if g:rubix_snippet == 'neosnippet'
   smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
   imap <expr> <tab> pumvisible() ? "\<c-n>" : (neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>")
   imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-  imap <expr> <cr> NeoSnippetCr()
+  imap <expr> <cr> rubix#neosnippet_cr()
 endif
 
 if g:rubix_snippet == 'ultisnips'
-  smap <expr> <tab> UltiSnipsTab()
-  imap <expr> <tab> UltiSnipsTab()
+  smap <expr> <tab> rubix#ultisnips_tab()
+  imap <expr> <tab> rubix#ultisnips_tab()
   imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-  imap <expr> <cr> UltiSnipsCr()
+  imap <expr> <cr> rubix#ultisnips_cr()
 endif
 
 " snippets handle the <cr> mapping, but since all (2) endwise mappings were
@@ -268,13 +264,7 @@ endif
 imap <expr> <c-x><cr> "<plug>AlwaysEnd"
 
 " tmux style navigation
-if exists("$TMUX")
-  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-l> :TmuxNavigateRight<cr>
-  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-j> :TmuxNavigateDown<cr>
-else
-  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-l> :wincmd l<cr>
-  autocmd MyAutoCmd FileType vimfiler nnoremap <buffer> <c-j> :wincmd j<cr>
-
+if !exists("$TMUX")
   nnoremap <c-h> <c-w>h
   nnoremap <c-j> <c-w>j
   nnoremap <c-k> <c-w>k
@@ -321,15 +311,6 @@ else
   endif
 endif
 
-" fzf
-if has("nvim")
-  " close fzf with <esc>
-  autocmd MyAutoCmd FileType fzf tnoremap <buffer> <esc> <esc>
-
-  " ensure <c-j> and <c-k> work properly within fzf window
-  autocmd MyAutoCmd FileType fzf tnoremap <buffer> <c-j> <c-j>
-  autocmd MyAutoCmd FileType fzf tnoremap <buffer> <c-k> <c-k>
-endif
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
@@ -346,13 +327,4 @@ nnoremap <silent> <c-s><c-d> :RgProjectDirPrompt<cr>
 nnoremap <silent> <c-s><c-f> :BLines<cr>
 
 " netrw
-noremap <silent> <c-n> :call ToggleNetrw()<cr>
-
-" vim-go
-autocmd MyAutoCmd FileType go nmap <buffer> <leader>r <plug>(go-run)
-autocmd MyAutoCmd FileType go nmap <buffer> <leader>b :call BuildGoFiles()<cr>
-autocmd MyAutoCmd FileType go nmap <buffer> <leader>t <plug>(go-test)
-autocmd MyAutoCmd FileType go nmap <buffer> <leader>e <plug>(go-rename)
-autocmd MyAutoCmd FileType go nmap <buffer> gd <plug>(go-def-vertical)
-autocmd MyAutoCmd FileType go nmap <buffer> <leader>i <plug>(go-info)
-autocmd MyAutoCmd FileType go nmap <buffer> <silent> K :ZbDoc<cr>
+noremap <silent> <c-n> :call rubix#toggle_netrw()<cr>
