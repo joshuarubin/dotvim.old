@@ -235,12 +235,10 @@ nnoremap <silent> <leader>gV :Gitv!<cr>
 
 if g:rubix_complete == 'neocomplete'
   imap <expr> <c-g> neocomplete#undo_completion()
-  imap <expr> <s-cr> pumvisible() ? neocomplete#smart_close_popup() . "\<cr>" : "\<cr>"
 endif
 
 if g:rubix_complete == 'deoplete'
   imap <expr> <c-g> deoplete#undo_completion()
-  imap <expr> <s-cr> pumvisible() ? deoplete#mappings#smart_close_popup() . "\<cr>" : "\<cr>"
 endif
 
 if g:rubix_snippet == 'neosnippet'

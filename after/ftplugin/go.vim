@@ -1,6 +1,5 @@
 " use real tabs in .go files, not spaces
-setlocal noexpandtab
-setlocal shiftwidth=4 tabstop=4 softtabstop=4
+setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
 
 command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
@@ -14,5 +13,6 @@ nmap <buffer> <leader>b :call rubix#go#build()<cr>
 nmap <buffer> <leader>t <plug>(go-test)
 nmap <buffer> <leader>e <plug>(go-rename)
 nmap <buffer> gd <plug>(go-def-vertical)
+nmap <buffer> <c-]> <plug>(go-def-vertical)
 nmap <buffer> <leader>i <plug>(go-info)
 nmap <buffer> <silent> K :ZbDoc<cr>
