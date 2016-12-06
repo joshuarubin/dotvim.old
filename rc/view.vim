@@ -3,6 +3,7 @@ set synmaxcol=256
 set list
 
 set listchars=tab:\│\ ,trail:•,extends:❯,precedes:❮,nbsp:.
+set fillchars=vert:│,fold:-
 
 set laststatus=2 " always show the statusline
 set title
