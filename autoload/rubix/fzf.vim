@@ -28,7 +28,7 @@ endfunction
 
 " rg command suffix, [options]
 function! rubix#fzf#rg_raw(command_suffix, ...)
-  return call('fzf#vim#grep', extend(['rg --no-heading --vimgrep --smart-case '.a:command_suffix, 1], a:000))
+  return call('fzf#vim#grep', extend(['rg --no-heading --vimgrep --smart-case --follow '.a:command_suffix, 1], a:000))
 endfunction
 
 function! rubix#fzf#rg_repeat(...)

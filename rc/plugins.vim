@@ -158,6 +158,9 @@ Plug 'osyo-manga/vim-over'
 " automatically add 'end', 'endfunction', 'endif', etc.
 Plug 'tpope/vim-endwise'
 
+" show indent guides with spaces (listchars already handles tabs)
+Plug 'Yggdroot/indentLine'
+
 " Add plugins to &runtimepath
 call plug#end()
 

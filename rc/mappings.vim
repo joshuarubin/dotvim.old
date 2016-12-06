@@ -10,7 +10,7 @@ nnoremap <leader>`` :qa!<cr>
 nnoremap <leader>q :qa<cr>
 
 " <leader>cd: Switch to the directory of the open buffer
-nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <leader>cd :lcd %:p:h<cr>:pwd<cr>
 
 " <leader>m: Maximize current split
 nnoremap <leader>m <c-w>_<c-w><bar>
@@ -28,14 +28,6 @@ vnoremap <leader>s :sort<cr>
 
 nnoremap <leader>w :w<cr>
 
-" bash like keys for the command line. These resemble personal zsh mappings
-cnoremap <c-a> <home>
-cnoremap <c-e> <end>
-
-" ctrl-[hl]: Move left/right by word
-cnoremap <c-h> <s-left>
-cnoremap <c-l> <s-right>
-
 cnoremap <c-j> <down>
 cnoremap <c-k> <up>
 cnoremap <c-f> <left>
@@ -50,15 +42,12 @@ nnoremap Q :q<cr>
 " W: Save
 nnoremap W :w<cr>
 
-" R: Reindent entire file TODO(jrubin) use rubix#preserve()?
-nnoremap R mqHmwgg=G`wzt`q
-
 " J: join without the cursor jumping around
-"nnoremap J mzJ`z
+nnoremap J mzJ`z
 
 " j, k: move up and down by row (of a wrapped line), not line
-" nnoremap j gj
-" nnoremap k gk
+nnoremap j gj
+nnoremap k gk
 
 " Y: yank from the cursor to the end of the line (like D and C)
 nnoremap Y y$
@@ -82,17 +71,8 @@ nnoremap <c-s><c-r> :%s/<c-r><c-w>//gc<left><left><left>
 " ctrl-w: Delete previous word, create undo point
 inoremap <c-w> <c-g>u<c-w>
 
-" ctrl-a: Go to beginning of line
-inoremap <c-a> <esc>I
-
 " ctrl-s: Save
 inoremap <c-s> <esc>:w<cr>
-
-" ctrl-f: Move cursor left
-inoremap <c-f> <Left>
-
-" ctrl-g: Move cursor right
-inoremap <c-g> <Right>
 
 inoremap <expr> <down> pumvisible() ? "\<c-n>" : "\<down>"
 inoremap <expr> <up>   pumvisible() ? "\<c-p>" : "\<up>"
@@ -309,6 +289,7 @@ if !exists("$TMUX")
   endif
 endif
 
+" fzf
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)

@@ -14,9 +14,6 @@ set matchpairs+=<:>
 set hidden               " hide buffers when they are abandoned
 set autoread             " reload files changed outside vim
 set infercase " ignore case on insert completion
-" set foldenable
-" set foldmethod=syntax
-" set foldlevelstart=99
 
 if executable("rg")
   set grepprg=rg\ --no-heading\ --vimgrep\ --smart-case\ --follow
@@ -38,9 +35,7 @@ set virtualedit=block
 autocmd MyAutoCmd WinEnter * checktime
 
 " disable paste
-autocmd MyAutoCmd InsertLeave *
-      \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
-      \ if &l:diff | diffupdate | endif
+autocmd MyAutoCmd InsertLeave * if &paste | set nopaste mouse=a | echo 'nopaste' | endif
 
 " update diff
 autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif

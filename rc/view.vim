@@ -2,11 +2,7 @@ set synmaxcol=256
 
 set list
 
-" if has("gui_running")
-"   set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
-" else
-  set listchars=tab:\ \ ,trail:•,extends:❯,precedes:❮,nbsp:.
-" endif
+set listchars=tab:\│\ ,trail:•,extends:❯,precedes:❮,nbsp:.
 
 set laststatus=2 " always show the statusline
 set title
@@ -28,7 +24,6 @@ set novisualbell " no sounds
 set wildmenu " show list for autocomplete
 set wildmode=list:longest,full
 
-
 if v:version > 703 || v:version == 703 && has("patch072")
   set wildignorecase
 endif
@@ -48,7 +43,6 @@ set completeopt=longest,menuone " auto complete setting
 set nospell
 set splitright
 set splitbelow
-" set winheight=50 " sensible heights for splits
 set winheight=10
 set winminheight=1
 set ttyfast " assume fast terminal connection
