@@ -2,6 +2,7 @@ let g:buftabline_show=1
 let g:buftabline_numbers=1
 let g:buftabline_indicators=1
 let g:buftabline_separators=1
+
 let g:lightline_tagbar_disabled=1
 let g:lightline_readonly_filetypes = ["help", "tagbar", "man", "qf"]
 let g:lightline_filetype_mode_filetypes = ["help", "man", "fzf", "tagbar", "qf"]

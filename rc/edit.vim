@@ -86,3 +86,4 @@ autocmd MyAutoCmd BufReadPost *
 autocmd MyAutoCmd BufWritePre * call rubix#auto_trim()
 
 command! -nargs=* Only call rubix#only()
+command! Kwbd call rubix#kwbd(1)
