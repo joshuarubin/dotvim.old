@@ -43,11 +43,11 @@ nnoremap Q :q<cr>
 nnoremap W :w<cr>
 
 " J: join without the cursor jumping around
-nnoremap J mzJ`z
+" nnoremap J mzJ`z
 
 " j, k: move up and down by row (of a wrapped line), not line
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 
 " Y: yank from the cursor to the end of the line (like D and C)
 nnoremap Y y$
@@ -165,12 +165,6 @@ nnoremap <silent> X :BufSurfForward<cr>
 
 " vimpager
 nnoremap <silent> <leader>v :Page<cr>
-
-" easymotion (must be recursive)
-map f <plug>(easymotion-f)
-map t <plug>(easymotion-t)
-map F <plug>(easymotion-F)
-map T <plug>(easymotion-T)
 
 " tagbar
 nnoremap <silent> <c-g> :TagbarToggle<cr>

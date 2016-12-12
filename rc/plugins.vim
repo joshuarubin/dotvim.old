@@ -32,9 +32,6 @@ Plug 'Shougo/context_filetype.vim', rubix#plug#cond(g:rubix_shougo)
 " asynchronous build and test dispatcher
 Plug 'tpope/vim-dispatch'
 
-" vim motions on speed!
-Plug 'Lokaltog/vim-easymotion'
-
 " a git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv', { 'on': 'Gitv' }

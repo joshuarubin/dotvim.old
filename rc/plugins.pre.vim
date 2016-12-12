@@ -108,14 +108,6 @@ let g:pymode_options  = 0
 let g:pymode_rope     = 0  " disable to fix conflict with jedi
 let g:pymode_doc_bind = "" " disable, use jedi instead
 
-" easymotion
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_startofline = 0
-let g:EasyMotion_move_highlight = 0
-highlight link EasyMotionTarget WarningMsg
-highlight link EasyMotionShade  Comment
-
 " jedi
 let g:jedi#popup_on_dot           = 0
 let g:jedi#use_splits_not_buffers = "bottom"
