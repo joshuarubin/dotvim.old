@@ -235,6 +235,7 @@ let g:indentLine_first_char = '│'
 let g:indentLine_setConceal = 0
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_fileTypeExclude = ['help', 'man']
+let g:indentLine_bufNameExclude = ['^term:\/\/.*']
 
 " load larger plugin specific configuration
 for f in split(glob('~/.vim/rc/plugins/*.vim'), '\n')
