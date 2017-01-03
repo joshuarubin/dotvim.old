@@ -95,6 +95,7 @@ Plug 'airblade/vim-gitgutter'
 " full featured go development environment support for vim
 Plug 'fatih/vim-go'
 Plug 'garyburd/go-explorer'
+Plug 'godoctor/godoctor.vim'
 
 " lua
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
@@ -158,7 +159,9 @@ Plug 'tpope/vim-endwise'
 " show indent guides with spaces (listchars already handles tabs)
 Plug 'Yggdroot/indentLine'
 
-" Add plugins to &runtimepath
+" Add plugins to &runtimepath, and:
+" filetype plugin indent on
+" syntax enable
 call plug#end()
 
 execute 'source' fnameescape('~/.vim/rc/plugins.post.vim')

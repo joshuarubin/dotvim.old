@@ -1,4 +1,5 @@
 set synmaxcol=256
+syntax sync minlines=256
 
 set list
 

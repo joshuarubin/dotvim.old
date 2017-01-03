@@ -6,6 +6,7 @@ endif
 
 set encoding=utf-8 " set encoding for text
 set dictionary=/usr/share/dict/words
+set regexpengine=1
 
 " prefer locally installed python
 if executable("/usr/local/bin/python")
