@@ -167,7 +167,8 @@ nnoremap <silent> X :BufSurfForward<cr>
 nnoremap <silent> <leader>v :Page<cr>
 
 " tagbar
-nnoremap <silent> <c-g> :TagbarToggle<cr>
+nnoremap <silent> <leader>t :TagbarToggle<cr>
+nnoremap <silent> <leader>2 :TagbarToggle<cr>
 
 " tabularize
 nnoremap <leader>a&     :Tabularize /&<cr>
