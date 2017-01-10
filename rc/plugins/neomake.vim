@@ -34,7 +34,26 @@ let g:neomake_markdown_mdl_args = [ '-r', '~MD013,~MD033' ]
 let g:neomake_c_clang_args = ['-fsyntax-only', '-Wall', '-Wextra', '-Weverything']
 
 " go
-let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
+let g:neomake_go_enabled_makers = [ 'go', 'zblint' ]
+
+let g:neomake_go_zblint_maker = {
+  \ 'exe': 'zb',
+  \ 'args': [
+  \   '--package',
+  \   '--log-level', 'INFO',
+  \   'lint',
+  \   '--fast',
+  \   '-n',
+  \ ],
+  \ 'append_file': 0,
+  \ 'cwd': '%:h',
+  \ 'errorformat':
+  \   '%E%f:%l:%c:%trror: %m,' .
+  \   '%W%f:%l:%c:%tarning: %m,' .
+  \   '%E%f:%l::%trror: %m,' .
+  \   '%W%f:%l::%tarning: %m'
+  \ }
+
 let g:neomake_go_gometalinter_maker = {
   \ 'args': [
   \   '--tests',
@@ -48,9 +67,10 @@ let g:neomake_go_gometalinter_maker = {
   \   '-E', 'errcheck',
   \   '-E', 'misspell',
   \   '-E', 'unused',
-  \   '%:p:h',
   \ ],
   \ 'append_file': 0,
+  \ 'cwd': '%:h',
+  \ 'mapexpr': 'neomake_bufdir . "/" . v:val',
   \ 'errorformat':
   \   '%E%f:%l:%c:%trror: %m,' .
   \   '%W%f:%l:%c:%tarning: %m,' .
