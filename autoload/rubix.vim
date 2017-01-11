@@ -314,20 +314,31 @@ function! rubix#prettier()
 
   " write the buffer to a temp file
   let l:tmp = fnameescape(tempname())
-  silent execute 'write ' . l:tmp
+  silent execute 'noautocmd write ' . l:tmp
 
-  " Call prettier with the current buffer
-  let l:formatted_text = system('prettier ' . l:tmp)
-
-  call delete(l:tmp)
-
+  " Call prettier with temp file
+  let l:out = system('prettier --write ' . l:tmp)
   if v:shell_error != 0
+    echoerr l:out
+    call delete(l:tmp)
     return
   endif
 
-  " Update the buffer.
+  " Call standard to fix the issues it can
+  let l:out = system('standard --plugin react --plugin flowtype --parser babel-eslint --fix ' . l:tmp)
+  " ignore errors, just using this for --fix
+
+  " Clear the old buffer
   execute '1,' . string(line('$')) . 'delete'
-  call setline(1, split(l:formatted_text, "\n"))
+
+  " Read in the new file
+  execute '0read' . l:tmp
+
+  " Delete the trailing newline
+  execute string(line('$')) . 'delete'
+
+  " Delete the temp file
+  call delete(l:tmp)
 
   " clean up: restore previous search history, and cursor position
   let @/=_s
