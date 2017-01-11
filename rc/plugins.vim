@@ -81,6 +81,7 @@ Plug 'reedes/vim-textobj-quote'
 " improving on vim's native sentence text object and motion, depends on kana/vim-textobject-user
 Plug 'reedes/vim-textobj-sentence'
 
+Plug 'christoomey/vim-tmux-navigator', rubix#plug#cond(exists('$TMUX'))
 Plug 'tmux-plugins/vim-tmux-focus-events', rubix#plug#cond(exists('$TMUX'))
 
 " display your undo history in a graph
