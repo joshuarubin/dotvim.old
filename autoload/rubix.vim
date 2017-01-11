@@ -306,6 +306,34 @@ function! rubix#yapf()
   call cursor(l, c)
 endfunction
 
+function! rubix#prettier()
+  " preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+
+  " write the buffer to a temp file
+  let l:tmp = fnameescape(tempname())
+  silent execute 'write ' . l:tmp
+
+  " Call prettier with the current buffer
+  let l:formatted_text = system('prettier ' . l:tmp)
+
+  call delete(l:tmp)
+
+  if v:shell_error != 0
+    return
+  endif
+
+  " Update the buffer.
+  execute '1,' . string(line('$')) . 'delete'
+  call setline(1, split(l:formatted_text, "\n"))
+
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
 function! rubix#toggle_netrw() abort
   if exists('s:is_open')
     " close it
@@ -336,7 +364,7 @@ endfunction
 "
 "here is a more exotic version of my original Kwbd script
 "delete the buffer; keep windows; create a scratch buffer if no buffers left
-function rubix#kwbd(kwbdStage)
+function! rubix#kwbd(kwbdStage)
   if(a:kwbdStage == 1)
     if(!buflisted(winbufnr(0)))
       execute ':confirm :bdelete'

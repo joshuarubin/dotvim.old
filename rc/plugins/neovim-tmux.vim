@@ -33,7 +33,7 @@ call s:tmux_bind_key('s', ':split<cr>', ['n', 'v', 'i', 't'])
 call s:tmux_bind_key('v', ':vsplit<cr>', ['n', 'v', 'i', 't'])
 
 " <c-a>t opens a terminal in the currentbuffer
-call s:tmux_bind_key('t', ':terminal<cr>', ['n', 'v', 'i'])
+call s:tmux_bind_key('t', ':enew\|call termopen(&shell." -l")\|startinsert<cr>', ['n', 'v', 'i'])
 
 " <c-a>a switches to the previous tab
 call s:tmux_bind_key('a', ':call rubix#last_tab()<cr>', ['n', 'v', 'i', 't'])

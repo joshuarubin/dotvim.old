@@ -1,10 +1,8 @@
-let g:syntastic_javascript_jshint_args = "--config ~/.vim/misc/jshint.config.json"
-let g:syntastic_javascript_eslint_args = "--config ~/.vim/misc/eslint.config.json"
-let g:syntastic_javascript_standard_args = "--config ~/.vim/misc/eslint.config.json"
+let g:syntastic_javascript_standard_args = "--plugin react --plugin flowtype --parser babel-eslint"
 let g:syntastic_javascript_checkers = ["standard"]
 let g:syntastic_python_checkers = ["python", "flake8"]
 let g:syntastic_typescript_tsc_args = "-t ES5 --module commonjs"
-let g:syntastic_typescript_tslint_args = "-c ~/.vim/tslint.config.json"
+let g:syntastic_typescript_tslint_args = "-c ~/.vim/misc/tslint.config.json"
 let g:syntastic_typescript_checkers = ["tsc", "tslint"]
 let g:syntastic_coffee_coffeelint_args = "--csv -f ~/.vim/misc/coffeelint.config.json"
 let g:syntastic_error_symbol = '✖'

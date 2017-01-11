@@ -8,13 +8,15 @@ let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 
 " javascript
-let g:neomake_javascript_jshint_args = [ '--verbose', '--config', '~/.vim/misc/jshint.config.json' ]
-let g:neomake_javascript_eslint_args = [ '-f', 'compact', '--config', '~/.vim/misc/eslint.config.json' ]
-let g:neomake_javascript_standard_args = [ '--config', '~/.vim/misc/eslint.config.json' ]
+let g:neomake_javascript_standard_args = [
+  \   '--plugin', 'react',
+  \   '--plugin', 'flowtype',
+  \   '--parser', 'babel-eslint',
+  \ ]
 let g:neomake_javascript_enabled_makers = [ 'standard' ]
 
 " jsx (superset of javascript)
-let g:neomake_jsx_enabled_makers = ['jshint', 'standard']
+let g:neomake_jsx_enabled_makers = ['standard']
 
 " typescript
 let g:neomake_typescript_tsc_args = [ '-t', 'ES5', '--module', 'commonjs' ]
