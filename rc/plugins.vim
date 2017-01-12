@@ -116,9 +116,6 @@ Plug 'tpope/vim-eunuch'
 " simplifies the transition between multi-line and single-line code
 Plug 'AndrewRadev/splitjoin.vim'
 
-" automatically closes html tags once you finish typing them
-Plug 'amirh/HTML-AutoCloseTag', { 'for': ['html', 'xml'] }
-
 " matchparen for html tags
 Plug 'gregsexton/MatchTag', { 'for': ['html', 'xml'] }
 
