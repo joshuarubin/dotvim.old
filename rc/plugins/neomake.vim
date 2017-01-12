@@ -1,3 +1,6 @@
+let g:neomake_serialize = 1
+let g:neomake_serialize_abort_on_error = 1
+
 if g:rubix_syntax == 'neomake'
   autocmd MyAutoCmd BufWritePost * if expand('%') !~ '^fugitive:\/\/' | Neomake | endif
 endif
@@ -36,7 +39,12 @@ let g:neomake_markdown_mdl_args = [ '-r', '~MD013,~MD033' ]
 let g:neomake_c_clang_args = ['-fsyntax-only', '-Wall', '-Wextra', '-Weverything']
 
 " go
-let g:neomake_go_enabled_makers = [ 'go', 'zblint' ]
+let g:neomake_go_enabled_makers = [ 'gofmt', 'go', 'zblint' ]
+
+let g:neomake_go_gofmt_maker = {
+  \ 'args': ['-l'],
+  \ 'errorformat': '%E%f:%l:%c: %m,'
+  \ }
 
 let g:neomake_go_zblint_maker = {
   \ 'exe': 'zb',

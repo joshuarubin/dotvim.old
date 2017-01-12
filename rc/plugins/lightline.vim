@@ -22,7 +22,7 @@ let g:lightline = {
       \   'right': [
       \     [ 'neomake', 'syntastic', 'lineinfo' ],
       \     [ 'fileformat' ],
-      \     [ 'gojob', 'gotype', 'tagbar', 'filetype' ]
+      \     [ 'go', 'gotype', 'tagbar', 'filetype' ]
       \   ],
       \ },
       \ 'inactive': {
@@ -34,7 +34,7 @@ let g:lightline = {
       \   'right': [
       \     [ 'lineinfo' ],
       \     [ 'fileformat' ],
-      \     [ 'gojob', 'filetype' ]
+      \     [ 'go', 'filetype' ]
       \   ]
       \ },
       \ 'component_function': {
@@ -48,7 +48,7 @@ let g:lightline = {
       \   'spell':        'rubix#lightline#spell',
       \   'paste':        'rubix#lightline#paste',
       \   'tagbar':       'rubix#lightline#tagbar',
-      \   'gojob':        'go#jobcontrol#Statusline',
+      \   'go':           'go#statusline#Show',
       \   'termtitle':    'rubix#lightline#term_title',
       \ },
       \ 'component_expand': {

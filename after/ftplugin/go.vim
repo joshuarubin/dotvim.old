@@ -9,7 +9,7 @@ command! -nargs=* -complete=customlist,ge#complete#complete_package_id ZbDoc :ex
 
 " vim-go
 nmap <buffer> <leader>r <plug>(go-run)
-nmap <buffer> <leader>b :call rubix#go#build()<cr>
+nmap <buffer> <silent> <leader>b :call rubix#go#build()<cr>
 nmap <buffer> <leader>t <plug>(go-test)
 nmap <buffer> <leader>e <plug>(go-rename)
 nmap <buffer> gd <plug>(go-def-vertical)
