@@ -73,7 +73,7 @@ Plug 'neomake/neomake', rubix#plug#cond(g:rubix_syntax == 'neomake')
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 " displays tags in a window, ordered by scope http://majutsushi.github.com/tagbar/
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 
 " use ‘curly’ quote characters, depends on kana/vim-textobject-user
 Plug 'reedes/vim-textobj-quote'
