@@ -70,4 +70,3 @@ set numberwidth=1
 autocmd MyAutoCmd BufEnter * call rubix#update_title()
 autocmd MyAutoCmd InsertEnter * :setlocal nohlsearch
 autocmd MyAutoCmd InsertLeave * :setlocal hlsearch
-autocmd MyAutoCmd TabLeave * call rubix#tab_leave()

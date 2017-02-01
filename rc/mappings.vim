@@ -12,10 +12,10 @@ nnoremap <leader>q :qa<cr>
 " <leader>cd: Switch to the directory of the open buffer
 nnoremap <leader>cd :lcd %:p:h<cr>:pwd<cr>
 
-" <leader>m: Maximize current split
-nnoremap <leader>m <c-w>_<c-w><bar>
+" <leader>m: Toggle Maximize current window
+nnoremap <leader>m :call rubix#maximize_toggle()<cr>
 
-" <leader>,: Switch to previous split
+" <leader>,: Switch to previous window
 nnoremap <leader>, <c-w>p
 
 " adjust viewports to the same size

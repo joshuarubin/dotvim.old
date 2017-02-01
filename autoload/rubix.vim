@@ -200,20 +200,20 @@ function! rubix#trim()
   call rubix#preserve("%s/\\s\\+$//e")
 endfunction
 
-function! rubix#rename_tab()
-  if exists('*gettabvar')
-    let name = input('Tab name: ')
-    let t:title = name
+function! rubix#maximize_toggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
   endif
-endfunction
-
-let s:last_tab = 1
-function! rubix#last_tab()
-  :execute "tabnext ".s:last_tab
-endfunction
-
-function! rubix#tab_leave()
-  let s:last_tab = tabpagenr()
 endfunction
 
 function! rubix#only()
