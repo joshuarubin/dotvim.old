@@ -201,15 +201,15 @@ function! rubix#trim()
 endfunction
 
 function! rubix#maximize_toggle()
-  if tabpagenr('$') > 1
-    let curpos = getcurpos()
+  let curpos = getcurpos()
+  if exists('s:maximized')
     tabclose
-    call setpos(".", curpos)
+    unlet s:maximized
   else
-    let curpos = getcurpos()
     tabedit %
-    call setpos(".", curpos)
+    let s:maximized = 1
   endif
+  call setpos(".", curpos)
 endfunction
 
 function! rubix#only()
