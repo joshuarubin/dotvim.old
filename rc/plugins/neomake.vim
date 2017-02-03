@@ -13,7 +13,7 @@ if exists("$ALACRITTY_PROGRAM")
   let g:neomake_info_sign    = {'text': 'I>', 'texthl': 'NeomakeInfoSign'}
 else
   let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
-  let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
+  let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'NeomakeWarningSign'}
   let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
   let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 endif
@@ -50,7 +50,7 @@ let g:neomake_c_clang_args = ['-fsyntax-only', '-Wall', '-Wextra', '-Weverything
 let g:neomake_go_enabled_makers = [ 'gofmt', 'go', 'zblint' ]
 
 let g:neomake_go_gofmt_maker = {
-  \ 'args': ['-l'],
+  \ 'args': ['-l', '-e'],
   \ 'errorformat': '%E%f:%l:%c: %m,'
   \ }
 
@@ -81,10 +81,12 @@ let g:neomake_go_gometalinter_maker = {
   \   '-D', 'aligncheck',
   \   '-D', 'dupl',
   \   '-D', 'gocyclo',
-  \   '-D', 'gotype',
+  \   '-D', 'structcheck',
   \   '-E', 'errcheck',
-  \   '-E', 'misspell',
+  \   '-E', 'gofmt',
+  \   '-E', 'goimports',
   \   '-E', 'unused',
+  \   '-E', 'misspell',
   \ ],
   \ 'append_file': 0,
   \ 'cwd': '%:h',

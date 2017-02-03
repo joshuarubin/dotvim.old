@@ -7,7 +7,7 @@ let g:syntastic_typescript_checkers = ["tsc", "tslint"]
 let g:syntastic_coffee_coffeelint_args = "--csv -f ~/.vim/misc/coffeelint.config.json"
 let g:syntastic_error_symbol = '✖'
 let g:syntastic_style_error_symbol = '✠'
-let g:syntastic_warning_symbol = '∆'
+let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_warning_symbol = '≈'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
@@ -20,10 +20,9 @@ let g:syntastic_go_gometalinter_args = "
   \ --concurrency=3
   \ --fast
   \ -D aligncheck
-  \ -D dupl
   \ -D gocyclo
-  \ -D gotype
-  \ -E errcheck
+  \ -E gofmt
+  \ -E goimports
   \ -E misspell
   \ -E unused
   \"

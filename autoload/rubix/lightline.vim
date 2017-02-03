@@ -5,7 +5,7 @@ function! rubix#lightline#mode()
 
   let fname = expand('%:t')
 
-  if fname == 'ControlP'
+  if fname ==# 'ControlP'
     return 'CTRLP'
   endif
 
@@ -158,7 +158,6 @@ function! rubix#lightline#status_line_info()
     return ""
   endif
 
-  " return '%3p%%  %l/%L☰ :%3v'
   return printf('%3.0f%%  %d/%d☰ :%3d',
     \   round((line('.') * 1.0) / line('$') * 100),
     \   line('.'),
@@ -172,7 +171,7 @@ function! rubix#lightline#line_info()
 endfunction
 
 function! rubix#lightline#go_type()
-  if &filetype == 'go'
+  if &filetype ==# 'go'
     return go#complete#GetInfo()
   endif
 
@@ -224,14 +223,18 @@ function! s:filename(fmt)
     return ""
   endif
 
+  if &filetype ==# 'help'
+    return expand('%:t')
+  endif
+
   let fname = expand(a:fmt)
 
   if fname =~ '^term:\/\/'
-    " return the "short filename" (e.g. shell name)
+    " return the 'short filename' (e.g. shell name)
     return s:filename('%:t')
   endif
 
-  if fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item')
+  if fname ==# 'ControlP' && has_key(g:lightline, 'ctrlp_item')
     return g:lightline.ctrlp_item
   endif
 

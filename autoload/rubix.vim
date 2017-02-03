@@ -220,10 +220,11 @@ function! rubix#only()
       let visible[b] = 1
     endfor
   endfor
+
   " close any buffer that are loaded and not visible
   let l:tally = 0
   for b in range(1, bufnr('$'))
-    if bufloaded(b) && !has_key(visible, b) && !getbufvar(b, "&mod")
+    if bufexists(b) && !has_key(visible, b) && !getbufvar(b, "&mod")
       let l:tally += 1
       exe 'bw ' . b
     endif

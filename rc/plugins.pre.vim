@@ -87,9 +87,13 @@ let g:no_cecutil_maps = 1
 
 " startify
 let g:startify_session_dir = rubix#cache#dir("sessions")
-let g:startify_change_to_vcs_root = 1
 let g:startify_show_sessions = 1
 let g:startify_session_persistence = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_update_oldfiles = 1
+let g:startify_skiplist = add(
+      \ map(split(&rtp, ','), 'escape(resolve(v:val . "/doc"), "\\")'),
+      \ 'COMMIT_EDITMSG')
 
 " quickrun
 let g:quickrun_config = {}

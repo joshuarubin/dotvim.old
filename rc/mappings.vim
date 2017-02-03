@@ -293,7 +293,7 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <silent> <c-p> :FilesProjectDir<cr>
 nnoremap <silent> <c-b> :Buffers<cr>
-nnoremap <silent> <c-f> :History<cr>
+nnoremap <silent> <c-f> :RubixHistory<cr>
 nnoremap <silent> <c-s><c-a> :RgRepeat<cr>
 nnoremap <silent> <c-s><c-s> :RgProjectDirCursor<cr>
 nnoremap <silent> <c-s><c-d> :RgProjectDirPrompt<cr>

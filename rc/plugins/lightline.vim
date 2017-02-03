@@ -52,10 +52,10 @@ let g:lightline = {
       \   'termtitle':    'rubix#lightline#term_title',
       \ },
       \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \   'neomake':   'neomake#statusline#LoclistStatus',
-      \   'lineinfo':  'rubix#lightline#line_info',
       \   'gotype':    'rubix#lightline#go_type',
+      \   'lineinfo':  'rubix#lightline#line_info',
+      \   'neomake':   'neomake#statusline#LoclistStatus',
+      \   'syntastic': 'SyntasticStatuslineFlag',
       \ },
       \ 'component_type': {
       \   'syntastic': 'error',

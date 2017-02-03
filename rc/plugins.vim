@@ -42,7 +42,7 @@ Plug 'junegunn/fzf.vim'
 
 " dark color scheme
 " colorscheme is in ~/.vim/colors with changes from w0ng/vim-hybrid
-Plug 'cocopon/lightline-hybrid.vim'
+Plug 'joshuarubin/lightline-hybrid.vim'
 
 " awesome python autocompletion
 Plug 'davidhalter/jedi-vim', rubix#plug#cond(g:rubix_jedi, { 'for': 'python' })

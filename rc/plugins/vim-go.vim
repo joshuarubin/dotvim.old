@@ -35,9 +35,22 @@ if has("nvim")
 endif
 
 let g:go_metalinter_enabled  = [
-\   'vet',
-\   'golint',
-\   'errcheck',
-\   'misspell',
-\   'unused',
+      \ "deadcode",
+      \ "errcheck",
+      \ "gas",
+      \ "goconst",
+      \ "gofmt",
+      \ "goimports",
+      \ "golint",
+      \ "gosimple",
+      \ "gotype",
+      \ "ineffassign",
+      \ "interfacer",
+      \ "misspell",
+      \ "staticcheck",
+      \ "unconvert",
+      \ "unused",
+      \ "varcheck",
+      \ "vet",
+      \ "vetshadow",
 \ ]
