@@ -260,3 +260,41 @@ function! s:modified()
 
   return "[-]"
 endfunction
+
+function! rubix#lightline#neomakeerror()
+  let l:res = neomake#statusline#LoclistStatus()
+
+  let l:e_w = split(l:res)
+  if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
+    if exists("$ALACRITTY_PROGRAM")
+      return 'E' . matchstr(l:e_w[0], '\d\+')
+    else
+      return '⨉ ' . matchstr(l:e_w[0], '\d\+')
+    endif
+  endif
+
+  return ''
+endfunction
+
+function! rubix#lightline#neomakewarn()
+  let l:res = neomake#statusline#LoclistStatus()
+
+  let l:e_w = split(l:res)
+  if len(l:e_w) == 2
+    if exists("$ALACRITTY_PROGRAM")
+      return 'W' . matchstr(l:e_w[1], '\d\+')
+    else
+      return '⚠ ' . matchstr(l:e_w[1], '\d\+')
+    endif
+  endif
+
+  if match(l:e_w, 'W') > -1
+    if exists("$ALACRITTY_PROGRAM")
+      return 'W' . matchstr(l:e_w[0], '\d\+')
+    else
+      return '⚠ ' . matchstr(l:e_w[0], '\d\+')
+    endif
+  endif
+
+  return ''
+endfunction

@@ -8,12 +8,12 @@ endif
 if exists("$ALACRITTY_PROGRAM")
   " this is temporary until alacritty supports fallback fonts
   let g:neomake_error_sign   = {'text': 'E>', 'texthl': 'ErrorMsg'}
-  let g:neomake_warning_sign = {'text': 'W>', 'texthl': 'WarningMsg'}
+  let g:neomake_warning_sign = {'text': 'W>', 'texthl': 'Type'}
   let g:neomake_message_sign = {'text': '>>', 'texthl': 'NeomakeMessageSign'}
   let g:neomake_info_sign    = {'text': 'I>', 'texthl': 'NeomakeInfoSign'}
 else
-  let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
-  let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'NeomakeWarningSign'}
+  let g:neomake_error_sign   = {'text': '⨉', 'texthl': 'ErrorMsg'}
+  let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'Type'}
   let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
   let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 endif

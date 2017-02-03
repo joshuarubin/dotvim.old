@@ -20,7 +20,7 @@ let g:lightline = {
       \     [ 'filename', 'termtitle' ],
       \   ],
       \   'right': [
-      \     [ 'neomake', 'syntastic', 'lineinfo' ],
+      \     [ 'neomakeerror', 'neomakewarn', 'syntastic', 'lineinfo' ],
       \     [ 'fileformat' ],
       \     [ 'go', 'gotype', 'tagbar', 'filetype' ]
       \   ],
@@ -52,14 +52,16 @@ let g:lightline = {
       \   'termtitle':    'rubix#lightline#term_title',
       \ },
       \ 'component_expand': {
-      \   'gotype':    'rubix#lightline#go_type',
-      \   'lineinfo':  'rubix#lightline#line_info',
-      \   'neomake':   'neomake#statusline#LoclistStatus',
-      \   'syntastic': 'SyntasticStatuslineFlag',
+      \   'gotype':       'rubix#lightline#go_type',
+      \   'lineinfo':     'rubix#lightline#line_info',
+      \   'neomakeerror': 'rubix#lightline#neomakeerror',
+      \   'neomakewarn':  'rubix#lightline#neomakewarn',
+      \   'syntastic':    'SyntasticStatuslineFlag',
       \ },
       \ 'component_type': {
-      \   'syntastic': 'error',
-      \   'neomake':   'error',
+      \   'syntastic':    'error',
+      \   'neomakeerror': 'error',
+      \   'neomakewarn':  'warning',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
