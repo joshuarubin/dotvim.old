@@ -160,6 +160,9 @@ Plug 'tpope/vim-endwise'
 " show indent guides with spaces (listchars already handles tabs)
 Plug 'Yggdroot/indentLine'
 
+" a simple vimscript test framework
+Plug 'junegunn/vader.vim'
+
 " Add plugins to &runtimepath, and:
 " filetype plugin indent on
 " syntax enable

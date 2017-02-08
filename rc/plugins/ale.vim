@@ -27,6 +27,11 @@ let g:ale_linters#go#gometalinter#args = [
       \ '-E', 'unused',
       \ ]
 
+
+let g:ale_javascript_standard_options = '--plugin react --plugin flowtype --parser babel-eslint'
+let g:ale_c_clang_options = '-std=c11 -Wall -Wextra -Weverything'
+
 let g:ale_linters = {
 \   'go': [ 'zblint' ],
+\   'javascript': [ 'standard' ],
 \}
