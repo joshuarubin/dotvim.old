@@ -207,15 +207,15 @@ nnoremap <silent> <leader>gf :Gfetch<cr>
 nnoremap <silent> <leader>gv :Gitv<cr>
 nnoremap <silent> <leader>gV :Gitv!<cr>
 
-if g:rubix_complete == 'neocomplete'
+if g:rubix_complete ==# 'neocomplete'
   imap <expr> <c-g> neocomplete#undo_completion()
 endif
 
-if g:rubix_complete == 'deoplete'
+if g:rubix_complete ==# 'deoplete'
   imap <expr> <c-g> deoplete#undo_completion()
 endif
 
-if g:rubix_snippet == 'neosnippet'
+if g:rubix_snippet ==# 'neosnippet'
   imap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<esc>\<c-w>k"
   smap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<c-w>k"
   smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
@@ -224,7 +224,7 @@ if g:rubix_snippet == 'neosnippet'
   imap <expr> <cr> rubix#neosnippet_cr()
 endif
 
-if g:rubix_snippet == 'ultisnips'
+if g:rubix_snippet ==# 'ultisnips'
   smap <expr> <tab> rubix#ultisnips_tab()
   imap <expr> <tab> rubix#ultisnips_tab()
   imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
@@ -236,7 +236,7 @@ endif
 imap <expr> <c-x><cr> "<plug>AlwaysEnd"
 
 " tmux style navigation
-if !exists("$TMUX")
+if !exists('$TMUX')
   nnoremap <c-h> <c-w>h
   nnoremap <c-j> <c-w>j
   nnoremap <c-k> <c-w>k
@@ -254,19 +254,19 @@ if !exists("$TMUX")
   " only overwrite if it is not already set
   " and check for smap and xmap separately (from vmap)
 
-  if maparg('<c-k>', 'x') == ''
+  if maparg('<c-k>', 'x') ==# ''
     xnoremap <c-k> <c-w>k
   endif
 
-  if maparg('<c-k>', 's') == ''
+  if maparg('<c-k>', 's') ==# ''
     snoremap <c-k> <c-w>k
   endif
 
-  if maparg('<c-k>', 'i') == ''
+  if maparg('<c-k>', 'i') ==# ''
     inoremap <c-k> <esc><c-w>k
   endif
 
-  if has("nvim")
+  if has('nvim')
     tnoremap <c-h> <c-\><c-n><c-w>h
     tnoremap <c-j> <c-\><c-n><c-w>j
     tnoremap <c-k> <c-\><c-n><c-w>k
@@ -299,7 +299,7 @@ nnoremap <silent> <c-s><c-s> :RgProjectDirCursor<cr>
 nnoremap <silent> <c-s><c-d> :RgProjectDirPrompt<cr>
 nnoremap <silent> <c-s><c-f> :BLines<cr>
 
-if has("nvim")
+if has('nvim')
   tnoremap <silent> <c-p> <c-\><c-n>:FilesProjectDir<cr>
   tnoremap <silent> <c-b> <c-\><c-n>:Buffers<cr>
 endif

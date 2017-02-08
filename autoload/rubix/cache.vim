@@ -1,11 +1,11 @@
-let s:cache_dir = "~/.vim/.cache/"
+let s:cache_dir = '~/.vim/.cache/'
 
-function! rubix#cache#dir(suffix)
-  let dir = resolve(expand(s:cache_dir . a:suffix))
+function! rubix#cache#dir(suffix) abort
+  let l:dir = resolve(expand(s:cache_dir . a:suffix))
 
-  if !isdirectory(expand(dir))
-    call mkdir(expand(dir), 'p')
+  if !isdirectory(expand(l:dir))
+    call mkdir(expand(l:dir), 'p')
   endif
 
-  return dir
+  return l:dir
 endfunction

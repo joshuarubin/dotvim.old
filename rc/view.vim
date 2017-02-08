@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 set synmaxcol=256
 syntax sync minlines=256
 
@@ -9,7 +11,7 @@ set fillchars=vert:│,fold:-
 set laststatus=2 " always show the statusline
 set title
 set linebreak " wrap lines at convenient points
-let &showbreak="↪ "
+let &showbreak='↪ '
 set whichwrap+=<,>,[,]
 
 if exists('+breakindent')
@@ -26,7 +28,7 @@ set novisualbell " no sounds
 set wildmenu " show list for autocomplete
 set wildmode=list:longest,full
 
-if v:version > 703 || v:version == 703 && has("patch072")
+if v:version > 703 || v:version == 703 && has('patch072')
   set wildignorecase
 endif
 
@@ -50,7 +52,7 @@ set winminheight=1
 set ttyfast " assume fast terminal connection
 set lazyredraw
 
-if has("conceal")
+if has('conceal')
   set conceallevel=2
   set concealcursor=niv
   set listchars+=conceal:Δ

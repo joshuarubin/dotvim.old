@@ -1,6 +1,6 @@
-let g:mapleader = ","
+let g:mapleader = ','
 
-if has("shada")
+if has('shada')
   set shada=!,'1000,<50,s10,h
 endif
 
@@ -9,26 +9,26 @@ set dictionary=/usr/share/dict/words
 set regexpengine=1
 
 " prefer locally installed python
-if executable("/usr/local/bin/python")
-  let g:python_host_prog = "/usr/local/bin/python"
+if executable('/usr/local/bin/python')
+  let g:python_host_prog = '/usr/local/bin/python'
 endif
 
-if executable("/usr/local/bin/python3")
-  let g:python3_host_prog = "/usr/local/bin/python3"
+if executable('/usr/local/bin/python3')
+  let g:python3_host_prog = '/usr/local/bin/python3'
 endif
 
 " persistent undo
-if has("persistent_undo")
+if has('persistent_undo')
   set undofile
-  let &undodir=rubix#cache#dir("undo")
+  let &undodir=rubix#cache#dir('undo')
 endif
 
 " backups
 set backup
-let &backupdir=rubix#cache#dir("backup")
+let &backupdir=rubix#cache#dir('backup')
 
 " swap files
-let &directory=rubix#cache#dir("swap")
+let &directory=rubix#cache#dir('swap')
 
 if has('termguicolors')
   " belongs in 'gui' but has to be set before plugins are loaded
@@ -41,7 +41,7 @@ if has('termguicolors')
 endif
 
 " gnome-terminal colors
-if &term =~ '^\(xterm\|screen\)$' && $COLORTERM == 'gnome-terminal'
+if &term =~? '^\(xterm\|screen\)$' && $COLORTERM ==? 'gnome-terminal'
   set t_Co=256
 endif
 

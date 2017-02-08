@@ -8,6 +8,6 @@ nmap <buffer> K <plug>DashSearch
 setlocal omnifunc=pythoncomplete#Complete
 
 " yapf
-if executable("yapf")
-  autocmd BufWritePre <buffer> call rubix#yapf()
+if executable('yapf')
+  autocmd MyAutoCmd BufWritePre <buffer> call rubix#yapf()
 endif

@@ -1,13 +1,13 @@
 set background=dark
 
-if has#colorscheme("hybrid")
+if has#colorscheme('hybrid')
   colorscheme hybrid
 endif
 
 set mouse=a " enable mouse usage (all modes)
 set mousehide
 
-if !has('nvim') && has("mouse_sgr")
+if !has('nvim') && has('mouse_sgr')
   set ttymouse=sgr
 endif
 
@@ -20,19 +20,19 @@ augroup END
 
 highlight Comment gui=italic cterm=italic
 
-if exists("neovim_dot_app")
-  call MacSetFont("Hasklig", 11)
-elseif has("gui_running")
-  if has("gui_macvim")
+if exists('neovim_dot_app')
+  call MacSetFont('Hasklig', 11)
+elseif has('gui_running')
+  if has('gui_macvim')
     set transparency=0
     set macligatures
     set guifont=Hasklig:h12
-  elseif has("gui_gtk")
+  elseif has('gui_gtk')
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
   endif
-elseif $TERM_PROGRAM == "iTerm.app"
+elseif $TERM_PROGRAM ==# 'iTerm.app'
   " different cursors for insert vs normal mode
-  if exists("$TMUX")
+  if exists('$TMUX')
     let &t_SI = "\<Esc>[3 q"
     let &t_EI = "\<Esc>[0 q"
   else

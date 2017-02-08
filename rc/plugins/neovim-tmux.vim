@@ -1,5 +1,5 @@
 " emulate tmux in neovim
-if exists("$TMUX") || !has("nvim")
+if exists('$TMUX') || !has('nvim')
   finish
 endif
 
@@ -7,16 +7,16 @@ let s:terminal_quit='<c-\><c-n>'
 let s:tmux_prefix='<c-a>'
 
 function! s:tmux_bind_key(k, v, modes) abort
-  for m in a:modes
-    if m == 't'
-      let cmd = s:terminal_quit.a:v
-    elseif m == 'i'
-      let cmd = '<ESC>'.a:v
+  for l:m in a:modes
+    if l:m ==# 't'
+      let l:cmd = s:terminal_quit.a:v
+    elseif l:m ==# 'i'
+      let l:cmd = '<ESC>'.a:v
     else
-      let cmd = a:v
+      let l:cmd = a:v
     endif
-    exec m.'noremap <silent> '.s:tmux_prefix.a:k.' '.cmd
-    exec m.'noremap <silent> '.s:tmux_prefix.'<c-'.a:k.'> '.cmd
+    exec l:m.'noremap <silent> '.s:tmux_prefix.a:k.' '.l:cmd
+    exec l:m.'noremap <silent> '.s:tmux_prefix.'<c-'.a:k.'> '.l:cmd
   endfor
 endfunction
 
@@ -51,8 +51,8 @@ call s:tmux_bind_key('w', ':buffers<cr>', ['n', 'v', 'i', 't'])
 call s:tmux_bind_key('o', '<c-w>w', ['n', 'v', 'i', 't'])
 
 " <c-a>N (where N is number key) switch to buffer N
-for i in [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  call s:tmux_bind_key(i, ':b'.i.'<cr>', ['n', 'v', 'i', 't'])
+for s:i in range(1, 9)
+  call s:tmux_bind_key(s:i, ':b'.s:i.'<cr>', ['n', 'v', 'i', 't'])
 endfor
 
 " <c-a>n switch to next buffer

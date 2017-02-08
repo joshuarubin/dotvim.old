@@ -1,5 +1,5 @@
 " fzf
-if has("nvim")
+if has('nvim')
   " close fzf with <esc>
   tnoremap <buffer> <esc> <esc>
 

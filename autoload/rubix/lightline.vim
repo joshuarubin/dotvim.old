@@ -1,6 +1,6 @@
 scriptencoding utf-8
 
-function! rubix#lightline#mode()
+function! rubix#lightline#mode() abort
   if s:is_filetype_mode_filetype()
     return toupper(&filetype)
   endif
@@ -14,7 +14,7 @@ function! rubix#lightline#mode()
   return lightline#mode()
 endfunction
 
-function! rubix#lightline#crypt()
+function! rubix#lightline#crypt() abort
   if exists('+key') && !empty(&key)
     return '🔒'
   endif
@@ -22,7 +22,7 @@ function! rubix#lightline#crypt()
   return ''
 endfunction
 
-function! rubix#lightline#fugitive()
+function! rubix#lightline#fugitive() abort
   try
     if expand('%:t') =~# 'Tagbar'
       return ''
@@ -47,15 +47,15 @@ function! rubix#lightline#fugitive()
   return ''
 endfunction
 
-function! rubix#lightline#filename()
+function! rubix#lightline#filename() abort
   return s:filename('%:.') . s:modified() . s:readonly()
 endfunction
 
-function! rubix#lightline#full_filename()
+function! rubix#lightline#full_filename() abort
   return s:filename('%:p') . s:modified() . s:readonly()
 endfunction
 
-function! rubix#lightline#fileformat()
+function! rubix#lightline#fileformat() abort
   if winwidth(0) < 70
     return ''
   endif
@@ -78,7 +78,7 @@ function! rubix#lightline#fileformat()
   return l:status_enc . '[' . &fileformat . ']'
 endfunction
 
-function! rubix#lightline#filetype()
+function! rubix#lightline#filetype() abort
   if winwidth(0) < 70
     return ''
   endif
@@ -94,7 +94,7 @@ function! rubix#lightline#filetype()
   return ''
 endfunction
 
-function! rubix#lightline#spell()
+function! rubix#lightline#spell() abort
   if &spell
     return &spelllang
   endif
@@ -102,7 +102,7 @@ function! rubix#lightline#spell()
   return ''
 endfunction
 
-function! rubix#lightline#paste()
+function! rubix#lightline#paste() abort
   if &paste
     return 'PASTE'
   endif
@@ -112,7 +112,7 @@ endfunction
 
 let s:lightline_tagbar_last_lookup_time = 0
 let s:lightline_tagbar_last_lookup_val = ''
-function! rubix#lightline#tagbar()
+function! rubix#lightline#tagbar() abort
   if exists('g:lightline_tagbar_disabled') && g:lightline_tagbar_disabled
     return ''
   endif
@@ -129,7 +129,7 @@ function! rubix#lightline#tagbar()
   return s:lightline_tagbar_last_lookup_val
 endfunction
 
-function! rubix#lightline#term_title()
+function! rubix#lightline#term_title() abort
   call rubix#update_title()
 
   if s:is_no_termtitle_filetype()
@@ -143,7 +143,7 @@ function! rubix#lightline#term_title()
   return ''
 endfunction
 
-function! rubix#lightline#status_line_info()
+function! rubix#lightline#status_line_info() abort
   if winwidth(0) < 70
     return ''
   endif
@@ -166,11 +166,11 @@ function! rubix#lightline#status_line_info()
     \ )
 endfunction
 
-function! rubix#lightline#line_info()
+function! rubix#lightline#line_info() abort
   return '%{rubix#lightline#status_line_info()}'
 endfunction
 
-function! rubix#lightline#go_type()
+function! rubix#lightline#go_type() abort
   if &filetype ==# 'go'
     return go#complete#GetInfo()
   endif
@@ -182,31 +182,31 @@ function! rubix#lightline#tagbar_status(current, sort, fname, ...) abort
   return lightline#statusline(0)
 endfunction
 
-function! s:is_filetype_mode_filetype()
+function! s:is_filetype_mode_filetype() abort
   return index(g:lightline_filetype_mode_filetypes, &filetype) >= 0
 endfunction
 
-function! s:is_no_lineinfo_filetype()
+function! s:is_no_lineinfo_filetype() abort
   return index(g:lightline_no_lineinfo_filetypes, &filetype) >= 0
 endfunction
 
-function! s:is_no_fileformat_filetype()
+function! s:is_no_fileformat_filetype() abort
   return index(g:lightline_no_fileformat_filetypes, &filetype) >= 0
 endfunction
 
-function! s:is_no_termtitle_filetype()
+function! s:is_no_termtitle_filetype() abort
   return index(g:lightline_no_termtitle_filetypes, &filetype) >= 0
 endfunction
 
-function! s:is_no_filename_filetype()
+function! s:is_no_filename_filetype() abort
   return index(g:lightline_no_filename_filetypes, &filetype) >= 0
 endfunction
 
-function! s:is_readonly_filetype()
+function! s:is_readonly_filetype() abort
   return index(g:lightline_readonly_filetypes, &filetype) >= 0
 endfunction
 
-function! s:readonly()
+function! s:readonly() abort
   if s:is_readonly_filetype()
     return ''
   endif
@@ -218,7 +218,7 @@ function! s:readonly()
   return ''
 endfunction
 
-function! s:filename(fmt)
+function! s:filename(fmt) abort
   if s:is_no_filename_filetype()
     return ''
   endif
@@ -245,7 +245,7 @@ function! s:filename(fmt)
   return '[No Name]'
 endfunction
 
-function! s:modified()
+function! s:modified() abort
   if s:is_readonly_filetype()
     return ''
   endif
@@ -261,7 +261,7 @@ function! s:modified()
   return '[-]'
 endfunction
 
-function! rubix#lightline#neomakeerror()
+function! rubix#lightline#neomakeerror() abort
   let l:res = neomake#statusline#LoclistStatus()
 
   let l:e_w = split(l:res)
@@ -276,7 +276,7 @@ function! rubix#lightline#neomakeerror()
   return ''
 endfunction
 
-function! rubix#lightline#neomakewarn()
+function! rubix#lightline#neomakewarn() abort
   let l:res = neomake#statusline#LoclistStatus()
 
   let l:e_w = split(l:res)
@@ -299,7 +299,7 @@ function! rubix#lightline#neomakewarn()
   return ''
 endfunction
 
-function! rubix#lightline#aleerror()
+function! rubix#lightline#aleerror() abort
   let l:res = ale#statusline#Status()
   if l:res ==# 'OK'
     return ''
@@ -317,7 +317,7 @@ function! rubix#lightline#aleerror()
   return ''
 endfunction
 
-function! rubix#lightline#alewarn()
+function! rubix#lightline#alewarn() abort
   let l:res = ale#statusline#Status()
   if l:res ==# 'OK'
     return ''

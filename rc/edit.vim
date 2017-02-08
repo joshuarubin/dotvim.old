@@ -15,10 +15,10 @@ set hidden               " hide buffers when they are abandoned
 set autoread             " reload files changed outside vim
 set infercase " ignore case on insert completion
 
-if executable("rg")
+if executable('rg')
   set grepprg=rg\ --no-heading\ --vimgrep\ --smart-case\ --follow
   set grepformat=%f:%l:%c:%m
-elseif executable("ag")
+elseif executable('ag')
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
   set grepformat=%f:%l:%c:%m
 else
@@ -45,7 +45,7 @@ set nrformats-=octal " always assume decimal numbers
 
 set formatoptions=croqlt
 
-if v:version > 703 || v:version == 703 && has("patch541")
+if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j " Delete comment character when joining commented lines
 endif
 
@@ -67,9 +67,9 @@ set wrapscan
 set tags=./tags;/,~/.vimtags
 
 " make tags placed in .git/tags file available in all levels of a repository
-let gitroot = substitute(system("git rev-parse --show-toplevel"), '[\n\r]', "", "g")
-if gitroot != ""
-  let &tags = &tags . "," . gitroot . "/.git/tags"
+let s:gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+if s:gitroot !=# ''
+  let &tags = &tags . ',' . s:gitroot . '/.git/tags'
 endif
 
 " make directory automatically
