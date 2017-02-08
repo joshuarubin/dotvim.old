@@ -158,7 +158,12 @@ function! rubix#lightline#status_line_info() abort
     return ''
   endif
 
-  return printf('%3.0f%%  %d/%d☰ :%3d',
+  let l:lnumicon = '☰ '
+  if exists('$ALACRITTY_PROGRAM')
+    let l:lnumicon = ''
+  endif
+
+  return printf('%3.0f%%  %d/%d' . l:lnumicon . ':%2d',
     \   round((line('.') * 1.0) / line('$') * 100),
     \   line('.'),
     \   line('$'),
