@@ -202,12 +202,10 @@ endfunction
 
 function! rubix#maximize_toggle() abort
   let l:curpos = getcurpos()
-  if exists('s:maximized')
-    tabclose
-    unlet s:maximized
-  else
+  if tabpagenr() == 1
     tabedit %
-    let s:maximized = 1
+  else
+    tabclose
   endif
   call setpos('.', l:curpos)
 endfunction

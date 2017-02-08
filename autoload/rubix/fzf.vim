@@ -48,27 +48,44 @@ endfunction
 function! rubix#fzf#history(...) abort
   return s:fzf('history-files', {
   \ 'source':  reverse(s:all_files_filtered()),
-  \ 'options': '-m --prompt "Hist> "'
+  \ 'options': '-m --prompt "Hist> " --no-sort'
   \}, a:000)
+endfunction
+
+function! s:is_doc_file(file) abort
+  if !exists('s:docdirs')
+    let s:docdirs = map(split(&runtimepath, ','), 'resolve(v:val . ''/doc'')')
+  endif
+
+  return index(s:docdirs, fnamemodify(a:file, ':p:h')) >= 0
 endfunction
 
 " ---- filter out help docs, modified from fzf.vim/autoload/fzf/vim.vim ----
 function! s:all_files_filtered() abort
-  return filter(map(s:all_files(), 'resolve(fnamemodify(v:val, '':p''))'),
-  \ 'index(map(split(&runtimepath, '',''), ''resolve(v:val . ''''/doc'''')''), fnamemodify(v:val, '':p:h'')) < 0')
+  let s:files = s:all_files()
+
+  " filter out doc files
+  call filter(s:files, '!s:is_doc_file(v:val)')
+
+  " shorten the displayed filenames
+  return map(s:files, 'fnamemodify(v:val, '':~:.'')')
 endfunction
 
-" ---- the rest copied verbatim from fzf.vim/autoload/fzf/vim.vim ----
-
 function! s:all_files() abort
-  return extend(
-  \ filter(reverse(copy(v:oldfiles)), 'filereadable(expand(v:val))'),
-  \ filter(map(s:buflisted(), 'bufname(v:val)'), '!empty(v:val)'))
+  let s:oldfiles = filter(reverse(copy(v:oldfiles)), 'filereadable(expand(v:val))')
+  let s:listed = filter(map(s:buflisted(), 'resolve(fnamemodify(bufname(v:val), '':p''))'), '!empty(v:val)')
+
+  " remove from oldfiles anything in listed
+  call filter(s:oldfiles, 'index(s:listed, v:val) < 0')
+
+  return extend(s:oldfiles, s:listed)
 endfunction
 
 function! s:buflisted() abort
   return filter(range(1, bufnr('$')), 'buflisted(v:val) && getbufvar(v:val, ''&filetype'') !=# ''qf''')
 endfunction
+
+" ---- the rest copied verbatim from fzf.vim/autoload/fzf/vim.vim ----
 
 function! s:get_color(attr, ...) abort
   for l:group in a:000

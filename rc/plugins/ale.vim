@@ -3,6 +3,7 @@ scriptencoding utf-8
 let g:ale_lint_on_save = 1
 let g:ale_echo_msg_format = '[%severity%] %s [%linter%]'
 let g:ale_statusline_format = ['E•%d', 'W•%d', 'OK']
+let g:ale_lint_delay = 1000
 
 if exists('$ALACRITTY_PROGRAM')
   " this is temporary until alacritty supports fallback fonts

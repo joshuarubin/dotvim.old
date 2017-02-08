@@ -32,10 +32,6 @@ let g:go_highlight_format_strings = 1
 
 let g:go_snippet_engine = g:rubix_snippet
 
-if has('nvim')
-  let g:go_term_enabled = 1
-endif
-
 let g:go_metalinter_enabled  = [
       \ 'deadcode',
       \ 'errcheck',
