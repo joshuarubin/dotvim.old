@@ -1,15 +1,17 @@
+scriptencoding utf-8
+
 let g:buftabline_show=1
 let g:buftabline_numbers=1
 let g:buftabline_indicators=1
 let g:buftabline_separators=1
 
 let g:lightline_tagbar_disabled=1
-let g:lightline_readonly_filetypes = ["help", "tagbar", "man", "qf"]
-let g:lightline_filetype_mode_filetypes = ["help", "man", "fzf", "tagbar", "qf"]
-let g:lightline_no_lineinfo_filetypes = ["fzf", "tagbar"]
-let g:lightline_no_fileformat_filetypes = ["fzf", "man", "help", "tagbar", "qf"]
-let g:lightline_no_filename_filetypes = ["fzf", "tagbar", "qf"]
-let g:lightline_no_termtitle_filetypes = ["fzf"]
+let g:lightline_readonly_filetypes = ['help', 'tagbar', 'man', 'qf']
+let g:lightline_filetype_mode_filetypes = ['help', 'man', 'fzf', 'tagbar', 'qf']
+let g:lightline_no_lineinfo_filetypes = ['fzf', 'tagbar']
+let g:lightline_no_fileformat_filetypes = ['fzf', 'man', 'help', 'tagbar', 'qf']
+let g:lightline_no_filename_filetypes = ['fzf', 'tagbar', 'qf']
+let g:lightline_no_termtitle_filetypes = ['fzf']
 
 let g:lightline = {
       \ 'colorscheme': 'hybrid',
@@ -20,7 +22,7 @@ let g:lightline = {
       \     [ 'filename', 'termtitle' ],
       \   ],
       \   'right': [
-      \     [ 'neomakeerror', 'neomakewarn', 'syntastic', 'lineinfo' ],
+      \     [ 'neomakeerror', 'neomakewarn', 'syntastic', 'aleerror', 'alewarn', 'lineinfo' ],
       \     [ 'fileformat' ],
       \     [ 'go', 'gotype', 'tagbar', 'filetype' ]
       \   ],
@@ -52,6 +54,8 @@ let g:lightline = {
       \   'termtitle':    'rubix#lightline#term_title',
       \ },
       \ 'component_expand': {
+      \   'alewarn':      'rubix#lightline#alewarn',
+      \   'aleerror':     'rubix#lightline#aleerror',
       \   'gotype':       'rubix#lightline#go_type',
       \   'lineinfo':     'rubix#lightline#line_info',
       \   'neomakeerror': 'rubix#lightline#neomakeerror',
@@ -62,6 +66,8 @@ let g:lightline = {
       \   'syntastic':    'error',
       \   'neomakeerror': 'error',
       \   'neomakewarn':  'warning',
+      \   'aleerror':     'error',
+      \   'alewarn':      'warning',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },

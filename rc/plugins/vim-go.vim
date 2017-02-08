@@ -1,7 +1,7 @@
 let g:go_def_mapping_enabled = 0
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 let g:go_fmt_fail_silently = 1
-let g:go_fmt_options = "-s "
+let g:go_fmt_options = '-s '
 let g:go_auto_type_info = 0
 let g:go_fmt_experimental = 0
 let g:go_doc_keywordprg_enabled = 0
@@ -9,7 +9,7 @@ let g:go_echo_command_info = 0
 let g:go_fmt_experimental = 1
 
 let g:go_list_height = 10
-let g:go_def_mode = "guru"
+let g:go_def_mode = 'guru'
 let g:go_def_reuse_buffer = 1
 
 let g:go_highlight_operators = 0
@@ -30,27 +30,27 @@ let g:go_highlight_format_strings = 1
 
 let g:go_snippet_engine = g:rubix_snippet
 
-if has("nvim")
+if has('nvim')
   let g:go_term_enabled = 1
 endif
 
 let g:go_metalinter_enabled  = [
-      \ "deadcode",
-      \ "errcheck",
-      \ "gas",
-      \ "goconst",
-      \ "gofmt",
-      \ "goimports",
-      \ "golint",
-      \ "gosimple",
-      \ "gotype",
-      \ "ineffassign",
-      \ "interfacer",
-      \ "misspell",
-      \ "staticcheck",
-      \ "unconvert",
-      \ "unused",
-      \ "varcheck",
-      \ "vet",
-      \ "vetshadow",
+      \ 'deadcode',
+      \ 'errcheck',
+      \ 'gas',
+      \ 'goconst',
+      \ 'gofmt',
+      \ 'goimports',
+      \ 'golint',
+      \ 'gosimple',
+      \ 'gotype',
+      \ 'ineffassign',
+      \ 'interfacer',
+      \ 'misspell',
+      \ 'staticcheck',
+      \ 'unconvert',
+      \ 'unused',
+      \ 'varcheck',
+      \ 'vet',
+      \ 'vetshadow',
 \ ]

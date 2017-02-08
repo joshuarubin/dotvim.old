@@ -1,5 +1,7 @@
 " settings before plugins are loaded
 
+scriptencoding utf-8
+
 " neocomplete + neosnippet + neosnippet-snippets requires lua
 " youcompleteme + ultisnips is the fallback without lua
 " nvim defaults to deoplete
@@ -16,16 +18,16 @@ elseif has('lua') && (v:version > 703 || v:version == 703 && has('patch885'))
   let g:rubix_complete = 'neocomplete'
   let g:rubix_snippet  = 'neosnippet'
   let g:rubix_shougo   = 1
-elseif (v:version > 703 || (v:version == 703 && has("patch598"))) && has("python")
+elseif (v:version > 703 || (v:version == 703 && has('patch598'))) && has('python')
   let g:rubix_complete = 'youcompleteme'
   let g:rubix_snippet  = 'ultisnips'
 endif
 
 let g:rubix_syntax = 'syntastic'
-if has("nvim")
-  let g:rubix_syntax = 'neomake'
-elseif v:version >= 800 && (v:version > 800 || has("patch0027"))
-  let g:rubix_syntax = 'neomake'
+if has('nvim')
+  let g:rubix_syntax = 'ale'
+elseif v:version >= 800 && (v:version > 800 || has('patch0027'))
+  let g:rubix_syntax = 'ale'
 endif
 
 let g:rubix_jedi = 0
@@ -86,23 +88,23 @@ let g:vimpager.passthrough = 0
 let g:no_cecutil_maps = 1
 
 " startify
-let g:startify_session_dir = rubix#cache#dir("sessions")
+let g:startify_session_dir = rubix#cache#dir('sessions')
 let g:startify_show_sessions = 1
 let g:startify_session_persistence = 1
 let g:startify_change_to_vcs_root = 1
 let g:startify_update_oldfiles = 1
 let g:startify_skiplist = add(
-      \ map(split(&rtp, ','), 'escape(resolve(v:val . "/doc"), "\\")'),
+      \ map(split(&runtimepath, ','), 'escape(resolve(v:val . ''/doc''), ''\'')'),
       \ 'COMMIT_EDITMSG')
 
 " quickrun
 let g:quickrun_config = {}
 let g:quickrun_config.markdown = {
-  \ "outputter": "null",
-  \ "command":   "open",
-  \ "cmdopt":    "-a",
-  \ "args":      shellescape("Marked 2"),
-  \ "exec":      "%c %o %a %s",
+  \ 'outputter': 'null',
+  \ 'command':   'open',
+  \ 'cmdopt':    '-a',
+  \ 'args':      shellescape('Marked 2'),
+  \ 'exec':      '%c %o %a %s',
   \ }
 
 " python-mode
@@ -110,17 +112,17 @@ let g:pymode_folding  = 0
 let g:pymode_lint     = 0
 let g:pymode_options  = 0
 let g:pymode_rope     = 0  " disable to fix conflict with jedi
-let g:pymode_doc_bind = "" " disable, use jedi instead
+let g:pymode_doc_bind = '' " disable, use jedi instead
 
 " jedi
 let g:jedi#popup_on_dot           = 0
-let g:jedi#use_splits_not_buffers = "bottom"
+let g:jedi#use_splits_not_buffers = 'bottom'
 let g:jedi#completions_enabled    = 0
-let g:jedi#goto_command             = "gd"        " change from <leader>d
-let g:jedi#usages_command           = ""          " don't collide with <leader>n :nohlsearch
-let g:jedi#rename_command           = "<leader>e" " change from <leader>r to not collide with :PymodeRun
-let g:jedi#documentation_command    = ""          " use dash instead (for <leader>d and K)
-let g:jedi#goto_assignments_command = "<leader>g" " default
+let g:jedi#goto_command             = 'gd'        " change from <leader>d
+let g:jedi#usages_command           = ''          " don't collide with <leader>n :nohlsearch
+let g:jedi#rename_command           = '<leader>e' " change from <leader>r to not collide with :PymodeRun
+let g:jedi#documentation_command    = ''          " use dash instead (for <leader>d and K)
+let g:jedi#goto_assignments_command = '<leader>g' " default
 
 " fugitive
 " delete fugitive buffers when they are left
@@ -137,15 +139,15 @@ let g:fugitive_git_executable = "env GIT_SSH_COMMAND='ssh -o ControlPersist=no' 
 " go install github.com/jstemmer/gotags
 " and make sure gotags is in your path
 let g:tagbar_type_go = {
-  \ "ctagstype" : "go",
-  \ "kinds"     : [  "p:package", "i:imports", "c:constants", "v:variables",
-    \ "t:types",  "n:interfaces", "w:fields", "e:embedded", "m:methods",
-    \ "r:constructor", "f:functions" ],
-  \ "sro" : ".",
-  \ "kind2scope" : { "t" : "ctype", "n" : "ntype" },
-  \ "scope2kind" : { "ctype" : "t", "ntype" : "n" },
-  \ "ctagsbin"  : "gotags",
-  \ "ctagsargs" : "-sort -silent"
+  \ 'ctagstype' : 'go',
+  \ 'kinds'     : [  'p:package', 'i:imports', 'c:constants', 'v:variables',
+    \ 't:types',  'n:interfaces', 'w:fields', 'e:embedded', 'm:methods',
+    \ 'r:constructor', 'f:functions' ],
+  \ 'sro' : '.',
+  \ 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' },
+  \ 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' },
+  \ 'ctagsbin'  : 'gotags',
+  \ 'ctagsargs' : '-sort -silent'
   \ }
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
@@ -155,25 +157,25 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_key_list_select_completion = []
 let g:ycm_key_list_previous_completion = []
 let g:ycm_semantic_triggers =  {
-  \   "c":          ["->", "."],
-  \   "objc":       ["->", "."],
-  \   "ocaml":      [".", "#"],
-  \   "cpp,objcpp": ["->", ".", "::"],
-  \   "perl":       ["->"],
-  \   "php":        ["->", "::"],
-  \   "cs,java,javascript,d,python,perl6,scala,vb,elixir,go": ["."],
-  \   "vim":        ["re![_a-zA-Z]+[_\w]*\."],
-  \   "ruby":       [".", "::"],
-  \   "lua":        [".", ":"],
-  \   "erlang":     [":"],
-  \   "haskell":    ["."],
+  \   'c':          ['->', '.'],
+  \   'objc':       ['->', '.'],
+  \   'ocaml':      ['.', '#'],
+  \   'cpp,objcpp': ['->', '.', '::'],
+  \   'perl':       ['->'],
+  \   'php':        ['->', '::'],
+  \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go': ['.'],
+  \   'vim':        ['re![_a-zA-Z]+[_\w]*\.'],
+  \   'ruby':       ['.', '::'],
+  \   'lua':        ['.', ':'],
+  \   'erlang':     [':'],
+  \   'haskell':    ['.'],
   \ }
 
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_auto_delimiter = 1
-let g:neocomplete#data_directory=rubix#cache#dir("neocomplete")
+let g:neocomplete#data_directory=rubix#cache#dir('neocomplete')
 let g:neocomplete#auto_completion_start_length = 1
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
@@ -208,12 +210,12 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 let g:deoplete#sources#go#align_class = 1
 
 " neosnippet
-let g:neosnippet#data_directory = rubix#cache#dir("neosnippet")
+let g:neosnippet#data_directory = rubix#cache#dir('neosnippet')
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 " ultisnips
-let g:UltiSnipsExpandTrigger = "<c-k>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsExpandTrigger = '<c-k>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
 
 " netrw
 let g:netrw_winsize = -30 " absolute width of netrw window
@@ -222,15 +224,15 @@ let g:netrw_liststyle = 3 " tree-view
 let g:netrw_preview = 1 " show previews in vertical split
 let g:netrw_alto = 0 " split below
 let g:netrw_browse_split = 4 " use the previous window to open file
-let g:netrw_sort_sequence = '[\/]$,*,\%(' . join(map(split(&suffixes, ','), 'escape(v:val, ".*$~")'), '\|') . '\)[*@]\=$'
+let g:netrw_sort_sequence = '[\/]$,*,\%(' . join(map(split(&suffixes, ','), 'escape(v:val, ''.*$~'')'), '\|') . '\)[*@]\=$'
 let s:dotfiles = '\(^\|\s\s\)\zs\.\S\+'
-let s:escape = 'substitute(escape(v:val, ".$~"), "*", ".*", "g")'
+let s:escape = 'substitute(escape(v:val, ''.$~''), ''*'', ''.*'', ''g'')'
 let g:netrw_list_hide =
       \ s:dotfiles .
-      \ ',' . join(map(split(&wildignore, ','), '"^".' . s:escape . '. "$"'), ',') .
+      \ ',' . join(map(split(&wildignore, ','), '''^''.' . s:escape . '. ''$'''), ',') .
       \ ',^\.\.\=/\=$' .
       \ ',' . netrw_gitignore#Hide()
-let g:netrw_home=rubix#cache#dir("netrw")
+let g:netrw_home=rubix#cache#dir('netrw')
 
 " indentLine
 let g:indentLine_setColors = 0
@@ -242,6 +244,6 @@ let g:indentLine_fileTypeExclude = ['help', 'man']
 let g:indentLine_bufNameExclude = ['^term:\/\/.*']
 
 " load larger plugin specific configuration
-for f in split(glob('~/.vim/rc/plugins/*.vim'), '\n')
-  execute 'source' fnameescape(f)
+for s:f in split(glob('~/.vim/rc/plugins/*.vim'), '\n')
+  execute 'source' fnameescape(s:f)
 endfor

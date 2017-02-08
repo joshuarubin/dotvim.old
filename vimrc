@@ -6,15 +6,15 @@ if &compatible
 endif
 
 function! s:source_rc(path)
-  execute 'source' fnameescape(expand("~/.vim/rc/" . a:path . ".vim"))
+  execute 'source' fnameescape(expand('~/.vim/rc/' . a:path . '.vim'))
 endfunction
 
-call s:source_rc("init")
-call s:source_rc("view")
-call s:source_rc("plugins")
-call s:source_rc("edit")
-call s:source_rc("mappings")
-call s:source_rc("gui")
+call s:source_rc('init')
+call s:source_rc('view')
+call s:source_rc('plugins')
+call s:source_rc('edit')
+call s:source_rc('mappings')
+call s:source_rc('gui')
 
 set exrc   " enable per-directory .vimrc files
 set secure " disable unsafe commands in local .vimrc files

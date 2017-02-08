@@ -1,11 +1,13 @@
+scriptencoding utf-8
+
 function! rubix#lightline#mode()
   if s:is_filetype_mode_filetype()
     return toupper(&filetype)
   endif
 
-  let fname = expand('%:t')
+  let l:fname = expand('%:t')
 
-  if fname ==# 'ControlP'
+  if l:fname ==# 'ControlP'
     return 'CTRLP'
   endif
 
@@ -13,36 +15,36 @@ function! rubix#lightline#mode()
 endfunction
 
 function! rubix#lightline#crypt()
-  if exists("+key") && !empty(&key)
+  if exists('+key') && !empty(&key)
     return '🔒'
   endif
 
-  return ""
+  return ''
 endfunction
 
 function! rubix#lightline#fugitive()
   try
-    if expand('%:t') =~ 'Tagbar'
-      return ""
+    if expand('%:t') =~# 'Tagbar'
+      return ''
     endif
 
     if s:is_readonly_filetype()
-      return ""
+      return ''
     endif
 
     if exists('*fugitive#head')
-      let mark = ''
-      let branch = fugitive#head()
+      let l:mark = ''
+      let l:branch = fugitive#head()
 
-      if branch != ''
-        return mark . ' ' . branch
+      if l:branch !=# ''
+        return l:mark . ' ' . l:branch
       endif
     endif
 
   catch
   endtry
 
-  return ""
+  return ''
 endfunction
 
 function! rubix#lightline#filename()
@@ -55,43 +57,41 @@ endfunction
 
 function! rubix#lightline#fileformat()
   if winwidth(0) < 70
-    return ""
+    return ''
   endif
 
   if s:is_no_fileformat_filetype()
-    return ""
+    return ''
   endif
 
-  let fname = expand('%:f')
+  let l:fname = expand('%:f')
 
-  if fname =~ '^term:\/\/'
-    return ""
+  if l:fname =~# '^term:\/\/'
+    return ''
   endif
 
-  let status_enc = &enc
-  if &fenc !=# ''
-    let status_enc = &fenc
+  let l:status_enc = &encoding
+  if &fileencoding !=# ''
+    let l:status_enc = &fileencoding
   endif
 
-  return status_enc . '[' . &fileformat . ']'
+  return l:status_enc . '[' . &fileformat . ']'
 endfunction
 
 function! rubix#lightline#filetype()
   if winwidth(0) < 70
-    return ""
+    return ''
   endif
 
   if s:is_no_fileformat_filetype()
-    return ""
+    return ''
   endif
-
-  let fname = expand('%:f')
 
   if &filetype !=# ''
     return &filetype
   endif
 
-  return ""
+  return ''
 endfunction
 
 function! rubix#lightline#spell()
@@ -99,26 +99,26 @@ function! rubix#lightline#spell()
     return &spelllang
   endif
 
-  return ""
+  return ''
 endfunction
 
 function! rubix#lightline#paste()
   if &paste
-    return "PASTE"
+    return 'PASTE'
   endif
 
-  return ""
+  return ''
 endfunction
 
 let s:lightline_tagbar_last_lookup_time = 0
 let s:lightline_tagbar_last_lookup_val = ''
 function! rubix#lightline#tagbar()
   if exists('g:lightline_tagbar_disabled') && g:lightline_tagbar_disabled
-    return ""
+    return ''
   endif
 
-  if &filetype =~ 'tagbar'
-    return ""
+  if &filetype =~# 'tagbar'
+    return ''
   endif
 
   if s:lightline_tagbar_last_lookup_time != localtime()
@@ -133,29 +133,29 @@ function! rubix#lightline#term_title()
   call rubix#update_title()
 
   if s:is_no_termtitle_filetype()
-    return ""
+    return ''
   endif
 
   if exists('b:term_title')
     return b:term_title
   endif
 
-  return ""
+  return ''
 endfunction
 
 function! rubix#lightline#status_line_info()
   if winwidth(0) < 70
-    return ""
+    return ''
   endif
 
   if s:is_no_lineinfo_filetype()
-    return ""
+    return ''
   endif
 
-  let fname = expand('%:f')
+  let l:fname = expand('%:f')
 
-  if fname =~ '^term:\/\/'
-    return ""
+  if l:fname =~# '^term:\/\/'
+    return ''
   endif
 
   return printf('%3.0f%%  %d/%d☰ :%3d',
@@ -175,7 +175,7 @@ function! rubix#lightline#go_type()
     return go#complete#GetInfo()
   endif
 
-  return ""
+  return ''
 endfunction
 
 function! rubix#lightline#tagbar_status(current, sort, fname, ...) abort
@@ -208,38 +208,38 @@ endfunction
 
 function! s:readonly()
   if s:is_readonly_filetype()
-    return ""
+    return ''
   endif
 
   if &readonly
-    return " "
+    return ' '
   endif
 
-  return ""
+  return ''
 endfunction
 
 function! s:filename(fmt)
   if s:is_no_filename_filetype()
-    return ""
+    return ''
   endif
 
   if &filetype ==# 'help'
     return expand('%:t')
   endif
 
-  let fname = expand(a:fmt)
+  let l:fname = expand(a:fmt)
 
-  if fname =~ '^term:\/\/'
+  if l:fname =~# '^term:\/\/'
     " return the 'short filename' (e.g. shell name)
     return s:filename('%:t')
   endif
 
-  if fname ==# 'ControlP' && has_key(g:lightline, 'ctrlp_item')
+  if l:fname ==# 'ControlP' && has_key(g:lightline, 'ctrlp_item')
     return g:lightline.ctrlp_item
   endif
 
-  if fname != ''
-    return fname
+  if l:fname !=# ''
+    return l:fname
   endif
 
   return '[No Name]'
@@ -247,18 +247,18 @@ endfunction
 
 function! s:modified()
   if s:is_readonly_filetype()
-    return ""
+    return ''
   endif
 
   if &modified
-    return "[+]"
+    return '[+]'
   endif
 
   if &modifiable
-    return ""
+    return ''
   endif
 
-  return "[-]"
+  return '[-]'
 endfunction
 
 function! rubix#lightline#neomakeerror()
@@ -266,7 +266,7 @@ function! rubix#lightline#neomakeerror()
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
-    if exists("$ALACRITTY_PROGRAM")
+    if exists('$ALACRITTY_PROGRAM')
       return 'E' . matchstr(l:e_w[0], '\d\+')
     else
       return '⨉ ' . matchstr(l:e_w[0], '\d\+')
@@ -281,7 +281,7 @@ function! rubix#lightline#neomakewarn()
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2
-    if exists("$ALACRITTY_PROGRAM")
+    if exists('$ALACRITTY_PROGRAM')
       return 'W' . matchstr(l:e_w[1], '\d\+')
     else
       return '⚠ ' . matchstr(l:e_w[1], '\d\+')
@@ -289,7 +289,51 @@ function! rubix#lightline#neomakewarn()
   endif
 
   if match(l:e_w, 'W') > -1
-    if exists("$ALACRITTY_PROGRAM")
+    if exists('$ALACRITTY_PROGRAM')
+      return 'W' . matchstr(l:e_w[0], '\d\+')
+    else
+      return '⚠ ' . matchstr(l:e_w[0], '\d\+')
+    endif
+  endif
+
+  return ''
+endfunction
+
+function! rubix#lightline#aleerror()
+  let l:res = ale#statusline#Status()
+  if l:res ==# 'OK'
+    return ''
+  endif
+
+  let l:e_w = split(l:res)
+  if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
+    if exists('$ALACRITTY_PROGRAM')
+      return 'E' . matchstr(l:e_w[0], '\d\+')
+    else
+      return '⨉ ' . matchstr(l:e_w[0], '\d\+')
+    endif
+  endif
+
+  return ''
+endfunction
+
+function! rubix#lightline#alewarn()
+  let l:res = ale#statusline#Status()
+  if l:res ==# 'OK'
+    return ''
+  endif
+
+  let l:e_w = split(l:res)
+  if len(l:e_w) == 2
+    if exists('$ALACRITTY_PROGRAM')
+      return 'W' . matchstr(l:e_w[1], '\d\+')
+    else
+      return '⚠ ' . matchstr(l:e_w[1], '\d\+')
+    endif
+  endif
+
+  if match(l:e_w, 'W') > -1
+    if exists('$ALACRITTY_PROGRAM')
       return 'W' . matchstr(l:e_w[0], '\d\+')
     else
       return '⚠ ' . matchstr(l:e_w[0], '\d\+')

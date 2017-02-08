@@ -1,11 +1,13 @@
+scriptencoding utf-8
+
 let g:neomake_serialize = 1
 let g:neomake_serialize_abort_on_error = 1
 
-if g:rubix_syntax == 'neomake'
+if g:rubix_syntax ==# 'neomake'
   autocmd MyAutoCmd BufWritePost * if expand('%') !~ '^fugitive:\/\/' | Neomake | endif
 endif
 
-if exists("$ALACRITTY_PROGRAM")
+if exists('$ALACRITTY_PROGRAM')
   " this is temporary until alacritty supports fallback fonts
   let g:neomake_error_sign   = {'text': 'E>', 'texthl': 'ErrorMsg'}
   let g:neomake_warning_sign = {'text': 'W>', 'texthl': 'Type'}
@@ -79,14 +81,11 @@ let g:neomake_go_gometalinter_maker = {
   \   '--concurrency=3',
   \   '--fast',
   \   '-D', 'aligncheck',
-  \   '-D', 'dupl',
   \   '-D', 'gocyclo',
-  \   '-D', 'structcheck',
-  \   '-E', 'errcheck',
   \   '-E', 'gofmt',
   \   '-E', 'goimports',
-  \   '-E', 'unused',
   \   '-E', 'misspell',
+  \   '-E', 'unused',
   \ ],
   \ 'append_file': 0,
   \ 'cwd': '%:h',
