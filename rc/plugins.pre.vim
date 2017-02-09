@@ -25,9 +25,9 @@ endif
 
 let g:rubix_syntax = 'syntastic'
 if has('nvim')
-  let g:rubix_syntax = 'ale'
+  let g:rubix_syntax = 'neomake'
 elseif v:version >= 800 && (v:version > 800 || has('patch0027'))
-  let g:rubix_syntax = 'ale'
+  let g:rubix_syntax = 'neomake'
 endif
 
 let g:rubix_jedi = 0
