@@ -421,7 +421,7 @@ if !has('gui_running') && exists('g:hybrid_custom_term_colors') && g:hybrid_cust
 else
   let s:bg_normal = s:bg_background
 endif
-exe 'hi! Normal'        .s:fg_foreground  .s:bg_normal      .s:fmt_none
+exe 'hi! Normal'        .s:fg_foreground  .s:fmt_none
 
 "}}}
 

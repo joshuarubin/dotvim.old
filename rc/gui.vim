@@ -11,6 +11,10 @@ if !has('nvim') && has('mouse_sgr')
   set ttymouse=sgr
 endif
 
+if !has('nvim')
+  set t_ut= " make vim flicker less
+endif
+
 augroup HighlightTODO
   " ensure any instance TODO or FIXME is highlighted as an Error in any filetype
   autocmd!

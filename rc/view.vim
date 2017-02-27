@@ -61,7 +61,7 @@ endif
 set noshowmode
 
 set ruler
-set showcmd                     " show incomplete cmds down the bottom
+set noshowcmd                   " prevent flicker, lightline shows info anyway
 set number                      " line numbers are good
 set scrolloff=8                 " start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
