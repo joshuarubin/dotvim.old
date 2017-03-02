@@ -159,7 +159,7 @@ function! rubix#lightline#status_line_info() abort
   endif
 
   let l:lnumicon = '☰ '
-  if exists('$ALACRITTY_PROGRAM')
+  if $TERM_PROGRAM ==# 'Alacritty.app'
     let l:lnumicon = ''
   endif
 
@@ -271,7 +271,7 @@ function! rubix#lightline#neomakeerror() abort
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
-    if exists('$ALACRITTY_PROGRAM')
+    if $TERM_PROGRAM ==# 'Alacritty.app'
       return 'E' . matchstr(l:e_w[0], '\d\+')
     else
       return '⨉ ' . matchstr(l:e_w[0], '\d\+')
@@ -286,7 +286,7 @@ function! rubix#lightline#neomakewarn() abort
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2
-    if exists('$ALACRITTY_PROGRAM')
+    if $TERM_PROGRAM ==# 'Alacritty.app'
       return 'W' . matchstr(l:e_w[1], '\d\+')
     else
       return '⚠ ' . matchstr(l:e_w[1], '\d\+')
@@ -294,7 +294,7 @@ function! rubix#lightline#neomakewarn() abort
   endif
 
   if match(l:e_w, 'W') > -1
-    if exists('$ALACRITTY_PROGRAM')
+    if $TERM_PROGRAM ==# 'Alacritty.app'
       return 'W' . matchstr(l:e_w[0], '\d\+')
     else
       return '⚠ ' . matchstr(l:e_w[0], '\d\+')
@@ -312,7 +312,7 @@ function! rubix#lightline#aleerror() abort
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
-    if exists('$ALACRITTY_PROGRAM')
+    if $TERM_PROGRAM ==# 'Alacritty.app'
       return 'E' . matchstr(l:e_w[0], '\d\+')
     else
       return '⨉ ' . matchstr(l:e_w[0], '\d\+')
@@ -330,7 +330,7 @@ function! rubix#lightline#alewarn() abort
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2
-    if exists('$ALACRITTY_PROGRAM')
+    if $TERM_PROGRAM ==# 'Alacritty.app'
       return 'W' . matchstr(l:e_w[1], '\d\+')
     else
       return '⚠ ' . matchstr(l:e_w[1], '\d\+')
@@ -338,7 +338,7 @@ function! rubix#lightline#alewarn() abort
   endif
 
   if match(l:e_w, 'W') > -1
-    if exists('$ALACRITTY_PROGRAM')
+    if $TERM_PROGRAM ==# 'Alacritty.app'
       return 'W' . matchstr(l:e_w[0], '\d\+')
     else
       return '⚠ ' . matchstr(l:e_w[0], '\d\+')

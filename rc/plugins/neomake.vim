@@ -7,7 +7,7 @@ if g:rubix_syntax ==# 'neomake'
   autocmd MyAutoCmd BufWritePost * if expand('%') !~ '^fugitive:\/\/' | Neomake | endif
 endif
 
-if exists('$ALACRITTY_PROGRAM')
+if $TERM_PROGRAM ==# 'Alacritty.app'
   " this is temporary until alacritty supports fallback fonts
   let g:neomake_error_sign   = {'text': 'E>', 'texthl': 'ErrorMsg'}
   let g:neomake_warning_sign = {'text': 'W>', 'texthl': 'Type'}

@@ -5,7 +5,7 @@ let g:ale_echo_msg_format = '[%severity%] %s [%linter%]'
 let g:ale_statusline_format = ['E•%d', 'W•%d', 'OK']
 let g:ale_lint_delay = 1000
 
-if exists('$ALACRITTY_PROGRAM')
+if $TERM_PROGRAM ==# 'Alacritty.app'
   " this is temporary until alacritty supports fallback fonts
   let g:ale_sign_error   = 'E>'
   let g:ale_sign_warning = 'W>'

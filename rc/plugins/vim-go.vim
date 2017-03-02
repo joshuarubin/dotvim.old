@@ -11,7 +11,7 @@ let g:go_list_height = 10
 let g:go_def_mode = 'guru'
 let g:go_def_reuse_buffer = 1
 
-if exists('$ALACRITTY_PROGRAM')
+if $TERM_PROGRAM ==# 'Alacritty.app'
   let g:go_highlight_operators = 1
   let g:go_highlight_fields = 1
   let g:go_highlight_types = 1
