@@ -15,11 +15,15 @@ Plug 'chrisbra/Colorizer'
 " search for terms using [Dash.app](http://kapeli.com/), making API lookups simple
 Plug 'rizzatti/funcoo.vim' | Plug 'rizzatti/dash.vim'
 " completion
-Plug 'Shougo/deoplete.nvim', rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': ':UpdateRemotePlugins' })
-Plug 'zchee/deoplete-go', rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': 'make' })
-Plug 'zchee/deoplete-jedi', rubix#plug#cond(g:rubix_complete == 'deoplete')
+Plug 'Shougo/deoplete.nvim',         rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': ':UpdateRemotePlugins' })
+Plug 'zchee/deoplete-go',            rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': 'make', 'for': 'go' })
+Plug 'zchee/deoplete-jedi',          rubix#plug#cond(g:rubix_complete == 'deoplete', { 'for': 'python' })
+Plug 'tweekmonster/deoplete-clang2', rubix#plug#cond(g:rubix_complete == 'deoplete', { 'for': [ 'c', 'cpp' ] })
+Plug 'zchee/deoplete-zsh',           rubix#plug#cond(g:rubix_complete == 'deoplete', { 'for': 'zsh' })
+
 Plug 'Shougo/neocomplete.vim', rubix#plug#cond(g:rubix_complete == 'neocomplete')
 Plug 'Valloric/YouCompleteMe', rubix#plug#cond(g:rubix_complete == 'youcompleteme', { 'do': './install.py --gocode-completer --clang-completer' })
+Plug 'Shougo/neco-vim', { 'for': 'vim' }
 
 " snippets
 Plug 'Shougo/neosnippet', rubix#plug#cond(g:rubix_snippet == 'neosnippet')

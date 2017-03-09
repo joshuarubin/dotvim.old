@@ -93,6 +93,7 @@ let g:startify_show_sessions = 1
 let g:startify_session_persistence = 1
 let g:startify_change_to_vcs_root = 1
 let g:startify_update_oldfiles = 1
+let g:startify_session_sort = 1
 
 " quickrun
 let g:quickrun_config = {}
@@ -190,19 +191,16 @@ let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 " deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
 let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#skip_chars = ['(', ')']
 if !exists('g:deoplete#keyword_patterns')
     let g:deoplete#keyword_patterns = {}
 endif
-let g:deoplete#keyword_patterns['default'] = '\h\w*'
+let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
-let g:deoplete#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
-let g:deoplete#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-let g:deoplete#omni#input_patterns.c    = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:deoplete#omni#input_patterns.cpp  = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:deoplete#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#align_class = 1
 

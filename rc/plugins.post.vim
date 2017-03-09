@@ -7,10 +7,13 @@ autocmd MyAutoCmd VimEnter *
   \| endif
 
 if g:rubix_complete ==# 'deoplete'
-  call deoplete#custom#set('_', 'converters',
-        \ ['converter_auto_paren',
-        \  'converter_auto_delimiter',
-        \  'converter_remove_overlap'])
+  call deoplete#custom#set('_', 'converters', [
+        \   'converter_remove_paren',
+        \   'converter_remove_overlap',
+        \   'converter_truncate_abbr',
+        \   'converter_truncate_menu',
+        \   'converter_auto_delimiter',
+        \ ])
 endif
 
 if g:rubix_snippet ==# 'neosnippet'
