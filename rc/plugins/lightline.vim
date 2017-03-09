@@ -6,11 +6,11 @@ let g:buftabline_indicators=1
 let g:buftabline_separators=1
 
 let g:lightline_tagbar_disabled=1
-let g:lightline_readonly_filetypes = ['help', 'tagbar', 'man', 'qf']
+let g:lightline_readonly_filetypes = ['help', 'tagbar', 'man', 'qf', 'taskreport', 'taskinfo']
 let g:lightline_filetype_mode_filetypes = ['help', 'man', 'fzf', 'tagbar', 'qf']
-let g:lightline_no_lineinfo_filetypes = ['fzf', 'tagbar']
-let g:lightline_no_fileformat_filetypes = ['fzf', 'man', 'help', 'tagbar', 'qf']
-let g:lightline_no_filename_filetypes = ['fzf', 'tagbar', 'qf']
+let g:lightline_no_lineinfo_filetypes = ['fzf', 'tagbar', 'taskreport', 'taskinfo']
+let g:lightline_no_fileformat_filetypes = ['fzf', 'man', 'help', 'tagbar', 'qf', 'taskreport', 'taskinfo']
+let g:lightline_no_filename_filetypes = ['fzf', 'tagbar', 'qf', 'taskreport', 'taskinfo']
 let g:lightline_no_termtitle_filetypes = ['fzf']
 
 let g:lightline = {
@@ -18,20 +18,20 @@ let g:lightline = {
       \ 'active': {
       \   'left': [
       \     [ 'mode', 'crypt', 'paste', 'spell' ],
-      \     [ 'fugitive' ],
-      \     [ 'filename', 'termtitle' ],
+      \     [ 'fugitive', 'twleft1' ],
+      \     [ 'filename', 'twleft2', 'termtitle' ],
       \   ],
       \   'right': [
-      \     [ 'neomakeerror', 'neomakewarn', 'syntastic', 'aleerror', 'alewarn', 'lineinfo' ],
-      \     [ 'fileformat' ],
-      \     [ 'go', 'gotype', 'tagbar', 'filetype' ]
+      \     [ 'neomakeerror', 'neomakewarn', 'syntastic', 'aleerror', 'alewarn', 'lineinfo', 'twtotal', 'twcomplete', 'twfiltered', 'twactive' ],
+      \     [ 'fileformat', 'twsort' ],
+      \     [ 'go', 'gotype', 'tagbar', 'filetype', 'twright0' ]
       \   ],
       \ },
       \ 'inactive': {
       \   'left': [
-      \     [ ],
-      \     [ ],
-      \     [ 'fullfilename', 'termtitle' ]
+      \     [ 'twname' ],
+      \     [ 'twleft1' ],
+      \     [ 'fullfilename', 'twleft2', 'termtitle' ]
       \   ],
       \   'right': [
       \     [ 'lineinfo' ],
@@ -48,6 +48,13 @@ let g:lightline = {
       \   'mode':         'rubix#lightline#mode',
       \   'crypt':        'rubix#lightline#crypt',
       \   'spell':        'rubix#lightline#spell',
+      \   'twfiltered':   'rubix#lightline#twfiltered',
+      \   'twleft1':      'rubix#lightline#twleft1',
+      \   'twleft2':      'rubix#lightline#twleft2',
+      \   'twname':       'rubix#lightline#twname',
+      \   'twright0':     'rubix#lightline#twright0',
+      \   'twtotal':      'rubix#lightline#twtotal',
+      \   'twsort':       'rubix#lightline#twsort',
       \   'paste':        'rubix#lightline#paste',
       \   'tagbar':       'rubix#lightline#tagbar',
       \   'go':           'go#statusline#Show',
@@ -61,11 +68,15 @@ let g:lightline = {
       \   'neomakeerror': 'rubix#lightline#neomakeerror',
       \   'neomakewarn':  'rubix#lightline#neomakewarn',
       \   'syntastic':    'SyntasticStatuslineFlag',
+      \   'twactive':     'rubix#lightline#twactive',
+      \   'twcomplete':   'rubix#lightline#twcomplete',
       \ },
       \ 'component_type': {
       \   'syntastic':    'error',
       \   'neomakeerror': 'error',
       \   'neomakewarn':  'warning',
+      \   'twactive':     'warning',
+      \   'twcomplete':   'success',
       \   'aleerror':     'error',
       \   'alewarn':      'warning',
       \ },

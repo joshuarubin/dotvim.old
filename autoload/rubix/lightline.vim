@@ -5,6 +5,11 @@ function! rubix#lightline#mode() abort
     return toupper(&filetype)
   endif
 
+  let l:twname = rubix#lightline#twname()
+  if l:twname !=# ''
+    return l:twname
+  endif
+
   let l:fname = expand('%:t')
 
   if l:fname ==# 'ControlP'
@@ -172,6 +177,16 @@ function! rubix#lightline#status_line_info() abort
 endfunction
 
 function! rubix#lightline#line_info() abort
+  if s:is_no_lineinfo_filetype()
+    return ''
+  endif
+
+  let l:fname = expand('%:f')
+
+  if l:fname =~# '^term:\/\/'
+    return ''
+  endif
+
   return '%{rubix#lightline#status_line_info()}'
 endfunction
 
@@ -343,6 +358,128 @@ function! rubix#lightline#alewarn() abort
     else
       return '⚠ ' . matchstr(l:e_w[0], '\d\+')
     endif
+  endif
+
+  return ''
+endfunction
+
+function! rubix#lightline#twleft1() abort
+  let l:parts = []
+
+  if &filetype ==# 'taskreport' || &filetype ==# 'taskinfo'
+    let l:part = b:command . (&readonly ? ' ' : '')
+    if l:part !=# ''
+      call add(l:parts, b:command . (&readonly ? ' ' : ''))
+    endif
+  endif
+
+  if &filetype ==# 'taskreport'
+    call add(l:parts, '@' . b:context)
+    call add(l:parts, g:task_left_arrow . (b:hist > 1 ? ' ' . g:task_right_arrow : ''))
+  endif
+
+  if len(l:parts) == 0
+    return ''
+  endif
+
+  return join(l:parts, ' ' . g:lightline.subseparator.left . ' ')
+endfunction
+
+function! rubix#lightline#twleft2() abort
+  let l:parts = []
+
+  if &filetype ==# 'taskreport' || &filetype ==# 'taskinfo'
+    if b:filter !=# ''
+      call add(l:parts, b:filter)
+    endif
+  endif
+
+  if &filetype ==# 'taskreport'
+    if b:sstring !=# ''
+      call add(l:parts, b:sstring)
+    endif
+  endif
+
+  if len(l:parts) == 0
+    return ''
+  endif
+
+  return join(l:parts, ' ' . g:lightline.subseparator.left . ' ')
+endfunction
+
+function! rubix#lightline#twnow() abort
+  if &filetype ==# 'taskreport' && b:now !=# ''
+    return b:now
+  endif
+
+  return ''
+endfunction
+
+function! rubix#lightline#twname() abort
+  if &filetype ==# 'taskreport'
+    return 'Taskwarrior'
+  endif
+
+  if &filetype ==# 'taskinfo'
+    return 'Taskinfo'
+  endif
+
+  return ''
+endfunction
+
+function! rubix#lightline#twright0() abort
+  let l:parts = []
+
+  if &filetype ==# 'taskreport'
+    call add(l:parts, b:task_report_columns[taskwarrior#data#current_index()])
+
+    if b:now !=# ''
+      call add(l:parts, b:now)
+    endif
+  endif
+
+  if len(l:parts) == 0
+    return ''
+  endif
+
+  return join(l:parts, ' ' . g:lightline.subseparator.right . ' ')
+endfunction
+
+function! rubix#lightline#twsort() abort
+  if &filetype ==# 'taskreport'
+    return b:sort
+  endif
+
+  return ''
+endfunction
+
+function! rubix#lightline#twcomplete() abort
+  if &filetype ==# 'taskreport'
+    return b:summary[1]
+  endif
+
+  return ''
+endfunction
+
+function! rubix#lightline#twactive() abort
+  if &filetype ==# 'taskreport' && b:active !=# '0'
+    return b:active
+  endif
+
+  return ''
+endfunction
+
+function! rubix#lightline#twfiltered() abort
+  if &filetype ==# 'taskreport'
+    return b:summary[0]
+  endif
+
+  return ''
+endfunction
+
+function! rubix#lightline#twtotal() abort
+  if &filetype ==# 'taskreport'
+    return b:summary[2]
   endif
 
   return ''
