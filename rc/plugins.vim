@@ -167,7 +167,7 @@ Plug 'Yggdroot/indentLine'
 " a simple vimscript test framework
 Plug 'junegunn/vader.vim'
 
-Plug 'blindFS/vim-taskwarrior'
+Plug 'dodie/vim-disapprove-deep-indentation'
 
 " Add plugins to &runtimepath, and:
 " filetype plugin indent on

@@ -18,20 +18,20 @@ let g:lightline = {
       \ 'active': {
       \   'left': [
       \     [ 'mode', 'crypt', 'paste', 'spell' ],
-      \     [ 'fugitive', 'twleft1' ],
-      \     [ 'filename', 'twleft2', 'termtitle' ],
+      \     [ 'fugitive' ],
+      \     [ 'filename', 'termtitle' ],
       \   ],
       \   'right': [
-      \     [ 'neomakeerror', 'neomakewarn', 'syntastic', 'aleerror', 'alewarn', 'lineinfo', 'twtotal', 'twcomplete', 'twfiltered', 'twactive' ],
-      \     [ 'fileformat', 'twsort' ],
-      \     [ 'go', 'gotype', 'tagbar', 'filetype', 'twright0' ]
+      \     [ 'neomakeerror', 'neomakewarn', 'syntastic', 'aleerror', 'alewarn', 'lineinfo' ],
+      \     [ 'fileformat' ],
+      \     [ 'go', 'gotype', 'tagbar', 'filetype' ]
       \   ],
       \ },
       \ 'inactive': {
       \   'left': [
-      \     [ 'twname' ],
-      \     [ 'twleft1' ],
-      \     [ 'fullfilename', 'twleft2', 'termtitle' ]
+      \     [ ],
+      \     [ ],
+      \     [ 'fullfilename', 'termtitle' ]
       \   ],
       \   'right': [
       \     [ 'lineinfo' ],
@@ -48,13 +48,6 @@ let g:lightline = {
       \   'mode':         'rubix#lightline#mode',
       \   'crypt':        'rubix#lightline#crypt',
       \   'spell':        'rubix#lightline#spell',
-      \   'twfiltered':   'rubix#lightline#twfiltered',
-      \   'twleft1':      'rubix#lightline#twleft1',
-      \   'twleft2':      'rubix#lightline#twleft2',
-      \   'twname':       'rubix#lightline#twname',
-      \   'twright0':     'rubix#lightline#twright0',
-      \   'twtotal':      'rubix#lightline#twtotal',
-      \   'twsort':       'rubix#lightline#twsort',
       \   'paste':        'rubix#lightline#paste',
       \   'tagbar':       'rubix#lightline#tagbar',
       \   'go':           'go#statusline#Show',
@@ -68,15 +61,11 @@ let g:lightline = {
       \   'neomakeerror': 'rubix#lightline#neomakeerror',
       \   'neomakewarn':  'rubix#lightline#neomakewarn',
       \   'syntastic':    'SyntasticStatuslineFlag',
-      \   'twactive':     'rubix#lightline#twactive',
-      \   'twcomplete':   'rubix#lightline#twcomplete',
       \ },
       \ 'component_type': {
       \   'syntastic':    'error',
       \   'neomakeerror': 'error',
       \   'neomakewarn':  'warning',
-      \   'twactive':     'warning',
-      \   'twcomplete':   'success',
       \   'aleerror':     'error',
       \   'alewarn':      'warning',
       \ },
