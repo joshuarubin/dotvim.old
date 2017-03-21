@@ -10,4 +10,6 @@ setlocal omnifunc=pythoncomplete#Complete
 " yapf
 if executable('yapf')
   autocmd MyAutoCmd BufWritePre <buffer> call rubix#yapf()
+else
+  let b:auto_strip_trailing_whitespace = 1
 endif

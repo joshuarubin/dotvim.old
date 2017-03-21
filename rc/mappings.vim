@@ -68,6 +68,9 @@ nnoremap - <c-x>
 " ctrl-sr: Easier (s)earch and (r)eplace
 nnoremap <c-s><c-r> :%s/<c-r><c-w>//gc<left><left><left>
 
+" space open/closes folds
+nnoremap <space> za
+
 " ctrl-w: Delete previous word, create undo point
 inoremap <c-w> <c-g>u<c-w>
 
