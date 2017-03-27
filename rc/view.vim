@@ -70,6 +70,9 @@ set scrolljump=3
 set numberwidth=1
 
 autocmd MyAutoCmd BufEnter * call rubix#update_title()
-autocmd MyAutoCmd TermOpen * setlocal nolist
 autocmd MyAutoCmd InsertEnter * setlocal nohlsearch
 autocmd MyAutoCmd InsertLeave * setlocal hlsearch
+
+if has('nvim')
+  autocmd MyAutoCmd TermOpen * setlocal nolist
+endif

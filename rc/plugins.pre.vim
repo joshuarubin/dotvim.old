@@ -207,6 +207,7 @@ let g:deoplete#sources#go#align_class = 1
 " neosnippet
 let g:neosnippet#data_directory = rubix#cache#dir('neosnippet')
 let g:neosnippet#enable_snipmate_compatibility = 1
+autocmd MyAutoCmd InsertLeave * NeoSnippetClearMarkers
 
 " ultisnips
 let g:UltiSnipsExpandTrigger = '<c-k>'

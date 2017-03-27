@@ -407,7 +407,7 @@ exe 'hi! TabLine'       .s:fg_background  .s:bg_selection   .s:fmt_revr
 exe 'hi! TabLineSel'    .s:fg_background  .s:bg_yellow      .s:fmt_revr
 exe 'hi! BufTabLineActive' .s:fg_background .s:bg_comment .s:fmt_revr
 exe 'hi! TabLineFill'   .s:fg_background  .s:bg_none        .s:fmt_revr
-exe 'hi! Title'         .s:fg_none        .s:bg_none        .s:fmt_none
+exe 'hi! Title'         .s:fg_comment     .s:bg_none        .s:fmt_none
 exe 'hi! Visual'        .s:fg_none        .s:bg_selection   .s:fmt_none
 "   VisualNos"
 exe 'hi! WarningMsg'    .s:fg_red         .s:bg_none        .s:fmt_none
