@@ -74,7 +74,6 @@ Plug 'tpope/vim-surround'
 " syntax checking
 Plug 'scrooloose/syntastic', rubix#plug#cond(g:rubix_syntax == 'syntastic')
 Plug 'neomake/neomake', rubix#plug#cond(g:rubix_syntax == 'neomake')
-Plug 'w0rp/ale', rubix#plug#cond(g:rubix_syntax == 'ale')
 
 " text filtering and alignment
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }

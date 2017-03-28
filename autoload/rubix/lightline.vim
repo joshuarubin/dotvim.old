@@ -319,50 +319,6 @@ function! rubix#lightline#neomakewarn() abort
   return ''
 endfunction
 
-function! rubix#lightline#aleerror() abort
-  let l:res = ale#statusline#Status()
-  if l:res ==# 'OK'
-    return ''
-  endif
-
-  let l:e_w = split(l:res)
-  if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
-    if $TERM_PROGRAM ==# 'Alacritty.app'
-      return 'E' . matchstr(l:e_w[0], '\d\+')
-    else
-      return '⨉ ' . matchstr(l:e_w[0], '\d\+')
-    endif
-  endif
-
-  return ''
-endfunction
-
-function! rubix#lightline#alewarn() abort
-  let l:res = ale#statusline#Status()
-  if l:res ==# 'OK'
-    return ''
-  endif
-
-  let l:e_w = split(l:res)
-  if len(l:e_w) == 2
-    if $TERM_PROGRAM ==# 'Alacritty.app'
-      return 'W' . matchstr(l:e_w[1], '\d\+')
-    else
-      return '⚠ ' . matchstr(l:e_w[1], '\d\+')
-    endif
-  endif
-
-  if match(l:e_w, 'W') > -1
-    if $TERM_PROGRAM ==# 'Alacritty.app'
-      return 'W' . matchstr(l:e_w[0], '\d\+')
-    else
-      return '⚠ ' . matchstr(l:e_w[0], '\d\+')
-    endif
-  endif
-
-  return ''
-endfunction
-
 function! rubix#lightline#twleft1() abort
   let l:parts = []
 
