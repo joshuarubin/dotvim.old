@@ -31,6 +31,7 @@ elseif has('gui_running')
     set transparency=0
     set macligatures
     set guifont=Hasklig:h12
+    set macmeta
   elseif has('gui_gtk')
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
   endif
