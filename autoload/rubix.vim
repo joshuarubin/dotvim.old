@@ -431,3 +431,9 @@ function! rubix#kwbd(kwbdStage) abort
     endif
   endif
 endfunction
+
+function! rubix#UpdateRemotePlugins(info) abort
+  if has('nvim')
+    execute 'UpdateRemotePlugins'
+  endif
+endfunction

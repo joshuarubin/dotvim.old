@@ -15,7 +15,7 @@ Plug 'chrisbra/Colorizer'
 " search for terms using [Dash.app](http://kapeli.com/), making API lookups simple
 Plug 'rizzatti/funcoo.vim' | Plug 'rizzatti/dash.vim'
 " completion
-Plug 'Shougo/deoplete.nvim',         rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': ':UpdateRemotePlugins' })
+Plug 'Shougo/deoplete.nvim',         rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': function('rubix#UpdateRemotePlugins') })
 Plug 'zchee/deoplete-go',            rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': 'make', 'for': 'go' })
 Plug 'zchee/deoplete-jedi',          rubix#plug#cond(g:rubix_complete == 'deoplete', { 'for': 'python' })
 Plug 'tweekmonster/deoplete-clang2', rubix#plug#cond(g:rubix_complete == 'deoplete', { 'for': [ 'c', 'cpp' ] })
