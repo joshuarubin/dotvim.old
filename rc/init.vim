@@ -41,7 +41,7 @@ if has('termguicolors')
 endif
 
 " gnome-terminal colors
-if &term =~? '^\(xterm\|screen\)$' && $COLORTERM ==? 'gnome-terminal'
+if !has('nvim') && &term =~? '^\(xterm\|screen\)$' && $COLORTERM ==? 'gnome-terminal'
   set t_Co=256
 endif
 
