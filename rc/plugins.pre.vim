@@ -113,14 +113,20 @@ let g:pymode_rope     = 0  " disable to fix conflict with jedi
 let g:pymode_doc_bind = '' " disable, use jedi instead
 
 " jedi
-let g:jedi#popup_on_dot           = 0
-let g:jedi#use_splits_not_buffers = 'bottom'
-let g:jedi#completions_enabled    = 0
+
+if has('nvim')
+  " handled by deoplete
+  let g:jedi#popup_on_dot        = 0
+  let g:jedi#completions_enabled = 0
+endif
+
+let g:jedi#use_splits_not_buffers   = 'right'
 let g:jedi#goto_command             = 'gd'        " change from <leader>d
 let g:jedi#usages_command           = ''          " don't collide with <leader>n :nohlsearch
 let g:jedi#rename_command           = '<leader>e' " change from <leader>r to not collide with :PymodeRun
 let g:jedi#documentation_command    = ''          " use dash instead (for <leader>d and K)
 let g:jedi#goto_assignments_command = '<leader>g' " default
+let g:jedi#show_call_signatures     = "2"
 
 " fugitive
 " delete fugitive buffers when they are left

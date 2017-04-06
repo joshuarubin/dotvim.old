@@ -167,7 +167,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'junegunn/vader.vim'
 
 Plug 'vimwiki/vimwiki'
-Plug 'maxbrunsfeld/vim-yankstack'
 
 " Add plugins to &runtimepath, and:
 " filetype plugin indent on
