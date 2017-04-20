@@ -35,7 +35,7 @@ elseif has('gui_running')
   elseif has('gui_gtk')
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
   endif
-elseif $TERM_PROGRAM ==# 'iTerm.app'
+elseif !has('nvim')
   " different cursors for insert vs normal mode
   if exists('$TMUX')
     let &t_SI = "\<Esc>[3 q"

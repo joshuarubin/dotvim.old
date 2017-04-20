@@ -114,8 +114,7 @@ let g:pymode_doc_bind = '' " disable, use jedi instead
 
 " jedi
 
-if has('nvim')
-  " handled by deoplete
+if g:rubix_complete == 'deoplete'
   let g:jedi#popup_on_dot        = 0
   let g:jedi#completions_enabled = 0
 endif

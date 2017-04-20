@@ -422,7 +422,7 @@ else
   let s:bg_normal = s:bg_background
 endif
 
-if has('gui')
+if has('gui') || has('gui_vimr')
   exe 'hi! Normal'        .s:fg_foreground  .s:bg_normal      .s:fmt_none
 else
   exe 'hi! Normal'        .s:fg_foreground  .s:fmt_none
