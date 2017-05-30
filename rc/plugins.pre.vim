@@ -40,10 +40,7 @@ if has('python') || has('python3')
   let g:rubix_python_mode = 1
 endif
 
-let g:rubix_rust_racer = 0
-if executable('racer') && !empty($RUST_SRC_PATH)
-  let g:rubix_rust_racer = 1
-endif
+let g:racer_experimental_completer = 1
 
 if has('nvim')
   autocmd MyAutoCmd TermOpen term://* set winfixheight

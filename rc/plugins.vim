@@ -63,7 +63,7 @@ Plug 'klen/python-mode', rubix#plug#cond(g:rubix_python_mode, { 'for': 'python' 
 " run a command and show its result quickly
 Plug 'thinca/vim-quickrun'
 
-Plug 'racer-rust/vim-racer', rubix#plug#cond(g:rubix_rust_racer, { 'for': 'rust' })
+Plug 'racer-rust/vim-racer', rubix#plug#cond(executable('racer'), { 'for': 'rust' })
 
 " shows recently used files, bookmarks and sessions
 Plug 'mhinz/vim-startify'
@@ -100,9 +100,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 
 " full featured go development environment support for vim
-Plug 'fatih/vim-go'
-Plug 'garyburd/go-explorer'
-Plug 'godoctor/godoctor.vim'
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'garyburd/go-explorer', { 'for': 'go' }
+Plug 'godoctor/godoctor.vim', { 'for': 'go' }
+Plug 'jodosha/vim-godebug', rubix#plug#cond(has('nvim'), { 'for': 'go' })
 
 " lua
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }

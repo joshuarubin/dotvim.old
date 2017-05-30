@@ -15,4 +15,3 @@ nmap <buffer> <leader>e <plug>(go-rename)
 nmap <buffer> gd <plug>(go-def-vertical)
 nmap <buffer> <c-]> <plug>(go-def-vertical)
 nmap <buffer> <leader>i <plug>(go-info)
-nmap <buffer> <silent> K :ZbDoc<cr>
