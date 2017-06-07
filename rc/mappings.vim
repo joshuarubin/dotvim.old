@@ -210,14 +210,6 @@ nnoremap <silent> <leader>gf :Gfetch<cr>
 nnoremap <silent> <leader>gv :Gitv<cr>
 nnoremap <silent> <leader>gV :Gitv!<cr>
 
-if g:rubix_complete ==# 'neocomplete'
-  imap <expr> <c-g> neocomplete#undo_completion()
-endif
-
-if g:rubix_complete ==# 'deoplete'
-  imap <expr> <c-g> deoplete#undo_completion()
-endif
-
 if g:rubix_snippet ==# 'neosnippet'
   imap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<esc>\<c-w>k"
   smap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<c-w>k"
@@ -225,13 +217,6 @@ if g:rubix_snippet ==# 'neosnippet'
   imap <expr> <tab> pumvisible() ? "\<c-n>" : (neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>")
   imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
   imap <expr> <cr> rubix#neosnippet_cr()
-endif
-
-if g:rubix_snippet ==# 'ultisnips'
-  smap <expr> <tab> rubix#ultisnips_tab()
-  imap <expr> <tab> rubix#ultisnips_tab()
-  imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-  imap <expr> <cr> rubix#ultisnips_cr()
 endif
 
 " snippets handle the <cr> mapping, but since all (2) endwise mappings were

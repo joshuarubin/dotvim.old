@@ -2,28 +2,17 @@
 
 scriptencoding utf-8
 
-" neocomplete + neosnippet + neosnippet-snippets requires lua
-" youcompleteme + ultisnips is the fallback without lua
-" nvim defaults to deoplete
-
 let g:rubix_complete = ''
 let g:rubix_snippet = ''
 let g:rubix_shougo = 0
 
-if has('nvim') && has('python3')
-  let g:rubix_complete = 'deoplete'
+if (has('nvim') || v:version >= 800) && (has('python') || has('python3'))
+  let g:rubix_complete = 'ncm'
   let g:rubix_snippet  = 'neosnippet'
   let g:rubix_shougo   = 1
-elseif has('lua') && (v:version > 703 || v:version == 703 && has('patch885'))
-  let g:rubix_complete = 'neocomplete'
-  let g:rubix_snippet  = 'neosnippet'
-  let g:rubix_shougo   = 1
-elseif (v:version > 703 || (v:version == 703 && has('patch598'))) && has('python')
-  let g:rubix_complete = 'youcompleteme'
-  let g:rubix_snippet  = 'ultisnips'
 endif
 
-let g:rubix_syntax = 'syntastic'
+let g:rubix_syntax = ''
 if has('nvim')
   let g:rubix_syntax = 'neomake'
 elseif v:version >= 800 && (v:version > 800 || has('patch0027'))
@@ -74,10 +63,10 @@ let g:undotree_SetFocusWhenToggle=1
 let g:gitgutter_enabled = 0
 
 " vim-lua
-let g:lua_check_syntax = 0 " done via syntastic
+let g:lua_check_syntax = 0 " done via neomake
 let g:lua_define_omnifunc = 0 " must be enabled also (g:lua_complete_omni=1, but crashes Vim!)
 let g:lua_complete_omni = 0
-let g:lua_complete_dynamic = 0 " interferes with YouCompleteMe
+let g:lua_complete_dynamic = 0 " interferes with completion
 
 " vimpager
 let g:vimpager = {}
@@ -111,9 +100,22 @@ let g:pymode_doc_bind = '' " disable, use jedi instead
 
 " jedi
 
-if g:rubix_complete == 'deoplete'
+if g:rubix_complete ==# 'ncm'
   let g:jedi#popup_on_dot        = 0
   let g:jedi#completions_enabled = 0
+endif
+
+" python-support
+if g:rubix_complete ==# 'ncm'
+  " for python completions
+  let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'jedi')
+
+  " language specific completions on markdown file
+  let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'mistune')
+
+  " utils, optional
+  let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'psutil')
+  let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
 endif
 
 let g:jedi#use_splits_not_buffers   = 'right'
@@ -152,68 +154,10 @@ let g:tagbar_type_go = {
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 
-" youcompleteme
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_key_list_select_completion = []
-let g:ycm_key_list_previous_completion = []
-let g:ycm_semantic_triggers =  {
-  \   'c':          ['->', '.'],
-  \   'objc':       ['->', '.'],
-  \   'ocaml':      ['.', '#'],
-  \   'cpp,objcpp': ['->', '.', '::'],
-  \   'perl':       ['->'],
-  \   'php':        ['->', '::'],
-  \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go': ['.'],
-  \   'vim':        ['re![_a-zA-Z]+[_\w]*\.'],
-  \   'ruby':       ['.', '::'],
-  \   'lua':        ['.', ':'],
-  \   'erlang':     [':'],
-  \   'haskell':    ['.'],
-  \ }
-
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_delimiter = 1
-let g:neocomplete#data_directory=rubix#cache#dir('neocomplete')
-let g:neocomplete#auto_completion_start_length = 1
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c    = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp  = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#skip_chars = ['(', ')']
-if !exists('g:deoplete#keyword_patterns')
-    let g:deoplete#keyword_patterns = {}
-endif
-let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#align_class = 1
-
 " neosnippet
 let g:neosnippet#data_directory = rubix#cache#dir('neosnippet')
 let g:neosnippet#enable_snipmate_compatibility = 1
 autocmd MyAutoCmd InsertLeave * NeoSnippetClearMarkers
-
-" ultisnips
-let g:UltiSnipsExpandTrigger = '<c-k>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
 
 " netrw
 let g:netrw_winsize = -30 " absolute width of netrw window

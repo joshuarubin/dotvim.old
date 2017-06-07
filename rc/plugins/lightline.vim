@@ -22,7 +22,7 @@ let g:lightline = {
       \     [ 'filename', 'termtitle' ],
       \   ],
       \   'right': [
-      \     [ 'neomakeerror', 'neomakewarn', 'syntastic', 'lineinfo' ],
+      \     [ 'neomakeerror', 'neomakewarn', 'lineinfo' ],
       \     [ 'fileformat' ],
       \     [ 'go', 'gotype', 'tagbar', 'filetype' ]
       \   ],
@@ -58,10 +58,8 @@ let g:lightline = {
       \   'lineinfo':     'rubix#lightline#line_info',
       \   'neomakeerror': 'rubix#lightline#neomakeerror',
       \   'neomakewarn':  'rubix#lightline#neomakewarn',
-      \   'syntastic':    'SyntasticStatuslineFlag',
       \ },
       \ 'component_type': {
-      \   'syntastic':    'error',
       \   'neomakeerror': 'error',
       \   'neomakewarn':  'warning',
       \ },
@@ -71,10 +69,6 @@ let g:lightline = {
       \ }
 
 let g:tagbar_status_func = 'rubix#lightline#tagbar_status'
-
-function! SyntasticCheckHook(errors)
-  call lightline#update()
-endfunction
 
 autocmd MyAutoCmd User NeomakeCountsChanged call lightline#update()
 autocmd MyAutoCmd CursorHold *.go call lightline#update()

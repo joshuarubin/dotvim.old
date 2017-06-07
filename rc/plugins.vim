@@ -15,20 +15,20 @@ Plug 'chrisbra/Colorizer'
 " search for terms using [Dash.app](http://kapeli.com/), making API lookups simple
 Plug 'rizzatti/funcoo.vim' | Plug 'rizzatti/dash.vim'
 " completion
-Plug 'Shougo/deoplete.nvim',         rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': function('rubix#UpdateRemotePlugins') })
-Plug 'zchee/deoplete-go',            rubix#plug#cond(g:rubix_complete == 'deoplete', { 'do': 'make', 'for': 'go' })
-Plug 'zchee/deoplete-jedi',          rubix#plug#cond(g:rubix_complete == 'deoplete' && g:rubix_jedi, { 'for': 'python' })
-Plug 'tweekmonster/deoplete-clang2', rubix#plug#cond(g:rubix_complete == 'deoplete', { 'for': [ 'c', 'cpp' ] })
-Plug 'zchee/deoplete-zsh',           rubix#plug#cond(g:rubix_complete == 'deoplete', { 'for': 'zsh' })
 
-Plug 'Shougo/neocomplete.vim', rubix#plug#cond(g:rubix_complete == 'neocomplete')
-Plug 'Valloric/YouCompleteMe', rubix#plug#cond(g:rubix_complete == 'youcompleteme', { 'do': './install.py --gocode-completer --clang-completer' })
+Plug 'roxma/nvim-completion-manager',   rubix#plug#cond(g:rubix_complete ==# 'ncm')
+Plug 'roxma/vim-hug-neovim-rpc',        rubix#plug#cond(g:rubix_complete ==# 'ncm' && !has('nvim'))
+Plug 'roxma/python-support.nvim',       rubix#plug#cond(g:rubix_complete ==# 'ncm')
+Plug 'roxma/nvim-cm-tern',              rubix#plug#cond(g:rubix_complete ==# 'ncm', {'do': 'npm install'})
+Plug 'autozimu/LanguageClient-neovim',  rubix#plug#cond(g:rubix_complete ==# 'ncm', {'do': function('rubix#UpdateRemotePlugins')})
+Plug 'roxma/LanguageServer-php-neovim', rubix#plug#cond(g:rubix_complete ==# 'ncm', {'do': 'composer install && composer run-script parse-stubs'})
+Plug 'roxma/clang_complete',            rubix#plug#cond(g:rubix_complete ==# 'ncm')
+Plug 'roxma/nvim-cm-racer',             rubix#plug#cond(g:rubix_complete ==# 'ncm')
 Plug 'Shougo/neco-vim', { 'for': 'vim' }
 
 " snippets
-Plug 'Shougo/neosnippet', rubix#plug#cond(g:rubix_snippet == 'neosnippet')
-Plug 'Shougo/neosnippet-snippets', rubix#plug#cond(g:rubix_snippet == 'neosnippet')
-Plug 'SirVer/ultisnips', rubix#plug#cond(g:rubix_snippet == 'ultisnips')
+Plug 'Shougo/neosnippet', rubix#plug#cond(g:rubix_snippet ==# 'neosnippet')
+Plug 'Shougo/neosnippet-snippets', rubix#plug#cond(g:rubix_snippet ==# 'neosnippet')
 Plug 'honza/vim-snippets'
 
 " displays function signatures from completions in the command line
@@ -72,8 +72,7 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 
 " syntax checking
-Plug 'scrooloose/syntastic', rubix#plug#cond(g:rubix_syntax == 'syntastic')
-Plug 'neomake/neomake', rubix#plug#cond(g:rubix_syntax == 'neomake')
+Plug 'neomake/neomake', rubix#plug#cond(g:rubix_syntax ==# 'neomake')
 
 " text filtering and alignment
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }

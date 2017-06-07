@@ -6,16 +6,6 @@ autocmd MyAutoCmd VimEnter *
   \|   PlugInstall
   \| endif
 
-if g:rubix_complete ==# 'deoplete'
-  call deoplete#custom#set('_', 'converters', [
-        \   'converter_remove_paren',
-        \   'converter_remove_overlap',
-        \   'converter_truncate_abbr',
-        \   'converter_truncate_menu',
-        \   'converter_auto_delimiter',
-        \ ])
-endif
-
 if g:rubix_snippet ==# 'neosnippet'
   let g:neosnippet#snippets_directory = globpath(&runtimepath, 'snippets', 0, 1)
 endif

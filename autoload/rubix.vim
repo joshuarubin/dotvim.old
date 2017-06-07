@@ -249,34 +249,6 @@ function! rubix#neosnippet_cr() abort
   return "\<c-y>"
 endfunction
 
-function! rubix#ultisnips_tab() abort
-  if pumvisible()
-    return "\<c-n>"
-  endif
-
-  call UltiSnips#ExpandSnippetOrJump()
-  if g:ulti_expand_or_jump_res != 0
-    return ''
-  endif
-
-  return "\<tab>"
-endfunction
-
-function! rubix#ultisnips_cr() abort
-  " NOTE: use double quotes to properly expand <cr> into escape strings
-
-  if !pumvisible()
-    if maparg('<plug>DiscretionaryEnd', 'i') !=# ''
-      " if 'tpope/vim-endwise' is installed
-      return "\<cr>\<plug>DiscretionaryEnd"
-    endif
-
-    return "\<cr>"
-  endif
-
-  return "\<c-k>"
-endfunction
-
 function! rubix#yapf() abort
   " preparation: save last search, and cursor position.
   let l:_s=@/

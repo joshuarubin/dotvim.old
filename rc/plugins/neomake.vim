@@ -1,8 +1,5 @@
 scriptencoding utf-8
 
-let g:neomake_serialize = 1
-let g:neomake_serialize_abort_on_error = 1
-
 if g:rubix_syntax ==# 'neomake'
   autocmd MyAutoCmd BufWritePost * if expand('%') !~ '^fugitive:\/\/' | Neomake | endif
 endif
@@ -49,12 +46,19 @@ let g:neomake_markdown_mdl_args = [ '-r', '~MD013,~MD033' ]
 let g:neomake_c_clang_args = ['-fsyntax-only', '-Wall', '-Wextra', '-Weverything']
 
 " go
-let g:neomake_go_enabled_makers = [ 'gofmt', 'go', 'zblint' ]
+let g:neomake_go_enabled_makers = [ 'go', 'zblint' ]
 
 let g:neomake_go_gofmt_maker = {
   \ 'args': ['-l', '-e'],
   \ 'errorformat': '%E%f:%l:%c: %m,'
   \ }
+
+" disable slow checkers:
+" - structcheck
+" - errcheck
+" - staticcheck
+" - unused
+" - gosimple
 
 let g:neomake_go_zblint_maker = {
   \ 'exe': 'zb',
@@ -63,38 +67,20 @@ let g:neomake_go_zblint_maker = {
   \   '--log-level', 'INFO',
   \   'lint',
   \   '-n',
+  \   '--no-enable-gc',
   \   '-D', 'gotype',
   \   '-D', 'deadcode',
   \   '-D', 'interfacer',
   \   '-D', 'unconvert',
   \   '-D', 'varcheck',
+  \   '-D', 'structcheck',
+  \   '-D', 'errcheck',
+  \   '-D', 'staticcheck',
+  \   '-D', 'unused',
+  \   '-D', 'gosimple',
   \ ],
   \ 'append_file': 0,
   \ 'cwd': '%:h',
-  \ 'errorformat':
-  \   '%E%f:%l:%c:%trror: %m,' .
-  \   '%W%f:%l:%c:%tarning: %m,' .
-  \   '%E%f:%l::%trror: %m,' .
-  \   '%W%f:%l::%tarning: %m'
-  \ }
-
-let g:neomake_go_gometalinter_maker = {
-  \ 'args': [
-  \   '--tests',
-  \   '--enable-gc',
-  \   '--concurrency=3',
-  \   '--fast',
-  \   '-D', 'aligncheck',
-  \   '-D', 'gocyclo',
-  \   '-D', 'gotype',
-  \   '-E', 'gofmt',
-  \   '-E', 'goimports',
-  \   '-E', 'misspell',
-  \   '-E', 'unused',
-  \ ],
-  \ 'append_file': 0,
-  \ 'cwd': '%:h',
-  \ 'mapexpr': 'neomake_bufdir . "/" . v:val',
   \ 'errorformat':
   \   '%E%f:%l:%c:%trror: %m,' .
   \   '%W%f:%l:%c:%tarning: %m,' .
