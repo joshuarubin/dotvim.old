@@ -4,18 +4,10 @@ if g:rubix_syntax ==# 'neomake'
   autocmd MyAutoCmd BufWritePost * if expand('%') !~ '^fugitive:\/\/' | Neomake | endif
 endif
 
-if $TERM_PROGRAM ==# 'Alacritty.app'
-  " this is temporary until alacritty supports fallback fonts
-  let g:neomake_error_sign   = {'text': 'E>', 'texthl': 'ErrorMsg'}
-  let g:neomake_warning_sign = {'text': 'W>', 'texthl': 'Type'}
-  let g:neomake_message_sign = {'text': '>>', 'texthl': 'NeomakeMessageSign'}
-  let g:neomake_info_sign    = {'text': 'I>', 'texthl': 'NeomakeInfoSign'}
-else
-  let g:neomake_error_sign   = {'text': '⨉', 'texthl': 'ErrorMsg'}
-  let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'Type'}
-  let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
-  let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-endif
+let g:neomake_error_sign   = {'text': '⨉', 'texthl': 'ErrorMsg'}
+let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'Type'}
+let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 
 " javascript
 let g:neomake_javascript_standard_args = [

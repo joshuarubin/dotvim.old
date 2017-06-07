@@ -164,9 +164,6 @@ function! rubix#lightline#status_line_info() abort
   endif
 
   let l:lnumicon = '☰ '
-  if $TERM_PROGRAM ==# 'Alacritty.app'
-    let l:lnumicon = ''
-  endif
 
   return printf('%3.0f%%  %d/%d' . l:lnumicon . ':%2d',
     \   round((line('.') * 1.0) / line('$') * 100),
@@ -286,11 +283,7 @@ function! rubix#lightline#neomakeerror() abort
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
-    if $TERM_PROGRAM ==# 'Alacritty.app'
-      return 'E' . matchstr(l:e_w[0], '\d\+')
-    else
-      return '⨉ ' . matchstr(l:e_w[0], '\d\+')
-    endif
+    return '⨉ ' . matchstr(l:e_w[0], '\d\+')
   endif
 
   return ''
@@ -301,19 +294,11 @@ function! rubix#lightline#neomakewarn() abort
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2
-    if $TERM_PROGRAM ==# 'Alacritty.app'
-      return 'W' . matchstr(l:e_w[1], '\d\+')
-    else
-      return '⚠ ' . matchstr(l:e_w[1], '\d\+')
-    endif
+    return '⚠ ' . matchstr(l:e_w[1], '\d\+')
   endif
 
   if match(l:e_w, 'W') > -1
-    if $TERM_PROGRAM ==# 'Alacritty.app'
-      return 'W' . matchstr(l:e_w[0], '\d\+')
-    else
-      return '⚠ ' . matchstr(l:e_w[0], '\d\+')
-    endif
+    return '⚠ ' . matchstr(l:e_w[0], '\d\+')
   endif
 
   return ''
