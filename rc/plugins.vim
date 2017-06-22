@@ -1,6 +1,6 @@
 scriptencoding utf-8
 
-execute 'source' fnameescape('~/.vim/rc/plugins.pre.vim')
+execute 'runtime' 'rc/plugins.pre.vim'
 
 call plug#begin('~/.vim/plugged')
 
@@ -173,4 +173,4 @@ Plug 'vimwiki/vimwiki'
 " syntax enable
 call plug#end()
 
-execute 'source' fnameescape('~/.vim/rc/plugins.post.vim')
+execute 'runtime' 'rc/plugins.post.vim'

@@ -124,7 +124,7 @@ let g:jedi#usages_command           = ''          " don't collide with <leader>n
 let g:jedi#rename_command           = '<leader>e' " change from <leader>r to not collide with :PymodeRun
 let g:jedi#documentation_command    = ''          " use dash instead (for <leader>d and K)
 let g:jedi#goto_assignments_command = '<leader>g' " default
-let g:jedi#show_call_signatures     = "2"
+let g:jedi#show_call_signatures     = '2'
 
 " fugitive
 " delete fugitive buffers when they are left
@@ -186,6 +186,4 @@ let g:indentLine_fileTypeExclude = ['help', 'man']
 let g:indentLine_bufNameExclude = ['^term:\/\/.*']
 
 " load larger plugin specific configuration
-for s:f in split(glob('~/.vim/rc/plugins/*.vim'), '\n')
-  execute 'source' fnameescape(s:f)
-endfor
+execute 'runtime!' 'rc/plugins/*.vim'

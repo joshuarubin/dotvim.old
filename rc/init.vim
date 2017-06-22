@@ -40,11 +40,6 @@ if has('termguicolors')
   endif
 endif
 
-" gnome-terminal colors
-if !has('nvim') && &term =~? '^\(xterm\|screen\)$' && $COLORTERM ==? 'gnome-terminal'
-  set t_Co=256
-endif
-
 augroup MyAutoCmd
   autocmd!
 augroup END

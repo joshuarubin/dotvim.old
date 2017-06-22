@@ -47,7 +47,6 @@ let g:neomake_go_gofmt_maker = {
 
 " disable slow checkers:
 " - structcheck
-" - errcheck
 " - staticcheck
 " - unused
 " - gosimple
@@ -61,12 +60,10 @@ let g:neomake_go_zblint_maker = {
   \   '-n',
   \   '--no-enable-gc',
   \   '-D', 'gotype',
-  \   '-D', 'deadcode',
   \   '-D', 'interfacer',
   \   '-D', 'unconvert',
   \   '-D', 'varcheck',
   \   '-D', 'structcheck',
-  \   '-D', 'errcheck',
   \   '-D', 'staticcheck',
   \   '-D', 'unused',
   \   '-D', 'gosimple',

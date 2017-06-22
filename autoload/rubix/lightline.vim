@@ -283,7 +283,7 @@ function! rubix#lightline#neomakeerror() abort
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
-    return '⨉ ' . matchstr(l:e_w[0], '\d\+')
+    return '⨉' . matchstr(l:e_w[0], '\d\+')
   endif
 
   return ''
