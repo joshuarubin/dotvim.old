@@ -168,12 +168,10 @@ let g:netrw_alto = 0 " split below
 let g:netrw_browse_split = 4 " use the previous window to open file
 let g:netrw_sort_sequence = '[\/]$,*,\%(' . join(map(split(&suffixes, ','), 'escape(v:val, ''.*$~'')'), '\|') . '\)[*@]\=$'
 let s:dotfiles = '\(^\|\s\s\)\zs\.\S\+'
-let s:escape = 'substitute(escape(v:val, ''.$~''), ''*'', ''.*'', ''g'')'
+let g:netrw_escape = 'substitute(escape(v:val, ".$~"), "*", ".*", "g")'
 let g:netrw_list_hide =
-      \ s:dotfiles .
-      \ ',' . join(map(split(&wildignore, ','), '''^''.' . s:escape . '. ''$'''), ',') .
-      \ ',^\.\.\=/\=$' .
-      \ ',' . netrw_gitignore#Hide()
+      \ join(map(split(&wildignore, ','), '"^".' . g:netrw_escape . '. "/\\=$"'), ',') . ',^\.\.\=/\=$' .
+      \ (get(g:, 'netrw_list_hide', '')[-strlen(s:dotfiles)-1:-1] ==# s:dotfiles ? ','.s:dotfiles : '')
 let g:netrw_home=rubix#cache#dir('netrw')
 
 " indentLine

@@ -313,7 +313,7 @@ function! rubix#prettier() abort
 endfunction
 
 function! rubix#toggle_netrw() abort
-  if exists('s:is_open')
+  if &filetype ==# 'netrw' || exists('s:is_open')
     " close it
     unlet s:is_open
     exec 'Lexplore'
