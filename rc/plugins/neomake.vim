@@ -45,11 +45,30 @@ let g:neomake_go_gofmt_maker = {
   \ 'errorformat': '%E%f:%l:%c: %m,'
   \ }
 
-" disable slow checkers:
+let g:neomake_go_gometalinter_args = [
+  \ '--disable-all',
+	\ '--enable=gas',
+	\ '--enable=goconst',
+	\ '--enable=golint',
+	\ '--enable=ineffassign',
+	\ '--enable=megacheck',
+  \ '--enable=misspell',
+	\ '--enable=vet',
+	\ '--enable=vetshadow',
+  \ ]
+
+" disabled slow checkers:
 " - structcheck
-" - staticcheck
-" - unused
-" - gosimple
+" - varcheck
+" - interfacer
+" - unconvert
+" - aligncheck (zb)
+" - gocyclo (zb)
+
+" enabled slow checkers:
+" - errcheck
+" - deadcode
+" - megacheck
 
 let g:neomake_go_zblint_maker = {
   \ 'exe': 'zb',
@@ -58,15 +77,11 @@ let g:neomake_go_zblint_maker = {
   \   '--log-level', 'INFO',
   \   'lint',
   \   '-n',
-  \   '--no-enable-gc',
   \   '-D', 'gotype',
   \   '-D', 'interfacer',
   \   '-D', 'unconvert',
   \   '-D', 'varcheck',
   \   '-D', 'structcheck',
-  \   '-D', 'staticcheck',
-  \   '-D', 'unused',
-  \   '-D', 'gosimple',
   \ ],
   \ 'append_file': 0,
   \ 'cwd': '%:h',

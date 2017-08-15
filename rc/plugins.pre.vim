@@ -12,7 +12,7 @@ if (has('nvim') || v:version >= 800) && (has('python') || has('python3'))
   let g:rubix_shougo   = 1
 endif
 
-let g:rubix_syntax = ''
+" let g:rubix_syntax = 'ale'
 if has('nvim')
   let g:rubix_syntax = 'neomake'
 elseif v:version >= 800 && (v:version > 800 || has('patch0027'))
@@ -182,6 +182,11 @@ let g:indentLine_setConceal = 0
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_fileTypeExclude = ['help', 'man']
 let g:indentLine_bufNameExclude = ['^term:\/\/.*']
+
+" ale
+let g:ale_sign_error   = '⨉'
+let g:ale_sign_warning = '⚠'
+let g:ale_sign_info    = 'ℹ'
 
 " load larger plugin specific configuration
 execute 'runtime!' 'rc/plugins/*.vim'

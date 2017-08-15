@@ -74,5 +74,5 @@ autocmd MyAutoCmd InsertEnter * setlocal nohlsearch
 autocmd MyAutoCmd InsertLeave * setlocal hlsearch
 
 if has('nvim')
-  autocmd MyAutoCmd TermOpen * setlocal nolist
+  autocmd MyAutoCmd TermOpen * setlocal nolist nonumber sidescrolloff=0
 endif

@@ -3,6 +3,7 @@ let g:go_fmt_command = 'goimports'
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_options = '-s '
 let g:go_auto_type_info = 0
+let g:go_auto_sameids = 0
 let g:go_fmt_experimental = 0
 let g:go_doc_keywordprg_enabled = 1
 let g:go_echo_command_info = 0

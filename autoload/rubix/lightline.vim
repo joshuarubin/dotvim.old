@@ -289,6 +289,31 @@ function! rubix#lightline#neomakeerror() abort
   return ''
 endfunction
 
+function! rubix#lightline#aleerror() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+
+    if l:all_errors > 0
+      return '⨉' . l:all_errors
+    endif
+
+    return ''
+endfunction
+
+function! rubix#lightline#alewarn() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    if l:all_non_errors > 0
+      return '⚠ ' . l:all_non_errors
+    endif
+
+    return ''
+endfunction
+
 function! rubix#lightline#neomakewarn() abort
   let l:res = neomake#statusline#LoclistStatus()
 
