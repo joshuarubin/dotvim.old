@@ -409,3 +409,13 @@ function! rubix#UpdateRemotePlugins(info) abort
     execute 'UpdateRemotePlugins'
   endif
 endfunction
+
+function! rubix#neomake() abort
+  if expand('%') =~# '^fugitive:\/\/'
+    return
+  endif
+
+  " work around an issue in neomake with races between concurrent linters
+  execute 'NeomakeCancelJobs'
+  execute 'Neomake'
+endfunction

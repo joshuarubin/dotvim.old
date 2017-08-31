@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 if g:rubix_syntax ==# 'neomake'
-  autocmd MyAutoCmd BufWritePost * if expand('%') !~ '^fugitive:\/\/' | Neomake | endif
+  autocmd MyAutoCmd BufWritePost,BufReadPost,BufWinEnter * call rubix#neomake()
 endif
 
 let g:neomake_error_sign   = {'text': '⨉', 'texthl': 'ErrorMsg'}

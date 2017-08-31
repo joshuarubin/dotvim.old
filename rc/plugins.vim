@@ -112,7 +112,7 @@ Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 Plug 'joshuarubin/vim-polyglot'
 
 " use vim as $PAGER
-Plug 'rkitover/vimpager', { 'do': 'make; ln -s man man1' }
+Plug 'rkitover/vimpager', { 'do': 'make; ln -sf man man1' }
 
 " enable repeating supported plugin maps with '.'
 Plug 'tpope/vim-repeat'
