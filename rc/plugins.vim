@@ -22,7 +22,6 @@ Plug 'roxma/python-support.nvim',       rubix#plug#cond(g:rubix_complete ==# 'nc
 Plug 'roxma/nvim-cm-tern',              rubix#plug#cond(g:rubix_complete ==# 'ncm', {'do': 'npm install'})
 Plug 'autozimu/LanguageClient-neovim',  rubix#plug#cond(g:rubix_complete ==# 'ncm', {'do': function('rubix#UpdateRemotePlugins')})
 Plug 'roxma/LanguageServer-php-neovim', rubix#plug#cond(g:rubix_complete ==# 'ncm', {'do': 'composer install && composer run-script parse-stubs'})
-Plug 'roxma/clang_complete',            rubix#plug#cond(g:rubix_complete ==# 'ncm')
 Plug 'roxma/nvim-cm-racer',             rubix#plug#cond(g:rubix_complete ==# 'ncm')
 Plug 'Shougo/neco-vim', { 'for': 'vim' }
 

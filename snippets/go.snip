@@ -17,3 +17,11 @@ abbr fmt.Printf(...)
 snippet lf
 abbr log.Printf(...)
 	log.Printf("${1} = %+v\n", $1)
+
+# test fatal error
+snippet tfer
+abbr if err != nil { t.Fatal(err }
+  if err != nil {
+    t.Fatal(err)
+  }
+  ${1}

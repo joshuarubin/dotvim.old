@@ -415,7 +415,5 @@ function! rubix#neomake() abort
     return
   endif
 
-  " work around an issue in neomake with races between concurrent linters
-  execute 'NeomakeCancelJobs'
   execute 'Neomake'
 endfunction
