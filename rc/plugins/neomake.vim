@@ -76,7 +76,6 @@ let g:neomake_go_zblint_maker = {
   \   '--package',
   \   '--log-level', 'INFO',
   \   'lint',
-  \   '-n',
   \   '-D', 'gotype',
   \   '-D', 'interfacer',
   \   '-D', 'unconvert',

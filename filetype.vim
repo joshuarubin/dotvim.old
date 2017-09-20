@@ -8,4 +8,7 @@ augroup filetypedetect
 
   " JavaScript
   autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+
+  " .envrc
+  autocmd BufNewFile,BufRead .envrc set filetype=sh
 augroup END
