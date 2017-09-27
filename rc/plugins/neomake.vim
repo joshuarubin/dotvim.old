@@ -23,10 +23,6 @@ let g:neomake_jsx_enabled_makers = ['standard']
 " typescript
 let g:neomake_typescript_tsc_args = [ '-t', 'ES5', '--module', 'commonjs' ]
 let g:neomake_typescript_tslint_args = [ '-c', '~/.vim/misc/tslint.config.json' ]
-let g:neomake_typescript_enabled_makers = [ 'tsc', 'tslint' ]
-
-" python
-let g:neomake_python_enabled_makers = [ 'python', 'flake8' ]
 
 " coffee
 let g:neomake_coffee_coffeelint_args = [ '--reporter=csv', '-f', '~/.vim/misc/coffeelint.config.json' ]

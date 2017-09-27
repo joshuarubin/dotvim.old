@@ -78,18 +78,11 @@ if s:gitroot !=# ''
   let &tags = &tags . ',' . s:gitroot . '/.git/tags'
 endif
 
-" make directory automatically
-autocmd MyAutoCmd BufWritePre * call rubix#mkdir(expand('<afile>:p:h'), v:cmdbang)
-
 " go back to previous position of cursor if any
 autocmd MyAutoCmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \  execute 'normal! g`"zvzz' |
   \ endif
-
-" automatically strip whitespace trailing on save for these files (add "let
-" b:auto_strip_trailing_whitespace = 1" in ftplugin files to enable)
-autocmd MyAutoCmd BufWritePre * call rubix#auto_trim()
 
 command! -nargs=* Only call rubix#only()
 command! Kwbd call rubix#kwbd(1)

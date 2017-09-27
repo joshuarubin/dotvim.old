@@ -153,9 +153,6 @@ nnoremap <silent> <leader>k :Make<cr>
 " ctrl-sw: Quickly surround word (must be recursive)
 nmap <c-s><c-w> ysiw
 
-" dash (must be recursive)
-nmap <silent> <leader>d <plug>DashSearch
-
 " undotree
 nnoremap <leader>u :UndotreeToggle<cr>
 
@@ -294,6 +291,12 @@ endif
 
 " netrw
 noremap <silent> <c-n> :call rubix#toggle_netrw()<cr>
+
+" language server
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<cr>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
+nnoremap <silent> <c-]> :call LanguageClient_textDocument_definition()<cr>
+nnoremap <silent> <leader>e :call LanguageClient_textDocument_rename()<cr>
 
 " abbreviations
 execute 'iabbrev TODO TODO(' . $USER . ')'

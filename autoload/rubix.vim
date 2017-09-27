@@ -182,20 +182,6 @@ function! rubix#preserve(command) abort
   call cursor(l:l, l:c)
 endfunction
 
-function! rubix#mkdir(dir, force) abort
-  if !isdirectory(a:dir) && &l:buftype ==# '' &&
-        \ (a:force || input(printf('"%s" does not exist. Create? [y/N]',
-        \              a:dir)) =~? '^y\%[es]$')
-    call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-  endif
-endfunction
-
-function! rubix#auto_trim() abort
-  if exists('b:auto_strip_trailing_whitespace')
-    call rubix#trim()
-  endif
-endfunction
-
 function! rubix#trim() abort
   call rubix#preserve("%s/\\s\\+$//e")
 endfunction
@@ -247,69 +233,6 @@ function! rubix#neosnippet_cr() abort
   endif
 
   return "\<c-y>"
-endfunction
-
-function! rubix#yapf() abort
-  " preparation: save last search, and cursor position.
-  let l:_s=@/
-  let l:l = line('.')
-  let l:c = col('.')
-
-  let l:cmd = 'yapf'
-
-  " Call YAPF with the current buffer
-  let l:formatted_text = system(l:cmd, join(getline(1, '$'), "\n") . "\n")
-
-  if v:shell_error != 0 && v:shell_error != 2
-    return
-  endif
-
-  " Update the buffer.
-  execute '1,' . string(line('$')) . 'delete'
-  call setline(1, split(l:formatted_text, "\n"))
-
-  " clean up: restore previous search history, and cursor position
-  let @/=l:_s
-  call cursor(l:l, l:c)
-endfunction
-
-function! rubix#prettier() abort
-  " preparation: save last search, and cursor position.
-  let l:_s=@/
-  let l:l = line('.')
-  let l:c = col('.')
-
-  " write the buffer to a temp file
-  let l:tmp = fnameescape(tempname())
-  silent execute 'noautocmd write ' . l:tmp
-
-  " Call prettier with temp file
-  let l:out = system('prettier --write ' . l:tmp)
-  if v:shell_error != 0
-    echoerr l:out
-    call delete(l:tmp)
-    return
-  endif
-
-  " Call standard to fix the issues it can
-  let l:out = system('standard --plugin react --plugin flowtype --parser babel-eslint --fix ' . l:tmp)
-  " ignore errors, just using this for --fix
-
-  " Clear the old buffer
-  execute '1,' . string(line('$')) . 'delete'
-
-  " Read in the new file
-  execute '0read' . l:tmp
-
-  " Delete the trailing newline
-  execute string(line('$')) . 'delete'
-
-  " Delete the temp file
-  call delete(l:tmp)
-
-  " clean up: restore previous search history, and cursor position
-  let @/=l:_s
-  call cursor(l:l, l:c)
 endfunction
 
 function! rubix#toggle_netrw() abort

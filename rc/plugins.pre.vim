@@ -4,32 +4,22 @@ scriptencoding utf-8
 
 let g:rubix_complete = ''
 let g:rubix_snippet = ''
-let g:rubix_shougo = 0
 
 if (has('nvim') || v:version >= 800) && (has('python') || has('python3'))
   let g:rubix_complete = 'ncm'
   let g:rubix_snippet  = 'neosnippet'
-  let g:rubix_shougo   = 1
 endif
 
-" let g:rubix_syntax = 'ale'
 if has('nvim')
   let g:rubix_syntax = 'neomake'
 elseif v:version >= 800 && (v:version > 800 || has('patch0027'))
   let g:rubix_syntax = 'neomake'
 endif
 
-let g:rubix_jedi = 0
-if has('python')
-  let g:rubix_jedi = 1
-endif
-
 let g:rubix_python_mode = 0
 if has('python') || has('python3')
   let g:rubix_python_mode = 1
 endif
-
-let g:racer_experimental_completer = 1
 
 if has('nvim')
   autocmd MyAutoCmd TermOpen term://* set winfixheight
@@ -43,9 +33,6 @@ let g:endwise_no_mappings = 1
 " colorizer
 let g:colorizer_auto_filetype='css,html,javascript,javascript.jsx'
 
-" echodoc
-let g:echodoc_enable_at_startup = 0
-
 " hybrid
 let g:hybrid_reduced_contrast = 1
 
@@ -54,19 +41,9 @@ let g:haskellmode_completion_ghc = 0
 
 " vim-polyglot
 let g:jsx_ext_required = 0
-let g:rustfmt_autosave = 1
 
 " undotree
 let g:undotree_SetFocusWhenToggle=1
-
-" gitgutter
-let g:gitgutter_enabled = 0
-
-" vim-lua
-let g:lua_check_syntax = 0 " done via neomake
-let g:lua_define_omnifunc = 0 " must be enabled also (g:lua_complete_omni=1, but crashes Vim!)
-let g:lua_complete_omni = 0
-let g:lua_complete_dynamic = 0 " interferes with completion
 
 " vimpager
 let g:vimpager = {}
@@ -81,50 +58,13 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_update_oldfiles = 1
 let g:startify_session_sort = 1
 
-" quickrun
-let g:quickrun_config = {}
-let g:quickrun_config.markdown = {
-  \ 'outputter': 'null',
-  \ 'command':   'open',
-  \ 'cmdopt':    '-a',
-  \ 'args':      shellescape('Marked 2'),
-  \ 'exec':      '%c %o %a %s',
-  \ }
-
 " python-mode
 let g:pymode_folding  = 0
 let g:pymode_lint     = 0
 let g:pymode_options  = 0
 let g:pymode_rope     = 0  " disable to fix conflict with jedi
-let g:pymode_doc_bind = '' " disable, use jedi instead
-
-" jedi
-
-if g:rubix_complete ==# 'ncm'
-  let g:jedi#popup_on_dot        = 0
-  let g:jedi#completions_enabled = 0
-endif
-
-" python-support
-if g:rubix_complete ==# 'ncm'
-  " for python completions
-  let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'jedi')
-
-  " language specific completions on markdown file
-  let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'mistune')
-
-  " utils, optional
-  let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'psutil')
-  let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
-endif
-
-let g:jedi#use_splits_not_buffers   = 'right'
-let g:jedi#goto_command             = 'gd'        " change from <leader>d
-let g:jedi#usages_command           = ''          " don't collide with <leader>n :nohlsearch
-let g:jedi#rename_command           = '<leader>e' " change from <leader>r to not collide with :PymodeRun
-let g:jedi#documentation_command    = ''          " use dash instead (for <leader>d and K)
-let g:jedi#goto_assignments_command = '<leader>g' " default
-let g:jedi#show_call_signatures     = '2'
+let g:pymode_doc      = 0 " disable, use jedi instead
+let g:pymode_python   = 'python3'
 
 " fugitive
 " delete fugitive buffers when they are left
@@ -183,10 +123,23 @@ let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_fileTypeExclude = ['help', 'man']
 let g:indentLine_bufNameExclude = ['^term:\/\/.*']
 
-" ale
-let g:ale_sign_error   = '⨉'
-let g:ale_sign_warning = '⚠'
-let g:ale_sign_info    = 'ℹ'
+" clang_complete
+if isdirectory('/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib')
+  let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+endif
+
+" neoformat
+autocmd MyAutoCmd BufWritePre * Neoformat
+
+let g:neoformat_only_msg_on_error = 1
+
+let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_scss = ['prettier']
+let g:neoformat_enabled_css = ['prettier']
+let g:neoformat_enabled_typescript = ['prettier']
+let g:neoformat_enabled_less = ['prettier']
+let g:neoformat_enabled_json = ['prettier']
+let g:neoformat_enabled_go = ['']
 
 " load larger plugin specific configuration
 execute 'runtime!' 'rc/plugins/*.vim'
