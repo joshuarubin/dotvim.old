@@ -33,7 +33,7 @@ endif
 
 set isfname-== " exclude = from isfilename.
 
-set timeout timeoutlen=3000 ttimeoutlen=100
+set timeout timeoutlen=3000 ttimeoutlen=10
 set updatetime=500
 set virtualedit=block
 

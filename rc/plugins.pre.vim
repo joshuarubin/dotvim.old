@@ -140,6 +140,7 @@ let g:neoformat_enabled_typescript = ['prettier']
 let g:neoformat_enabled_less = ['prettier']
 let g:neoformat_enabled_json = ['prettier']
 let g:neoformat_enabled_go = ['']
+let g:neoformat_enabled_proto = ['']
 
 " load larger plugin specific configuration
 execute 'runtime!' 'rc/plugins/*.vim'
