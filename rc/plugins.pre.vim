@@ -41,6 +41,7 @@ let g:haskellmode_completion_ghc = 0
 
 " vim-polyglot
 let g:jsx_ext_required = 0
+let g:vim_markdown_folding_disabled = 1
 
 " undotree
 let g:undotree_SetFocusWhenToggle=1
