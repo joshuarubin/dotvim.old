@@ -426,6 +426,7 @@ if has('gui') || has('gui_vimr')
   exe 'hi! Normal'        .s:fg_foreground  .s:bg_normal      .s:fmt_none
 else
   exe 'hi! Normal'        .s:fg_foreground  .s:fmt_none
+  exe 'hi! Terminal'      .s:fg_foreground  .s:fmt_none .s:bg_normal
 endif
 
 "}}}

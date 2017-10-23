@@ -21,10 +21,6 @@ if has('python') || has('python3')
   let g:rubix_python_mode = 1
 endif
 
-if has('nvim')
-  autocmd MyAutoCmd TermOpen term://* set winfixheight
-endif
-
 " plugin specific configuration that is too short to justify its own file
 
 " endwise (called via snippets)

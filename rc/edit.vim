@@ -86,3 +86,7 @@ autocmd MyAutoCmd BufReadPost *
 
 command! -nargs=* Only call rubix#only()
 command! Kwbd call rubix#kwbd(1)
+
+if has('terminal')
+  set termkey=<c-w>
+endif

@@ -266,6 +266,22 @@ if !exists('$TMUX')
     " disable macros in terminal windows
     autocmd MyAutoCmd TermOpen term://* nnoremap <buffer> q iq
   endif
+
+  if has('terminal')
+    tnoremap <c-h> <c-w>h
+    tnoremap <c-j> <c-w>j
+    tnoremap <c-k> <c-w>k
+    tnoremap <c-l> <c-w>l
+    tnoremap <c-y> <c-y>
+    tnoremap <c-u> <c-u>
+
+    " switch to insert mode and press <up> for shell history when in normal mode
+    autocmd MyAutoCmd BufWinEnter * if &buftype == 'terminal' | nnoremap <buffer> <up> i<up> | endif
+    autocmd MyAutoCmd BufWinEnter * if &buftype == 'terminal' | nnoremap <buffer> <c-r> i<c-r> | endif
+
+    " disable macros in terminal windows
+    autocmd MyAutoCmd BufWinEnter * if &buftype == 'terminal' | nnoremap <buffer> q iq| endif
+  endif
 endif
 
 " fzf

@@ -1,5 +1,11 @@
 " emulate tmux in neovim
-if exists('$TMUX') || !has('nvim')
+if exists('$TMUX')
+  finish
+endif
+
+if has('nvim') || has('terminal')
+  " noop
+else
   finish
 endif
 
@@ -29,8 +35,12 @@ call s:tmux_bind_key('s', ':split<cr>', ['n', 'v', 'i', 't'])
 " <c-a>v opens a new vertical split
 call s:tmux_bind_key('v', ':vsplit<cr>', ['n', 'v', 'i', 't'])
 
-" <c-a>t opens a terminal in the currentbuffer
-call s:tmux_bind_key('t', ':enew\|call termopen(&shell." -l")\|startinsert<cr>', ['n', 'v', 'i'])
+" <c-a>t opens a terminal in the current buffer
+if has('nvim')
+  call s:tmux_bind_key('t', ':enew\|call termopen(&shell." -l")\|startinsert<cr>', ['n', 'v', 'i'])
+elseif has('terminal')
+  call s:tmux_bind_key('t', ':enew\|:terminal ++curwin '.&shell.' -l<cr>', ['n', 'v', 'i'])
+endif
 
 " <c-a>a switches to the previous buffer
 call s:tmux_bind_key('a', '<c-^>', ['n', 'v', 'i', 't'])

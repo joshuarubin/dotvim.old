@@ -75,5 +75,7 @@ autocmd MyAutoCmd InsertEnter * setlocal nohlsearch
 autocmd MyAutoCmd InsertLeave * setlocal hlsearch
 
 if has('nvim')
-  autocmd MyAutoCmd TermOpen * setlocal nolist nonumber norelativenumber sidescrolloff=0
+  autocmd MyAutoCmd TermOpen * setlocal nolist nonumber norelativenumber sidescrolloff=0 winfixheight
+elseif has('terminal')
+  autocmd MyAutoCmd BufWinEnter * if &buftype == 'terminal' | setlocal nolist nonumber norelativenumber sidescrolloff=0 winfixheight | endif
 endif
