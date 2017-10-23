@@ -1,7 +1,3 @@
-if has('gui_macvim')
-  let g:fzf_launcher = '~/.vim/misc/inanewterm %s'
-endif
-
 let g:fzf_history_dir = rubix#cache#dir('fzf')
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '10' }
