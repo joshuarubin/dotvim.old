@@ -32,7 +32,9 @@ let &directory=rubix#cache#dir('swap')
 
 if has('termguicolors')
   " belongs in 'gui' but has to be set before plugins are loaded
-  set termguicolors
+  if $TERM_PROGRAM !=# 'Apple_Terminal'
+    set termguicolors
+  endif
 
   if !has('nvim')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"

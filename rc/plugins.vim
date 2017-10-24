@@ -71,6 +71,7 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 
 " tpope
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'

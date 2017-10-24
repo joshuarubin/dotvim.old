@@ -36,6 +36,9 @@ let g:neomake_c_clang_args = ['-fsyntax-only', '-Wall', '-Wextra', '-Weverything
 " go
 let g:neomake_go_enabled_makers = [ 'go', 'zblint' ]
 
+" help
+let g:neomake_help_enabled_makers = []
+
 let g:neomake_go_gofmt_maker = {
   \ 'args': ['-l', '-e'],
   \ 'errorformat': '%E%f:%l:%c: %m,'
@@ -72,6 +75,7 @@ let g:neomake_go_zblint_maker = {
   \   '--package',
   \   '--log-level', 'INFO',
   \   'lint',
+  \   '-n',
   \   '-D', 'gotype',
   \   '-D', 'interfacer',
   \   '-D', 'unconvert',
