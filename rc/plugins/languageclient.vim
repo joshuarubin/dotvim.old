@@ -12,27 +12,27 @@ endif
 let g:LanguageClient_diagnosticsDisplay = {
   \    1: {
   \        'name': 'Error',
-  \        'texthl': 'ErrorMsg',
+  \        'texthl': 'ALEError',
   \        'signText': '⨉',
-  \        'signTexthl': 'ErrorMsg',
+  \        'signTexthl': 'ALEErrorSign',
   \    },
   \    2: {
   \        'name': 'Warning',
-  \        'texthl': 'Type',
+  \        'texthl': 'ALEWarning',
   \        'signText': '⚠',
-  \        'signTexthl': 'Type',
+  \        'signTexthl': 'ALEWarningSign',
   \    },
   \    3: {
   \        'name': 'Information',
-  \        'texthl': 'NeomakeInfoSign',
+  \        'texthl': 'ALEInfo',
   \        'signText': 'ℹ',
-  \        'signTexthl': 'NeomakeInfoSign',
+  \        'signTexthl': 'ALEInfoSign',
   \    },
   \    4: {
   \        'name': 'Hint',
-  \        'texthl': 'NeomakeMessageSign',
+  \        'texthl': 'ALEInfo',
   \        'signText': '➤',
-  \        'signTexthl': 'NeomakeMessageSign',
+  \        'signTexthl': 'ALEInfoSign',
   \    },
   \  }
 

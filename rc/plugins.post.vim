@@ -6,9 +6,7 @@ autocmd MyAutoCmd VimEnter *
   \|   PlugInstall
   \| endif
 
-if g:rubix_snippet ==# 'neosnippet'
-  let g:neosnippet#snippets_directory = globpath(&runtimepath, 'snippets', 0, 1)
-endif
+let g:neosnippet#snippets_directory = globpath(&runtimepath, 'snippets', 0, 1)
 
 let g:startify_skiplist = add(
       \ map(split(&runtimepath, ','), 'escape(resolve(v:val . ''/doc''), ''\'')'),

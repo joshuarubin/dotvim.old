@@ -43,11 +43,6 @@ function! rubix#go#word(args) abort
   return [l:pkg, l:words[1]]
 endfunction
 
-function! rubix#go#doc(...) abort
-  let l:words = call('rubix#go#word', [a:000])
-  return call('ge#doc#open', copy(l:words))
-endfunction
-
 " run :GoBuild or :GoTestCompile based on the go file
 function! rubix#go#build() abort
   let l:file = expand('%')

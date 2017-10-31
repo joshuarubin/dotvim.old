@@ -13,16 +13,15 @@ Plug 'ton/vim-bufsurf'
 Plug 'chrisbra/Colorizer'
 
 " completion
-Plug 'autozimu/LanguageClient-neovim', rubix#plug#cond(has('nvim'), {'do': function('rubix#UpdateRemotePlugins')})
-Plug 'roxma/nvim-completion-manager',  rubix#plug#cond(g:rubix_complete ==# 'ncm')
-Plug 'roxma/vim-hug-neovim-rpc',       rubix#plug#cond(g:rubix_complete ==# 'ncm' && !has('nvim'))
-Plug 'roxma/ncm-rct-complete',         rubix#plug#cond(g:rubix_complete ==# 'ncm', { 'for': 'ruby' })
-Plug 'roxma/clang_complete',           rubix#plug#cond(g:rubix_complete ==# 'ncm')
-Plug 'Shougo/neco-vim',                rubix#plug#cond(g:rubix_complete ==# 'ncm', { 'for': 'vim' })
+Plug 'autozimu/LanguageClient-neovim', {'do': function('rubix#UpdateRemotePlugins')}
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/vim-hug-neovim-rpc', rubix#plug#cond(!has('nvim'))
+Plug 'roxma/ncm-rct-complete', { 'for': 'ruby' }
+Plug 'Shougo/neco-vim', { 'for': 'vim' }
 
 " snippets
-Plug 'Shougo/neosnippet', rubix#plug#cond(g:rubix_snippet ==# 'neosnippet')
-Plug 'Shougo/neosnippet-snippets', rubix#plug#cond(g:rubix_snippet ==# 'neosnippet')
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 
 Plug 'Shougo/context_filetype.vim'
@@ -30,6 +29,7 @@ Plug 'Shougo/context_filetype.vim'
 " fuzzy finder
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 
 " dark color scheme
 " colorscheme is in ~/.vim/colors with changes from w0ng/vim-hybrid
@@ -40,13 +40,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 
 " helps you to create python code very quickly
-Plug 'klen/python-mode', rubix#plug#cond(g:rubix_python_mode, { 'for': 'python' })
+Plug 'klen/python-mode', { 'for': 'python' }
 
 " shows recently used files, bookmarks and sessions
 Plug 'mhinz/vim-startify'
 
 " syntax checking
-Plug 'neomake/neomake', rubix#plug#cond(g:rubix_syntax ==# 'neomake')
+Plug 'w0rp/ale'
 
 " text filtering and alignment
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
@@ -91,8 +91,6 @@ Plug 'rkitover/vimpager', { 'do': 'make; ln -sf man man1' }
 
 " matchparen for html tags
 Plug 'gregsexton/MatchTag', { 'for': ['html', 'xml'] }
-
-Plug 'sbdchd/neoformat'
 
 " haskell
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }

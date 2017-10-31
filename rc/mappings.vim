@@ -207,14 +207,13 @@ nnoremap <silent> <leader>gf :Gfetch<cr>
 nnoremap <silent> <leader>gv :Gitv<cr>
 nnoremap <silent> <leader>gV :Gitv!<cr>
 
-if g:rubix_snippet ==# 'neosnippet'
-  imap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<esc>\<c-w>k"
-  smap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<c-w>k"
-  smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
-  imap <expr> <tab> pumvisible() ? "\<c-n>" : (neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>")
-  imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-  imap <expr> <cr> rubix#neosnippet_cr()
-endif
+" neosnippet
+imap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<esc>\<c-w>k"
+smap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<c-w>k"
+smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
+imap <expr> <tab> pumvisible() ? "\<c-n>" : (neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>")
+imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+imap <expr> <cr> rubix#neosnippet_cr()
 
 " snippets handle the <cr> mapping, but since all (2) endwise mappings were
 " disabled, this restores the other one

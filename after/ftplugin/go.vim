@@ -5,7 +5,6 @@ command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-command! -nargs=* -complete=customlist,ge#complete#complete_package_id ZbDoc :execute rubix#go#doc(<f-args>)
 
 " vim-go
 nmap <buffer> <leader>r <plug>(go-run)

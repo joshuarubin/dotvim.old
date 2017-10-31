@@ -29,7 +29,7 @@ endif
 let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_format_strings = 1
 
-let g:go_snippet_engine = g:rubix_snippet
+let g:go_snippet_engine = 'neosnippet'
 
 let g:go_metalinter_enabled  = [
       \ 'deadcode',

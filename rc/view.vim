@@ -63,7 +63,6 @@ set noshowmode
 set ruler
 set noshowcmd                   " prevent flicker, lightline shows info anyway
 set number                      " line numbers are good
-set relativenumber
 set scrolloff=8                 " start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1

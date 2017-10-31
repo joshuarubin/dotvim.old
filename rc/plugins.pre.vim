@@ -2,25 +2,6 @@
 
 scriptencoding utf-8
 
-let g:rubix_complete = ''
-let g:rubix_snippet = ''
-
-if (has('nvim') || v:version >= 800) && (has('python') || has('python3'))
-  let g:rubix_complete = 'ncm'
-  let g:rubix_snippet  = 'neosnippet'
-endif
-
-if has('nvim')
-  let g:rubix_syntax = 'neomake'
-elseif v:version >= 800 && (v:version > 800 || has('patch0027'))
-  let g:rubix_syntax = 'neomake'
-endif
-
-let g:rubix_python_mode = 0
-if has('python') || has('python3')
-  let g:rubix_python_mode = 1
-endif
-
 " plugin specific configuration that is too short to justify its own file
 
 " endwise (called via snippets)
@@ -94,6 +75,7 @@ let g:tagbar_autoclose = 1
 " neosnippet
 let g:neosnippet#data_directory = rubix#cache#dir('neosnippet')
 let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#enable_completed_snippet = 1
 autocmd MyAutoCmd InsertLeave * NeoSnippetClearMarkers
 
 " netrw
@@ -120,24 +102,12 @@ let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_fileTypeExclude = ['help', 'man']
 let g:indentLine_bufNameExclude = ['^term:\/\/.*']
 
-" clang_complete
-if isdirectory('/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib')
-  let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-endif
-
-" neoformat
-autocmd MyAutoCmd BufWritePre * Neoformat
-
-let g:neoformat_only_msg_on_error = 1
-
-let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_enabled_scss = ['prettier']
-let g:neoformat_enabled_css = ['prettier']
-let g:neoformat_enabled_typescript = ['prettier']
-let g:neoformat_enabled_less = ['prettier']
-let g:neoformat_enabled_json = ['prettier']
-let g:neoformat_enabled_go = ['']
-let g:neoformat_enabled_proto = ['']
-
 " load larger plugin specific configuration
 execute 'runtime!' 'rc/plugins/*.vim'
+
+" Ack
+if executable('rg')
+  let g:ackprg='rg --no-heading --vimgrep --smart-case --follow'
+elseif executable('ag')
+  let g:ackprg='ag --nogroup --column --smart-case --nocolor --follow'
+endif
