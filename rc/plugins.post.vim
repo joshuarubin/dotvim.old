@@ -6,6 +6,14 @@ autocmd MyAutoCmd VimEnter *
   \|   PlugInstall
   \| endif
 
+call deoplete#custom#set('_', 'converters', [
+  \   'converter_remove_paren',
+  \   'converter_remove_overlap',
+  \   'converter_truncate_abbr',
+  \   'converter_truncate_menu',
+  \   'converter_auto_delimiter',
+  \ ])
+
 let g:neosnippet#snippets_directory = globpath(&runtimepath, 'snippets', 0, 1)
 
 let g:startify_skiplist = add(

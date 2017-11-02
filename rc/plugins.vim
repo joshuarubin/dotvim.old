@@ -4,7 +4,7 @@ execute 'runtime' 'rc/plugins.pre.vim'
 
 call plug#begin('~/.vim/plugged')
 
-" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 " enables surfing through buffers based on viewing history per window
 Plug 'ton/vim-bufsurf'
@@ -13,11 +13,20 @@ Plug 'ton/vim-bufsurf'
 Plug 'chrisbra/Colorizer'
 
 " completion
-Plug 'autozimu/LanguageClient-neovim', {'do': function('rubix#UpdateRemotePlugins')}
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/vim-hug-neovim-rpc', rubix#plug#cond(!has('nvim'))
-Plug 'roxma/ncm-rct-complete', { 'for': 'ruby' }
-Plug 'Shougo/neco-vim', { 'for': 'vim' }
+Plug 'Shougo/deoplete.nvim',         {'do': function('rubix#UpdateRemotePlugins')}
+Plug 'roxma/nvim-yarp',              rubix#plug#cond(!has('nvim'))
+Plug 'roxma/vim-hug-neovim-rpc',     rubix#plug#cond(!has('nvim'))
+Plug 'zchee/deoplete-go',            { 'do': 'make', 'for': 'go'}
+Plug 'Shougo/neco-vim',              { 'for': 'vim' }
+Plug 'Shougo/neco-syntax'
+Plug 'zchee/deoplete-zsh',           { 'for': 'zsh' }
+Plug 'carlitux/deoplete-ternjs'
+Plug 'fszymanski/deoplete-emoji'
+Plug 'eagletmt/neco-ghc',            { 'for': 'haskell' }
+Plug 'zchee/deoplete-jedi',          { 'for': 'python' }
+Plug 'Shougo/neoinclude.vim'
+Plug 'zchee/deoplete-clang',         { 'for': ['c', 'cpp'] }
+Plug 'sebastianmarkow/deoplete-rust'
 
 " snippets
 Plug 'Shougo/neosnippet'
@@ -93,7 +102,6 @@ Plug 'rkitover/vimpager', { 'do': 'make; ln -sf man man1' }
 Plug 'gregsexton/MatchTag', { 'for': ['html', 'xml'] }
 
 " haskell
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
 

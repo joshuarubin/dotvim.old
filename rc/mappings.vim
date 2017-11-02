@@ -307,11 +307,5 @@ endif
 " netrw
 noremap <silent> <c-n> :call rubix#toggle_netrw()<cr>
 
-" language server
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<cr>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
-nnoremap <silent> <c-]> :call LanguageClient_textDocument_definition()<cr>
-nnoremap <silent> <leader>e :call LanguageClient_textDocument_rename()<cr>
-
 " abbreviations
 execute 'iabbrev TODO TODO(' . $USER . ')'

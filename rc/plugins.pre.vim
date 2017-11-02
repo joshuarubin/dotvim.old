@@ -111,3 +111,35 @@ if executable('rg')
 elseif executable('ag')
   let g:ackprg='ag --nogroup --column --smart-case --nocolor --follow'
 endif
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#skip_chars = ['(', ')']
+if !exists('g:deoplete#keyword_patterns')
+    let g:deoplete#keyword_patterns = {}
+endif
+let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#align_class = 1
+
+if !has('nvim')
+  let g:deoplete#enable_yarp = 1
+endif
+
+let g:deoplete#sources#ternjs#types = 1
+let g:deoplete#sources#ternjs#docs = 1
+let g:deoplete#sources#ternjs#omit_object_prototype = 0
+let g:deoplete#sources#ternjs#include_keywords = 1
+
+let g:deoplete#sources#ternjs#filetypes = [
+  \ 'javascript',
+  \ 'jsx',
+  \ 'javascript.jsx',
+  \ 'vue',
+  \ ]
