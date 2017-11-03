@@ -4,6 +4,10 @@ if has('shada')
   set shada=!,'1000,<50,s10,h
 endif
 
+if has('viminfo')
+  set viminfo='1000,<50,s10,h
+endif
+
 set encoding=utf-8 " set encoding for text
 set dictionary=/usr/share/dict/words
 set regexpengine=1

@@ -299,7 +299,7 @@ nnoremap <silent> <c-s><c-s> :RgProjectDirCursor<cr>
 nnoremap <silent> <c-s><c-d> :RgProjectDirPrompt<cr>
 nnoremap <silent> <c-s><c-f> :BLines<cr>
 
-if has('nvim')
+if has('nvim') || has('terminal')
   tnoremap <silent> <c-p> <c-\><c-n>:FilesProjectDir<cr>
   tnoremap <silent> <c-b> <c-\><c-n>:Buffers<cr>
 endif

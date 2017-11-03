@@ -13,20 +13,21 @@ Plug 'ton/vim-bufsurf'
 Plug 'chrisbra/Colorizer'
 
 " completion
-Plug 'Shougo/deoplete.nvim',         {'do': function('rubix#UpdateRemotePlugins')}
-Plug 'roxma/nvim-yarp',              rubix#plug#cond(!has('nvim'))
-Plug 'roxma/vim-hug-neovim-rpc',     rubix#plug#cond(!has('nvim'))
-Plug 'zchee/deoplete-go',            { 'do': 'make', 'for': 'go'}
-Plug 'Shougo/neco-vim',              { 'for': 'vim' }
+Plug 'Shougo/deoplete.nvim',          {'do': function('rubix#UpdateRemotePlugins')}
+Plug 'roxma/nvim-yarp',               rubix#plug#cond(!has('nvim'))
+Plug 'roxma/vim-hug-neovim-rpc',      rubix#plug#cond(!has('nvim'))
+Plug 'zchee/deoplete-go',             { 'do': 'make', 'for': 'go'}
+Plug 'Shougo/neco-vim',               { 'for': 'vim' }
 Plug 'Shougo/neco-syntax'
-Plug 'zchee/deoplete-zsh',           { 'for': 'zsh' }
-Plug 'carlitux/deoplete-ternjs'
+Plug 'zchee/deoplete-zsh',            { 'for': 'zsh' }
+Plug 'carlitux/deoplete-ternjs',      { 'for': ['javascript', 'jsx', 'javascript.jsx', 'vue'] }
+Plug 'mhartington/nvim-typescript',   rubix#plug#cond(has('nvim'), { 'do': function('rubix#UpdateRemotePlugins'), 'for': 'typescript' })
 Plug 'fszymanski/deoplete-emoji'
-Plug 'eagletmt/neco-ghc',            { 'for': 'haskell' }
-Plug 'zchee/deoplete-jedi',          { 'for': 'python' }
+Plug 'eagletmt/neco-ghc',             { 'for': 'haskell' }
+Plug 'zchee/deoplete-jedi',           { 'for': 'python' }
 Plug 'Shougo/neoinclude.vim'
-Plug 'zchee/deoplete-clang',         { 'for': ['c', 'cpp'] }
-Plug 'sebastianmarkow/deoplete-rust'
+Plug 'zchee/deoplete-clang',          { 'for': ['c', 'cpp'] }
+Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
 
 " snippets
 Plug 'Shougo/neosnippet'

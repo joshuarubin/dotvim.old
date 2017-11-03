@@ -57,3 +57,5 @@ let g:ale_go_gometalinter_options = ''
 \   . ' -D vet'
 \   . ' -E goimports'
 \   . ' -E misspell'
+
+let g:ale_c_clang_options = '-std=c11 -Wall -Wextra -Weverything'

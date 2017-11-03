@@ -128,10 +128,6 @@ endif
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#align_class = 1
 
-if !has('nvim')
-  let g:deoplete#enable_yarp = 1
-endif
-
 let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#sources#ternjs#docs = 1
 let g:deoplete#sources#ternjs#omit_object_prototype = 0
