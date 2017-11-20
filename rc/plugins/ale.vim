@@ -3,6 +3,7 @@ scriptencoding utf-8
 highlight link ALEErrorSign   ErrorMsg
 highlight link ALEWarningSign Type
 
+let g:ale_emit_conflict_warnings = 0
 let g:ale_lint_delay      = 1000
 let g:ale_echo_msg_format = '[%severity%] %s [%linter%]'
 let g:ale_sign_error      = '⨉'

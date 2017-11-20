@@ -56,7 +56,8 @@ Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'mhinz/vim-startify'
 
 " syntax checking
-Plug 'w0rp/ale'
+Plug 'neomake/neomake' " for Go
+Plug 'w0rp/ale'        " for everything else
 
 " text filtering and alignment
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }

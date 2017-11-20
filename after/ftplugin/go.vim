@@ -12,3 +12,7 @@ nmap <buffer> <silent> <leader>b :call rubix#go#build()<cr>
 nmap <buffer> <leader>t <plug>(go-test)
 nmap <buffer> <leader>e <plug>(go-rename)
 nmap <buffer> <leader>i <plug>(go-info)
+
+" disable ale, enable neomake
+let b:ale_enabled = 0
+autocmd MyAutoCmd BufWritePost,BufReadPost,BufWinEnter <buffer> call rubix#neomake()
