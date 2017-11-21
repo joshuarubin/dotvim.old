@@ -15,4 +15,5 @@ nmap <buffer> <leader>i <plug>(go-info)
 
 " disable ale, enable neomake
 let b:ale_enabled = 0
-autocmd MyAutoCmd BufWritePost,BufReadPost,FileType <buffer> call rubix#neomake()
+autocmd MyAutoCmd BufWritePost *.go call rubix#neomake('BufWritePost')
+autocmd MyAutoCmd BufWinEnter <buffer> call rubix#neomake('BufWinEnter')
