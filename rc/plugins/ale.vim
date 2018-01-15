@@ -29,11 +29,15 @@ let g:ale_linters = {
 
 let g:ale_linter_aliases = {'jsx': 'css'}
 
-let g:ale_css_stylelint_options = ''
-\   . ' --config-basedir '.systemlist('npm root --global')[0]
+let s:npm_root = systemlist('npm root --global')
 
-let g:ale_stylus_stylelint_options = ''
-\   . ' --config-basedir '.systemlist('npm root --global')[0]
+if len(s:npm_root) > 0
+  let g:ale_css_stylelint_options = ''
+  \   . ' --config-basedir '.s:npm_root[0]
+
+  let g:ale_stylus_stylelint_options = ''
+  \   . ' --config-basedir '.s:npm_root[0]
+endif
 
 let g:ale_javascript_standard_options = ''
 \   . ' --plugin react'
