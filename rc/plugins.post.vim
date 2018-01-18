@@ -6,7 +6,7 @@ autocmd MyAutoCmd VimEnter *
   \|   PlugInstall
   \| endif
 
-if &runtimepath =~# 'deoplete'
+if exists('*deoplete#custom#set')
   call deoplete#custom#set('_', 'converters', [
     \   'converter_remove_paren',
     \   'converter_remove_overlap',
