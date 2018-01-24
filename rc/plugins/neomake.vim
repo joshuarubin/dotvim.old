@@ -8,6 +8,10 @@ let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 " go
 let g:neomake_go_enabled_makers = [ 'go', 'golint', 'govet', 'gometalinter' ]
 
+let g:neomake_go_gometalinter_errorformat =
+  \ '%f:%l:%c:%t%*[^:]: %m,' .
+  \ '%f:%l::%t%*[^:]: %m'
+
 " if neomake gofmt  isn't enabled add    '-E gofmt'
 " if neomake golint isn't enabled remove '-D golint'
 " if neomake go vet isn't enabled remove '-D vet'
