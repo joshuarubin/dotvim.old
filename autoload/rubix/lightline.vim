@@ -283,7 +283,7 @@ function! rubix#lightline#neomakeerror() abort
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
-    return '⨉' . matchstr(l:e_w[0], '\d\+')
+    return '🔥' . matchstr(l:e_w[0], '\d\+')
   endif
 
   return ''
@@ -295,7 +295,7 @@ function! rubix#lightline#aleerror() abort
     let l:all_errors = l:counts.error + l:counts.style_error
 
     if l:all_errors > 0
-      return '⨉' . l:all_errors
+      return '🔥' . l:all_errors
     endif
 
     return ''
@@ -308,7 +308,7 @@ function! rubix#lightline#alewarn() abort
     let l:all_non_errors = l:counts.total - l:all_errors
 
     if l:all_non_errors > 0
-      return '⚠ ' . l:all_non_errors
+      return '🚧' . l:all_non_errors
     endif
 
     return ''
@@ -319,11 +319,11 @@ function! rubix#lightline#neomakewarn() abort
 
   let l:e_w = split(l:res)
   if len(l:e_w) == 2
-    return '⚠ ' . matchstr(l:e_w[1], '\d\+')
+    return '🚧' . matchstr(l:e_w[1], '\d\+')
   endif
 
   if match(l:e_w, 'W') > -1
-    return '⚠ ' . matchstr(l:e_w[0], '\d\+')
+    return '🚧' . matchstr(l:e_w[0], '\d\+')
   endif
 
   return ''

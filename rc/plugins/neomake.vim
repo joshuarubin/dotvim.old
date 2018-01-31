@@ -1,9 +1,9 @@
 scriptencoding utf-8
 
-let g:neomake_error_sign   = {'text': '⨉', 'texthl': 'ErrorMsg'}
-let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'Type'}
-let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+let g:neomake_error_sign   = {'text': '🔥', 'texthl': 'ErrorMsg'}
+let g:neomake_warning_sign = {'text': '🚧', 'texthl': 'Type'}
+let g:neomake_message_sign = {'text': '📌', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign    = {'text': '💬', 'texthl': 'NeomakeInfoSign'}
 
 " go
 let g:neomake_go_enabled_makers = [ 'go', 'golint', 'govet', 'gometalinter' ]

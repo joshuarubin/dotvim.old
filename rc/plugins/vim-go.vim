@@ -12,7 +12,7 @@ let g:go_list_height = 10
 let g:go_def_mode = 'guru'
 let g:go_def_reuse_buffer = 1
 
-if $TERM_PROGRAM ==# 'Alacritty.app' || has('gui_running')
+if $TERM_PROGRAM ==# 'Alacritty.app' || $TERM ==# 'xterm-kitty' || has('gui_running')
   if has('gui_running')
     let g:go_highlight_operators = 1
     let g:go_highlight_types = 1
