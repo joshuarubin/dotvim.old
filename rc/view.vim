@@ -11,7 +11,7 @@ set fillchars=vert:│,fold:-
 set laststatus=2 " always show the statusline
 set title
 set linebreak " wrap lines at convenient points
-let &showbreak='↪ '
+let &showbreak='=>'
 set whichwrap+=<,>,[,]
 
 if exists('+breakindent')
