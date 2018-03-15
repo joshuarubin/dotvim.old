@@ -33,8 +33,6 @@ endif
 let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_format_strings = 1
 
-let g:go_snippet_engine = 'neosnippet'
-
 let g:go_metalinter_enabled  = [
       \ 'deadcode',
       \ 'errcheck',
@@ -43,14 +41,13 @@ let g:go_metalinter_enabled  = [
       \ 'gofmt',
       \ 'goimports',
       \ 'golint',
-      \ 'gosimple',
       \ 'gotype',
+      \ 'gotypex',
       \ 'ineffassign',
       \ 'interfacer',
+      \ 'megacheck',
       \ 'misspell',
-      \ 'staticcheck',
       \ 'unconvert',
-      \ 'unused',
       \ 'varcheck',
       \ 'vet',
       \ 'vetshadow',

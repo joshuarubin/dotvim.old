@@ -229,10 +229,10 @@ function! rubix#neosnippet_cr() abort
   endif
 
   if neosnippet#expandable()
-    return "\<plug>(neosnippet_expand_or_jump)"
+    return "\<plug>(neosnippet_expand)"
   endif
 
-  return "\<c-y>"
+  return deoplete#close_popup()
 endfunction
 
 function! rubix#toggle_netrw() abort

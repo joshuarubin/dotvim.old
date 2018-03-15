@@ -26,8 +26,6 @@ nnoremap <leader>fef :call rubix#preserve('normal gg=G')<cr>
 nnoremap <leader>f$ :call rubix#trim()<cr>
 vnoremap <leader>s :sort<cr>
 
-nnoremap <leader>w :w<cr>
-
 cnoremap <c-j> <down>
 cnoremap <c-k> <up>
 cnoremap <c-f> <left>
@@ -141,8 +139,8 @@ nnoremap <silent> <c-w><c-w> :confirm :Kwbd<cr>
 " scrolling in insert mode
 inoremap <c-d> <s-down>
 inoremap <c-u> <s-up>
-inoremap <c-e> <c-x><c-e>
-inoremap <c-y> <c-x><c-y>
+" inoremap <c-e> <c-x><c-e>
+" inoremap <c-y> <c-x><c-y>
 
 " plugin specific mappings
 
@@ -208,12 +206,30 @@ nnoremap <silent> <leader>gv :Gitv<cr>
 nnoremap <silent> <leader>gV :Gitv!<cr>
 
 " neosnippet
-imap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<esc>\<c-w>k"
-smap <expr> <c-k> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<c-w>k"
-smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
-imap <expr> <tab> pumvisible() ? "\<c-n>" : (neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>")
-imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+imap <expr> <c-k>
+  \ neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" :
+  \ pumvisible() ? deoplete#close_popup() :
+  \ "\<esc>\<c-w>k"
+
+smap <expr> <c-k>
+  \ neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" :
+  \ "\<c-w>k"
+
+smap <expr> <tab>
+  \ neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" :
+  \ "\<tab>"
+
+imap <silent><expr> <tab>
+  \ pumvisible() ? "\<c-n>" :
+  \ neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" :
+  \ "\<tab>"
+
+inoremap <expr> <s-tab>
+  \ pumvisible() ? "\<c-p>" :
+  \ "\<c-h>"
+
 imap <expr> <cr> rubix#neosnippet_cr()
+" inoremap <expr> <esc> pumvisible() ? "\<c-e>" : "\<esc>"
 
 " snippets handle the <cr> mapping, but since all (2) endwise mappings were
 " disabled, this restores the other one

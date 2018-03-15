@@ -21,7 +21,7 @@ else
   set nowrap
 endif
 
-set shortmess+=I
+set shortmess+=Ic
 set t_vb=
 set novisualbell " no sounds
 
@@ -54,7 +54,7 @@ set lazyredraw
 
 if has('conceal')
   set conceallevel=2
-  set concealcursor=niv
+  set concealcursor=nv
   set listchars+=conceal:Δ
 endif
 

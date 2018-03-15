@@ -19,6 +19,7 @@ let g:haskellmode_completion_ghc = 0
 " vim-polyglot
 let g:jsx_ext_required = 0
 let g:vim_markdown_folding_disabled = 1
+let g:polyglot_disabled = ['go', 'scss']
 
 " undotree
 let g:undotree_SetFocusWhenToggle=1
@@ -76,6 +77,12 @@ let g:tagbar_autoclose = 1
 let g:neosnippet#data_directory = rubix#cache#dir('neosnippet')
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#enable_completed_snippet = 1
+let g:neosnippet#enable_optional_arguments = 1
+
+let g:neosnippet#disable_runtime_snippets = {
+  \   '_' : 1,
+  \ }
+
 autocmd MyAutoCmd InsertLeave * NeoSnippetClearMarkers
 
 " netrw
@@ -117,6 +124,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#max_menu_width = 0
 let g:deoplete#skip_chars = ['(', ')']
 if !exists('g:deoplete#keyword_patterns')
     let g:deoplete#keyword_patterns = {}
@@ -139,3 +147,14 @@ let g:deoplete#sources#ternjs#filetypes = [
   \ 'javascript.jsx',
   \ 'vue',
   \ ]
+
+" vimwiki
+
+let g:vimwiki_list = [{
+\   'path': '~/vimwiki/',
+\   'syntax': 'markdown',
+\   'ext': '.md'
+\ }]
+
+" goyo
+let g:goyo_width = '120'

@@ -95,10 +95,24 @@ Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 
 " a collection of language packs for vim, forked from sheerun/vim-polyglot
-Plug 'joshuarubin/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
+
+" other language packs
+Plug 'hail2u/vim-css3-syntax'
+Plug 'chrisbra/csv.vim'
+Plug 'zchee/vim-flatbuffers'
+Plug 'jparise/vim-graphql'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'othree/javascript-libraries-syntax.vim'
 
 " use vim as $PAGER
 Plug 'rkitover/vimpager', { 'do': 'make; ln -sf man man1' }
+
+" personal wiki for vim
+Plug 'vimwiki/vimwiki'
+
+" distraction-free writing in vim
+Plug 'junegunn/goyo.vim'
 
 " matchparen for html tags
 Plug 'gregsexton/MatchTag', { 'for': ['html', 'xml'] }

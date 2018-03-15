@@ -5,29 +5,38 @@ let g:neomake_warning_sign = {'text': '🚧', 'texthl': 'Type'}
 let g:neomake_message_sign = {'text': '📌', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign    = {'text': '💬', 'texthl': 'NeomakeInfoSign'}
 
-" go
-let g:neomake_go_enabled_makers = [ 'go', 'golint', 'govet', 'gometalinter' ]
+autocmd MyAutoCmd BufWritePost *.go call rubix#neomake('BufWritePost')
+autocmd MyAutoCmd BufWinEnter  *.go call rubix#neomake('BufWinEnter')
 
-let g:neomake_go_gometalinter_errorformat =
-  \ '%f:%l:%c:%t%*[^:]: %m,' .
-  \ '%f:%l::%t%*[^:]: %m'
+" go
+let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
 
 " if neomake gofmt  isn't enabled add    '-E gofmt'
 " if neomake golint isn't enabled remove '-D golint'
 " if neomake go vet isn't enabled remove '-D vet'
+
+" errcheck and megacheck are _really_ useful, but also very slow
+" gotype is disabled because the go maker is enabled
+" gofmt is not enabled because vim-go handles it
+" goimports is not enabled because vim-go handles it
+
 let g:neomake_go_gometalinter_args = [
-  \ '--concurrency=7',
+  \ '--concurrency=4',
   \ '--tests',
-  \ '--deadline=30s',
-  \ '--disable=aligncheck',
+  \ '--deadline=5s',
+  \ '--disable=errcheck',
+  \ '--disable=goconst',
   \ '--disable=gocyclo',
   \ '--disable=gotype',
+  \ '--disable=gotypex',
   \ '--disable=interfacer',
+  \ '--disable=maligned',
+  \ '--disable=megacheck',
   \ '--disable=structcheck',
   \ '--disable=unconvert',
   \ '--disable=varcheck',
-  \ '--disable=golint',
-  \ '--disable=vet',
-  \ '--enable=goimports',
   \ '--enable=misspell',
+  \ '--disable=gas',
+  \ '--linter=gasn:gas -fmt=csv:^(?P<path>.*?\.go),(?P<line>\d+),(?P<message>[^,]+,[^,]+,[^,]+)',
+  \ '--enable=gasn',
   \ ]

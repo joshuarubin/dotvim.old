@@ -24,7 +24,7 @@ let g:lightline = {
       \   'right': [
       \     [ 'neomakeerror', 'aleerror', 'neomakewarn', 'alewarn', 'lineinfo' ],
       \     [ 'fileformat' ],
-      \     [ 'go', 'gotype', 'tagbar', 'filetype' ]
+      \     [ 'go', 'tagbar', 'filetype' ]
       \   ],
       \ },
       \ 'inactive': {
