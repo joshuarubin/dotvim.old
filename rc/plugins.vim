@@ -21,7 +21,7 @@ Plug 'Shougo/neco-vim',               { 'for': 'vim' }
 Plug 'Shougo/neco-syntax'
 Plug 'zchee/deoplete-zsh',            { 'for': 'zsh' }
 Plug 'carlitux/deoplete-ternjs',      { 'for': ['javascript', 'jsx', 'javascript.jsx', 'vue'] }
-Plug 'mhartington/nvim-typescript',   rubix#plug#cond(has('nvim'), { 'do': function('rubix#UpdateRemotePlugins'), 'for': 'typescript' })
+Plug 'mhartington/nvim-typescript',   rubix#plug#cond(has('nvim') && !exists('g:gui_oni'), { 'do': function('rubix#UpdateRemotePlugins'), 'for': 'typescript' })
 Plug 'fszymanski/deoplete-emoji'
 Plug 'eagletmt/neco-ghc',             { 'for': 'haskell' }
 Plug 'zchee/deoplete-jedi',           { 'for': 'python' }
@@ -128,7 +128,7 @@ Plug 'thinca/vim-visualstar'
 Plug 'tomtom/tcomment_vim'
 
 " show indent guides with spaces (listchars already handles tabs)
-Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine', rubix#plug#cond(!exists('g:gui_oni'))
 
 " Add plugins to &runtimepath, and:
 " filetype plugin indent on

@@ -158,3 +158,8 @@ let g:vimwiki_list = [{
 
 " goyo
 let g:goyo_width = '120'
+
+" unimpaired
+let g:nremap = {
+\   '=': ''
+\ }

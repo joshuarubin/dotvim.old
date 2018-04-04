@@ -23,11 +23,15 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \   'javascript': [ 'standard' ],
 \   'jsx':        [ 'standard', 'stylelint' ],
-\   'text':       [ 'proselint', 'vale', 'write-good' ],
+\   'vimwiki':    [ 'alex', 'mdl', 'prettier', 'proselint', 'redpen', 'remark-lint', 'vale' ],
+\   'text':       [ 'alex', 'proselint', 'vale', 'write-good', 'redpen' ],
 \   'go':         [ 'gofmt', 'golint', 'go vet', 'go build', 'gometalinter' ],
 \}
 
-let g:ale_linter_aliases = {'jsx': 'css'}
+let g:ale_linter_aliases = {
+\   'jsx': 'css',
+\   'vimwiki': 'markdown',
+\ }
 
 let s:npm_root = systemlist('npm root --global')
 
