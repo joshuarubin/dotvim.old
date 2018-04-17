@@ -163,3 +163,6 @@ let g:goyo_width = '120'
 let g:nremap = {
 \   '=': ''
 \ }
+
+" prototool
+let g:prototool_format_enable = 1

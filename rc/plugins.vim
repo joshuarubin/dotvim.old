@@ -58,6 +58,7 @@ Plug 'mhinz/vim-startify'
 " syntax checking
 Plug 'neomake/neomake' " for Go
 Plug 'w0rp/ale'        " for everything else
+Plug 'uber/prototool', { 'rtp': 'vim/prototool' }
 
 " text filtering and alignment
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
