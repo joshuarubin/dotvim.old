@@ -9,7 +9,7 @@ autocmd MyAutoCmd BufWritePost *.go call rubix#neomake('BufWritePost')
 autocmd MyAutoCmd BufWinEnter  *.go call rubix#neomake('BufWinEnter')
 
 " go
-let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
+let g:neomake_go_enabled_makers = [ 'go', 'golangcilint' ]
 
 " if neomake gofmt  isn't enabled add    '-E gofmt'
 " if neomake golint isn't enabled remove '-D golint'
@@ -40,3 +40,32 @@ let g:neomake_go_gometalinter_args = [
   \ '--linter=gasn:gas -fmt=csv:^(?P<path>.*?\.go),(?P<line>\d+),(?P<message>[^,]+,[^,]+,[^,]+)',
   \ '--enable=gasn',
   \ ]
+
+let g:neomake_go_golangcilint_maker = {
+  \   'exe': 'golangci-lint',
+  \   'append_file': 0,
+  \   'cwd': '%:h',
+  \   'errorformat':
+  \     '%f:%l:%c: %m,' .
+  \     '%f:%l:: %m',
+  \   'args': [
+  \     'run',
+  \     '--concurrency=4',
+  \     '--exclude-use-default',
+  \     '--out-format=line-number',
+  \     '--tests',
+  \     '--silent',
+  \     '--print-issued-lines=false',
+  \     '--disable-all',
+  \     '--enable=gas',
+  \     '--enable=deadcode',
+  \     '--enable=golint',
+  \     '--enable=govet',
+  \     '--enable=ineffassign',
+  \     '--enable=misspell',
+  \     '--enable=prealloc',
+  \     '--enable=errcheck',
+  \     '--enable=megacheck',
+  \     '--enable=varcheck',
+  \   ],
+  \ }

@@ -26,6 +26,7 @@ let g:ale_linters = {
 \   'vimwiki':    [ 'alex', 'mdl', 'prettier', 'proselint', 'redpen', 'remark-lint', 'vale' ],
 \   'text':       [ 'alex', 'proselint', 'vale', 'write-good', 'redpen' ],
 \   'go':         [ 'gofmt', 'golint', 'go vet', 'go build', 'gometalinter' ],
+\   'proto':      [ 'prototool' ],
 \}
 
 let g:ale_linter_aliases = {
@@ -37,6 +38,9 @@ let s:npm_root = systemlist('npm root --global')
 
 if len(s:npm_root) > 0
   let g:ale_css_stylelint_options = ''
+  \   . ' --config-basedir '.s:npm_root[0]
+
+  let g:ale_scss_stylelint_options = ''
   \   . ' --config-basedir '.s:npm_root[0]
 
   let g:ale_stylus_stylelint_options = ''
