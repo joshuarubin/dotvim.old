@@ -9,7 +9,7 @@ autocmd MyAutoCmd BufWritePost *.go call rubix#neomake('BufWritePost')
 autocmd MyAutoCmd BufWinEnter  *.go call rubix#neomake('BufWinEnter')
 
 " go
-let g:neomake_go_enabled_makers = [ 'go', 'golangcilint' ]
+let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
 
 " if neomake gofmt  isn't enabled add    '-E gofmt'
 " if neomake golint isn't enabled remove '-D golint'
@@ -23,7 +23,7 @@ let g:neomake_go_enabled_makers = [ 'go', 'golangcilint' ]
 let g:neomake_go_gometalinter_args = [
   \ '--concurrency=4',
   \ '--tests',
-  \ '--deadline=5s',
+  \ '--deadline=15s',
   \ '--disable=errcheck',
   \ '--disable=goconst',
   \ '--disable=gocyclo',

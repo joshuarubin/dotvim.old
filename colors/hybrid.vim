@@ -456,6 +456,26 @@ let g:terminal_color_14 = s:palette.gui.darkcyan[s:style]  " dark aqua
 let g:terminal_color_7  = '#d3d7cf'
 let g:terminal_color_15 = '#707880' " another shade of grade
 
+" Vim8 Terminal Colors
+let g:terminal_ansi_colors = [
+\   s:palette.gui.background[s:style],
+\   s:palette.gui.red[s:style],
+\   s:palette.gui.green[s:style],
+\   s:palette.gui.yellow[s:style],
+\   s:palette.gui.blue[s:style],
+\   s:palette.gui.purple[s:style],
+\   s:palette.gui.aqua[s:style],
+\   '#d3d7cf',
+\   s:gui_comment,
+\   s:palette.gui.red[s:style],
+\   g:terminal_color_2,
+\   s:palette.gui.orange[s:style],
+\   '#729fcf',
+\   g:terminal_color_5,
+\   s:palette.gui.darkcyan[s:style],
+\   '#707880'
+\ ]
+
 " Generic Syntax Highlighting: (see :help group-name)"{{{
 " ----------------------------------------------------------------------------
 exe 'hi! Comment'         .s:fg_comment     .s:bg_none        .s:fmt_none

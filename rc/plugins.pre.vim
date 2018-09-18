@@ -109,44 +109,12 @@ let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_fileTypeExclude = ['help', 'man']
 let g:indentLine_bufNameExclude = ['^term:\/\/.*']
 
-" load larger plugin specific configuration
-execute 'runtime!' 'rc/plugins/*.vim'
-
 " Ack
 if executable('rg')
   let g:ackprg='rg --no-heading --vimgrep --smart-case --follow'
 elseif executable('ag')
   let g:ackprg='ag --nogroup --column --smart-case --nocolor --follow'
 endif
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#max_menu_width = 0
-let g:deoplete#skip_chars = ['(', ')']
-if !exists('g:deoplete#keyword_patterns')
-    let g:deoplete#keyword_patterns = {}
-endif
-let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#align_class = 1
-
-let g:deoplete#sources#ternjs#types = 1
-let g:deoplete#sources#ternjs#docs = 1
-let g:deoplete#sources#ternjs#omit_object_prototype = 0
-let g:deoplete#sources#ternjs#include_keywords = 1
-
-let g:deoplete#sources#ternjs#filetypes = [
-  \ 'javascript',
-  \ 'jsx',
-  \ 'javascript.jsx',
-  \ 'vue',
-  \ ]
 
 " vimwiki
 
@@ -166,3 +134,6 @@ let g:nremap = {
 
 " prototool
 let g:prototool_format_enable = 1
+
+" load larger plugin specific configuration
+execute 'runtime!' 'rc/plugins/*.vim'

@@ -208,7 +208,7 @@ nnoremap <silent> <leader>gV :Gitv!<cr>
 " neosnippet
 imap <expr> <c-k>
   \ neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" :
-  \ pumvisible() ? deoplete#close_popup() :
+  \ pumvisible() ? "\<c-y>" :
   \ "\<esc>\<c-w>k"
 
 smap <expr> <c-k>
@@ -279,7 +279,7 @@ if !exists('$TMUX')
     autocmd MyAutoCmd TermOpen term://* nnoremap <buffer> <c-r> i<c-r>
 
     " disable macros in terminal windows
-    autocmd MyAutoCmd TermOpen term://* nnoremap <buffer> q iq
+    autocmd MyAutoCmd TermOpen term://* nnoremap <buffer> q <nop>
   endif
 
   if has('terminal')
@@ -287,15 +287,16 @@ if !exists('$TMUX')
     tnoremap <c-j> <c-w>j
     tnoremap <c-k> <c-w>k
     tnoremap <c-l> <c-w>l
-    tnoremap <c-y> <c-y>
-    tnoremap <c-u> <c-u>
+    tnoremap <c-y> <c-\><c-n><c-y>
+    tnoremap <c-u> <c-\><c-n><c-u>
+    tnoremap <c-w> <c-w>.
 
     " switch to insert mode and press <up> for shell history when in normal mode
-    autocmd MyAutoCmd BufWinEnter * if &buftype == 'terminal' | nnoremap <buffer> <up> i<up> | endif
-    autocmd MyAutoCmd BufWinEnter * if &buftype == 'terminal' | nnoremap <buffer> <c-r> i<c-r> | endif
+    autocmd MyAutoCmd TerminalOpen * nnoremap <buffer> <up> i<up>
+    autocmd MyAutoCmd TerminalOpen * nnoremap <buffer> <c-r> i<c-r>
 
     " disable macros in terminal windows
-    autocmd MyAutoCmd BufWinEnter * if &buftype == 'terminal' | nnoremap <buffer> q iq| endif
+    autocmd MyAutoCmd TerminalOpen * nnoremap <buffer> q <nop>
   endif
 endif
 

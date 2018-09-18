@@ -228,11 +228,15 @@ function! rubix#neosnippet_cr() abort
     return "\<cr>"
   endif
 
+  if len(v:completed_item) == 0
+    return "\<cr>"
+  endif
+
   if neosnippet#expandable()
     return "\<plug>(neosnippet_expand)"
   endif
 
-  return deoplete#close_popup()
+  return "\<c-y>"
 endfunction
 
 function! rubix#toggle_netrw() abort
