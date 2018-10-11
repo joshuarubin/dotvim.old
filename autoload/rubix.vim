@@ -235,6 +235,11 @@ function! rubix#i_ctrl_k() abort
   endif
 
   if pumvisible()
+    if ncm2_ultisnips#completed_is_snippet()
+      call ncm2_ultisnips#_do_expand_completed()
+      return ''
+    endif
+
     return "\<c-y>"
   endif
 
@@ -257,7 +262,7 @@ function! rubix#cr() abort
   " NOTE: use double quotes to properly expand <cr> into escape strings
 
   if !pumvisible()
-    if maparg('<plug>DiscretionaryEnd', 'i') !=# ''
+    if exists('*EndwiseDiscretionary')
       " if 'tpope/vim-endwise' is installed
       return "\<cr>\<plug>DiscretionaryEnd"
     endif
@@ -270,7 +275,11 @@ function! rubix#cr() abort
   endif
 
   if s:ultisnips_expandable()
-    return "\<c-r>=UltiSnips#ExpandSnippet()\<cr>"
+    return "\<plug>UltiSnipsExpandTrigger"
+  endif
+
+  if ncm2_ultisnips#completed_is_snippet()
+    return "\<plug>(ncm2_ultisnips_expand_completed)"
   endif
 
   return "\<c-y>"

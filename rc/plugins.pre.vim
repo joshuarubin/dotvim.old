@@ -74,10 +74,10 @@ let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 
 " ultisnips
-let g:UltiSnipsExpandTrigger = '<nul>'
-let g:UltiSnipsListSnippets = '<nul>'
-let g:UltiSnipsJumpForwardTrigger = '<nul>'
-let g:UltiSnipsJumpBackwardTrigger = '<nul>'
+let g:UltiSnipsExpandTrigger = '<plug>UltiSnipsExpandTrigger'
+let g:UltiSnipsListSnippets = '<plug>UltiSnipsListSnippets'
+let g:UltiSnipsJumpForwardTrigger = '<plug>UltiSnipsJumpForwardTrigger'
+let g:UltiSnipsJumpBackwardTrigger = '<plug>UltiSnipsJumpBackwardTrigger'
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " netrw
