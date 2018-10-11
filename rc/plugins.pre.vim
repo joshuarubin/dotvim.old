@@ -73,17 +73,12 @@ let g:tagbar_type_go = {
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 
-" neosnippet
-let g:neosnippet#data_directory = rubix#cache#dir('neosnippet')
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#enable_completed_snippet = 1
-let g:neosnippet#enable_optional_arguments = 1
-
-let g:neosnippet#disable_runtime_snippets = {
-  \   '_' : 1,
-  \ }
-
-autocmd MyAutoCmd InsertLeave * NeoSnippetClearMarkers
+" ultisnips
+let g:UltiSnipsExpandTrigger = '<nul>'
+let g:UltiSnipsListSnippets = '<nul>'
+let g:UltiSnipsJumpForwardTrigger = '<nul>'
+let g:UltiSnipsJumpBackwardTrigger = '<nul>'
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " netrw
 let g:netrw_winsize = -30 " absolute width of netrw window

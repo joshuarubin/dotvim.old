@@ -6,8 +6,7 @@ autocmd MyAutoCmd VimEnter *
   \|   PlugInstall
   \| endif
 
-let g:neosnippet#snippets_directory = globpath(&runtimepath, 'snippets', 0, 1)
-let g:neosnippet#snippets_directory += globpath(&runtimepath, 'neosnippets', 0, 1)
+autocmd MyAutoCmd BufEnter * call ncm2#enable_for_buffer()
 
 let g:startify_skiplist = add(
       \ map(split(&runtimepath, ','), 'escape(resolve(v:val . ''/doc''), ''\'')'),

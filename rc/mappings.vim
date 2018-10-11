@@ -205,30 +205,27 @@ nnoremap <silent> <leader>gf :Gfetch<cr>
 nnoremap <silent> <leader>gv :Gitv<cr>
 nnoremap <silent> <leader>gV :Gitv!<cr>
 
-" neosnippet
-imap <expr> <c-k>
-  \ neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" :
-  \ pumvisible() ? "\<c-y>" :
-  \ "\<esc>\<c-w>k"
+" snippets
+imap <silent> <c-k> <c-r>=rubix#i_ctrl_k()<cr>
 
-smap <expr> <c-k>
-  \ neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" :
+smap <silent> <c-k> <c-r>=
+  \ rubix#expand_or_jump() ? "" :
   \ "\<c-w>k"
+  \ <cr>
 
-smap <expr> <tab>
-  \ neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" :
+smap <silent> <tab> <c-r>=
+  \ rubix#expand_or_jump() ? "" :
   \ "\<tab>"
+  \ <cr>
 
-imap <silent><expr> <tab>
-  \ pumvisible() ? "\<c-n>" :
-  \ neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" :
-  \ "\<tab>"
+imap <silent> <tab> <c-r>=rubix#i_tab()<cr>
 
 inoremap <expr> <s-tab>
   \ pumvisible() ? "\<c-p>" :
   \ "\<c-h>"
 
-imap <expr> <cr> rubix#neosnippet_cr()
+imap <expr> <cr> rubix#cr()
+
 " inoremap <expr> <esc> pumvisible() ? "\<c-e>" : "\<esc>"
 
 " snippets handle the <cr> mapping, but since all (2) endwise mappings were

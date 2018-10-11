@@ -12,29 +12,23 @@ Plug 'ton/vim-bufsurf', { 'tag': '*' }
 " color hex codes and color names
 Plug 'chrisbra/Colorizer'
 
-" completion
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp', { 'tag': '*' }
-Plug 'prabirshrestha/asyncomplete.vim', { 'tag': '*' }
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-gocode.vim'
-Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
-Plug 'prabirshrestha/asyncomplete-buffer.vim'
-Plug 'prabirshrestha/asyncomplete-emoji.vim'
-Plug 'prabirshrestha/asyncomplete-file.vim'
-Plug 'keremc/asyncomplete-racer.vim'
-Plug 'runoshun/tscompletejob'
-Plug 'prabirshrestha/asyncomplete-tscompletejob.vim'
+Plug 'roxma/vim-hug-neovim-rpc', rubix#plug#cond(!has('nvim'))
+Plug 'roxma/nvim-yarp',          rubix#plug#cond(!has('nvim'))
+
+Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-syntax'
-Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
-Plug 'Shougo/neco-vim',               { 'for': 'vim' }
-Plug 'prabirshrestha/asyncomplete-necovim.vim'
-Plug 'prabirshrestha/asyncomplete-flow.vim'
-Plug 'prabirshrestha/asyncomplete-tags.vim'
+
+" ncm2
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-go'
+Plug 'ncm2/ncm2-syntax'
+Plug 'ncm2/ncm2-neoinclude'
+Plug 'ncm2/ncm2-ultisnips'
 
 " snippets
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets', { 'tag': '*' }
 
 Plug 'Shougo/context_filetype.vim'
@@ -96,7 +90,7 @@ Plug 'tpope/vim-endwise', { 'tag': '*' }
 Plug 'gregsexton/gitv', { 'on': 'Gitv', 'tag': '*' }
 
 " full featured go development environment support for vim
-Plug 'fatih/vim-go' ", { 'for': 'go', 'tag': '*' }
+Plug 'fatih/vim-go', { 'for': 'go', 'tag': '*' }
 
 " a collection of language packs for vim, forked from sheerun/vim-polyglot
 Plug 'sheerun/vim-polyglot', { 'tag': '*' }
@@ -130,9 +124,6 @@ Plug 'thinca/vim-visualstar', { 'tag': '*' }
 
 " easy to use, file-type sensible comments
 Plug 'tomtom/tcomment_vim', { 'tag': '*' }
-
-" show indent guides with spaces (listchars already handles tabs)
-Plug 'Yggdroot/indentLine', rubix#plug#cond(!exists('g:gui_oni'), { 'tag': '*' } )
 
 " Add plugins to &runtimepath, and:
 " filetype plugin indent on

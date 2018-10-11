@@ -43,7 +43,7 @@ set wildignore+=
 
 set history=1000 " store lots of :cmdline history
 set showfulltag
-set completeopt=longest,menuone " auto complete setting
+set completeopt=noinsert,menuone,noselect
 set nospell
 set splitright
 set splitbelow

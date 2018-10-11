@@ -216,7 +216,44 @@ function! rubix#only() abort
   echon 'Deleted ' . l:tally . ' buffers'
 endfun
 
-function! rubix#neosnippet_cr() abort
+function! s:ultisnips_expandable() abort
+  return !(
+    \ col('.') <= 1
+    \ || !empty(matchstr(getline('.'), '\%' . (col('.') - 1) . 'c\s'))
+    \ || empty(UltiSnips#SnippetsInCurrentScope())
+    \ )
+endfunction
+
+function! rubix#expand_or_jump() abort
+  call UltiSnips#ExpandSnippetOrJump()
+  return g:ulti_expand_or_jump_res
+endfunction
+
+function! rubix#i_ctrl_k() abort
+  if rubix#expand_or_jump()
+    return ''
+  endif
+
+  if pumvisible()
+    return "\<c-y>"
+  endif
+
+  return "\<esc>\<c-w>k"
+endfunction
+
+function! rubix#i_tab() abort
+  if pumvisible()
+    return "\<c-n>"
+  endif
+
+  if rubix#expand_or_jump()
+    return ''
+  endif
+
+  return "\<tab>"
+endfunction
+
+function! rubix#cr() abort
   " NOTE: use double quotes to properly expand <cr> into escape strings
 
   if !pumvisible()
@@ -232,8 +269,8 @@ function! rubix#neosnippet_cr() abort
     return "\<cr>"
   endif
 
-  if neosnippet#expandable()
-    return "\<plug>(neosnippet_expand)"
+  if s:ultisnips_expandable()
+    return "\<c-r>=UltiSnips#ExpandSnippet()\<cr>"
   endif
 
   return "\<c-y>"
