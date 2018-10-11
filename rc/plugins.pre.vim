@@ -95,15 +95,6 @@ let g:netrw_list_hide =
       \ (get(g:, 'netrw_list_hide', '')[-strlen(s:dotfiles)-1:-1] ==# s:dotfiles ? ','.s:dotfiles : '')
 let g:netrw_home=rubix#cache#dir('netrw')
 
-" indentLine
-let g:indentLine_setColors = 0
-let g:indentLine_char = '│'
-let g:indentLine_first_char = '│'
-let g:indentLine_setConceal = 0
-let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_fileTypeExclude = ['help', 'man']
-let g:indentLine_bufNameExclude = ['^term:\/\/.*']
-
 " Ack
 if executable('rg')
   let g:ackprg='rg --no-heading --vimgrep --smart-case --follow'

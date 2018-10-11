@@ -17,6 +17,7 @@ Plug 'roxma/nvim-yarp',          rubix#plug#cond(!has('nvim'))
 
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neco-vim', { 'for': 'vim' }
 
 " ncm2
 Plug 'ncm2/ncm2'
@@ -26,6 +27,20 @@ Plug 'ncm2/ncm2-go'
 Plug 'ncm2/ncm2-syntax'
 Plug 'ncm2/ncm2-neoinclude'
 Plug 'ncm2/ncm2-ultisnips'
+Plug 'ncm2/ncm2-github'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-tagprefix'
+Plug 'ncm2/ncm2-cssomni'
+Plug 'ncm2/ncm2-tern', { 'do': 'npm install' }
+Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-racer'
+Plug 'ncm2/ncm2-pyclang'
+Plug 'ncm2/ncm2-vim'
+Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-markdown-subscope'
+Plug 'ncm2/ncm2-rst-subscope'
+Plug 'filipekiss/ncm2-look.vim'
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
 
 " snippets
 Plug 'SirVer/ultisnips'
