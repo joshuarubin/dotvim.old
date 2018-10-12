@@ -78,7 +78,6 @@ let g:UltiSnipsExpandTrigger = '<plug>UltiSnipsExpandTrigger'
 let g:UltiSnipsListSnippets = '<plug>UltiSnipsListSnippets'
 let g:UltiSnipsJumpForwardTrigger = '<plug>UltiSnipsJumpForwardTrigger'
 let g:UltiSnipsJumpBackwardTrigger = '<plug>UltiSnipsJumpBackwardTrigger'
-let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " netrw
 let g:netrw_winsize = -30 " absolute width of netrw window
