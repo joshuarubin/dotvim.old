@@ -9,7 +9,7 @@ autocmd MyAutoCmd BufWritePost *.go call rubix#neomake('BufWritePost')
 autocmd MyAutoCmd BufWinEnter  *.go call rubix#neomake('BufWinEnter')
 
 " go
-let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
+let g:neomake_go_enabled_makers = [ 'govet', 'golangcilint' ]
 
 " if neomake gofmt  isn't enabled add    '-E gofmt'
 " if neomake golint isn't enabled remove '-D golint'
@@ -19,6 +19,14 @@ let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
 " gotype is disabled because the go maker is enabled
 " gofmt is not enabled because vim-go handles it
 " goimports is not enabled because vim-go handles it
+
+let g:neomake_go_govet_args = [ 'vet', '-shadow' ]
+
+let g:neomake_go_govet_errorformat =
+  \   '%Evet: %.%\+: %f:%l:%c: %m,' .
+  \   '%E%f:%l:%c: %m,' .
+  \   '%E%f:%l: %m,' .
+  \   '%-G%.%#'
 
 let g:neomake_go_gometalinter_args = [
   \ '--concurrency=4',
@@ -35,10 +43,9 @@ let g:neomake_go_gometalinter_args = [
   \ '--disable=structcheck',
   \ '--disable=unconvert',
   \ '--disable=varcheck',
+  \ '--disable=vet',
+  \ '--disable=vetshadow',
   \ '--enable=misspell',
-  \ '--disable=gas',
-  \ '--linter=gasn:gas -fmt=csv:^(?P<path>.*?\.go),(?P<line>\d+),(?P<message>[^,]+,[^,]+,[^,]+)',
-  \ '--enable=gasn',
   \ ]
 
 let g:neomake_go_golangcilint_maker = {
@@ -54,18 +61,30 @@ let g:neomake_go_golangcilint_maker = {
   \     '--exclude-use-default',
   \     '--out-format=line-number',
   \     '--tests',
-  \     '--silent',
   \     '--print-issued-lines=false',
   \     '--disable-all',
-  \     '--enable=gas',
   \     '--enable=deadcode',
+  \     '--enable=errcheck',
   \     '--enable=golint',
-  \     '--enable=govet',
+  \     '--enable=gosec',
   \     '--enable=ineffassign',
+  \     '--enable=megacheck',
   \     '--enable=misspell',
   \     '--enable=prealloc',
-  \     '--enable=errcheck',
-  \     '--enable=megacheck',
+  \     '--enable=scopelint',
+  \     '--enable=structcheck',
   \     '--enable=varcheck',
+  \   ],
+  \ }
+
+let g:neomake_go_gorevive_maker = {
+  \   'exe': 'revive',
+  \   'append_file': 0,
+  \   'cwd': '%:h',
+  \   'errorformat':
+  \     '%f:%l:%c: %m',
+  \   'args': [
+  \     '-formatter',
+  \     'default',
   \   ],
   \ }
