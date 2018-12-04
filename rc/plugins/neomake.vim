@@ -54,10 +54,10 @@ let g:neomake_go_golangcilint_maker = {
   \   'cwd': '%:h',
   \   'errorformat':
   \     '%f:%l:%c: %m,' .
-  \     '%f:%l:: %m',
+  \     '%f:%l:: %m,' .
+  \     '%f:%l: %m',
   \   'args': [
   \     'run',
-  \     '--concurrency=4',
   \     '--exclude-use-default',
   \     '--out-format=line-number',
   \     '--tests',
