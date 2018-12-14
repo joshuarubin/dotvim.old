@@ -73,6 +73,7 @@ let g:neomake_go_golangcilint_maker = {
   \     '--enable=prealloc',
   \     '--enable=scopelint',
   \     '--enable=structcheck',
+  \     '--enable=unconvert',
   \     '--enable=varcheck',
   \   ],
   \ }
