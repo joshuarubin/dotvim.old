@@ -37,9 +37,9 @@ call s:tmux_bind_key('v', ':vsplit<cr>', ['n', 'v', 'i', 't'])
 
 " <c-a>t opens a terminal in the current buffer
 if has('nvim')
-  call s:tmux_bind_key('t', ':enew\|call termopen(&shell." -l")\|startinsert<cr>', ['n', 'v', 'i'])
+  call s:tmux_bind_key('t', ':enew\|call termopen(&shell)\|startinsert<cr>', ['n', 'v', 'i'])
 elseif has('terminal')
-  call s:tmux_bind_key('t', ':enew\|:terminal ++curwin '.&shell.' -l<cr>', ['n', 'v', 'i'])
+  call s:tmux_bind_key('t', ':enew\|:terminal ++curwin<cr>', ['n', 'v', 'i'])
 endif
 
 " <c-a>a switches to the previous buffer
