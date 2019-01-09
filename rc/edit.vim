@@ -84,5 +84,7 @@ autocmd MyAutoCmd BufReadPost *
   \  execute 'normal! g`"zvzz' |
   \ endif
 
+autocmd MyAutoCmd BufWinEnter,WinEnter term://* startinsert
+
 command! -nargs=* Only call rubix#only()
 command! Kwbd call rubix#kwbd(1)
