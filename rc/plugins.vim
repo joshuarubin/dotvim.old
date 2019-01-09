@@ -13,7 +13,7 @@ Plug 'ton/vim-bufsurf', { 'tag': '*' }
 Plug 'chrisbra/Colorizer'
 
 Plug 'roxma/vim-hug-neovim-rpc', rubix#plug#cond(!has('nvim'))
-Plug 'roxma/nvim-yarp',          rubix#plug#cond(!has('nvim'))
+Plug 'roxma/nvim-yarp'
 
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-syntax'
