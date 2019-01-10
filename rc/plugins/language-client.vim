@@ -7,25 +7,25 @@ let g:LanguageClient_diagnosticsList = 'location'
 let g:LanguageClient_diagnosticsDisplay = {
   \   1: {
   \     'name': 'Error',
-  \     'texthl': 'ErrorMsg',
+  \     'texthl': 'ALEError',
   \     'signText': '🔥',
   \     'signTexthl': 'ALEErrorSign',
   \   },
   \   2: {
   \     'name': 'Warning',
-  \     'texthl': 'Type',
+  \     'texthl': 'ALEWarning',
   \     'signText': '🚧',
   \     'signTexthl': 'ALEWarningSign',
   \   },
   \   3: {
   \     'name': 'Information',
-  \     'texthl': 'NeomakeInfoSign',
+  \     'texthl': 'ALEInfo',
   \     'signText': '💬',
   \     'signTexthl': 'ALEInfoSign',
   \   },
   \   4: {
   \     'name': 'Hint',
-  \     'texthl': 'NeomakeMessageSign',
+  \     'texthl': 'ALEInfo',
   \     'signText': '📌',
   \     'signTexthl': 'ALEInfoSign',
   \   },

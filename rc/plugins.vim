@@ -71,7 +71,6 @@ Plug 'klen/python-mode', { 'for': 'python', 'tag': '*' }
 Plug 'mhinz/vim-startify', { 'tag': '*' }
 
 " syntax checking
-Plug 'neomake/neomake' " for Go
 Plug 'w0rp/ale', { 'tag': '*' }        " for everything else
 Plug 'uber/prototool', { 'rtp': 'vim/prototool', 'tag': '*' }
 
@@ -108,7 +107,7 @@ Plug 'tpope/vim-endwise'
 Plug 'gregsexton/gitv', { 'on': 'Gitv', 'tag': '*' }
 
 " full featured go development environment support for vim
-Plug 'fatih/vim-go', { 'for': 'go', 'tag': '*' }
+Plug 'fatih/vim-go', { 'for': ['go', 'gomod'], 'tag': '*' }
 
 " a collection of language packs for vim, forked from sheerun/vim-polyglot
 Plug 'sheerun/vim-polyglot', { 'tag': '*' }
