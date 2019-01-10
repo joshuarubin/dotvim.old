@@ -32,10 +32,21 @@ let g:LanguageClient_diagnosticsDisplay = {
   \ }
 
 function! s:lsp_key_mapping(lang) abort
-  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>'
-  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <silent> K :call LanguageClient#textDocument_hover()<cr>'
-  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <silent> <f2> :call LanguageClient#textDocument_rename()<cr>'
-  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <f5> :call LanguageClient_contextMenu()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <f2> :call LanguageClient#textDocument_rename()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <f5> :call LanguageClient_contextMenu()<cr>'
+
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <leader>ld :call LanguageClient#textDocument_definition()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <leader>lr :call LanguageClient#textDocument_rename()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <leader>lf :call LanguageClient#textDocument_formatting()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <leader>lt :call LanguageClient#textDocument_typeDefinition()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <leader>lx :call LanguageClient#textDocument_references()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <leader>la :call LanguageClient_workspace_applyEdit()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <leader>lc :call LanguageClient#textDocument_completion()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <leader>lh :call LanguageClient#textDocument_hover()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <leader>ls :call LanguageClient_textDocument_documentSymbol()<cr>'
+  execute 'autocmd MyAutoCmd FileType ' . a:lang . ' nnoremap <buffer> <silent> <leader>lm :call LanguageClient_contextMenu()<cr>'
 endfunction
 
 if executable('bingo')
