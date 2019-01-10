@@ -120,5 +120,9 @@ let g:nremap = {
 " prototool
 let g:prototool_format_enable = 1
 
+" echodoc
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
+
 " load larger plugin specific configuration
 execute 'runtime!' 'rc/plugins/*.vim'

@@ -18,12 +18,15 @@ Plug 'roxma/nvim-yarp'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neco-vim', { 'for': 'vim' }
+Plug 'Shougo/echodoc.vim'
+
+" language server client
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', 'tag': '*' }
 
 " ncm2
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-go'
 Plug 'ncm2/ncm2-syntax'
 Plug 'ncm2/ncm2-neoinclude'
 Plug 'ncm2/ncm2-ultisnips'
