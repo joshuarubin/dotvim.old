@@ -19,6 +19,7 @@ let g:ale_fixers = {
 \   'scss':       [ 'prettier' ],
 \   'less':       [ 'prettier' ],
 \   'json':       [ 'prettier' ],
+\   'terraform':  [ 'terraform' ],
 \}
 
 let g:ale_linters = {
