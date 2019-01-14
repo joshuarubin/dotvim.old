@@ -154,9 +154,6 @@ nmap <c-s><c-w> ysiw
 " undotree
 nnoremap <leader>u :UndotreeToggle<cr>
 
-" gitgutter
-nnoremap <silent> <leader>gg :GitGutterToggle<cr>
-
 " bufsurf
 nnoremap <silent> Z :BufSurfBack<cr>
 nnoremap <silent> X :BufSurfForward<cr>
