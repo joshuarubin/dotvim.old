@@ -319,4 +319,4 @@ endif
 noremap <silent> <c-n> :call rubix#toggle_netrw()<cr>
 
 " abbreviations
-execute 'iabbrev TODO TODO(' . $USER . ')'
+iabbrev TODO TODO(jawa)
