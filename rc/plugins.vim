@@ -105,6 +105,7 @@ Plug 'tpope/vim-eunuch', { 'tag': '*' }
 Plug 'tpope/vim-endwise'
 
 Plug 'gregsexton/gitv', { 'on': 'Gitv', 'tag': '*' }
+Plug 'lambdalisue/suda.vim'
 
 " full featured go development environment support for vim
 Plug 'fatih/vim-go', { 'for': ['go', 'gomod'], 'tag': '*' }
